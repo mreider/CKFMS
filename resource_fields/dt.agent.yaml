@@ -1,0 +1,111 @@
+groups:
+  - id: dt.agent
+    type: resource
+    brief:
+    # things in here should be aligned with https://docs.dynatrace.com/docs/shortlink/oneagent-health
+    attributes:
+      - id: dt.agent.module.type
+        type:
+          # https://bitbucket.lab.dynatrace.org/projects/ONE/repos/oneagent-protocols/browse/global/src/main/proto/AgentType.proto#17
+          allow_custom_values: true
+          members:
+            - id: apache
+              value: "apache"
+            - id: dotnet
+              value: "dotnet"
+            - id: dumpproc
+              value: "dumpproc"
+            - id: extensions
+              value: "extensions"
+            - id: go
+              value: "go"
+            - id: iis
+              value: "iis"
+            - id: java
+              value: "java"
+            - id: log_analytics
+              value: "log_analytics"
+            - id: net
+              value: "net"
+            - id: nettracer
+              value: "nettracer"
+            - id: nginx
+              value: "nginx"
+            - id: nodejs
+              value: "nodejs"
+            - id: opentracingnative
+              value: "opentracingnative"
+            - id: os
+              value: "os"
+            - id: php
+              value: "php"
+            - id: plugin
+              value: "plugin"
+            - id: process
+              value: "process"
+            - id: python
+              value: "python"
+            - id: remote_plugin
+              value: "remote_plugin"
+            - id: ruby
+              value: "ruby"
+            - id: sdk
+              value: "sdk"
+            - id: support
+              value: "support"
+            - id: updater
+              value: "updater"
+            - id: varnish
+              value: "varnish"
+            - id: wsmb
+              value: "wsmb"
+            - id: z_
+              value: "z"
+        stability: stable # traces-in-grail
+        brief: >
+          OneAgent module type
+
+      - id: dt.agent.module.version
+        type: string
+        stability: stable # traces-in-grail
+        brief: >
+          OneAgent full module version
+        examples: [ '1.269.17.20221117-132428' ]
+
+      - id: dt.agent.module.version_short
+        type: string
+        stability: experimental # traces-in-grail
+        brief: >
+          OneAgent short module version, to be expected only on record types where `dt.agent.module.version`'s cardinality would be a problem
+        examples: [ '1.269' ]
+
+      - id: dt.agent.module.id
+        type: uid
+        stability: stable # traces-in-grail
+        brief: >
+          OneAgent module ID.
+        examples: [ '031f613871fab0b4', 'fc3cd1bb276f0bed' ]
+
+      - id: dt.agent.module.parent_id
+        type: uid
+        stability: stable # traces-in-grail
+        brief: >
+          OneAgent parent module ID, in case this is a so-called sub-agent
+        examples: [ 'ea89eef5db8b85a9' ]
+
+      - id: dt.agent.monitoring_mode
+        type:
+          allow_custom_values: false
+          members:
+            - id: full_stack
+              value: "FULL_STACK"
+              brief: Full stack monitoring mode includes application performance, user experience data, code-level visbility and PurePath insights, as well as everything that is included in Infrastructure monitoring mode.
+            - id: infrastructure
+              value: "INFRASTRUCTURE"
+              brief: Infrastructure monitoring mode includes topology discovery, detailed health and performance monitoring of your host, and enables Network monitoring, Log monitoring and Extensions.
+            - id: discovery
+              value: "DISCOVERY"
+              brief: Discovery monitoring mode provides basic metrics enabling you to discover your hosts and processes and learn the potential to extend your monitoring.
+        stability: experimental
+        brief: >
+          Monitoring Mode in which given agent operates

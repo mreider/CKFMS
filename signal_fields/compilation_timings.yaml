@@ -1,0 +1,22 @@
+groups:
+  - id: compilation_timings
+    type: span
+    brief:
+    attributes:
+      - id: compilation_timings.duration_sum
+        type: duration
+        stability: experimental # traces-in-grail
+        brief: The total duration in nanoseconds spent compiling.
+        examples: [ 6723 ]
+
+      - id: compilation_timings.compilation_count
+        type: long
+        stability: experimental # traces-in-grail
+        brief: The number of compilations contributing to `compilation_timings.duration_sum`.
+        examples: [ 7 ]
+
+      - id: compilation_timings.top_compilations
+        type: record
+        stability: experimental # traces-in-grail
+        brief: The top N compilations contributing to `compilation_timings.duration_sum`, represented as map from compilation unit name to duration in nanoseconds spent.
+        examples: { "/home/user/test/php/build/tmp/php-htdocs/memcached/memcachedCli.php": 1952, "/home/user/test/php/build/tmp/php-htdocs/curl_cli_uri_filtering.php": 1306 }

@@ -1,0 +1,40 @@
+groups:
+  - id: vmware_resource
+    type: resource
+    brief:
+    attributes:
+      - id: vmware.hypervisor.name
+        type: string
+        stability: experimental
+        brief: ESXi host.
+        examples: [ 'my-hypervisor.lab.dynatrace.org' ]
+
+      - id: vmware.vcenter.name
+        type: string
+        stability: experimental
+        brief: Name of the VMware vCenter server managing the multi-hypervisor environment.
+        examples: [ 'my-vcenter.lab.dynatrace.org' ]
+
+      - id: vmware.nic.name
+        type: string
+        stability: experimental
+        brief: ESXi host network interface.
+        examples: [ 'vmnic0', 'vmnic1', 'vmnic2' ]
+
+      - id: vmware.datacenter.name
+        type: string
+        stability: experimental
+        brief: The name of the data center in which the hypervisor is running.
+        examples: [ 'srvwasapp1Cell01' ]
+
+      - id: vmware.vm.name
+        type: string
+        stability: experimental
+        brief: The name of the virtual machine.
+        examples: [ 'easytravel-demo' ]
+
+      - id: vmware.disk.name
+        type: string
+        stability: experimental
+        brief: ESXi host disk.
+        examples: [ 'srvwasapp1Cell01' ]

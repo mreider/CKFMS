@@ -1,0 +1,29 @@
+groups:
+  - id: rabbitmq
+    type: attribute_group
+    brief:
+    attributes:
+      - id: rabbitmq.module.name
+        type: string
+        stability: experimental
+        brief: >
+          The name of the RabbitMQ module that generated the log entry.
+        examples: [ 'rabbit', 'my_module' ]
+      - id: rabbitmq.function.name
+        type: string
+        stability: experimental
+        brief: >
+          The name of the RabbitMQ function within the `rabbitmq.module.name` that generated the log entry.
+        examples: [ 'start_it', 'main' ]
+      - id: rabbitmq.function.arity
+        type: long
+        stability: experimental
+        brief: >
+          The number of arguments the `rabbitmq.function.name` takes.
+        examples: [ 2, 5 ]
+      - id: rabbitmq.pid
+        type: string
+        stability: experimental
+        brief: >
+          ID of the Erlang process.
+        examples: [ '0.58.0', '1.20.4' ]

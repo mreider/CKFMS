@@ -1,0 +1,36 @@
+groups:
+  - id: dt.enrichment
+    type: attribute_group
+    brief: >
+      The `dt.enrichment` namespace contains fields related to Dynatrace apps and app functions that are used for security intelligence enrichment execution.
+    attributes:
+      - id: dt.enrichment.integration.id
+        type: string
+        stability: experimental
+        brief: >
+          The unique application identifier of the integration app that provided the enrichment functionality. Dynatrace apps are prefixed with 'dynatrace.', custom apps are prefixed with 'my.'.
+        examples: ['dynatrace.abuseipdb', 'dynatrace.virustotal']
+      - id: dt.enrichment.integration.method.id
+        type: string
+        stability: experimental
+        brief: >
+          The integration method ID of the integration app used to execute the enrichment.
+        examples: ['check-ip', 'enrich-observable']
+      - id: dt.enrichment.integration.connection.id
+        type: string
+        stability: experimental
+        brief: >
+          The identifier of the connection settings object used to execute the enrichment. The connection settings object ID refers to the connection in the settings section of the integration app.
+        examples: ['vu9U3hXa3q0AAAABACNhcHA6ZHluYXRyYWNlLmFidXNlaXBkYjpjb25uZWN0aW9ucwAGdGVuYW50AAZ0ZW5hbnQAJDA0NzY2OTJhLTIzMDItMzdhOS05MTk5LTc1ZWI3M2MzNjYwMr7vVN4V2t6t']
+      - id: dt.enrichment.duration
+        type: duration
+        stability: experimental
+        brief: >
+          The duration of the enrichment execution in nanoseconds.
+        examples: [ 4000000000 ]
+      - id: dt.enrichment.result.is_cached
+        type: boolean
+        stability: experimental
+        brief: >
+          Indicates whether the enrichment execution result was retrieved from the cache.
+        examples: [ true, false ]

@@ -1,0 +1,10 @@
+groups:
+  - id: cassandra
+    type: resource
+    brief:
+    attributes:
+      - id: cassandra.cluster.name
+        type: string
+        stability: experimental # traces-in-grail
+        brief:
+        examples: [ ' ' ]

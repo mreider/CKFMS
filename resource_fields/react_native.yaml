@@ -1,0 +1,19 @@
+groups:
+  - id: react_native
+    type: resource
+    brief: >
+      The react_native namespace contains information on React Native attributes for user events.
+    attributes:
+      - id: react_native.bundle.name
+        type: string
+        stability: experimental
+        brief: >
+          The name of the React Native bundle.
+        examples: [ 'RNBundleName' ]
+
+      - id: react_native.bundle.version
+        type: string
+        stability: experimental
+        brief: >
+          The version of the React Native bundle.
+        examples: [ '0.0.1' ]

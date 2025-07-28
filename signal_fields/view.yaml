@@ -1,0 +1,160 @@
+groups:
+  - id: view
+    type: attribute_group
+    brief: >
+      The view namespace contains information on the view of a user event.
+    attributes:
+      - id: view.url.full
+        type: string
+        stability: experimental
+        brief: >
+          The `location.href` at the time of the event. This is the full URL provided in the format `scheme://host[:port]/path[?query][#fragment]`. Not applicable for OneAgent for Mobile.
+        examples: [ 'https://www.foo.bar/path?q=value#dashboard;id=cff3752c-890d-4795-9955-3e1108fe3f6e;gf=all;gtf=-2h' ]
+
+      - id: view.url.scheme
+        type: string
+        stability: experimental
+        brief: >
+          The URI scheme component of the view URL. This is extracted from `view.url.full`.
+        examples: ['https', 'http']
+
+      - id: view.url.domain
+        type: string
+        stability: experimental
+        brief: >
+          The URI host component of the view URL. This is extracted from `view.url.full`.
+        examples: ['www.foo.bar']
+
+      - id: view.url.path
+        type: string
+        stability: experimental
+        brief: >
+          The URI path component of the view URL. This is extracted from `view.url.full`.
+        examples: ['/path']
+
+      - id: view.url.query
+        type: string
+        stability: experimental
+        brief: >
+          The URI query component of the view URL. This is extracted from `view.url.full`.
+        examples: ['q=value']
+
+      - id: view.url.fragment
+        type: string
+        stability: experimental
+        brief: >
+          The URI fragment component of the view URL. This is extracted from `view.url.full`.
+        examples: ['dashboard;id=cff3752c-890d-4795-9955-3e1108fe3f6e;gf=all;gtf=-2h']
+
+      - id: view.id
+        type: uid
+        stability: experimental
+        brief: >
+          A random ID that is generated every time a user navigates to a new view. The `view.id` is an 8-byte ID and hex-encoded if shown as a string.
+        examples: [ 'f76281848bd8288c' ]
+
+      - id: view.detected_name
+        type: string
+        stability: experimental
+        brief: >
+          The name RUM JavaScript detected for the view. The value is based on `view.url.full`. Not applicable for OneAgent for Mobile.
+        examples: [ '#dashboard;id=cff3752c-890d-4795-9955-3e1108fe3f6e' ]
+
+      - id: view.name
+        type: string
+        stability: experimental
+        brief: >
+          An identifier for grouping views. The value can be reported via the Dynatrace API. If not reported via the Dynatrace API, the value is automatically calculated from `view.detected_name` for user events reported by RUM JavaScript.
+        examples: [ '#dashboard;id=<uuid>', 'LoginActivity' ]
+
+      - id: view.foreground_time
+        type: duration
+        stability: experimental
+        brief: >
+          Aggregated time that the view was in the foreground.
+        examples: [ 900000000 ]
+
+      - id: view.background_time
+        type: duration
+        stability: experimental
+        brief: >
+          Aggregated time that the view was in the background.
+        examples: [ 0 ]
+
+      - id: view.prerender_time
+        type: duration
+        stability: experimental
+        brief: >
+          Aggregated time that the view was prerendering.
+        examples: [ 0 ]
+
+      - id: view.sequence_number
+        type: long
+        stability: experimental
+        brief: >
+          The number of views throughout the page's entire lifespan.
+        examples: [ 1 ]
+
+      - id: view.source.url.full
+        type: string
+        stability: experimental
+        brief: >
+          The `location.href` of the previous view. This is the full URL provided in the format `scheme://host[:port]/path[?query][#fragment]`. Not applicable for OneAgent for Mobile.
+        examples: [ 'https://www.foo.bar/path?q=value#dashboard;id=cff3752c-890d-4795-9955-3e1108fe3f6e;gf=all;gtf=-2h' ]
+
+      - id: view.source.url.scheme
+        type: string
+        stability: experimental
+        brief: >
+          The URI scheme component of the source view URL. This is extracted from `view.source.url.full`.
+        examples: ['https', 'http']
+
+      - id: view.source.url.domain
+        type: string
+        stability: experimental
+        brief: >
+          The URI host component of the source view URL. This is extracted from `view.source.url.full`.
+        examples: ['www.foo.bar']
+
+      - id: view.source.url.path
+        type: string
+        stability: experimental
+        brief: >
+          The URI path component of the source view URL. This is extracted from `view.source.url.full`.
+        examples: ['/path']
+
+      - id: view.source.url.query
+        type: string
+        stability: experimental
+        brief: >
+          The URI query component of the source view URL. This is extracted from `view.source.url.full`.
+        examples: ['q=value']
+
+      - id: view.source.url.fragment
+        type: string
+        stability: experimental
+        brief: >
+          The URI fragment component of the source view URL. This is extracted from `view.source.url.full`.
+        examples: ['#dashboard;id=cff3752c-890d-4795-9955-3e1108fe3f6e;gf=all;gtf=-2h']
+
+      - id: view.source.id
+        type: uid
+        stability: experimental
+        brief: >
+          The ID of the previous view. Not supported by OneAgent for Mobile.
+        examples: [ 'f76281848bd8288c' ]
+
+      - id: view.source.detected_name
+        type: string
+        stability: experimental
+        brief: >
+          The `view.detected_name` value of the previous view. Not applicable for OneAgent for Mobile.
+        examples: [ '#dashboard;id=cff3752c-890d-4795-9955-3e1108fe3f6e' ]
+
+
+      - id: view.source.name
+        type: string
+        stability: experimental
+        brief: >
+          The `view.name` value of the previous view. Not supported by OneAgent for Mobile.
+        examples: [ '#dashboard;id=<uuid>' ]

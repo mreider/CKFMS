@@ -1,0 +1,10 @@
+groups:
+  - id: module_insights
+    type: span
+    brief:
+    attributes:
+      - id: module_insights.modules
+        type: record
+        stability: experimental # traces-in-grail
+        brief: Modules executed as part of this web request, represented as map from module name to duration in nanoseconds spent.
+        examples: { "HttpRedirectionModule": 10299, "BasicAuthenticationModule": 4665 }

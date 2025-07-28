@@ -1,0 +1,31 @@
+groups:
+  - id: software_component
+    type: attribute_group
+    brief: >
+        A software component object contains specific properties of components encountered by Dynatrace.
+    attributes:
+      - id: software_component.purl
+        type: string
+        stability: experimental
+        brief: >
+          Location of the package providing unique identification.
+        examples: ['pkg:maven/org.apache.logging.log4j/log4j-core']
+      - id: software_component.type
+        type: string
+        stability: experimental
+        brief: >
+          Type of the software component usually provided by the SBOM.
+        examples: ['library']
+      - id: software_component.version
+        type: string
+        stability: experimental
+        brief: >
+          Version of the software component.
+        examples: ['3.16.2-5+deb9u3']
+      - id: software_component.supplier.name
+        type: string
+        stability: experimental
+        brief: >
+          Supplier name of the software component.
+        examples: ['FasterXML']
+

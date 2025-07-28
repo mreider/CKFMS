@@ -1,0 +1,210 @@
+groups:
+  - id: storage.disk
+    type: resource
+    brief: >
+      Information about disk sent by disk-devices extension
+    attributes:
+      - id: storage.disk.kname
+        type: string
+        brief: Kernel name of the disk device. It's also the disk ID in relation to other devices.
+        examples: ['sda']
+        stability: stable
+      - id: storage.disk.path
+        type: string
+        brief: Path to the disk.
+        stability: stable
+        examples: ['/dev/sda']
+      - id: storage.disk.read-only
+        type: boolean
+        brief: Is read-only disk.
+        stability: stable
+      - id: storage.disk.removable
+        type: boolean
+        brief: Is removable disk.
+        stability: stable
+      - id: storage.disk.encrypted
+        type: boolean
+        brief: Is encrypted disk.
+        stability: stable
+      - id: storage.disk.mountpoint
+        type: string
+        brief: Primary mount point.
+        examples: ['/mnt/disk1']
+        stability: stable
+      - id: storage.disk.other-mountpoints
+        type: string[]
+        brief: List of other mount points of the disk
+        examples: ['/home/user1/mydisk', '/opt/volume1']
+        stability: stable
+      - id: storage.disk.type
+        type: string
+        brief: Disk device type.
+        examples: ['disk', 'hardware raid']
+        stability: stable
+      - id: storage.disk.fstype
+        type: string
+        brief: Type of file system on the disk.
+        examples: ['ext4', 'btrfs']
+        stability: stable
+      - id: storage.disk.model
+        type: string
+        brief: Disk model.
+        examples: ['baracuda']
+        stability: stable
+      - id: storage.disk.vendor
+        type: string
+        brief: Vendor of the disk.
+        examples: ['seagate']
+        stability: stable
+      - id: storage.disk.serial
+        type: string
+        brief: Disk serial number.
+        examples: ['1234-56789']
+        stability: stable
+  - id: storage.partition
+    type: resource
+    brief: >
+      Information about partition sent by disk-devices extension
+    attributes:
+      - id: storage.partition.kname
+        type: string
+        brief: Kernel name of the partition device. It's also the partition ID in relation to other devices.
+        examples: ['sda1']
+        stability: stable
+      - id: storage.partition.path
+        type: string
+        brief: Path to the partition.
+        examples: ['/dev/sda1']
+        stability: stable
+      - id: storage.partition.read-only
+        type: boolean
+        brief: Is read-only partition.
+        stability: stable
+      - id: storage.partition.removable
+        type: boolean
+        brief: Is removable partition (true when disk is removable).
+        stability: stable
+      - id: storage.partition.encrypted
+        type: boolean
+        brief: Is encrypted partition.
+        stability: stable
+      - id: storage.partition.mountpoint
+        type: string
+        brief: Primary mount point.
+        examples: ['/mnt/diskA']
+        stability: stable
+      - id: storage.partition.other-mountpoints
+        type: string[]
+        brief: List of other mount points of the partition.
+        examples: ['/home/user1/mydiskA', '/opt/volumeA']
+        stability: stable
+      - id: storage.partition.type
+        type: string
+        brief: Partition device type.
+        examples: ['partition']
+        stability: stable
+      - id: storage.partition.fstype
+        type: string
+        brief: Type of file system on the partition.
+        examples: ['ext4', 'btrfs']
+        stability: stable
+  - id: storage.software-raid
+    type: resource
+    brief: >
+      Information about software-raid sent by disk-devices extension
+    attributes:
+      - id: storage.software-raid.kname
+        type: string
+        brief: Kernel name of the software RAID device. It's also the software RAID ID in relation to other devices.
+        examples: ['md0', 'md1', 'md3']
+        stability: stable
+      - id: storage.software-raid.path
+        type: string
+        brief: Path to the software RAID device.
+        examples: ['/dev/md0']
+        stability: stable
+      - id: storage.software-raid.read-only
+        type: boolean
+        brief: Is read-only software RAID.
+        stability: stable
+      - id: storage.software-raid.removable
+        type: boolean
+        brief: Is removable software RAID.
+        stability: stable
+      - id: storage.software-raid.encrypted
+        type: boolean
+        brief: Is encrypted software RAID.
+        stability: stable
+      - id: storage.software-raid.mountpoint
+        type: string
+        brief: Primary mount point.
+        examples: ['/mnt/diskA']
+        stability: stable
+      - id: storage.software-raid.other-mountpoints
+        type: string[]
+        brief: List of other mount points of the software RAID.
+        examples: ['/home/user1/mydiskA', '/opt/volumeA']
+        stability: stable
+      - id: storage.software-raid.type
+        type: string
+        brief: Software RAID device type.
+        examples: ['raid0, raid10']
+        stability: stable
+      - id: storage.software-raid.fstype
+        type: string
+        brief: Type of file system on the software RAID,
+        examples: ['ext4', 'btrfs']
+        stability: stable
+      - id: storage.software-raid.parent
+        type: string
+        brief: ID of parent software RAID in which this software RAID is nested.
+        examples: ['md0']
+        stability: stable
+  - id: storage.volume
+    type: resource
+    brief: >
+      Information about volume sent by disk-devices extension
+    attributes:
+      - id: storage.volume.kname
+        type: string
+        brief: Kernel name of the volume device. It's also the volume ID in relation to other devices.
+        examples: ['dm-1', 'dm-2', 'dm-5']
+        stability: stable
+      - id: storage.volume.display-name
+        type: string
+        brief: Name of the volume device.
+        examples: ['vg0-lv1', 'vg1-lv2', 'my-volume']
+        stability: stable
+      - id: storage.volume.path
+        type: string
+        brief: Path to the volume device.
+        examples: ['/dev/mapper/vg0-lv1']
+        stability: stable
+      - id: storage.volume.read-only
+        type: boolean
+        brief: Is read-only volume.
+        stability: stable
+      - id: storage.volume.removable
+        type: boolean
+        brief: Is removable volume.
+        stability: stable
+      - id: storage.volume.mountpoint
+        type: string
+        brief: Primary mount point.
+        examples: ['/mnt/diskA']
+        stability: stable
+      - id: storage.volume.other-mountpoints
+        type: string[]
+        brief: List of other mount points of the software RAID.
+        examples: ['/home/user1/mydiskA', '/opt/volumeA']
+        stability: stable
+      - id: storage.volume.type
+        type: string
+        brief: Volume device type.
+        examples: ['lvm']
+        stability: stable
+      - id: storage.volume.fstype
+        type: string
+        brief: Type of file system on the volume.
+        examples: ['ext4', 'btrfs']
+        stability: stable

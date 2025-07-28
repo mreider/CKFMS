@@ -1,0 +1,16 @@
+groups:
+  - id: snmp
+    type: resource
+    brief: >
+      Attributes used for SNMP data sources.
+    attributes:
+      - id: version
+        type: string
+        deprecated: Used in Extension Framework 2.0
+        brief: The SNMP version.
+        examples: ['SNMPv3']
+      - id: trap_oid
+        type: string
+        deprecated: Used in Extension Framework 2.0
+        brief: The trap OID of a given event.
+        examples: [ 'SNMPv2-MIB::coldStart' ]

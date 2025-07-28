@@ -1,0 +1,70 @@
+groups:
+  - id: ibm
+    type: resource
+    brief:
+    attributes:
+      - id: ibm.ace.integration_node.name
+        type: string
+        stability: experimental # traces-in-grail
+        brief: The name of the integration node (broker) that manages one or more integration servers.
+        examples: [ 'myIntegrationNode', 'YourBroker', 'the_management_instance' ]
+
+      - id: ibm.ace.integration_server.name
+        type: string
+        stability: experimental # traces-in-grail
+        brief: The name of the broker-managed or standalone integration server (formerly known as execution group or dataflow engine).
+        examples: [ 'myIntegrationServer', 'YourExecutionGroup', 'dataflow_engine' ]
+
+      - id: ibm.cics.aor
+        type: string
+        stability: experimental # traces-in-grail
+        brief:
+        examples: [ ' ' ]
+
+      - id: ibm.cics.region
+        type: string
+        stability: experimental # traces-in-grail
+        brief:
+        examples: [ ' ' ]
+
+      - id: ibm.cics.program
+        type: string
+        stability: experimental # traces-in-grail
+        brief: The name of the CICS program.
+        examples: [ 'EDUCHAN' ]
+
+      - id: ibm.cics.tor
+        type: string
+        stability: experimental # traces-in-grail
+        brief:
+        examples: [ ' ' ]
+
+      - id: ibm.ctg.name
+        type: string
+        stability: experimental # traces-in-grail
+        brief:
+        examples: [ ' ' ]
+
+      - id: ibm.ims.connect
+        type: string
+        stability: experimental # traces-in-grail
+        brief:
+        examples: [ ' ' ]
+
+      - id: ibm.ims.control
+        type: string
+        stability: experimental # traces-in-grail
+        brief:
+        examples: [ ' ' ]
+
+      - id: ibm.ims.mpr
+        type: string
+        stability: experimental # traces-in-grail
+        brief:
+        examples: [ ' ' ]
+
+      - id: ibm.ims.soap_gw.name
+        type: string
+        stability: experimental # traces-in-grail
+        brief:
+        examples: [ ' ' ]

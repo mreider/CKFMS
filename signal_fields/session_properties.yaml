@@ -1,0 +1,12 @@
+groups:
+  - id: session_properties
+    type: attribute_group
+    brief: Session properties are custom-defined key-value pairs. Dynatrace RUM captured the session properties as part of each of your users' journeys to enrich all user sessions.
+    attributes:
+      - id: session_properties.__property_name__
+        type: record
+        stability: experimental
+        brief: >
+          Contains the value for the session property named `__property_name__` defined by the event and session property configuration.
+          The data type of the value depends on the definition; default is data type `string`.
+        examples: [ 42, 'value' ]

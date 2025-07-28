@@ -1,0 +1,23 @@
+groups:
+  - id: observable
+    type: attribute_group
+    brief: >
+      The observable namespace can be used to store a single observable, which is a fact concerning a network or host.
+      It is influenced by the concept of a Cyber-observable in STIX 2.1.
+    attributes:
+      - id: observable.value
+        internal: true
+        type: string
+        stability: experimental
+        brief: >
+          The value of the observable.
+        examples: ['92.24.47.250', 'dynatrace.com']
+      - id: observable.type
+        internal: true
+        type: string
+        stability: experimental
+        brief: >
+          Identifies the type of the observable.
+        internal_brief: >
+          Field values are based on type values for STIX 2.1 Cyber-observable Objects, with exceptions for IP addresses.
+        examples: ['ip-addr', 'domain-name', 'url']

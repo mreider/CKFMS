@@ -1,0 +1,25 @@
+groups:
+  - id: server
+    type: span
+    brief: >
+      The server namespace contains information on the server side of a network connection.
+      In an ideal situation, not accounting for proxies, multiple IP addresses or host names, the `server.*` attributes are the same on the client and server.
+
+    attributes:
+      - id: server.address
+        type: string
+        stability: stable # traces-in-grail
+        brief: Logical server hostname, matches server FQDN if available, and IP or socket address if FQDN is not known.
+        examples: [ 'example.com' ]
+
+      - id: server.resolved_ips
+        type: ipAddress[]
+        stability: stable # traces-in-grail
+        brief: A list of IP addresses that are the result of DNS resolution of `server.address`.
+        examples: [ '194.232.104.141', '2a01:468:1000:9::140' ]
+
+      - id: server.port
+        type: long
+        stability: stable # traces-in-grail
+        brief: Logical server port number.
+        examples: [ 65123, 80 ]

@@ -1,0 +1,53 @@
+groups:
+  - id: dt.support.user_events
+    type: attribute_group
+    brief: Additional information about the attributes captured for user events by Dynatrace RUM.
+    attributes:
+      - id: dt.support.has_nfn_values
+        type: boolean
+        internal: true
+        stability: experimental
+        brief: If set to `true`, the original event contained non-finite numeric values (NaN, +Inf, -Inf) that were replaced with `null` by Dynatrace RUM.
+        examples: [ true ]
+
+      - id: dt.support.dropped_custom_properties
+        type: string[]
+        internal: true
+        stability: experimental
+        brief: A list of custom field keys, that is event properties or session properties, that Dynatrace removed during the event ingestion process because of missing definition in the event and session property configuration.
+        examples: [ 'event_properties.property1', 'event_properties.property2' ]
+
+      - id: dt.support.last_user_input
+        type: long
+        internal: true
+        stability: experimental
+        brief: The time in milliseconds since the last activity-relevant user input happened. Limited by Dynatrace RUM to a maximum of 2000 milliseconds.
+        examples: [ 145 ]
+
+      - id: dt.support.wrapper_gen
+        type: long
+        internal: true
+        stability: experimental
+        brief: Either `2` or `3`, depending on which wrapper captured the data. Only available for XHR and fetch requests captured via the RUM JavaScript's XHR/fetch wrapper.
+        examples: [ 2, 3 ]
+
+      - id: dt.support.api.has_enrich_exception
+        type: boolean
+        internal: true
+        stability: experimental
+        brief: If set to `true`, customer code throws an exception while using the Dynatrace API. The exception was caught and handled by Dynatrace RUM.
+        examples: [ true ]
+
+      - id: dt.support.api.has_dropped_custom_properties
+        type: boolean
+        internal: true
+        stability: experimental
+        brief: If set to `true`, Dynatrace RUM dropped custom fields, that is event properties or session properties, that were added via the Dynatrace API.
+        examples: [ true ]
+
+      - id: dt.support.api.overridden_fields
+        type: string[]
+        internal: true
+        stability: experimental
+        brief: A list of fields defined or overridden by the customer via the Dynatrace API which don't hold the original value.
+        examples: [ 'url.full', 'exception.stack_trace' ]

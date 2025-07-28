@@ -1,0 +1,95 @@
+groups:
+  - id: network
+    type: span
+    brief: >
+      These attributes may be used for any network related operation.
+    attributes:
+      - id: network.transport
+        type:
+          allow_custom_values: true
+          members:
+            - id: tcp
+              value: "tcp"
+              brief: "TCP"
+            - id: udp
+              value: "udp"
+              brief: "UDP"
+            - id: pipe
+              value: "pipe"
+              brief: 'Named or anonymous pipe.'
+            - id: unix
+              value: "unix"
+              brief: 'Unix domain socket.'
+            - id: inproc
+              value: "inproc"
+              brief: 'In-process communication.'
+              note: >
+                Signals that there is only in-process communication not using a "real" network protocol
+                in cases where network attributes would typically be expected. Usually, all other network
+                attributes can be left out.
+            - id: other
+              value: "other"
+              brief: 'Something else (non-IP-based).'
+        stability: stable # traces-in-grail
+        brief: >
+          [OSI Transport Layer](https://osi-model.com/transport-layer/) or
+          [Inter-process Communication method](https://en.wikipedia.org/wiki/Inter-process_communication)
+        examples: ['tcp', 'udp']
+
+      - id: network.type
+        type:
+          allow_custom_values: true
+          members:
+            - id: ipv4
+              value: 'ipv4'
+              brief: "IPv4"
+            - id: ipv6
+              value: 'ipv6'
+              brief: "IPv6"
+        stability: stable # traces-in-grail
+        brief: >
+          [OSI Network Layer](https://osi-model.com/network-layer/) or non-OSI equivalent.
+        examples: ['ipv4', 'ipv6']
+
+      - id: network.protocol.name
+        type: string
+        stability: stable # traces-in-grail
+        brief: >
+          [OSI Application Layer](https://osi-model.com/application-layer/) or non-OSI equivalent.
+        examples: ['amqp', 'http', 'mqtt']
+
+      - id: network.protocol.version
+        type: string
+        stability: experimental # traces-in-grail
+        brief: Version of the application layer protocol used.
+        examples: ['1.1', '3.1.1']
+
+      - id: network.carrier.name
+        type: string
+        stability: experimental # traces-in-grail
+        brief: The mobile carrier name.
+        examples: ['Magenta', 'AT&T']
+
+      - id: network.connection.type
+        type:
+          allow_custom_values: true
+          members:
+            - id: wifi
+              value: 'wifi'
+            - id: wired
+              value: 'wired'
+            - id: cell
+              value: 'cell'
+            - id: unavailable
+              value: 'unavailable'
+            - id: unknown
+              value: 'unknown'
+        stability: experimental # traces-in-grail
+        brief: The internet connection type.
+        examples: ['cell', 'wifi']
+
+      - id: network.connection.subtype
+        type: string
+        stability: experimental # traces-in-grail
+        brief: Further details that specify `network.connection.type`, such as the cellular or WI-FI technology.
+        examples: ['lte', '802.11x']

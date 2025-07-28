@@ -1,0 +1,138 @@
+groups:
+  - id: faas_span
+    type: span
+    brief: >
+      This semantic convention describes an instance of a function that
+      runs without provisioning or managing of servers (also known as
+      serverless functions or Function as a Service (FaaS)) with spans.
+    attributes:
+      - id: faas.invoked_provider
+        type:
+          allow_custom_values: true
+          members:
+            - id: 'alibaba_cloud'
+              value: 'alibaba_cloud'
+              brief: 'Alibaba Cloud'
+            - id: 'aws'
+              value: 'aws'
+              brief: 'Amazon Web Services'
+            - id: 'azure'
+              value: 'azure'
+              brief: 'Microsoft Azure'
+            - id: 'gcp'
+              value: 'gcp'
+              brief: 'Google Cloud Platform'
+            - id: 'tencent_cloud'
+              value: 'tencent_cloud'
+              brief: 'Tencent Cloud'
+        stability: experimental # traces-in-grail
+        brief: >
+          The cloud provider of the invoked function.
+          Will be equal to the invoked function's `cloud.provider` resource attribute.
+
+      - id: faas.invoked_name
+        type: string
+        stability: experimental # traces-in-grail
+        brief: >
+          The name of the invoked function.
+        examples: [ 'my-function' ]
+
+      - id: faas.invoked_region
+        type: string
+        stability: experimental # traces-in-grail
+        brief: >
+          The cloud region of the invoked function.
+        note: >
+          Will be equal to the invoked function's `cloud.region` resource attribute.
+        examples: 'eu-central-1'
+
+      - id: faas.coldstart
+        type: boolean
+        stability: experimental # traces-in-grail
+        brief: >
+          A boolean that is true if the serverless function is executed for the
+          first time (aka cold-start).
+
+      - id: faas.trigger
+        brief: 'Type of the trigger which caused this function invocation.'
+        stability: experimental # traces-in-grail
+        type:
+          allow_custom_values: true
+          members:
+            - id: datasource
+              value: 'datasource'
+              brief: 'A response to some data source operation such as a database or filesystem read/write.'
+            - id: http
+              value: 'http'
+              brief: 'To provide an answer to an inbound HTTP request'
+            - id: pubsub
+              value: 'pubsub'
+              brief: 'A function is set to be executed when messages are sent to a messaging system.'
+            - id: timer
+              value: 'timer'
+              brief: 'A function is scheduled to be executed regularly.'
+            - id: other
+              value: 'other'
+              brief: 'If none of the others apply'
+
+      - id: faas.event_source
+        type: string
+        brief: The cloud service that originated the event.
+        stability: experimental # traces-in-grail
+        examples: ['aws:cloudwatch', 'aws:cloudformation']
+
+      - id: faas.event_name
+        type: string
+        brief: The API action that triggered the faas event.
+        note: The value of this attribute is specific to the service that generated the event.
+        stability: experimental # traces-in-grail
+        examples: ['ObjectCreated:Put (aws:s3)', 'INSERT (aws:dynamodb)']
+
+      - id: faas.event.__key__
+        type: string
+        stability: stable # traces-in-grail
+        brief: >
+          Faas event attribute, the `__key__` attribute in a Faas event represents the precise attribute name as received in the event.
+          For example, it might be "faas.event.StackId" for the "StackId" attribute in an AWS CloudFormation event or "faas.event.IdentityPoolId" for the "IdentityPoolId" attribute in an AWS Cognito event.
+          The value of this attribute is identical to the value received in the event.
+        examples: [ "arn:aws:cloudformation:us-west-2:123456789012:stack/MyStack/1a2b3c4d-5678-90ab-cdef-EXAMPLE11111", "eu-west-1:12345678-1234-1234-1234-123456789012" ]
+
+      - id: faas.document.operation
+        brief: 'Relevant only for "datasource" trigger. The operation type which triggered the function invocation.'
+        stability: experimental # traces-in-grail
+        type:
+          allow_custom_values: true
+          members:
+            - id: insert
+              value: 'insert'
+            - id: edit
+              value: 'edit'
+            - id: delete
+              value: 'delete'
+
+      - id: faas.document.collection
+        type: string
+        stability: experimental # traces-in-grail
+        brief: >
+          The table/collection name on which the operation above was executed.
+        note: >
+          Relevant only for `faas.trigger=datasource` trigger
+        examples: 'my-coll-name'
+
+      - id: faas.document.name
+        type: string
+        stability: experimental # traces-in-grail
+        brief: >
+          The identifier for the specific item that changed after executing the operation above.
+        note: >
+          Relevant only for `faas.trigger=datasource` trigger
+        examples: ['my-file.jpg', '63eeb6e7d418cd98afb1c1d7']
+
+      - id: faas.document.time
+        type: string
+        stability: experimental # traces-in-grail
+        brief: >
+          The UTC ISO-8601 timestamp of the operation above.
+        note: >
+          Relevant only for `faas.trigger=datasource` trigger
+        examples: '2020-03-08T00:30:12.456Z'

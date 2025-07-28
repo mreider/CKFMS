@@ -1,0 +1,125 @@
+groups:
+  - id: rpc
+    type: span
+    brief: 'This document defines semantic conventions for remote procedure calls.'
+    attributes:
+      - id: rpc.system
+        stability: experimental # traces-in-grail
+        brief: 'A string identifying the remoting system or framework. See below for a list of well-known identifiers.'
+        examples: [
+          "apache_cxf",
+          "dotnet_wcf",
+          "grpc",
+          "jax_ws"
+        ]
+        type:
+          allow_custom_values: true
+          members:
+            - id: apache_axis
+              value: 'apache_axis'
+              brief: 'Apache Axis'
+            - id: apache_cxf
+              value: 'apache_cxf'
+              brief: 'Apache CXF'
+            - id: apache_wink
+              value: 'apache_wink'
+              brief: 'Apache Wink'
+            - id: aws_api
+              value: 'aws_api'
+              brief: 'AWS API'
+            - id: dotnet_remoting
+              value: 'dotnet_remoting'
+              brief: '.NET Remoting'
+            - id: dotnet_wcf
+              value: 'dotnet_wcf'
+              brief: '.NET WCF'
+            - id: grpc
+              value: 'grpc'
+              brief: 'gRPC'
+            - id: jax_ws
+              value: 'jax_ws'
+              brief: 'JAX-WS'
+            - id: java_rmi
+              value: 'java_rmi'
+              brief: 'Java RMI'
+            - id: jboss
+              value: 'jboss'
+              brief: 'JBoss'
+            - id: jersey
+              value: 'jersey'
+              brief: 'Jersey'
+            - id: openedge
+              value: 'openedge'
+              brief: 'Progress OpenEdge'
+            - id: resteasy
+              value: 'resteasy'
+              brief: 'JBoss RESTEasy'
+            - id: restlet
+              value: 'restlet'
+              brief: 'Restlet'
+            - id: spring_ws
+              value: 'spring_ws'
+              brief: 'Spring Web Services'
+            - id: tibco_ws
+              value: 'tibco_ws'
+              brief: 'Tibco Web Services'
+            - id: weblogic_ws
+              value: 'weblogic_ws'
+              brief: 'WebLogic Web Services'
+            - id: webmethods
+              value: 'webmethods'
+              brief: 'Webmethods'
+
+      - id: rpc.service
+        type: string
+        stability: experimental # traces-in-grail
+        brief: 'The full (logical) name of the service being called, including its package name, if applicable.'
+        note: >
+          This is the logical name of the service from the RPC interface perspective,
+          which can be different from the name of any implementing class.
+          The `code.namespace` attribute may be used to store the latter
+          (despite the attribute name, it may include a class name,
+          e.g., class with method executing actually executing the call on the server side,
+          RPC client stub class on the client side).
+        examples: "myservice.EchoService"
+
+      - id: rpc.method
+        type: string
+        stability: experimental # traces-in-grail
+        brief: 'The name of the (logical) method being called'
+        note: >
+          This is the logical name of the method from the RPC interface perspective,
+          which can be different from the name of any implementing method/function.
+          The `code.function` attribute may be used to store the latter
+          (e.g., method executing the call on the server side,
+          RPC client stub method on the client side).
+        examples: "exampleMethod"
+
+      - id: rpc.namespace
+        type: string
+        stability: experimental # traces-in-grail
+        brief: 'The namespace of the method being called. In SOAP, it would be the XML namespace.'
+        examples: [ "tempuri.org" ]
+
+  - id: rpc.rmi
+    type: span
+    extends: rpc
+    brief: 'Tech-specific attributes for Java RMI.'
+    attributes:
+      - id: rpc.rmi.registry
+        type: string
+        stability: experimental # traces-in-grail
+        brief: The URL of a rmi endpoint.
+        examples: [
+          "Calculator"
+        ]
+
+  - id: rpc.grpc
+    type: span
+    extends: rpc
+    brief: 'Tech-specific attributes for gRPC.'
+    attributes:
+      - id: rpc.grpc.status_code
+        type: long
+        stability: experimental # traces-in-grail
+        brief: "The [numeric status code](https://github.com/grpc/grpc/blob/master/doc/statuscodes.md) of the gRPC request."

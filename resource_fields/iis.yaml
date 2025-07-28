@@ -1,0 +1,16 @@
+groups:
+  - id: iis
+    type: resource
+    brief:
+    attributes:
+      - id: iis.app_pool.name
+        type: string
+        stability: experimental # traces-in-grail
+        brief:
+        examples: [ ' ' ]
+
+      - id: iis.role.name
+        type: string
+        stability: experimental # traces-in-grail
+        brief:
+        examples: [ ' ' ]

@@ -1,0 +1,13 @@
+groups:
+  - id: captured_attribute
+    type: span
+    brief:
+    attributes:
+      - id: captured_attribute.__attribute_name__
+        type: array
+        stability: stable # traces-in-grail
+        brief: >
+          Contains the span scoped raw values that were captured under the name `__attribute_name__` defined by the request attribute configuration.
+          The values are mapped as an array according to the type of the captured attributes, so either boolean, double, long, or string.
+          If the captured attributes have mixed types (e.g. long and string, or double and long, etc.), all attributes are converted to string and stored as string array.
+        examples: [[42], ['Platinum'], [32, 16, 8], ['Special Offer', '1702'], ['18.35', '16']]

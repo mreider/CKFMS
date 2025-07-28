@@ -1,0 +1,92 @@
+groups:
+  - id: dt.davis.system
+    type: attribute_group
+    brief: >
+      Fields that influence the Davis routine.
+    attributes:
+      - id: dt.davis.forecast.upper
+        type: long
+        stability: stable
+        brief: >
+          The upper bound of the prediction interval of a given metric forecast.
+      - id: dt.davis.forecast.point
+        type: long
+        stability: stable
+        brief: >
+          The point value of a metric forecast.
+      - id: dt.davis.forecast.lower
+        type: long
+        stability: stable
+        brief: >
+          The lower bound of the prediction interval of a given metric forecast.
+      - id: dt.davis.anomaly_detection.upper
+        type: long
+        stability: stable
+        brief: >
+          The upper value range limit where any value above this point is considered abnormal.
+      - id: dt.davis.anomaly_detection.lower
+        type: long
+        stability: stable
+        brief: >
+          The lower value range limit where any value below this point is considered abnormal.
+      - id: dt.davis.anomaly_detection.anomaly
+        type: long
+        stability: stable
+        brief: >
+          Boolean timeseries of 0 and 1 showing whether a single timespan is outside the normal value range and therefore considered as abnormal.
+      - id: dt.davis.anomaly_detection.alert
+        type: long
+        stability: stable
+        brief: >
+          Boolean time series of 0 and 1 showing whether a single timespan was alerted due to continuous violations.
+  - id: dt.davis.config
+    type: attribute_group
+    brief: >
+      Attributes for any kind of intelligent Davis analysis, such as anomaly detection or prediction.
+    attributes:
+      - id: dt.davis.timeout
+        type: long
+        stability: stable
+        brief: >
+          The event timeout period (in minutes). Various event sources use this event property to keep an event active by regularly refreshing an initial event. The timeout defines how fast the event source must refresh an event to keep it active. To keep the event active, the event source must send the refresh within the timeout period. If no refresh is sent, the event is automatically closed by Dynatrace after the timeout period. Note that metric sources use their own configurable de-alerting windows to close events. Setting the timeout shorter than the de-alerting window will force events to close and increase the risk of false-positive alerts.
+      - id: dt.davis.is_frequent_issue_detection_allowed
+        type: boolean
+        stability: stable
+        brief: >
+          The flag controls whether the Davis® engine should detect frequent issues. If the flag is set to true, events identified as frequent won't be triggered or merged into a problem. If the flag is set to false, frequent issues won't be detected and events will be triggered and merged as normal.
+      - id: dt.davis.analysis_time_budget
+        type: long
+        stability: stable
+        brief: >
+          The time budget (in seconds) that the Davis® engine is granted before it must raise a problem. The analysis time budget can be set per event and controls the balance of sending out alerts early and granting the AI analysis enough time to finish its analysis. The trade-off of a short analysis budget is that the root cause and event merge analysis is limited or even skipped. For example, the time budget of 0 seconds means that the event raises a problem and sends the alert immediately, without any analysis.
+      - id: dt.davis.analysis_trigger_delay
+        type: long
+        stability: stable
+        brief: >
+          The time delay (in seconds) before the trigger of Davis® analysis. For example, the delay of 0 seconds triggers a Davis® problem and the root cause analysis immediately. The trigger delay can be used to hold the analysis until all the relevant root cause data has arrived to Dynatrace. For example, it might be beneficial for cloud integrations or log integrations that report data in different schedules - you can delay the analysis until data from all sources is available. Note that while longer delays means more data is available for root cause analysis, it also delays alerts delivery.
+      - id: dt.davis.is_merging_allowed
+        type: boolean
+        stability: stable
+        brief: >
+          This flag controls whether the Davis® engine is allowed to merge this event into a larger problem (true) or if a new problem must be created (false).
+      - id: dt.davis.is_rootcause_relevant
+        type: boolean
+        stability: stable
+        brief: >
+          This flag controls whether the Davis® engine should include this event within the root cause analysis (true) or if it is not (false) relevant.
+      - id: dt.davis.is_problem_suppressed
+        type: boolean
+        stability: stable
+        brief: >
+          This flag controls whether the Davis® engine suppresses the problem from showing up in the UI and sending notifications.
+      - id: dt.davis.is_entity_remapping_allowed
+        type: boolean
+        stability: stable
+        brief: >
+          This flag defines whether the remapping of the target entity is enabled (true) or disabled (false). If the remapping is enabled, Dynatrace can map the event to an entity extracted from the event metadata. If the remapping is disabled or the extraction is not possible, Dynatrace maps the event to the entity specified in the event configuration (for example, a specific host) or to the global environment entity.
+      - id: dt.davis.preferred_entity_type
+        type: string
+        stability: stable
+        brief: >
+          The preferred entity type for remapping. You can find possible values in Dynatrace UI under Settings > Topology model > Generic types. If the remapping (dt.event.allow_entity_remapping) is enabled, this property defines the entity type to which the event should be mapped. If no entity of the preferred type is extracted, no remapping is applied.
+        examples: ["my.custom.entity.type"]

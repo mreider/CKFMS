@@ -1,0 +1,25 @@
+groups:
+  - id: request
+    type: span
+    brief:
+    attributes:
+      - id: request.id
+        type: uid
+        deprecated: Replaced by `subtrace.id`
+        brief: >
+          Present on every span of a request. All spans within one request share the same identifier.
+          The ID is a hex-encoded numerical value that is not globally unique but guaranteed to be unique within one trace.
+        examples: [ '95efd70fcdb5b7b3', '96835e1d65490b48' ]
+        internal: true
+
+      - id: request.is_root_span
+        type: boolean
+        brief: >
+          Marks the root of a request. It's the first span and starts the request within a service.
+        stability: experimental # traces-in-grail
+
+      - id: request.is_failed
+        type: boolean
+        brief: >
+          Indicates that the request is considered failed according to the failure detection rules. Only present on the request root span.
+        stability: experimental # traces-in-grail

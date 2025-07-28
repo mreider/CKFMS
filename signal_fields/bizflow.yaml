@@ -1,0 +1,23 @@
+groups:
+  - id: bizflow
+    type: attribute_group
+    brief:
+    attributes:
+      - id: bizflow.id
+        type: string
+        stability: experimental
+        brief: >
+          Internal ID from the business flow configured in the Business Flow app.
+        examples: [ ' ' ]
+      - id: bizflow.priority
+        type: string
+        stability: experimental
+        brief: >
+          The priority of a business process.
+        examples: [ 'critical', 'high', 'medium', 'low' ]
+      - id: bizflow.url
+        type: string
+        stability: experimental
+        brief: >
+          URL to explore the business flow in the Business Flow app from a result in a DQL query against Smartscape nodes.
+        examples: [ ' ' ]

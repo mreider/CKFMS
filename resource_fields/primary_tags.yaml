@@ -1,0 +1,14 @@
+groups:
+  - id: primary_tags
+    type: resource
+    brief:
+    attributes:
+      - id: primary_tags.__key__
+        type: string
+        stability: experimental
+        brief: >
+          Primary Grail tags are used to tag a resource in a meaningful way.
+          `__key__` is populated with the tag name, for example, `primary_tags.ownership`.
+          In case of single-value tags, the value is a string.
+          In case of multi-value tags, the value is an array of strings.
+        examples: [ 'team-alpha', 'team-bravo' ]

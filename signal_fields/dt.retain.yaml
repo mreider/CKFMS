@@ -1,0 +1,12 @@
+groups:
+  - id: dt.retain
+    type: attribute_group
+    brief: >
+      Attributes related to data retained in Dynatrace.
+    attributes:
+      - id: dt.retain.size
+        type: long
+        stability: stable
+        brief: >
+          The size of the retained data point in bytes.
+        examples: [ 2005 ]

@@ -1,0 +1,27 @@
+groups:
+  - id: device
+    type: attribute_group
+    brief:
+    attributes:
+
+      - id: device.battery.level
+        type: long
+        stability: experimental
+        brief: >
+          The device's battery level in the range 0% (discharged) to 100% (fully charged).
+        examples: [ 100 ]
+
+      - id: device.orientation
+        type:
+          allow_custom_values: false
+          members:
+            - id: landscape
+              value: 'landscape'
+              brief: The device was in landscape mode.
+            - id: portrait
+              value: 'portrait'
+              brief: The device was in portrait mode.
+        stability: experimental
+        brief: >
+          The device orientation.
+        examples: [ 'landscape' ]

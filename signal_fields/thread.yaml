@@ -1,0 +1,24 @@
+groups:
+  - id: thread
+    type: span
+    brief:
+    attributes:
+      - id: thread.id
+        type: long
+        stability: stable # traces-in-grail
+        brief: >
+          Current "managed" thread id (as opposed to OS thread id).
+        examples: 42
+
+      - id: thread.name
+        type: string
+        stability: stable # traces-in-grail
+        brief: >
+          Current thread name.
+        examples: main
+
+      - id: thread.pool.name
+        type: string
+        stability: stable
+        brief: The name of the thread pool.
+        examples: WorkerThreadPool

@@ -1,0 +1,277 @@
+groups:
+  - id: dt.entity
+    type: resource
+    brief: >
+      Fields enriched with signal data containing entity IDs that refer to classic entities.
+    attributes:
+      - id: dt.entity.host
+        type: string
+        stability: stable
+        tags: [ 'entity-id' ]
+        brief: >
+          An entity ID of an entity of type HOST.
+        examples: ['HOST-E0D8F94D9065F24F']
+
+      - id: dt.entity.host_group
+        type: string
+        stability: stable
+        tags: [ 'entity-id' ]
+        brief: >
+          An entity ID of an entity of type HOST_GROUP.
+        examples: ['HOST_GROUP-E7FBBCF7B1467174']
+
+      - id: dt.entity.process_group
+        type: string
+        stability: stable
+        tags: [ 'entity-id' ]
+        brief: >
+          An entity ID of an entity of type PROCESS_GROUP.
+        examples: ['PROCESS_GROUP-E0D8F94D9065F24F']
+
+      - id: dt.entity.process_group_instance
+        type: string
+        stability: stable
+        tags: [ 'entity-id' ]
+        brief: >
+          An entity ID of an entity of type PROCESS_GROUP_INSTANCE.
+        examples: ['PROCESS_GROUP_INSTANCE-E0D8F94D9065F24F']
+
+      - id: dt.entity.custom_device
+        type: string
+        stability: stable
+        tags: [ 'entity-id' ]
+        brief: >
+          An entity ID of an entity of type CUSTOM_DEVICE.
+        examples: ['CUSTOM_DEVICE-E0D8F94D9065F24F']
+
+      - id: dt.entity.cloud_application_instance
+        type: string
+        stability: stable
+        tags: [ 'entity-id' ]
+        brief: >
+          An entity ID of an entity of type CLOUD_APPLICATION_INSTANCE.
+        examples: ['CLOUD_APPLICATION_INSTANCE-E0D8F94D9065F24F']
+
+      - id: dt.entity.cloud_application
+        type: string
+        stability: stable
+        tags: [ 'entity-id' ]
+        brief: >
+          An entity ID of an entity of type CLOUD_APPLICATION.
+        examples: ['CLOUD_APPLICATION-3AB5BBF3E09A7942']
+
+      - id: dt.entity.cloud_application_namespace
+        type: string
+        stability: stable
+        tags: [ 'entity-id' ]
+        brief: >
+          An entity ID of an entity of type CLOUD_APPLICATION_NAMESPACE. A CLOUD_APPLICATION_NAMESPACE is a Kubernetes namespace.
+        examples: ['CLOUD_APPLICATION_NAMESPACE-C61324AA70F57BCB']
+
+      - id: dt.entity.kubernetes_node
+        type: string
+        stability: stable
+        tags: [ 'entity-id' ]
+        brief: >
+          An entity ID of an entity of type KUBERNETES_NODE.
+        examples: ['KUBERNETES_NODE-874C66B68CE15070']
+
+      - id: dt.entity.kubernetes_cluster
+        type: string
+        stability: stable
+        tags: [ 'entity-id' ]
+        brief: >
+          An entity ID of an entity of type KUBERNETES_CLUSTER.
+        examples: ['KUBERNETES_CLUSTER-E0D8F94D9065F24F']
+
+      - id: dt.entity.kubernetes_service
+        type: string
+        stability: stable
+        tags: [ 'entity-id' ]
+        brief: >
+          An entity ID of an entity of type KUBERNETES_SERVICE.
+        examples: [ 'KUBERNETES_SERVICE-FE6E75BB9DF02347' ]
+
+      - id: dt.entity.container_group
+        type: string
+        stability: stable
+        tags: [ 'entity-id' ]
+        brief: >
+          An entity ID of an entity of type CONTAINER_GROUP.
+        examples: ['CONTAINER_GROUP-7C2B1C24FFB288CB']
+
+      - id: dt.entity.container_group_instance
+        type: string
+        stability: stable
+        tags: [ 'entity-id' ]
+        brief: >
+          An entity ID of an entity of type CONTAINER_GROUP_INSTANCE.
+        examples: ['CONTAINER_GROUP_INSTANCE-F4A1347110826781']
+
+      - id: dt.entity.synthetic_location
+        type: string
+        stability: stable
+        tags: [ 'entity-id' ]
+        brief: >
+          An entity ID of an entity of type SYNTHETIC_LOCATION.
+        examples: ['SYNTHETIC_LOCATION-D140F3B85BCCBD1A']
+
+      - id: dt.entity.synthetic_test
+        type: string
+        stability: stable
+        tags: [ 'entity-id' ]
+        brief: >
+          An entity ID of an entity of type SYNTHETIC_TEST.
+        examples: ['SYNTHETIC_TEST-A140F3B85BCCBD1A']
+
+      - id: dt.entity.synthetic_test_step
+        type: string
+        stability: stable
+        tags: [ 'entity-id' ]
+        brief: >
+          An entity ID of an entity of type SYNTHETIC_TEST_STEP.
+        examples: ['SYNTHETIC_TEST_STEP-A140F3B85BCCBD1A']
+
+      - id: dt.entity.http_check
+        type: string
+        stability: stable
+        tags: [ 'entity-id' ]
+        brief: >
+          An entity ID of an entity of type HTTP_CHECK.
+        examples: ['HTTP_CHECK-A140F3B85BCCBD1A']
+
+      - id: dt.entity.http_check_step
+        type: string
+        stability: stable
+        tags: [ 'entity-id' ]
+        brief: >
+          An entity ID of an entity of type HTTP_CHECK_STEP.
+        examples: ['HTTP_CHECK_STEP-A140F3B85BCCBD1A']
+
+      - id: dt.entity.multiprotocol_monitor
+        type: string
+        stability: stable
+        tags: [ 'entity-id' ]
+        brief: >
+          An entity ID of an entity of type MULTIPROTOCOL_MONITOR.
+        examples: ['MULTIPROTOCOL_MONITOR-A140F3B85BCCBD1A']
+
+      - id: dt.entity.external_synthetic_test
+        type: string
+        stability: stable
+        tags: [ 'entity-id' ]
+        brief: >
+          An entity ID of an entity of type EXTERNAL_SYNTHETIC_TEST.
+        examples: ['EXTERNAL_SYNTHETIC_TEST-A140F3B85BCCBD1A']
+
+      - id: dt.entity.external_synthetic_test_step
+        type: string
+        stability: stable
+        tags: [ 'entity-id' ]
+        brief: >
+          An entity ID of an entity of type EXTERNAL_SYNTHETIC_TEST_STEP.
+        examples: [ 'EXTERNAL_SYNTHETIC_TEST_STEP-A140F3B85BCCBD1A' ]
+
+      - id: dt.entity.service
+        type: string
+        stability: stable
+        tags: [ 'entity-id' ]
+        brief: >
+          An entity ID of an entity of type SERVICE.
+        examples: ['SERVICE-57EC3CFC1FE72449']
+
+      - id: dt.entity.service_method
+        type: string
+        stability: stable
+        tags: [ 'entity-id' ]
+        brief: >
+          An entity ID of an entity of type SERVICE_METHOD.
+        examples: ['SERVICE_METHOD-659B35CA9AAC96C1']
+
+      - id: dt.entity.service_method_group
+        type: string
+        stability: stable
+        tags: [ 'entity-id' ]
+        brief: >
+          An entity ID of an entity of type SERVICE_METHOD_GROUP.
+        examples: ['SERVICE_METHOD_GROUP-02000E1DB1CDAF9F']
+
+      - id: dt.entity.application
+        type: string
+        stability: stable
+        tags: [ 'entity-id' ]
+        brief: >
+          The ME ID of a web application.
+        examples: ['APPLICATION-DC92E74A7A844E6E']
+
+      - id: dt.entity.mobile_application
+        type: string
+        stability: stable
+        tags: [ 'entity-id' ]
+        brief: >
+          The ME ID of a mobile application.
+        examples: ['MOBILE_APPLICATION-E8A8751A60D5BCE8']
+
+      - id: dt.entity.custom_application
+        type: string
+        stability: stable
+        tags: [ 'entity-id' ]
+        brief: >
+          The ME ID of a custom application.
+        examples: ['CUSTOM_APPLICATION-343A92501A51F286']
+
+      - id: dt.entity.disk
+        type: string
+        stability: stable
+        tags: [ 'entity-id' ]
+        brief: >
+          An entity ID of an entity of type DISK
+        examples: ['DISK-5472CBC1ED0981D6']
+
+      - id: dt.entity.network_interface
+        type: string
+        stability: stable
+        tags: [ 'entity-id' ]
+        brief: >
+          An entity ID of an entity of type NETWORK_INTERFACE
+        examples: ['NETWORK_INTERFACE-FC7B4A5937FC125C']
+
+      - id: dt.entity.ec2_instance
+        type: string
+        stability: stable
+        tags: [ 'entity-id' ]
+        brief: >
+          An entity ID of an entity of type EC2_INSTANCE
+        examples: ['EC2_INSTANCE-0004DD30F142D18C']
+
+      - id: dt.entity.aws_availability_zone
+        type: string
+        stability: stable
+        tags: [ 'entity-id' ]
+        brief: >
+          An entity ID of an entity of type AWS_AVAILABILITY_ZONE
+        examples: ['AWS_AVAILABILITY_ZONE-6000A4E2BD2AB971']
+
+      - id: dt.entity.gcp_zone
+        type: string
+        stability: stable
+        tags: [ 'entity-id' ]
+        brief: >
+          An entity ID of an entity of type GCP_ZONE
+        examples: ['GCP_ZONE-3699CB75E19C8505']
+
+      - id: dt.entity.azure_vm
+        type: string
+        stability: stable
+        tags: [ 'entity-id' ]
+        brief: >
+          An entity ID of an entity of type AZURE_VM
+        examples: ['AZURE_VM-326478B733D6CFB0']
+
+      - id: dt.entity.azure_region
+        type: string
+        stability: stable
+        tags: [ 'entity-id' ]
+        brief: >
+          An entity ID of an entity of type AZURE_REGION
+        examples: ['AZURE_REGION-0DD5C79E4034F0AA']

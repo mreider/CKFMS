@@ -1,0 +1,61 @@
+groups:
+  - id: dt.da
+    type: attribute_group
+    brief: >
+      The dt.da namespace contains Dynatrace Data Acquisition specific fields.
+    attributes:
+      - id: dt.da.source
+        stability: experimental
+        brief: >
+          Dynatrace source of signal ingestion
+        type:
+          allow_custom_values: true
+          members:
+            - id: aws-log-ingest
+              value: "aws-log-ingest"
+            - id: aws-metrics-ingest
+              value: "aws-metrics-ingest"
+            - id: aws-metric-poller
+              value: "aws-metric-poller"
+      - id: dt.da.aws.data_firehose.arn
+        type: string
+        stability: experimental
+        brief: >
+          ARN of AWS Data Firehose signal is originating from.
+        examples: [ 'arn:aws:firehose:us-east-1:111110000111:deliverystream/tenantId-http-endpoint-direct-firehose-stream' ]
+      - id: dt.da.aws.s3.bucket.name
+        type: string
+        stability: experimental
+        brief: >
+          Name of S3 bucket name signal is originating from
+        examples: [ 'aws-cloudtrail-logs' ]
+      - id: dt.da.aws.s3.key.name
+        type: string
+        stability: experimental
+        brief: >
+          Name of S3 bucket name signal is originating from
+        examples: [ 'AWSLogs/111110000111/CloudTrail/us-east-1/2025/02/18/111110000111_CloudTrail_us-east-1_20250218T0000Z.json.gz' ]
+      - id: dt.da.aws.log_group
+        type: string
+        stability: experimental
+        brief: >
+          Name of the source Amazon CloudWatch Log group
+        examples: [ '/aws/lambda/a-SomeFumction-1AWHD6W1QC5DH' ]
+      - id: dt.da.aws.log_stream
+        type: string
+        stability: experimental
+        brief: >
+          Name of the source Amazon CloudWatch Log stream
+        examples: [ '2025/02/18/[$LATEST]12312312313123123123123123123123' ]
+      - id: dt.da.azure.event_hub.location
+        type: string
+        stability: experimental
+        brief: >
+          The location of the Event Hub that the signal is originating from
+        examples: [ 'polandcentral' ]
+      - id: dt.da.azure.event_hub.name
+        type: string
+        stability: experimental
+        brief: >
+          The name of the Event Hub that the signal is originating from
+        examples: [ 'logs-ingest-eventHub/logs-ingest' ]

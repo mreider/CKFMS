@@ -1,0 +1,95 @@
+# gcp.app_engine.* as per https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/resource/semantic_conventions/cloud.md
+groups:
+  - id: gcp
+    type: resource
+    brief:
+    attributes:
+      - id: gcp.organization.id
+        type: string
+        stability: experimental
+        brief: >
+          Unique, immutable identifier assigned to an organization resource.
+        examples: [ '123456789012' ]
+
+      - id: gcp.organization.name
+        type: string
+        stability: experimental
+        brief: >
+          Name assigned to the GCP organization.
+        examples: [ 'dynatrace.com' ]
+
+      - id: gcp.app_engine.instance
+        type: string
+        stability: experimental
+        brief:
+        examples: [ ' ' ]
+
+      - id: gcp.app_engine.service
+        type: string
+        stability: experimental
+        brief:
+        examples: [ ' ' ]
+
+      - id: gcp.cloud_run.service
+        type: string
+        stability: experimental
+        brief:
+        examples: [ ' ' ]
+
+      - id: gcp.instance.id
+        type: string
+        stability: experimental
+        brief: >
+          A permanent identifier that is unique within your Google Cloud project.
+        examples: [ '6639848141313102286' ]
+
+      - id: gcp.region
+        type: string
+        stability: experimental
+        brief: >
+          A region is a specific geographical location where you can host your resources.
+        examples: [ 'europe-west3' ]
+
+      - id: gcp.zone
+        type: string
+        stability: experimental
+        brief: >
+          A zone is a subset of a region. Each region has three or more zones.
+        examples: [ 'europe-west3-c' ]
+
+      - id: gcp.location
+        type: string
+        stability: stable
+        brief: >
+          Region or zone the instance of the GCP resource is running on.
+        examples: [ 'europe-west3-c' ]
+        tags: [ 'primary-field' ]
+
+      - id: gcp.project.id
+        type: string
+        stability: stable
+        brief: >
+          The identifier of the GCP project associated with this resource.
+        examples: [ 'dynatrace-gcp-extension' ]
+        tags: [ 'permission', 'primary-field' ]
+
+      - id: gcp.instance.name
+        type: string
+        stability: experimental
+        brief: >
+          The name to display for the instance in the Cloud Console.
+        examples: [ 'single-vm-test' ]
+
+      - id: gcp.resource.type
+        type: string
+        stability: experimental
+        brief: >
+          The name of a resource type.
+        examples: [ 'cloudsql_database' ]
+
+      - id: gcp.resource.name
+        type: string
+        stability: experimental
+        brief: >
+          The globally unique resource name in Google Cloud Platform convention.
+        examples: [ '//cloudfunctions.googleapis.com/projects/gcp-example-project/locations/us-central1/functions/examplefunction' ]

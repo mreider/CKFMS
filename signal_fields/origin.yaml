@@ -1,0 +1,47 @@
+groups:
+  - id: origin
+    type: attribute_group
+    brief:
+    attributes:
+      - id: origin.type
+        type:
+          allow_custom_values: false
+          members:
+            - id: rest
+              value: "REST"
+              brief: >
+                The event provider received an external REST API call.
+            - id: local
+              value: "LOCAL"
+              brief: >
+                The event provider issued the request locally.
+            - id: recovery
+              value: "RECOVERY"
+              brief: >
+                The event provider issued the request locally as part of disaster recovery.
+        stability: experimental
+        brief: >
+          Origin type of the request associated with this event.
+        examples: [ REST, LOCAL ]
+
+      - id: origin.address
+        type: string
+        stability: experimental
+        brief: >
+          Source IP address of the request associated with this event. Must be set if origin.type is 'REST', must not be set otherwise.
+        examples: [ '10.11.12.13' ]
+
+      - id: origin.x_forwarded_for
+        type: string
+        stability: experimental
+        brief: >
+          The verbatim value of the X-Forwarded-For HTTP request header (if present)
+          of the request associated with the event.
+        examples: [ '1.2.3.4' ]
+
+      - id: origin.session
+        type: string
+        stability: experimental
+        brief: >
+          The ID of the browser session (if present) associated with the event.
+        examples: [ 'node0hfznc' ]

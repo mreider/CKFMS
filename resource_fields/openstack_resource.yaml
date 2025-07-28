@@ -1,0 +1,18 @@
+groups:
+  - id: openstack_resource
+    type: resource
+    brief:
+    attributes:
+      - id: openstack.availability_zone
+        type: string
+        stability: experimental # traces-in-grail
+        brief: >
+          A specific availability zone in the given OpenStack region.
+        examples: [ 'us-east-1a' ]
+
+      - id: openstack.instance_uuid
+        type: string
+        stability: experimental # traces-in-grail
+        brief: >
+          UUID of specific OpenStack instance.
+        examples: [ '6790cb48-f8e9-4773-bcea-001469de0599' ]

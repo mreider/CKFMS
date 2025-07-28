@@ -1,0 +1,12 @@
+groups:
+  - id: http.resource
+    type: resource
+    brief:
+    attributes:
+      - id: http.server_name
+        type: string
+        stability: experimental # traces-in-grail
+        brief: >
+          The server name as configured by the webserver if available. If no such name exists, this is the local hostname and bound port.
+          In Kubernetes, the base pod name is used.
+        examples: [ 'MyServer', 'localhost:8000' ]

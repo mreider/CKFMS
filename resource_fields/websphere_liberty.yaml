@@ -1,0 +1,10 @@
+groups:
+  - id: websphere_liberty
+    type: resource
+    brief:
+    attributes:
+      - id: websphere_liberty.server.name
+        type: string
+        stability: experimental # traces-in-grail
+        brief: The instance's server name.
+        examples: [ 'defaultServer' ]

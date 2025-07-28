@@ -1,0 +1,675 @@
+# Normalized Facets Structure Aligned with Semantic Dictionary
+# This file provides the final standardized facet structure with semantic keys and English display names
+
+applications:
+  clouds:
+    categories:
+      core:
+        display_name: "Core"
+        description: "Essential cloud entity filters"
+        facets:
+          - semantic_key: "dt.entity.alert_status"
+            display_name: "Alert Status"
+            current_key: "alert_type"
+            values:
+              - Critical
+              - No alerts
+          - semantic_key: "dt.system.environment"
+            display_name: "Environment"
+            current_key: "environment"
+            values:
+              - "908047316593"
+          - semantic_key: "aws.region"
+            display_name: "AWS Region"
+            current_key: "region"
+            values:
+              - us-east-1
+          - semantic_key: "dt.entity.global_region"
+            display_name: "Global Region"
+            current_key: "global_region"
+            values:
+              - APAC
+              - EMEA
+              - global
+              - LATAM
+              - NORAM
+      cloud:
+        display_name: "Cloud"
+        description: "Cloud provider specific filters"
+        facets:
+          - semantic_key: "aws.availability_zone"
+            display_name: "AWS Availability Zone"
+            current_key: "availability_zone"
+            values:
+              - regional
+          - semantic_key: "aws.account.id"
+            display_name: "AWS Account ID"
+            current_key: "aws_account"
+            values:
+              - "908047316593"
+      platform:
+        display_name: "Platform"
+        description: "Platform and service filters"
+        facets:
+          - semantic_key: "aws.service"
+            display_name: "AWS ECS Service"
+            current_key: "ecs_service"
+            values:
+              - "Amazon Elast..."
+      tags_labels:
+        display_name: "Tags & Labels"
+        description: "User-defined tags and labels"
+        facets:
+          - semantic_key: "dt.entity.tags"
+            display_name: "Tag"
+            current_key: "tag"
+            values:
+              - "ACE\\\\CREA...ynatrace.com"
+              - "aws:cloudformation:stack-id"
+              - "aws\\\\cloud...e:balcer-test"
+              - "aws\\\\cloud...id:ECSCluster"
+
+  database:
+    categories:
+      core:
+        display_name: "Core"
+        description: "Essential database filters"
+        facets:
+          - semantic_key: "dt.entity.alert_status"
+            display_name: "Alert Status"
+            current_key: "alert_status"
+            values:
+              - Critical
+              - No alerts
+          - semantic_key: "db.status"
+            display_name: "Status"
+            current_key: "status"
+            values:
+              - Available
+              - Error
+              - Warning
+          - semantic_key: "db.system"
+            display_name: "Vendor"
+            current_key: "vendor"
+            values:
+              - HanaDB
+              - MSSQL
+              - MySQL
+              - Oracle
+              - PostgreSQL
+      monitoring:
+        display_name: "Monitoring"
+        description: "Health and alert filters"
+        facets:
+          - semantic_key: "dt.entity.health_alert"
+            display_name: "Active Health Alert"
+            current_key: "active_health_alert"
+            values:
+              - MySQL Instance is unreachable
+              - Oracle - High tablespace usage
+              - Oracle - Instance unavailable
+              - Postgres Instance is unreachable
+              - SQL Server is unreachable
+          - semantic_key: "dt.entity.custom_alert"
+            display_name: "Closed Custom Alert"
+            current_key: "closed_custom_alert"
+            values:
+              - no keys found
+          - semantic_key: "dt.entity.health_alert_closed"
+            display_name: "Closed Health Alert"
+            current_key: "closed_health_alert"
+            values:
+              - MySQL Instance is unreachable
+              - Oracle - High tablespace usage
+              - Oracle - Instance unavailable
+              - Postgres Instance is unreachable
+              - SQL Server is unreachable
+
+  infra_and_operations:
+    categories:
+      core:
+        display_name: "Core"
+        description: "Essential infrastructure filters"
+        facets:
+          - semantic_key: "dt.entity.alert_status"
+            display_name: "Alert Status"
+            current_key: "alert_status"
+            values:
+              - Critical
+              - No alerts
+          - semantic_key: "dt.monitoring.mode"
+            display_name: "Monitoring Type"
+            current_key: "monitoring_type"
+            values:
+              - App only
+              - Discovery
+              - Full stack
+              - Infrastructure
+              - Monitoring candidate
+              - Monitoring disabled
+      cloud:
+        display_name: "Cloud"
+        description: "Cloud provider filters"
+        facets:
+          - semantic_key: "cloud.provider"
+            display_name: "Cloud Provider"
+            current_key: "cloud_provider"
+            values:
+              - AWS
+              - Azure
+              - Google Cloud Platform
+              - OpenStack
+              - Oracle
+      infrastructure:
+        display_name: "Infrastructure"
+        description: "Infrastructure and virtualization filters"
+        facets:
+          - semantic_key: "hypervisor.type"
+            display_name: "Hypervisor"
+            current_key: "hypervisor"
+            values:
+              - AIX LPAR
+              - AIX WPAR
+              - AWS Nitro
+              - VMware
+              - Xen
+      operating_system:
+        display_name: "Operating System"
+        description: "Operating system filters"
+        facets:
+          - semantic_key: "os.type"
+            display_name: "OS Type"
+            current_key: "os_type"
+            values:
+              - AIX
+              - Linux
+              - Windows
+              - z/OS
+
+  kubernetes:
+    categories:
+      core:
+        display_name: "Core"
+        description: "Essential Kubernetes filters"
+        facets:
+          - semantic_key: "k8s.cluster.name"
+            display_name: "Cluster Name"
+            current_key: "cluster_name"
+            values: []
+          - semantic_key: "k8s.namespace.name"
+            display_name: "Namespace Name"
+            current_key: "namespace_name"
+            values: []
+          - semantic_key: "k8s.workload.name"
+            display_name: "Workload Name"
+            current_key: "workload_name"
+            values: []
+          - semantic_key: "dt.entity.alert_status"
+            display_name: "Alert Status"
+            current_key: "alert_status"
+            values: []
+
+  logs:
+    categories:
+      core:
+        display_name: "Core"
+        description: "Essential log filters"
+        facets:
+          - semantic_key: "log.severity_text"
+            display_name: "Status"
+            current_key: "status"
+            values:
+              - Error
+              - Info
+              - None
+              - Warning
+          - semantic_key: "log.level"
+            display_name: "Log Level"
+            current_key: "loglevel"
+            values:
+              - k8s
+      cloud:
+        display_name: "Cloud"
+        description: "Cloud provider context filters"
+        facets:
+          - semantic_key: "aws.account.id"
+            display_name: "AWS Account ID"
+            current_key: "aws.account.id"
+            values: []
+          - semantic_key: "aws.arn"
+            display_name: "AWS ARN"
+            current_key: "aws.arn"
+            values: []
+          - semantic_key: "aws.log_group"
+            display_name: "AWS Log Group"
+            current_key: "aws.log_group"
+            values: []
+          - semantic_key: "aws.region"
+            display_name: "AWS Region"
+            current_key: "aws.region"
+            values: []
+          - semantic_key: "azure.location"
+            display_name: "Azure Location"
+            current_key: "azure.location"
+            values: []
+          - semantic_key: "azure.resource.group"
+            display_name: "Azure Resource Group"
+            current_key: "azure.resource.group"
+            values: []
+          - semantic_key: "gcp.project.id"
+            display_name: "GCP Project ID"
+            current_key: "gcp.project.id"
+            values: []
+          - semantic_key: "gcp.region"
+            display_name: "GCP Region"
+            current_key: "gcp.region"
+            values: []
+          - semantic_key: "cloud.provider"
+            display_name: "Cloud Provider"
+            current_key: "cloud.provider"
+            values: []
+      kubernetes:
+        display_name: "Kubernetes"
+        description: "Kubernetes context filters"
+        facets:
+          - semantic_key: "k8s.cluster.name"
+            display_name: "Kubernetes Cluster Name"
+            current_key: "k8s.cluster.name"
+            values: []
+          - semantic_key: "k8s.container.name"
+            display_name: "Kubernetes Container Name"
+            current_key: "k8s.container.name"
+            values: []
+          - semantic_key: "k8s.namespace.name"
+            display_name: "Kubernetes Namespace Name"
+            current_key: "k8s.namespace.name"
+            values: []
+          - semantic_key: "k8s.node.name"
+            display_name: "Kubernetes Node Name"
+            current_key: "k8s.node.name"
+            values: []
+          - semantic_key: "k8s.pod.name"
+            display_name: "Kubernetes Pod Name"
+            current_key: "k8s.pod.name"
+            values: []
+          - semantic_key: "k8s.service.name"
+            display_name: "Kubernetes Service Name"
+            current_key: "k8s.service.name"
+            values: []
+          - semantic_key: "k8s.workload.kind"
+            display_name: "Kubernetes Workload Kind"
+            current_key: "k8s.workload.kind"
+            values: []
+          - semantic_key: "k8s.workload.name"
+            display_name: "Kubernetes Workload Name"
+            current_key: "k8s.workload.name"
+            values: []
+      infrastructure:
+        display_name: "Infrastructure"
+        description: "Host and infrastructure filters"
+        facets:
+          - semantic_key: "dt.entity.host_group"
+            display_name: "Host Group ID"
+            current_key: "dt.host_group.id"
+            values: []
+          - semantic_key: "host.name"
+            display_name: "Host Name"
+            current_key: "host.name"
+            values: []
+      process:
+        display_name: "Process"
+        description: "Process context filters"
+        facets:
+          - semantic_key: "dt.entity.process_group"
+            display_name: "Process Group Detected Name"
+            current_key: "dt.process_group.detected_name"
+            values: []
+      source:
+        display_name: "Source"
+        description: "Log source filters"
+        facets:
+          - semantic_key: "log.source"
+            display_name: "Log Source"
+            current_key: "log_source"
+            values:
+              - "/var/lib/foo.log"
+              - "/var/log/syslog"
+              - "Container Output"
+
+  services:
+    categories:
+      core:
+        display_name: "Core"
+        description: "Essential service filters"
+        facets:
+          - semantic_key: "dt.entity.alert_status"
+            display_name: "Alert Status"
+            current_key: "alert_status"
+            values:
+              - Critical
+              - No alerts
+          - semantic_key: "dt.code_profiling.available"
+            display_name: "Code Profiling"
+            current_key: "code_profiling"
+            values:
+              - Available
+              - Not available
+          - semantic_key: "dt.security_context"
+            display_name: "Security Context"
+            current_key: "security_context"
+            values: []
+          - semantic_key: "dt.entity.tags"
+            display_name: "Tags"
+            current_key: "tags"
+            values: []
+      cloud:
+        display_name: "Cloud"
+        description: "Cloud provider filters"
+        facets:
+          - semantic_key: "aws.region"
+            display_name: "AWS Region"
+            current_key: "AWS region"
+            values: []
+          - semantic_key: "aws.tags"
+            display_name: "AWS Tags"
+            current_key: "AWS tags"
+            values: []
+          - semantic_key: "azure.region"
+            display_name: "Azure Region"
+            current_key: "Azure region"
+            values: []
+          - semantic_key: "azure.resource.group"
+            display_name: "Azure Resource Group"
+            current_key: "Azure resource group name"
+            values: []
+          - semantic_key: "azure.subscription"
+            display_name: "Azure Subscription"
+            current_key: "Azure Subscription"
+            values: []
+          - semantic_key: "gcp.region"
+            display_name: "GCP Region"
+            current_key: "GCP region"
+            values: []
+          - semantic_key: "gcp.project.id"
+            display_name: "GCP Project ID"
+            current_key: "Google Cloud Project"
+            values: []
+          - semantic_key: "cloud.provider"
+            display_name: "Cloud Provider"
+            current_key: "Cloud provider"
+            values: []
+      infrastructure:
+        display_name: "Infrastructure"
+        description: "Infrastructure context filters"
+        facets:
+          - semantic_key: "dt.entity.host_group"
+            display_name: "Host Group Name"
+            current_key: "Host group name"
+            values: []
+          - semantic_key: "host.name"
+            display_name: "Host Name"
+            current_key: "Host name"
+            values: []
+      kubernetes:
+        display_name: "Kubernetes"
+        description: "Kubernetes deployment filters"
+        facets:
+          - semantic_key: "k8s.cluster.name"
+            display_name: "Cluster"
+            current_key: "Cluster"
+            values: []
+          - semantic_key: "k8s.namespace.name"
+            display_name: "Namespace"
+            current_key: "Namespace"
+            values: []
+          - semantic_key: "k8s.namespace.label"
+            display_name: "Namespace Label"
+            current_key: "Namespace label"
+            values: []
+          - semantic_key: "k8s.workload.name"
+            display_name: "Workload"
+            current_key: "Workload"
+            values: []
+          - semantic_key: "k8s.workload.label"
+            display_name: "Workload Label"
+            current_key: "Workload label"
+            values: []
+      monitoring:
+        display_name: "Monitoring"
+        description: "Monitoring and observability filters"
+        facets:
+          - semantic_key: "dt.observability.signals"
+            display_name: "Observability Signals"
+            current_key: "Observability signals"
+            values: []
+          - semantic_key: "dt.entity.technology"
+            display_name: "Technology"
+            current_key: "Technology"
+            values: []
+
+  tracing:
+    categories:
+      core:
+        display_name: "Core"
+        description: "Essential tracing filters"
+        facets:
+          - semantic_key: "span.duration"
+            display_name: "Duration"
+            current_key: "duration"
+            values:
+              - Duration max
+              - Duration min
+          - semantic_key: "http.route"
+            display_name: "Endpoint"
+            current_key: "endpoint"
+            values:
+              - findJourneys
+              - GetProduct
+              - Images
+              - JavaScript
+              - JourneyService.checkDestination
+          - semantic_key: "span.status_code"
+            display_name: "Request Status"
+            current_key: "request_status"
+            values:
+              - Failure
+              - Success
+          - semantic_key: "service.name"
+            display_name: "Service"
+            current_key: "service"
+            values:
+              - CheckDestination
+              - CustomerFrontendREST
+              - EasyTravelBackendWebserver:8091
+              - EasyTravelWebserver:8079
+              - EasyTravelWebserver:9079
+          - semantic_key: "span.kind"
+            display_name: "Span Kind"
+            current_key: "span_kind"
+            values:
+              - Client
+              - Consumer
+              - Internal
+              - Link
+              - Producer
+              - Server
+          - semantic_key: "span.status_code"
+            display_name: "Span Status"
+            current_key: "span_status"
+            values:
+              - Error
+              - OK
+      http:
+        display_name: "HTTP"
+        description: "HTTP request and response filters"
+        facets:
+          - semantic_key: "http.request.method"
+            display_name: "HTTP Method"
+            current_key: "HTTP method"
+            values: []
+          - semantic_key: "http.route"
+            display_name: "HTTP Route"
+            current_key: "HTTP route"
+            values: []
+          - semantic_key: "server.name"
+            display_name: "HTTP Server Name"
+            current_key: "HTTP server name"
+            values: []
+          - semantic_key: "http.response.status_code"
+            display_name: "HTTP Status"
+            current_key: "HTTP status"
+            values: []
+          - semantic_key: "url.path"
+            display_name: "URL Path"
+            current_key: "Url path"
+            values: []
+          - semantic_key: "http.request.header.forwarded"
+            display_name: "Forwarded"
+            current_key: "Forwarded"
+            values: []
+          - semantic_key: "http.request.header.host"
+            display_name: "Host"
+            current_key: "Host"
+            values: []
+          - semantic_key: "http.request.header.referer"
+            display_name: "Referer"
+            current_key: "Referer"
+            values: []
+          - semantic_key: "http.request.header.user-agent"
+            display_name: "User-Agent"
+            current_key: "User-agent"
+            values: []
+          - semantic_key: "http.request.header.x-dynatrace"
+            display_name: "X-Dynatrace"
+            current_key: "X-dynatrace"
+            values: []
+      kubernetes:
+        display_name: "Kubernetes"
+        description: "Kubernetes context filters"
+        facets:
+          - semantic_key: "k8s.cluster.name"
+            display_name: "Kubernetes Cluster"
+            current_key: "Kubernetes cluster"
+            values: []
+          - semantic_key: "k8s.container.name"
+            display_name: "Kubernetes Container"
+            current_key: "Kubernetes container"
+            values: []
+          - semantic_key: "k8s.namespace.name"
+            display_name: "Kubernetes Namespace"
+            current_key: "Kubernetes namespace"
+            values: []
+          - semantic_key: "k8s.node.name"
+            display_name: "Kubernetes Node Name"
+            current_key: "Kubernetes node name"
+            values: []
+          - semantic_key: "k8s.pod.name"
+            display_name: "Kubernetes Pod"
+            current_key: "Kubernetes pod"
+            values: []
+          - semantic_key: "k8s.service.name"
+            display_name: "Kubernetes Service Name"
+            current_key: "Kubernetes service name"
+            values: []
+          - semantic_key: "k8s.workload.name"
+            display_name: "Kubernetes Workload"
+            current_key: "Kubernetes workload"
+            values: []
+          - semantic_key: "k8s.workload.kind"
+            display_name: "Kubernetes Workload Kind"
+            current_key: "Kubernetes workload kind"
+            values: []
+      process:
+        display_name: "Process"
+        description: "Process context filters"
+        facets:
+          - semantic_key: "process.technology"
+            display_name: "Process Technology"
+            current_key: "Process technology"
+            values: []
+      request_attributes:
+        display_name: "Request Attributes"
+        description: "Custom request attribute filters"
+        facets:
+          - semantic_key: "request_attribute.client_ip"
+            display_name: "Client IP"
+            current_key: "ClientIP"
+            values: []
+          - semantic_key: "request_attribute.source_ip"
+            display_name: "Source IP"
+            current_key: "SourceIP"
+            values: []
+          - semantic_key: "request_attribute.custom"
+            display_name: "Custom Attributes"
+            current_key: "custom_attributes"
+            values:
+              - App.cart.Items.count
+              - AuthenticationService
+              - Category-hipster
+              - CICS MQ Txns
+              - CICS Task1D
+              - Client's Destination
+              - CreditCard/Payment
+              - CreditCardType
+              - Destination
+              - Dollar
+              - EasyTravel Amount
+              - Easytravel Destination
+              - EasyTravel JourneyId
+              - EasyTravel User
+              - HTTP POST parameter
+              - Income
+              - JourneyID
+              - Loyalty status
+              - LoyaltyStatus
+              - MileageMobileFlag
+              - MileageMsgContent
+              - MqPathalogContent
+              - Prest-MQ-Test
+              - Revenue_Thangarajan
+              - Revenue_ThangarajanM
+              - Revenues
+              - SessionId
+              - Training
+              - X-dynatrace
+      browser:
+        display_name: "Browser"
+        description: "Browser and user agent filters"
+        facets:
+          - semantic_key: "url.domain"
+            display_name: "URL Domain"
+            current_key: "Url domain"
+            values: []
+          - semantic_key: "url.fragment"
+            display_name: "URL Fragment"
+            current_key: "Url fragment"
+            values: []
+          - semantic_key: "url.full"
+            display_name: "URL Full"
+            current_key: "Url full"
+            values: []
+          - semantic_key: "url.port"
+            display_name: "URL Port"
+            current_key: "Url port"
+            values: []
+          - semantic_key: "url.query"
+            display_name: "URL Query"
+            current_key: "Url query"
+            values: []
+          - semantic_key: "url.scheme"
+            display_name: "URL Scheme"
+            current_key: "Url scheme"
+            values: []
+          - semantic_key: "url.path"
+            display_name: "URL Truncated Path"
+            current_key: "Url truncated path"
+            values: []
+      business:
+        display_name: "Business"
+        description: "Business metrics and revenue filters"
+        facets:
+          - semantic_key: "business.revenue"
+            display_name: "Revenue"
+            current_key: "Revenue"
+            values:
+              - Revenue

@@ -1,0 +1,10 @@
+groups:
+  - id: go
+    type: resource
+    brief:
+    attributes:
+      - id: go.linkage
+        type: string
+        stability: experimental # traces-in-grail
+        brief:
+        examples: [ ' ' ]

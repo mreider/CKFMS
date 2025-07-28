@@ -1,0 +1,50 @@
+groups:
+  - id: dt.openpipeline
+    type: resource
+    brief: >
+      Fields defined in this namespace are used by Dynatrace to describe various aspects of the data ingested through OpenPipeline, providing detailed insights into the ingestion process.
+    attributes:
+      - id: dt.openpipeline.pipelines
+        type: string[]
+        stability: experimental
+        brief: >
+          Collects the identifiers of all pipelines through which a record has passed during the ingestion process in OpenPipeline, providing a complete trace of its journey.
+        examples: ['[logs:default]', '[logs:pipeline_haproxy_2656, bizevents:default]']
+      - id: dt.openpipeline.source
+        type: string
+        stability: experimental
+        brief: >
+          Identifies the source (such as API endpoints or OneAgent) used for ingesting the record into OpenPipeline.
+        examples: ['/platform/ingest/v1/events', 'oneagent']
+      - id: dt.openpipeline.source_type
+        type:
+          allow_custom_values: false
+          members:
+            - id: api
+              value: "api"
+              brief: >
+                Logs ingested via one of the ActiveGate APIs
+            - id: one_agent
+              value: "oneagent"
+              brief: >
+                Logs ingested via OneAgent
+            - id: extension
+              value: "extension"
+              brief: >
+                Logs ingested via the EEC running on host
+            - id: otlp
+              value: "otlp"
+              brief: >
+                Logs ingested via the OpenTelemetry Protocol (OTLP)
+            - id: aws_firehose
+              value: "aws_firehose"
+              brief: >
+                Logs ingested via Amazon Data Firehose
+            - id: unknown
+              value: "unknown"
+              brief: >
+                The source type was not recognized (only for metrics dimension)
+        stability: experimental
+        brief: >
+          Identifies the source type used to ingest data in Dynatrace, for example, from OTLP and OneAgent.
+        examples: [ 'otlp', 'oneagent' ]

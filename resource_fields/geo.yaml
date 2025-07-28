@@ -1,0 +1,128 @@
+groups:
+  - id: geo
+    type: resource
+    brief:
+    attributes:
+      - id: geo.continent.name
+        type: string
+        stability: stable
+        brief: >
+          English name of the continent.
+        examples: [ 'North America' ]
+
+      - id: geo.country.name
+        type: string
+        stability: stable
+        brief: >
+          English name of the country.
+        examples: [ 'Canada' ]
+
+      - id: geo.region.name
+        type: string
+        stability: stable
+        brief: >
+          English name of the region.
+        examples: [ 'Quebec' ]
+
+      - id: geo.city.name
+        type: string
+        stability: stable
+        brief: >
+          English name of the city.
+        examples: [ 'Montreal' ]
+
+      - id: geo.continent.code
+        type: string
+        internal: true
+        stability: experimental
+        brief: >
+          Two-letter code representing the name of the continent.
+        examples: [ 'NA' ]
+
+      - id: geo.country.iso2_code
+        type: string
+        internal: true
+        stability: deprecated
+        brief: >
+          Deprecated. Use `geo.country.iso_code` instead. The two character, ISO 3316-1 alpha-2 country code.
+        examples: [ 'CA', 'US' ]
+
+      - id: geo.country.iso_code
+        type: string
+        stability: experimental
+        brief: >
+          The two-letter country code. The format complies with ISO 3316-1 alpha-2.
+        examples: [ 'CA', 'GB' ]
+
+      - id: geo.region.iso_code
+        type: string
+        internal: true
+        stability: experimental
+        brief: >
+          ISO 3166-2 region code. In case a country has more levels of subdivisions, the field contains the level of subdivision preferred by Dynatrace.
+        examples: [ 'CA-QC', 'GB-CAM' ]
+
+      - id: geo.subdivision.iso_codes
+        type: string[]
+        internal: true
+        stability: experimental
+        brief: >
+          ISO 3166-2 subdivision codes ordered by the level of subdivision.
+        examples: [ ["GB-ENG", "GB-CAM"] ]
+
+      - id: geo.location.lat
+        type: string
+        internal: true
+        stability: deprecated
+        brief: Deprecated. Use `geo.location.latitude` instead. The approximate WGS84 latitude.
+        examples: [ '45.505918' ]
+
+      - id: geo.location.latitude
+        type: double
+        stability: experimental
+        brief: The approximate latitude. The format complies with WGS 84.
+        examples: [ 45.505918 ]
+
+      - id: geo.location.lon
+        type: string
+        internal: true
+        stability: deprecated
+        brief: Deprecated. Use `geo.location.longitude` instead. The approximate WGS84 longitude.
+        examples: [ '-73.614830' ]
+
+      - id: geo.location.longitude
+        type: double
+        stability: experimental
+        brief: The approximate longitude. The format complies with WGS 84.
+        examples: [ -73.614830 ]
+
+      - id: geo.location.accuracy_radius
+        type: long
+        internal: true
+        stability: experimental
+        brief: The accuracy radius in kilometers.
+        examples: [ 20 ]
+
+      - id: geo.name
+        type: string
+        internal: true
+        stability: experimental
+        brief: >
+          User-defined description of a location, at the level of granularity they care about.
+        examples: [ 'boston-dc' ]
+
+      - id: geo.postal_code
+        type: string
+        internal: true
+        stability: experimental
+        brief: >
+          Postal code associated with the location.
+        examples: [ '94040' ]
+
+      - id: geo.timezone
+        type: string
+        internal: true
+        stability: experimental
+        brief: >
+          The time zone of the location, such as IANA time zone name.
+        examples: [ 'America/Argentina/Buenos_Aires', 'Africa/Algiers', 'Europe/Vienna' ]

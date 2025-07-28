@@ -1,0 +1,11 @@
+groups:
+  - id: websocket
+    type: attribute_group
+    brief: >
+      The WebSocket namespace contains information on WebSocket attributes for user events. When this namespace is used, the request fields (URL and network namespace) must also be used, and `url.full` and `network.protocol.name` must be set.
+    attributes:
+      - id: websocket.connection.status_code
+        type: long
+        stability: experimental
+        brief: The WebSocket connection [status code](https://datatracker.ietf.org/doc/html/rfc6455#section-7.4).
+        examples: [ 1001 ]

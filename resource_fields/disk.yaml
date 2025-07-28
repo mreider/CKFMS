@@ -1,0 +1,26 @@
+groups:
+  - id: disk
+    type: resource
+    brief: >
+      Disk attributes
+    attributes:
+      - id: disk.device_name
+        type: string
+        stability: experimental
+        brief: "Disk device name (Linux, AIX)"
+        examples: [ 'sda' ]
+      - id: disk.mountpoint
+        type: string
+        stability: experimental
+        brief: "Primary mountpoint"
+        examples: [ '/mnt/storage' ]
+      - id: disk.all_mountpoints
+        type: string[]
+        stability: experimental
+        brief: "List of all mountpoints"
+        examples: ['/mnt/storage', '/home', '/var/log']
+      - id: disk.remote_disk_id
+        type: long
+        stability: stable
+        brief: "Unique identifier of remote disk"
+        examples: [ 0, 16864135562327138441, 18446744073709551615 ]

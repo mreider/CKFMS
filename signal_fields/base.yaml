@@ -1,0 +1,51 @@
+groups:
+  - id: base
+    type: attribute_group
+    brief: >
+      The top level fields contain generally relevant information for all events and data points.
+
+    attributes:
+      - id: timestamp
+        type: timestamp
+        stability: stable
+        brief: >
+          The time (UNIX Epoch time in nanoseconds) when the event originated, typically when
+          the source created it. If no original timestamp is available, it will be populated at
+          ingest time and required for all events. In the case of a correlated event (for example, ITIL events),
+          this time could be different from the event.start time, as this time represents the
+          actual timestamp when the "update" for the event was created.
+        examples: [ 1649822520123123123 ]
+
+      - id: timeframe
+        brief: The timeframe represented by a timeseries record.
+        stability: stable
+        type: record[]
+
+      - id: start_time
+        type: timestamp
+        stability: stable
+        brief: >
+          Start time of a data point. Value is a UNIX Epoch time in nanoseconds and less or equal to the `end_time`.
+        examples: [ 1649822520123123123 ]
+
+      - id: end_time
+        type: timestamp
+        stability: stable
+        brief: >
+          End time of a data point. Value is a UNIX Epoch time in nanoseconds and greater or equal to the `start_time`.
+        examples: [ 1649822520123123165 ]
+
+      - id: duration
+        type: duration
+        stability: stable
+        brief: >
+          The difference between `start_time` and `end_time` in nanoseconds.
+        examples: [ 42 ]
+
+      - id: interval
+        brief: >
+          Denotes the timeframe of represented by individual timeseries
+          measurements returned by a timeseries record.
+        stability: stable
+        type: string
+        examples: ["1 min"]

@@ -1,0 +1,18 @@
+groups:
+  - id: servlet
+    type: resource
+    brief:
+    attributes:
+      - id: servlet.context.name
+        type: string
+        stability: experimental # traces-in-grail
+        brief: >
+          also see <https://docs.oracle.com/javaee/6/api/javax/servlet/ServletContext.html#getServletContextName>
+        examples: [ ' ' ]
+
+      - id: servlet.context.path
+        type: string
+        stability: experimental # traces-in-grail
+        brief: >
+          also see <https://docs.oracle.com/javaee/6/api/javax/servlet/ServletContext.html#getContextPath>
+        examples: [ ' ' ]

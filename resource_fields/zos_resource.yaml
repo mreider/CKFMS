@@ -1,0 +1,58 @@
+groups:
+  - id: zos
+    type: resource
+    brief: 'Semantic convention describing z/OS fields.'
+    attributes:
+      - id: cics.transaction.system_id
+        type: string
+        stability: experimental
+        brief: The system ID of the CICS region that this transaction executed on.
+        examples: [ 'C259', 'CICS' ]
+
+      - id: zos.address_space_id
+        stability: experimental
+        type: long
+        brief: The address space identifier (ASID) of the z/OS address space.
+        examples: [ 1, 296 ]
+
+      - id: zos.job_name
+        type: string
+        stability: experimental
+        brief: The jobname of the z/OS address space.
+        examples: [ 'CICSAOR0', 'CTGATM00', 'IMSCR15' ]
+
+      - id: zos.job_id
+        type: string
+        stability: experimental
+        brief: The job ID of the z/OS address space.
+        examples: [ 'JOB12345' ]
+
+      - id: zos.job_step_id
+        type: string
+        stability: experimental
+        brief: The step ID within the job within the z/OS address space.
+        examples: [ '00000001', '00000002' ]
+
+      - id: zos.lpar_name
+        type: string
+        stability: experimental
+        brief: The name of the LPAR that the z/OS address space executes within.
+        examples: [ 'S0W1', 'ABCD' ]
+
+      - id: zos.sys_id
+        type: string
+        stability: experimental
+        brief: The system ID of the CICS/IMS address space.
+        examples: [ 'C259', 'CICS', 'IMSF' ]
+
+      - id: zos.transaction.job_name
+        type: string
+        stability: experimental
+        brief: The jobname of the z/OS address space that the transaction executed in.
+        examples: [ 'CICSAOR0', 'CTGATM00', 'IMSCR15' ]
+
+      - id: zos.transaction.lpar_name
+        type: string
+        stability: experimental
+        brief: The name of the LPAR that the transaction executed on.
+        examples: [ 'S0W1', 'ABCD']

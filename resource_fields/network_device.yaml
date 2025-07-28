@@ -1,0 +1,33 @@
+groups:
+  - id: network_device
+    type: resource
+    brief: Contains network device dimensions used in SNMP extensions
+    attributes:
+
+      - id: device
+        type: string
+        deprecated: Used in Extension Framework 2.0
+        brief: >
+          Address (IP address with port) used by a monitored device to communicate with an extension.
+        examples: ["10.102.0.45:161"]
+
+      - id: device.address
+        type: ipAddress
+        deprecated: Used in Extension Framework 2.0
+        brief: >
+          IP address used by a monitored device to communicate with an extension.
+        examples: ["10.102.0.45"]
+
+      - id: device.port
+        type: string
+        deprecated: Used in Extension Framework 2.0
+        brief: >
+          Port used by a monitored device to communicate with an extension.
+        examples: ["161"]
+
+      - id: device.name
+        type: string
+        deprecated: Used in Extension Framework 2.0
+        brief: >
+          Name of a device monitored by an extension.
+        examples: ["AT1i-WLC-TestingLab.dynatrace.org"]

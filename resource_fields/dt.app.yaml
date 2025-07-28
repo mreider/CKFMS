@@ -1,0 +1,39 @@
+groups:
+  - id: dt.app
+    type: resource
+    brief: >
+      The dt.app namespace contains fields identifying Dynatrace Apps and App-Functions.
+    attributes:
+      - id: dt.app.id
+        type: string
+        stability: stable
+        brief: >
+          The unique application identifier. Dynatrace apps are prefixed with 'dynatrace.', custom apps are prefixed with 'my.'.
+        examples: [ 'dynatrace.notebooks', 'my.awesome.app' ]
+      - id: dt.app.name
+        internal: true
+        type: string
+        stability: experimental
+        brief: >
+          The name of the App.
+        examples: [ 'Notebooks', 'Jira for Workflows' ]
+      - id: dt.app.type
+        type: string
+        stability: experimental
+        brief: >
+          The type of the application. It can be 'BUILT_IN', 'ON_DEMAND', or 'CUSTOM'.
+        examples: [ 'BUILT_IN', 'ON_DEMAND', 'CUSTOM' ]
+      - id: dt.app.version
+        internal: true
+        type: string
+        stability: experimental
+        brief: >
+          Full version of the application. This can include more verbose information, such as the build number.
+        examples: [ '5.23.15789', '143542' ]
+      - id: dt.app.function
+        internal: true
+        type: string
+        stability: experimental
+        brief: >
+          Name or path of the App-Function that was executed.
+        examples: [ 'check-ip.js', '/api/send-message' ]

@@ -1,0 +1,39 @@
+groups:
+  - id: bosh
+    type: resource
+    brief: >
+      Cloud Foundry BOSH attributes.
+    attributes:
+      - id: bosh.name
+        type: string
+        stability: experimental
+        brief: >
+          A unique identifier to a deployment or instance.
+        examples: ['isolated_diego_cell_devima']
+      - id: bosh.instance_id
+        type: string
+        stability: experimental
+        brief: >
+          A unique identifier assigned to each deployed instance.
+        examples: ['af318409-9e9d-4a18-aca4-0fb52bbdc526']
+      - id: bosh.availability_zone
+        type: string
+        stability: experimental
+        brief: >
+          A specific geographical BOSH location.
+        examples: ['us-east-1a']
+      - id: bosh.deployment.id
+        type: string
+        brief: BOSH depoloyment ID, retrievied from /var/vcap on monitored host.
+        stability: stable
+        examples: [ 'cf-c32ffe771e4ad26b9711' ]
+      - id: bosh.instance.name
+        type: string
+        brief: BOSH instance name, retrievied from /var/vcap on monitored host.
+        stability: stable
+        examples: [ 'diego_database' ]
+      - id: bosh.stemcell.version
+        type: string
+        brief: Version of BOSH stemcell, retrievied from /var/vcap on monitored host.
+        stability: stable
+        examples: [ '621.448' ]

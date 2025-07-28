@@ -1,0 +1,340 @@
+groups:
+  - id: zos.transaction.general
+    type: span
+    brief: 'Semantic convention describing the general attributes of a z/OS transaction.'
+    attributes:
+      - id: zos.transaction.id
+        type: string
+        stability: experimental # traces-in-grail
+        brief: The ID of this transaction.
+        examples: [ 'CEMT', 'DTAX', 'IVTNO' ]
+      - id: zos.transaction.call_type
+        type:
+          allow_custom_values: false
+          members:
+            - id: start
+              value: "START"
+              brief: An EXEC CICS START triggered this transaction.
+            - id: dpl
+              value: "DPL"
+              brief: A CICS DPL request triggered this transaction.
+            - id: mq
+              value: "MQ"
+              brief: An MQ operation triggered this transaction.
+            - id: tx
+              value: "TX"
+              brief: A CICS or IMS transaction code triggered this transaction.
+            - id: sdk
+              value: "SDK"
+              brief: An SDK call triggered this transaction.
+            - id: soap
+              value: "SOAP"
+              brief: A SOAP request triggered this transaction.
+            - id: ctg
+              value: "CTG"
+              brief: A CTG request triggered this transaction.
+            - id: msc
+              value: "MSC"
+              brief: An IMS MSC request triggered this transaction.
+            - id: pgm_switch
+              value: "PGM_SWITCH"
+              brief: An IMS Program Switch request triggered this transaction.
+            - id: ims_connect_api
+              value: "IMS_CONNECT_API"
+              brief: An IMS Connect API request triggered this transaction.
+            - id: itra
+              value: "ITRA"
+              brief: An IMS TM Resource Adapter request triggered this transaction.
+            - id: ims_connect
+              value: "IMS_CONNECT"
+              brief: An IMS Connect request triggered this transaction.
+            - id: shared_queue
+              value: "SHARED_QUEUE"
+              brief: An IMS Shared Queue request triggered this transaction.
+            - id: http
+              value: "HTTP"
+              brief: An HTTP or HTTPS request triggered this transaction.
+            - id: zos_connect
+              value: "ZOS_CONNECT"
+              brief: A z/OS Connect request triggered this transaction.
+            - id: ttx
+              value: "TTX"
+              brief: A green screen terminal transaction code triggered this transaction.
+            - id: ims_trans_exec
+              value: "IMS_TRANS_EXEC"
+              brief: The application program being scheduled and running to handle this transaction.
+        stability: experimental
+        brief: The type of transaction call that was invoked.
+      - id: zos.transaction.program_type
+        type:
+          allow_custom_values: false
+          members:
+            - id: dli_db
+              value: "DLI_DB"
+              brief: The transaction performs DLI database actions.
+            - id: dli_dc
+              value: "DLI_DC"
+              brief: The transaction performs DLI data communications actions.
+            - id: mq
+              value: "MQ"
+              brief: The transaction performs MQ Queue actions.
+            - id: db2
+              value: "DB2"
+              brief: The transaction performs DB2 database actions.
+
+        stability: experimental # traces-in-grail
+        brief: The type of transaction that was executed.
+        examples: [ 'DLI_DB', 'DLI_DC', 'MQ', 'DB2' ]
+  - id: cics.transaction
+    type: span
+    extends: zos.transaction.general
+    brief: 'Semantic convention describing the attributes of a CICS transaction.'
+    attributes:
+      - id: cics.transaction.task_id
+        type: long
+        stability: experimental # traces-in-grail
+        brief: The CICS task ID of this transaction.
+        examples: [ 1234 ]
+      - id: cics.transaction.unit_of_work_id
+        type: long
+        stability: experimental # traces-in-grail
+        brief: The unit of work ID for this transaction, which is normally represented as a hex value.
+        examples: [ 0xddb9e7c47bb57602, 0xddb9e751bec91003 ]
+      - id: cics.transaction.path.name
+        type: string
+        stability: experimental # traces-in-grail
+        brief: The path name, only applicable for web requests.
+        examples: [ '/dtrouter', '' ]
+      - id: cics.transaction.user_id
+        type: string
+        stability: experimental # traces-in-grail
+        brief: The user ID of the user who triggered this transaction.
+        examples: [ 'USER1', 'anon' ]
+      - id: cics.transaction.client.ip
+        type: ipAddress
+        stability: experimental # traces-in-grail
+        brief: IP address of the client (IPv4 or IPv6) that made the request that triggered the transaction.
+        examples: [ '194.232.104.141', '2a01:468:1000:9::140' ]
+      - id: cics.transaction.client.port
+        type: long
+        stability: experimental # traces-in-grail
+        brief: Port number of the client that made the request that triggered the transaction.
+        examples: [ 65123, 80 ]
+      - id: cics.transaction.class_name
+        type: string
+        stability: experimental # traces-in-grail
+        brief: The name of the transaction class of this transaction.
+        examples: [ 'null', 'DFHTCL00' ]
+      - id: cics.transaction.wlm.service_class_name
+        type: string
+        stability: experimental # traces-in-grail
+        brief: The name of the z/OS Workload Manager (WLM) service class of this transaction.
+        examples: [ 'null', 'SYSSTC', 'VEL15I5' ]
+      - id: cics.transaction.wlm.reporting_service_class_name
+        type: string
+        stability: experimental # traces-in-grail
+        brief: The name of the z/OS Workload Manager (WLM) reporting service class of this transaction.
+        examples: [ 'null', 'BAT_ATM', 'RC_CICS' ]
+      - id: cics.transaction.transaction_group_id
+        type: string
+        stability: experimental # traces-in-grail
+        brief: The transaction group ID assigned at transaction attach time.
+        examples: [ '160dd5c5e3c44bc8e5c5c1c3f4f4f9df9fa2d8b049cb800000000000' ]
+  - id: ims.transaction
+    type: span
+    extends: zos.transaction.general
+    brief: 'Semantic convention describing the attributes of an IMS input message transaction.'
+    attributes:
+      - id: ims.message.transaction.terminal_name
+        type: string
+        stability: experimental # traces-in-grail
+        brief: The terminal name that this IMS transaction executed on.
+        examples: [ 'HWSAM5ZD', '10505' ]
+      - id: ims.message.transaction.unit_of_work_id
+        type: long
+        stability: experimental # traces-in-grail
+        brief: The unit of work ID for this transaction, which is normally represented as a hex value.
+        examples: [ 0xc9c6e5c240404040ddc19bea00718002c9c6e5c240404040ddc19bea007180020000, 0xc9c5e5c540404040ddc19c53ac136c01c9c5e5c540404040ddc19c53ac136c010000 ]
+      - id: ims.message.transaction.user_id
+        type: string
+        stability: experimental # traces-in-grail
+        brief: The user ID of the user who triggered this transaction.
+        examples: [ 'USER1', 'anon' ]
+      - id: ims.message.transaction.message.size
+        type: long
+        stability: experimental # traces-in-grail
+        brief: The size of the message.
+        examples: [ 10, 421 ]
+      - id: ims.message.transaction.message.segment_count
+        type: long
+        stability: experimental # traces-in-grail
+        brief: The number of segments in the message.
+        examples: [ 1, 5 ]
+  - id: ims.execution.transaction
+    type: span
+    extends: zos.transaction.general
+    brief: 'Semantic convention describing the attributes of an IMS transaction execution transaction.'
+    attributes:
+      - id: ims.execution.transaction.psb_name
+        type: string
+        stability: experimental # traces-in-grail
+        brief: The PSB name that this IMS transaction executed on.
+        examples: [ 'HWSAM5ZD', '10505' ]
+      - id: ims.execution.transaction.unit_of_work_id
+        type: long
+        stability: experimental # traces-in-grail
+        brief: The unit of work ID for this transaction, which is normally represented as a hex value.
+        examples: [ 0xc9c6e5c240404040ddc19bea00718002c9c6e5c240404040ddc19bea007180020000, 0xc9c5e5c540404040ddc19c53ac136c01c9c5e5c540404040ddc19c53ac136c010000 ]
+      - id: ims.execution.transaction.schedule_count
+        type: long
+        stability: experimental # traces-in-grail
+        brief: The schedule count for this transaction.
+        examples: [ 346613, 421 ]
+      - id: ims.execution.transaction.commit_count
+        type: long
+        stability: experimental # traces-in-grail
+        brief: The commit count for this transaction.
+        examples: [ 4, 5 ]
+      - id: ims.execution.transaction.execution_class
+        type: long
+        stability: experimental # traces-in-grail
+        brief: The execution class of this transaction.
+        examples: [ 45, 66 ]
+      - id: ims.execution.transaction.current_priority
+        type: long
+        stability: experimental # traces-in-grail
+        brief: The current priority of this transaction.
+        examples: [ 1, 5 ]
+
+  - id: ims.connect.transaction
+    type: span
+    extends: zos.transaction.general
+    brief: 'Semantic convention describing the attributes of an IMS Connect transaction.'
+    attributes:
+      - id: ims.connect.transaction.user_id
+        type: string
+        stability: experimental # traces-in-grail
+        brief: The user ID of the user who triggered this transaction.
+        examples: [ 'USER1', 'anon' ]
+      - id: ims.connect.transaction.client.ip
+        type: ipAddress
+        stability: experimental # traces-in-grail
+        brief: IP address of the client (IPv4 or IPv6) that made the request that triggered the transaction.
+        examples: [ '194.232.104.141', '2a01:468:1000:9::140' ]
+      - id: ims.connect.transaction.server.port
+        type: long
+        stability: experimental # traces-in-grail
+        brief: Port number on the IMS Connect server that received the request for this transaction
+        examples: [ 65123, 80 ]
+
+  - id: ims.tm.resource.adapter.transaction
+    type: span
+    brief: 'Semantic convention describing the attributes of an ITRA transaction.'
+    attributes:
+      - id: ims.tm.resource.adapter.semantic_detection_version
+        type: string
+        stability: experimental # traces-in-grail
+        brief: The detection version for this transaction.
+        examples: [ '1' ]
+
+      - id: ims.tm.resource.adapter.transaction.datastore_name
+        type: string
+        stability: experimental # traces-in-grail
+        brief: The datastore name used by this transaction.
+        examples: [ "IMS1500" ]
+
+      - id: ims.tm.resource.adapter.transaction.lpar_name
+        type: string
+        stability: experimental # traces-in-grail
+        brief: The name of the LPAR that the transaction executed on.
+        examples: [ 'S0W1', 'ABCD']
+
+      - id: ims.tm.resource.adapter.transaction.client.ip
+        type: ipAddress
+        stability: experimental # traces-in-grail
+        brief: IP address of the client (IPv4 or IPv6) that made the request that triggered the transaction.
+        examples: [ '194.232.104.141', '2a01:468:1000:9::140' ]
+
+      - id: ims.tm.resource.adapter.transaction.client.port
+        type: long
+        stability: experimental # traces-in-grail
+        brief: Port number of the client that made the request that triggered the transaction.
+        examples: [ 65123, 80 ]
+
+      - id: ims.tm.resource.adapter.transaction.interaction_verb
+        type:
+          allow_custom_values: false
+          members:
+            - id: sync_send
+              value: 0
+              brief: SYNC_SEND
+            - id: sync_send_receive
+              value: 1
+              brief: SYNC_SEND_RECEIVE
+            - id: sync_end_conversation
+              value: 3
+              brief: SYNC_END_CONVERSATION
+            - id: sync_receive_asyncoutput
+              value: 4
+              brief: SYNC_RECEIVE_ASYNCOUTPUT
+            - id: sync_receive_asyncoutput_single_nowait
+              value: 5
+              brief: SYNC_RECEIVE_ASYNCOUTPUT_SINGLE_NOWAIT
+            - id: sync_receive_asyncoutput_single_wait
+              value: 6
+              brief: SYNC_RECEIVE_ASYNCOUTPUT_SINGLE_WAIT
+            - id: sync_receive_callout
+              value: 7
+              brief: SYNC_RECEIVE_CALLOUT
+        stability: experimental # traces-in-grail
+        brief: The interaction verb that triggered the transaction.
+
+      - id: ims.tm.resource.adapter.transaction.commit_mode
+        type:
+          allow_custom_values: false
+          members:
+            - id: send_then_commit
+              value: 1
+              brief: The commit is deferred until the response has been sent and acknowledged.
+            - id: commit_then_send
+              value: 0
+              brief: The commit happens before sending the response.
+        stability: experimental # traces-in-grail
+        brief: The commit mode of the transaction.
+
+      - id: ims.tm.resource.adapter.transaction.sync_level
+        type:
+          allow_custom_values: false
+          members:
+            - id: none
+              value: 0
+              brief: There will be no synchronization.
+            - id: confirm
+              value: 1
+              brief: Synchronization will be confirmed.
+        stability: experimental # traces-in-grail
+        brief: >
+          Indicates the synchronization level of the transaction. This only applies when the interaction verb is set to "SYNC_SEND_RECEIVE", "SYNC_SEND", or "SYNC_RECEIVE_CALLOUT".
+          This attribute applies to both conversational and non-conversational applications. It is used in conjuction with the ims.transaction.request.transaction.commit_mode attribute.
+
+  - id: cics.file
+    type: span
+    brief: 'Semantic convention describing the attributes of a CICS file.'
+    attributes:
+      - id: cics.file_name
+        type: string
+        stability: experimental # traces-in-grail
+        brief: The logical name of the file, as defined in CEDA.
+        examples: [ 'EXMPCAT', 'CICSFILE' ]
+
+      - id: cics.file.is_local
+        type: boolean
+        stability: experimental # traces-in-grail
+        brief: A boolean that is true if the file is defined within the CICS region that it executed in.
+        examples: [ true ]
+
+      - id: cics.file.defining_region_name
+        type: string
+        stability: experimental # traces-in-grail
+        brief: The system ID of the CICS region that is defined on the request.
+        examples: [ 'C259', 'CICS' ]

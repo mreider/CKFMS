@@ -1,0 +1,18 @@
+groups:
+  - id: subtrace
+    type: span
+    brief:
+    attributes:
+      - id: subtrace.id
+        type: uid
+        brief: >
+          Present on every span of a subtrace. All spans within one subtrace share the same identifier.
+          The ID is a hex-encoded numerical value and not globally unique, but guaranteed to be unique within one particular trace.
+        examples: [ '95efd70fcdb5b7b3', '96835e1d65490b48' ]
+        stability: experimental # traces-in-grail
+
+      - id: subtrace.is_root_span
+        type: boolean
+        brief: >
+          Marks the root of a subtrace. This is typically the first span of a request within a service. Endpoints detection rules are evaluated on subtrace root spans.
+        stability: experimental # traces-in-grail

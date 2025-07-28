@@ -1,0 +1,32 @@
+groups:
+  - id: adobe
+    type: resource
+    brief:
+    attributes:
+      - id: adobe.em.env_type
+        type: string
+        stability: experimental # traces-in-grail
+        brief: Adobe Experience Manager (AEM) environment type.
+        examples: [ 'dev', 'stage', 'prod' ]
+
+      - id: adobe.em.program
+        type: string
+        stability: experimental # traces-in-grail
+        brief: >
+          Adobe Experience Manager (AEM) service.
+          Contains the customer defined name of the AEM environment.
+        examples: [ ' ' ]
+
+      - id: adobe.em.service
+        type: string
+        stability: experimental # traces-in-grail
+        brief: >
+          Adobe Experience Manager (AEM) service.
+          Contains the program and environment IDs the customer is exposed to.
+        examples: [ ' ' ]
+
+      - id: adobe.em.tier
+        type: string
+        stability: experimental # traces-in-grail
+        brief: Adobe Experience Manager (AEM) tier.
+        examples: [ 'author', 'publish', 'preview' ]

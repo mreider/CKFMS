@@ -1,0 +1,55 @@
+groups:
+  - id: user_controlled_input
+    type: attribute_group
+    brief: Describes the user-controlled input.
+    attributes:
+      - id: user_controlled_input.type
+        type:
+          allow_custom_values: true
+          members:
+            - id: http_parameter_value
+              value: 'HTTP_PARAMETER_VALUE'
+              brief: The user-controlled input is coming from the value of an HTTP parameter.
+            - id: http_parameter_name
+              value: 'HTTP_PARAMETER_NAME'
+              brief: The user-controlled input is coming from the name of an HTTP parameter.
+            - id: http_header_name
+              value: 'HTTP_HEADER_NAME'
+              brief: The user-controlled input is coming from the name of an HTTP header.
+            - id: http_header_value
+              value: 'HTTP_HEADER_VALUE'
+              brief: The user-controlled input is coming from the value of an HTTP header.
+            - id: http_url
+              value: 'HTTP_URL'
+              brief: The user-controlled input is coming from the HTTP URL.
+            - id: http_cookie
+              value: 'HTTP_COOKIE'
+              brief: The user-controlled input is coming from an HTTP cookie.
+            - id: http_other
+              value: 'HTTP_OTHER'
+              brief: The user-controlled input is coming from a different part of the HTTP request.
+        brief: The type of the input.
+        stability: experimental
+        examples: ["HTTP_PARAMETER_VALUE", "HTTP_HEADER_VALUE", "HTTP_URL"]
+      - id: user_controlled_input.key
+        type: string
+        brief: The key of the input.
+        stability: experimental
+        examples: ["username", "password"]
+      - id: user_controlled_input.value
+        type: string
+        brief: The value of the input.
+        stability: experimental
+        examples: ["WHERE 1 = 0; TRUNCATE TABLE bio; --"]
+      - id: user_controlled_input.is_malicious
+        type: boolean
+        brief: If the input provided is considered malicious.
+        stability: experimental
+      - id: user_controlled_input.payload.start
+        type: long
+        brief: The start position of this input in the overall payload.
+        stability: experimental
+      - id: user_controlled_input.payload.end
+        type: long
+        brief: The end position of this input in the overall payload.
+        stability: experimental

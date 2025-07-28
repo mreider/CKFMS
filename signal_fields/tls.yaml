@@ -1,0 +1,24 @@
+groups:
+  - id: tls
+    type: span
+    brief:
+    attributes:
+      - id: tls.protocol.name
+        type: string
+        stability: experimental
+        brief: >
+          Normalized lowercase protocol name parsed from the original string of the negotiated [SSL/TLS protocol version](https://docs.openssl.org/1.1.1/man3/SSL_get_version/#RETURN-VALUES).
+        examples: ["ssl", "tls"]
+
+      - id: tls.protocol.version
+        type: string
+        stability: experimental
+        brief: >
+          The numeric part of the version parsed from the original string of the negotiated [SSL/TLS protocol version](https://docs.openssl.org/1.1.1/man3/SSL_get_version/#RETURN-VALUES).
+        examples: ["1.2", "3"]
+
+      - id: tls.cipher
+        type: string
+        stability: experimental
+        brief: String indicating the [cipher](https://datatracker.ietf.org/doc/html/rfc5246#appendix-A.5) used during the current connection.
+        examples: ["TLS_RSA_WITH_3DES_EDE_CBC_SHA", "TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256"]

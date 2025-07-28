@@ -1,0 +1,56 @@
+groups:
+  - id: device_resource
+    type: resource
+    brief:
+    attributes:
+
+      - id: device.manufacturer
+        type: string
+        stability: experimental
+        brief: >
+          The device manufacturer.
+        examples: [ 'Apple' ]
+
+      - id: device.model.identifier
+        type: string
+        stability: experimental
+        brief: >
+          The device model identifier.
+        examples: [ 'iPhone3,4' ]
+
+      - id: device.is_rooted
+        type: boolean
+        stability: experimental
+        brief: >
+          If set to `true`, the device is rooted or jailbroken.
+        examples: [ false ]
+
+      - id: device.screen.width
+        type: long
+        stability: experimental
+        brief: >
+          The device's screen width in its natural orientation.
+        examples: [ 2048 ]
+
+      - id: device.screen.height
+        type: long
+        stability: experimental
+        brief: >
+          The device's screen height in its natural orientation.
+        examples: [ 1152 ]
+
+      - id: device.type
+        type:
+          allow_custom_values: false
+          members:
+            - id: desktop
+              value: 'desktop'
+              brief: Desktop device, for example a PC or a game console.
+            - id: mobile
+              value: 'mobile'
+              brief: Mobile device, for example a smartphone or a tablet.
+        internal: true
+        stability: experimental
+        brief: >
+          The type of the device.
+        examples: [ 'mobile' ]

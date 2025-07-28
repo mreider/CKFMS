@@ -1,0 +1,120 @@
+groups:
+  - id: log
+    type: attribute_group
+    brief: >
+      Attributes used for log description.
+    attributes:
+      - id: loglevel
+        type:
+          allow_custom_values: false
+          members:
+            - id: none
+              value: 'NONE'
+            - id: trace
+              value: 'TRACE'
+            - id: debug
+              value: 'DEBUG'
+            - id: notice
+              value: 'NOTICE'
+            - id: info
+              value: 'INFO'
+            - id: warn
+              value: 'WARN'
+            - id: severe
+              value: 'SEVERE'
+            - id: error
+              value: 'ERROR'
+            - id: critical
+              value: 'CRITICAL'
+            - id: alert
+              value: 'ALERT'
+            - id: fatal
+              value: 'FATAL'
+            - id: emergency
+              value: 'EMERGENCY'
+        stability: stable
+        brief: >
+          The log event severity level.
+        examples:
+          ['ERROR', 'INFO', 'TRACE']
+      - id: log.source
+        type: string
+        stability: stable
+        brief: >
+          Human-readable attribute that identifies a log stream.
+        note: >
+          Can contain, for example, a file path, standard output, or an URI etc., depending on the log stream type.
+          The value should be stable for one logical source (for example, not affected by log file rotation digits).
+        examples:
+          ['/var/log/messages', 'Windows Event Log', 'Docker Container Output', 'stdout']
+        tags: ['permission']
+      - id: log.source.origin
+        type:
+          allow_custom_values: false
+          members:
+            - id: custom_log
+              value: 'CUSTOM_LOG'
+              brief: Custom log source configuration.
+            - id: open_log_detector
+              value: 'OPEN_LOG_DETECTOR'
+              brief: Open log file detector.
+            - id: system_log_detector
+              value: 'SYSTEM_LOG_DETECTOR'
+              brief: System log detector.
+            - id: container_log_detector
+              value: 'CONTAINER_LOG_DETECTOR'
+              brief: Container log detector.
+            - id: iis_log_detector
+              value: 'IIS_LOG_DETECTOR'
+              brief: IIS log detector.
+            - id: journald_log_detector
+              value: 'JOURNALD_LOG_DETECTOR'
+              brief: Journald log detector.
+        stability: stable
+        brief: >
+          The log source origin indicates where the log derives from.
+        examples:
+          ['CUSTOM', 'IIS_LOG_DETECTOR']
+      - id: log.iostream
+        type:
+          allow_custom_values: false
+          members:
+            - id: std_out
+              value: 'stdout'
+            - id: std_err
+              value: 'stderr'
+        stability: stable
+        brief: >
+          The I/O stream to which the log was emitted.
+        examples:
+          ['stdout', 'stderr']
+      - id: log.file.path
+        type: string
+        stability: experimental
+        brief: >
+          The full path to the file.
+        examples:
+          ['/var/log/messages', '/var/log/dynatrace/agent.log']
+      - id: log.file.name
+        type: string
+        stability: experimental
+        brief: >
+          The basename of the file.
+        examples:
+          ['messages', 'agent.log']
+      - id: log.logger
+        type: string
+        stability: experimental
+        brief: >
+          The name of the logger inside an application. This name is usually the name of the class that initialized the logger, but it can be a custom name.
+        examples:
+          [ 'main.logger', 'kafka.server.KafkaServer' ]
+      - id: log.raw_level
+        type: string
+        stability: experimental
+        brief: >
+          The original severity level of the log entry as recorded by the source, before standardization into the log.level format.
+        note: >
+          The log.raw_level can vary in type depending on the log entry. It may be represented as a string in some cases or as an integer (for example, 30, 40, 50) in others.
+        examples:
+          [ 'silly', 'verbose' ]

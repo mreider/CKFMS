@@ -1,0 +1,28 @@
+groups:
+  - id: deployment
+    type: resource
+    brief: Attributes for keeping track of deployed products.
+    attributes:
+      - id: deployment.release_product
+        type: string
+        stability: experimental # traces-in-grail
+        brief: The name of the deployed product.
+        examples: ['WoGo Main']
+
+      - id: deployment.release_stage
+        type: string
+        stability: experimental # traces-in-grail
+        brief: The stage the product is deployed to.
+        examples: ['production']
+
+      - id: deployment.release_version
+        type: string
+        stability: experimental # traces-in-grail
+        brief: The version of the deployed product.
+        examples: ['0.4.1']
+
+      - id: deployment.release_build_version
+        type: string
+        stability: experimental # traces-in-grail
+        brief: The build version of the deployed product.
+        examples: ['2021-03-24']

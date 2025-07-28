@@ -1,0 +1,126 @@
+groups:
+  - id: event
+    type: attribute_group
+    brief:
+    attributes:
+      - id: event.id
+        type: string
+        stability: stable
+        brief: >
+          Unique identifier string of an event; is stable across multiple refreshes and updates.
+        examples: [ '5547782627070661074_1647601320000' ]
+
+      - id: event.parent_id
+        type: string
+        stability: experimental
+        brief: >
+          Unique identifier string of a parent event to link parent and child events.
+        examples: [ '5547782627070661074_1647601319999' ]
+
+      - id: event.kind
+        type: string
+        stability: stable
+        brief: >
+          Gives high-level information about what kind of information the event contains without being specific about the contents of the event. It helps to determine the record type of a raw event.
+        examples: [ 'INFRASTRUCTURE_EVENT', 'DAVIS_EVENT', 'BIZ_EVENT', 'RUM_EVENT', 'AUDIT_EVENT', 'BILLING_USAGE_EVENT' ]
+        tags: ['permission']
+
+      - id: event.category
+        type: string
+        stability: stable
+        brief: >
+          Standard categorization based on the significance of an event (similar to the severity level in the previous Dynatrace).
+        examples: [ 'Availability' ]
+
+      - id: event.type
+        type: string
+        stability: stable
+        brief: >
+          The unique type identifier of a given event.
+        examples: [ 'ESXI_HOST_MEMORY_SATURATION', 'PROCESS_RESTART', 'CPU_SATURATION', 'MEMORY_SATURATION', 'Automation Workflow', 'AppEngine Functions - Small' ]
+        tags: ['permission']
+
+      - id: event.provider
+        type: string
+        stability: stable
+        brief: >
+          Source of the event, for example, the name of the component or system that generated the event.
+        examples: [ 'OneAgent', 'K8S', 'Davis', 'VMWare', 'GCP', 'AWS', 'LIMA_USAGE_STREAM' ]
+        tags: ['permission']
+
+      - id: event.name
+        type: string
+        stability: stable
+        brief: >
+          The human readable display name of an event type.
+        examples: [ 'Process crashed', 'CPU Saturation' ]
+
+      - id: event.description
+        type: string
+        stability: stable
+        brief: >
+          Human-readable description of an event.
+        examples: [ 'The current response time (11 s) exceeds the auto-detected baseline (767 ms) by 1,336 %' ]
+
+      - id: event.start
+        type: string
+        stability: stable
+        brief: >
+          The event start timestamp in UTC (given in Grail preferred Linux timestamp nano precision format).
+        examples: [ '16481073970000' ]
+
+      - id: event.end
+        type: string
+        stability: stable
+        brief: >
+          The event end timestamp in UTC (given in Grail preferred Linux timestamp nano precision format).
+        examples: [ '16481073970000' ]
+
+      - id: event.status
+        type: string
+        stability: stable
+        brief: >
+          Status of an event as being either Active or Closed.
+        examples: [ 'Active' ]
+
+      - id: event.status_transition
+        type: string
+        stability: experimental
+        brief: >
+          An enum that shows the transition of the above event state.
+        examples: [ 'Recovered' ]
+
+      - id: event.group_label
+        type: string
+        stability: experimental
+        brief: >
+          Group label of an event.
+        examples: [ 'Availability' ]
+
+      - id: event.outcome
+        type: string
+        stability: stable
+        brief: >
+          Denotes whether the event represents a success or a failure from the perspective of the entity that produced the event (for example an HTTP response code).
+        examples: [ '200', 'success', 'failure' ]
+
+      - id: event.reason
+        type: string
+        stability: stable
+        brief: >
+          Describes why a certain event.outcome was set. Typically, this is some form of error description in the case of a failure.
+        examples: [ 'user is missing permission "logs.read"' ]
+
+      - id: event.version
+        type: string
+        stability: stable
+        brief: >
+          Describes the version of the event.
+        examples: [ '1.0.0' ]
+
+      - id: event.original_content
+        type: string
+        stability: experimental
+        brief: >
+          The original raw data of the event as received from the source.
+        examples: [ '{"severity_id": 3,"state_id": 1,"time": "2024-06-26T07:15:06.139000Z","state": "New","type_uid": 200101}' ]

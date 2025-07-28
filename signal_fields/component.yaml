@@ -1,0 +1,18 @@
+groups:
+  - id: component
+    type: attribute_group
+    brief: >
+      A component object contains any type of software that is encountered by Dynatrace.
+    attributes:
+      - id: component.name
+        type: string
+        stability: experimental
+        brief: >
+          Short name of the component.
+        examples: ['sqlite3']
+      - id: component.version
+        type: string
+        stability: experimental
+        brief: >
+          Version of the component.
+        examples: ['3.16.2-5+deb9u3']

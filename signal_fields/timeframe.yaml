@@ -1,0 +1,15 @@
+groups:
+  - id: timeframe
+    type: attribute_group
+    brief: Attributes of a timeframe.
+    attributes:
+      - id: start
+        type: timestamp
+        stability: stable
+        brief: The start of the timeframe, inclusive.
+        examples: ["12/13/2023, 10:57 AM"]
+      - id: end
+        type: timestamp
+        stability: stable
+        brief: The end of the timeframe, exclusive.
+        examples: ["12/13/2023, 12:57 PM"]

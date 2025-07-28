@@ -1,0 +1,22 @@
+groups:
+  - id: span_event
+    type: span
+    brief:
+    attributes:
+      - id: span_event.name
+        type:
+          allow_custom_values: true
+          members:
+            - id: exception
+              value: 'exception'
+              brief: 'Indicates that the span event represents an exception'
+            - id: feature_flag
+              value: 'feature_flag'
+              brief: 'Indicates that the span event represents a feature flag'
+            - id: bizevent
+              value: 'bizevent'
+              brief: 'Indicates that the span event represents a business event'
+        stability: stable # traces-in-grail
+        brief: >
+          Some span events have a defined semantics based on the name of the span event.
+        examples: [ 'exception' ]

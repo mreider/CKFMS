@@ -1,0 +1,16 @@
+groups:
+  - id: sampling
+    type: span
+    brief:
+    attributes:
+      - id: sampling.threshold
+        type: long
+        stability: experimental # traces-in-grail
+        internal: true
+        brief: >
+          The sampling probability is encoded as `sampling.threshold` with respect to a 56-bit random integer `rv`.
+          A span is sampled if `rv >= sampling.threshold`; the sampling threshold acts as a rejection threshold and can be interpreted as the number of spans discarded out of 2^56.
+          The attribute is only available if the `sampling.threshold` is not `0`, and therefore sampling happened.
+          The relationship between sampling probability and threshold is `sampling probability = (2^56-sampling.threshold) * 2^(-56)`.
+          Hence, `sampling.threshold=0` means 100% sampling probability (collect all data), `sampling.threshold=2^55` corresponds to a sampling probability of 50%, `sampling.threshold=2^54` corresponds to a sampling probability of 75%.
+        examples: 36028797018963968

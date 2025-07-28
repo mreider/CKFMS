@@ -1,0 +1,211 @@
+groups:
+  - id: k8s
+    type: resource
+    brief:
+    attributes:
+      - id: k8s.cluster.name
+        type: string
+        stability: stable
+        brief: >
+          (Optional) The user-defined name of the cluster in Dynatrace.
+          Doesn't need to be unique or immutable.
+        examples: [ 'unguard-dev', 'acme-prod10' ]
+        tags: [ 'permission', 'primary-field' ]
+      - id: k8s.cluster.uid
+        type: string
+        stability: stable
+        brief: >
+          A pseudo-ID for the cluster, by default set to the UID of the kube-system namespace.
+        examples: [ '1c7a24c7-ff51-46e0-bcc9-c52637ceec57' ]
+      - id: k8s.node.name
+        type: string
+        stability: stable
+        brief: >
+          Name of the node.
+        examples: [ 'cluster-pool-1-c3c7423d-azth' ]
+      - id: k8s.container.name
+        type: string
+        stability: stable
+        brief: >
+          The name of the container from the pod specification; must be unique within a pod.
+          Container runtime usually uses different globally unique name (`container.name`).
+        examples: [ 'redis' ]
+      - id: k8s.namespace.name
+        type: string
+        stability: stable
+        brief: The name of the namespace that the pod is running in.
+        examples: [ 'default', 'kube-system' ]
+        tags: [ 'permission', 'primary-field' ]
+      - id: k8s.namespace.uid
+        type: string
+        stability: experimental
+        brief: The UID of the namespace.
+        examples: [ 'bfb1ba44-3bcb-467d-a2dc-188fd74d1db5' ]
+      - id: k8s.pod.name
+        type: string
+        stability: stable
+        brief: The name of the pod.
+        examples: [ 'checkoutservice-7895755b94-mzs5m' ]
+      - id: k8s.pod.uid
+        type: string
+        stability: stable
+        brief: The UID of the pod.
+        internal_brief: Will be deprecated in future.
+        examples: [ '275ecb36-5aa8-4c2a-9c47-d8bb681b9aff' ]
+      - id: k8s.workload.name
+        type: string
+        stability: stable
+        brief: The name of the workload.
+        examples: [ 'checkoutservice' ]
+      - id: k8s.workload.uid
+        type: string
+        stability: experimental
+        brief: The UID of the workload.
+        examples: [ '786a41e4-e673-44bb-bb30-18888f797a2b' ]
+      - id: k8s.workload.kind
+        type: string
+        stability: stable
+        brief: The type of the workload. The value is the Kubernetes object kind of the workload in lowercase.
+        examples: [ 'deployment', 'statefulset', 'cronjob', 'job', 'daemonset', 'replicaset']
+      - id: k8s.service.name
+        type: string
+        stability: stable
+        brief: The name of the Kubernetes service.
+        examples: [ 'my-service']
+      - id: k8s.configmap.name
+        type: string
+        stability: experimental
+        brief: Name of the ConfigMap.
+        examples: [ 'my-configmap' ]
+      - id: k8s.cronjob.name
+        type: string
+        stability: experimental
+        brief: Name of the CronJob.
+        examples: [ 'my-cronjob' ]
+      - id: k8s.customresourcedefinition.name
+        type: string
+        stability: experimental
+        brief: Name of the CustomResourceDefinition.
+        examples: [ 'dynakubes.dynatrace.com' ]
+      - id: k8s.daemonset.name
+        type: string
+        stability: experimental
+        brief: Name of the DaemonSet.
+        examples: [ 'my-daemonset' ]
+      - id: k8s.deployment.name
+        type: string
+        stability: experimental
+        brief: Name of the Deployment.
+        examples: [ 'my-deployment' ]
+      - id: k8s.deploymentconfig.name
+        type: string
+        stability: experimental
+        brief: Name of the DeploymentConfig.
+        examples: [ 'my-deploymentconfig' ]
+      - id: k8s.dynakube.name
+        type: string
+        stability: experimental
+        brief: Name of the DynaKube.
+        examples: [ 'my-dynakube' ]
+      - id: k8s.edgeconnect.name
+        type: string
+        stability: experimental
+        brief: Name of the EdgeConnect.
+        examples: [ 'my-edgeconnect' ]
+      - id: k8s.ingress.name
+        type: string
+        stability: experimental
+        brief: Name of the Ingress.
+        examples: [ 'my-ingress' ]
+      - id: k8s.job.name
+        type: string
+        stability: experimental
+        brief: Name of the Job.
+        examples: [ 'my-job' ]
+      - id: k8s.networkpolicy.name
+        type: string
+        stability: experimental
+        brief: Name of the NetworkPolicy.
+        examples: [ 'my-networkpolicy' ]
+      - id: k8s.persistentvolume.name
+        type: string
+        stability: experimental
+        brief: Name of the PersistentVolume.
+        examples: [ 'my-persistentvolume' ]
+      - id: k8s.persistentvolumeclaim.name
+        type: string
+        stability: experimental
+        brief: Name of the PersistentVolumeClaim.
+        examples: [ 'my-persistentvolumeclaim' ]
+      - id: k8s.replicaset.name
+        type: string
+        stability: experimental
+        brief: Name of the ReplicaSet.
+        examples: [ 'my-replicaset' ]
+      - id: k8s.replicationcontroller.name
+        type: string
+        stability: experimental
+        brief: Name of the ReplicationController.
+        examples: [ 'my-replicationcontroller' ]
+      - id: k8s.secret.name
+        type: string
+        stability: experimental
+        brief: Name of the Secret.
+        examples: [ 'my-secret' ]
+      - id: k8s.statefulset.name
+        type: string
+        stability: experimental
+        brief: Name of the StatefulSet.
+        examples: [ 'my-statefulset' ]
+
+  - id: k8s.custom_labels_and_annotations
+    type: resource
+    brief:
+    attributes:
+      - id: k8s.namespace.annotation.__attribute_name__
+        type: string
+        stability: experimental
+        brief: >
+          Kubernetes namespace annotation that should be enriched on ingest signals and service metrics.
+          The __attribute_name__ is a placeholder that can freely be chosen.
+        examples: ['k8s.namespace.annotation.team=a_team']
+
+      - id: k8s.namespace.label.__attribute_name__
+        type: string
+        stability: experimental
+        brief: >
+          Kubernetes namespace label that should be enriched on ingest signals and service metrics.
+          The __attribute_name__ is a placeholder that can freely be chosen.
+        examples: ['k8s.namespace.label.env=dev']
+
+      - id: k8s.workload.annotation.__attribute_name__
+        type: string
+        stability: experimental
+        brief: >
+          Kubernetes workload annotation that should be enriched on ingest signals and service metrics.
+          The __attribute_name__ is a placeholder that can freely be chosen.
+        examples: ['k8s.workload.annotation.team=a_team']
+
+      - id: k8s.workload.label.__attribute_name__
+        type: string
+        stability: experimental
+        brief: >
+          Kubernetes workload label that should be enriched on ingest signals and service metrics.
+          The __attribute_name__ is a placeholder that can freely be chosen.
+        examples: ['k8s.workload.label.env=dev']
+
+      - id: k8s.pod.annotation.__attribute_name__
+        type: string
+        stability: experimental
+        brief: >
+          Kubernetes pod annotation that should be enriched on ingest signals and service metrics.
+          The __attribute_name__ is a placeholder that can freely be chosen.
+        examples: ['k8s.pod.annotation.team=a_team']
+
+      - id: k8s.pod.label.__attribute_name__
+        type: string
+        stability: experimental
+        brief: >
+          Kubernetes pod label that should be enriched on ingest signals and service metrics.
+          The __attribute_name__ is a placeholder that can freely be chosen.
+        examples: ['k8s.pod.label.env=dev']

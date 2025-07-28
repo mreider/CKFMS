@@ -1,0 +1,13 @@
+groups:
+  - id: journald
+    type: attribute_group
+    brief: >
+      Attributes used for Systemd/Journald Logs
+    attributes:
+      - id: journald.unit
+        type: string
+        stability: experimental
+        brief: >
+          A unit is a systemd object that performs or controls a particular task or action; concerns unix-based systems
+        examples:
+          ['cron.service', 'oneagent.service', 'kubepods.slice']

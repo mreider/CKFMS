@@ -1,0 +1,140 @@
+groups:
+  - id: network_flow
+    type: attribute_group
+    brief: >
+        The flow namespace contains information on network flows.
+    attributes:
+      - id: network_flow.direction
+        stability: experimental
+        brief: >
+            IP source address is TCP client or server.
+        type:
+          allow_custom_values: true
+          members:
+            - id: src_is_client
+              value: 'SrcIsClient'
+              brief: 'IP source is TCP client'
+            - id: src_is_server
+              value: 'SrcIsServer'
+              brief: 'IP source is TCP server'
+            - id: unknown
+              value: 'UNKNOWN'
+              brief: 'TCP session initializer is unknown'
+
+      - id: network_flow.network.transport
+        type: string
+        stability: experimental
+        brief: >
+            Protocol
+        examples: [ "TCP", "other", "UDP" ]
+
+      - id: network_flow.network.type
+        stability: experimental
+        brief: >
+            IP protocol version.
+        type:
+          allow_custom_values: true
+          members:
+            - id: ipv4
+              value: 'IPV4'
+            - id: ipv6
+              value: 'IPV6'
+
+      - id: network_flow.source.address
+        type: string
+        stability: experimental
+        brief: >
+            Source IP address
+        examples: [ "192.33.1.2", "2001:0db8:85a3:0000:0000:8a2e:0370:7334" ]
+
+      - id: network_flow.destination.address
+        type: string
+        stability: experimental
+        brief: >
+            Destination IP address
+        examples: [ "192.33.1.2", "2001:0db8:85a3:0000:0000:8a2e:0370:7334" ]
+
+      - id: network_flow.destination.port
+        type: string
+        stability: experimental
+        brief: >
+            Flow destination port.
+        examples: [ "22", "8080" ]
+
+      - id: network_flow.packets.tx
+        type: long
+        stability: experimental
+        brief: >
+            Number of transmitted packets.
+
+      - id: network_flow.packets.rx
+        type: long
+        stability: experimental
+        brief: >
+            Number of received packets.
+
+      - id: network_flow.bytes.tx
+        type: long
+        stability: experimental
+        brief: >
+            Number of transmitted bytes (octets).
+
+      - id: network_flow.bytes.rx
+        type: long
+        stability: experimental
+        brief: >
+            Number of received bytes (octets).
+
+      - id: network_flow.packets.retransmitted.tx
+        type: long
+        stability: experimental
+        brief: >
+            Number of retransmitted packets from source to destination.
+
+      - id: network_flow.packets.retransmitted.rx
+        type: long
+        stability: experimental
+        brief: >
+          Number of retransmitted packets sent from the destination to the source.
+
+      - id: network_flow.packets.retransmitted.base.tx
+        type: long
+        stability: experimental
+        brief: >
+          Number of packets sent from the source to the destination used as the base for retransmission rate.
+
+      - id: network_flow.packets.retransmitted.base.rx
+        type: long
+        stability: experimental
+        brief: >
+            Number of packets sent from the destination to the source used as the base for retransmission rate.
+
+      - id: network_flow.tcp.sessions.new
+        type: long
+        stability: experimental
+        brief: >
+          Number of new TCP sessions in the flow.
+
+      - id: network_flow.tcp.sessions.reset
+        type: long
+        stability: experimental
+        brief: >
+            Number of reset (rejected) TCP sessions in the flow.
+
+      - id: network_flow.tcp.sessions.timeout
+        type: long
+        stability: experimental
+        brief: >
+            Number of timed out TCP sessions in flow.
+
+      - id: network_flow.tcp.rtt
+        type: long
+        stability: experimental
+        brief: >
+            Mean RTT value.
+
+      - id: network_flow.tcp.rtt.ack
+        type: long
+        stability: experimental
+        brief: >
+            Mean RTT ack value.

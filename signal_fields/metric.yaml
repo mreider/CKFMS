@@ -1,0 +1,33 @@
+groups:
+  - id: metric
+    type: attribute_group
+    brief:
+    attributes:
+      - id: metric.key
+        type: string
+        stability: stable
+        brief: >
+          The identifier of a metric, grouping numeric measurements that share
+          the same measurement semantics (i.e. were measured "the same way".)
+        examples: [ 'dt.host.cpu.usage' ]
+        tags: ['permission']
+
+      - id: metric.type
+        type:
+          allow_custom_values: false
+          members:
+            - id: summary_stats
+              value: summary_stats
+              brief: >
+                Identifies a metrics record supporting minimum, maximum,
+                average, sum, and count timeseries rollup functions.
+            - id: histogram
+              value: histogram
+              brief: >
+                Identifies a metrics record supporting minimum, maximum,
+                average, sum, count, and percentile timeseries rollup functions.
+        stability: stable
+        brief: >
+          Identifies the type of metric and therefore the timeseries rollup
+          functions it supports.
+        examples: [ summary_stats ]

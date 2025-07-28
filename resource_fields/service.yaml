@@ -1,0 +1,10 @@
+groups:
+  - id: service
+    type: resource
+    brief:
+    attributes:
+      - id: service.name
+        type: string
+        stability: stable # traces-in-grail
+        brief: The logical name of the service.
+        examples: [ 'shoppingcart' ]

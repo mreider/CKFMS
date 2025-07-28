@@ -1,0 +1,83 @@
+groups:
+  - id: dt.extension
+    type: resource
+    brief: >
+      Additional extension information sent via self-monitoring.
+    attributes:
+      - id: dt.extension.ds
+        type: string
+        stability: experimental
+        brief: Name of the data source.
+        examples: [ 'SNMPTrap' ]
+      - id: dt.extension.name
+        type: string
+        stability: experimental
+        brief: Name of the extension.
+        examples: [ 'com.snmptrap.generic' ]
+      - id: dt.extension.config.id
+        type: string
+        stability: experimental
+        brief: Extension's monitoring configuration identifier.
+        examples: [ 'vu9U3hXa3q0AAAABAAtleHQ6ZXh0LTA0MAAIYWdfZ3JvdXAAA0FHMQAkMjY2YTIyM2YtZDgxYi0zNTNjLThlYzctYzk2YzliZjg4OGQ3vu9U3hXa3q0' ]
+      - id: dt.extension.status
+        brief: The status of the component reporting a self-monitoring event.
+        type:
+          allow_custom_values: true
+          members:
+            - id: ok
+              value: 'OK'
+              brief: 'Extension works fine'
+            - id: generic_error
+              value: 'GENERIC_ERROR'
+              brief: 'Generic status used to communicate job failed'
+            - id: invalid_args
+              value: 'INVALID_ARGS_ERROR'
+              brief: 'Invalid arguments'
+            - id: eec_connection_error
+              value: 'EEC_CONNECTION_ERROR'
+              brief: 'Unable to connect to EEC'
+            - id: invalid_config
+              value: 'INVALID_CONFIG_ERROR'
+              brief: 'Config provided by EEC is invalid'
+            - id: authentication_error
+              value: 'AUTHENTICATION_ERROR'
+              brief: 'Unable to connect to EEC'
+            - id: device_connection_error
+              value: 'DEVICE_CONNECTION_ERROR'
+              brief: 'Failed to establish connection with the device'
+            - id: unknown_error
+              value: 'UNKNOWN_ERROR'
+              brief: 'Uninitialized/unknown error'
+        stability: experimental
+      - id: dt.extension.endpoint.hints
+        type: string[]
+        stability: experimental
+        brief: >
+          Hints to provide for the cluster in order to find proper endpoint in task registry.
+        examples: [ "nat-test.lab.dynatrace.org", "1521", "orc" ]
+  - id: dt.processgrouping
+    type: resource
+    brief: >
+      Attributes used for Process Group enrichment in extensions.
+    attributes:
+      - id: dt.process.pid
+        internal: true
+        type: long
+        stability: experimental
+        brief: >
+          Process identifier (PID).
+        note: >
+          Used to automatically enrich metric with Process Group Instance identifier.
+          This dimensions is always removed by Extensions Execution Controller (EEC) regardless of the enrichment result.
+        examples: [9276]
+      - id: dt.techrule.id
+        internal: true
+        type: string
+        stability: experimental
+        brief: >
+          Identifier of the technology detection rule.
+        note: >
+          Should match Process Identifier of the Detection Rule in the Declarative Process Grouping,
+          or the `processes.detection.id` attribute in the extension definition.
+          This dimensions is always removed by Extensions Execution Controller (EEC) regardless of the enrichment result.
+        examples: ['djangotech']

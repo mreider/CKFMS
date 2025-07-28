@@ -1,0 +1,32 @@
+groups:
+  - id: container_image
+    type: resource
+    brief:
+    attributes:
+      - id: container_image.digest
+        type: string
+        stability: experimental
+        brief: >
+          Container image digest uniquely and immutably identifying the vulnerable container image.
+        examples: [ 'sha256:054e1d39fb20a52f2c78caeb83574035462d3d2e627978d89a2834ce8cb69fe1' ]
+
+      - id: container_image.registry
+        type: string
+        stability: experimental
+        brief: >
+          Container image registry from which the finding originates.
+        examples: [ '1294385647.eu-central-1' ]
+
+      - id: container_image.repository
+        type: string
+        stability: experimental
+        brief: >
+          Container image repository from which the finding originates.
+        examples: [ 'unguard-frontend' ]
+
+      - id: container_image.tags
+        type: array
+        stability: experimental
+        brief: >
+          List of tags of the vulnerable container image.
+        examples: [ '[1.0.0]', '[1.0.0, 1.0.0-nightly, latest]' ]

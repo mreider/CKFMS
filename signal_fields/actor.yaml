@@ -1,0 +1,47 @@
+groups:
+  - id: actor
+    type: attribute_group
+    brief:
+    attributes:
+      - id: actor.ips
+        type: ipAddress[]
+        stability: stable
+        brief: >
+          List of the client's IP addresses (IPv4 or IPv6) from which the actor operates.
+        examples: ['168.10.15.23', '2a01:468:1000:9::140']
+      - id: actor.geo.continent.name
+        type: string
+        stability: experimental
+        brief: >
+          Name of the continent from which the actor operates.
+        examples: [ 'North America' ]
+      - id: actor.geo.country.name
+        type: string
+        stability: experimental
+        brief: >
+          Name of the country from which the actor operates.
+        examples: [ 'Canada' ]
+      - id: actor.geo.city.name
+        type: string
+        stability: experimental
+        brief: >
+          Name of the city from which the actor operates.
+        examples: [ 'Rome' ]
+      - id: actor.geo.location.lat
+        type: string
+        internal: true
+        stability: experimental
+        brief: The approximate WGS84 latitude.
+        examples: [ '45.505918' ]
+      - id: actor.geo.location.lon
+        type: string
+        internal: true
+        stability: experimental
+        brief: The approximate WGS84 longitude.
+        examples: [ '-73.614830' ]
+      - id: actor.fqdns
+        type: string[]
+        internal: true
+        stability: experimental
+        brief: List of Fully Qualified Domain Names from which the actor operates.
+        examples: [ 'example.com', 'badactor.org' ]

@@ -1,0 +1,22 @@
+groups:
+  - id: hybris
+    type: resource
+    brief:
+    attributes:
+      - id: hybris.bin.dir
+        type: string
+        stability: experimental # traces-in-grail
+        brief:
+        examples: [ '/opt/hybris-60/hybris/bin' ]
+
+      - id: hybris.config.dir
+        type: string
+        stability: experimental # traces-in-grail
+        brief:
+        examples: [ '/opt/hybris-60/hybris/config' ]
+
+      - id: hybris.data.dir
+        type: string
+        stability: experimental # traces-in-grail
+        brief:
+        examples: [ '/opt/hybris-60/hybris/data' ]

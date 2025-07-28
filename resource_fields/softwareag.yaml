@@ -1,0 +1,16 @@
+groups:
+  - id: softwareag
+    type: resource
+    brief:
+    attributes:
+      - id: softwareag.install.root
+        type: string
+        stability: experimental # traces-in-grail
+        brief:
+        examples: [ ' ' ]
+
+      - id: softwareag.product.prop.name
+        type: string
+        stability: experimental # traces-in-grail
+        brief:
+        examples: [ ' ' ]

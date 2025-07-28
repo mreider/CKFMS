@@ -1,0 +1,34 @@
+groups:
+  - id: cloudfoundry
+    type: resource
+    brief:
+    attributes:
+      - id: cloudfoundry.application.id
+        type: string
+        stability: experimental # traces-in-grail
+        brief:
+        examples: [ ' ' ]
+
+      - id: cloudfoundry.application.name
+        type: string
+        stability: experimental # traces-in-grail
+        brief:
+        examples: [ ' ' ]
+
+      - id: cloudfoundry.instance.index
+        type: string
+        stability: experimental
+        brief:
+        examples: [ ' ' ]
+
+      - id: cloudfoundry.space.id
+        type: string
+        stability: experimental # traces-in-grail
+        brief:
+        examples: [ ' ' ]
+
+      - id: cloudfoundry.space.name
+        type: string
+        stability: experimental # traces-in-grail
+        brief:
+        examples: [ ' ' ]

@@ -1,0 +1,69 @@
+groups:
+  - id: finding
+    type: attribute_group
+    brief:
+    attributes:
+      - id: finding.id
+        type: string
+        stability: stable
+        brief: >
+          Unique identifier string of a finding.
+        examples: [ 'F-2GJ3LSUM' ]
+      - id: finding.score
+        type: long
+        stability: stable
+        brief: >
+          Original score assigned by the vendor.
+        examples: [ 40, 50, 60, 75, 90 ]
+      - id: finding.title
+        type: string
+        stability: stable
+        brief: >
+          Title or summary of the finding.
+        examples: [ 'Title of finding' ]
+      - id: finding.url
+        type: string
+        stability: stable
+        brief: >
+          URL of the finding's details page.
+        examples: ["https://example.com"]
+      - id: finding.description
+        type: string
+        stability: stable
+        brief: >
+          Human-readable description of a finding.
+        examples: [ 'This findings description' ]
+      - id: finding.time.created
+        type: timestamp
+        stability: stable
+        brief: >
+          Time when the finding was created.
+        examples: [ '2024-06-24T04:47:21.154000000+02:00' ]
+      - id: finding.severity
+        stability: stable
+        type:
+          allow_custom_values: true
+          members:
+            - id: critical
+              value: 'CRITICAL'
+            - id: high
+              value: 'HIGH'
+            - id: medium
+              value: 'MEDIUM'
+            - id: low
+              value: 'LOW'
+        brief: >
+          Original severity of a finding reported by the vendor.
+        examples: [ 'CRITICAL', 'HIGH', 'MEDIUM', 'LOW' ]
+      - id: finding.type
+        stability: stable
+        type: string
+        brief: >
+          Original type of the finding reported by the vendor.
+        examples: [ 'SQL injection', 'Command injection', 'JNDI injection', 'SSRF', 'TTPs/Execution/Execution:Runtime-SuspiciousShellCreated' ]
+      - id: finding.action
+        stability: stable
+        type: string
+        brief: >
+          Original action taken reported by the vendor.
+        examples: [ 'Blocked', 'Allowlisted' ]

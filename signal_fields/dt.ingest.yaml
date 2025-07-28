@@ -1,0 +1,72 @@
+groups:
+  - id: dt.ingest
+    type: attribute_group
+    brief: >
+      Attributes related to data ingested in Dynatrace.
+    attributes:
+      - id: dt.ingest.format
+        type:
+          allow_custom_values: false
+          members:
+            - id: dt-api-json
+              value: "dtapi/json"
+              brief: >
+                JSON data ingested via the Dynatrace APIs or via EEC (Extension Execution Controller)
+            - id: dt-api-plaintext
+              value: "dtapi/plaintext"
+              brief: >
+                (deprecated: use "plaintext") Plain text data ingested via the Dynatrace API
+            - id: otlp-protobuf
+              value: "otlp/protobuf"
+              brief: >
+                OpenTelemetry Protocol (OTLP) Protobuf data ingested via the Dynatrace APIs or via EEC (Extension Execution Controller)
+            - id: otlp-json
+              value: "otlp/json"
+              brief: >
+                OpenTelemetry Protocol (OTLP) JSON data ingested via the Dynatrace APIs
+            - id: plaintext
+              value: "plaintext"
+              brief: >
+                Plain text data ingested via the Dynatrace APIs, EEC (Extension Execution Controller) or OneAgent
+            - id: windows-event-log
+              value: "windowseventlog"
+              brief: >
+                Windows event log data ingested via OneAgent
+            - id: journald
+              value: "journald"
+              brief: >
+                Journald data ingested via OneAgent
+            - id: syslog
+              value: "syslog"
+              brief: >
+                Syslog data ingested via OneAgent
+            - id: unknown
+              value: "unknown"
+              brief: >
+                The data format was not recognized (only for metrics dimension)
+        stability: experimental
+        brief: >
+          The format of the data ingested in Dynatrace via the various ingest channels.
+          E.g., Generic log ingest, OTLP logs ingest
+        examples: [ 'dtapi/json', 'otlp/protobuf' ]
+      - id: dt.ingest.warnings
+        type: string[]
+        stability: experimental
+        brief: >
+          An array of strings representing markers of unexpected situations that might affect the correctness or completeness
+          of incoming data points. It might be, for instance, limits applied or a processing rule failing.
+          It should not be a detailed log of what happened, just the high-level class of the issue that occurred.
+        examples: [ 'attr_count_trimmed', 'content_trimmed' ]
+      - id: dt.ingest.size
+        type: long
+        stability: stable
+        brief: >
+          The size of the ingested data point in bytes.
+        examples: [ 2005 ]
+      - id: dt.ingest.debug_messages
+        type: string[]
+        stability: experimental
+        brief: >
+          An array of strings that represent debug messages that provide a detailed debugging information.
+          That could include even variable parts, like which attribute was modified, or which processing rules were applied.
+        examples: [ "MyATTribute mapped to myAttribute" ]

@@ -1,0 +1,103 @@
+groups:
+  - id: compliance
+    type: attribute_group
+    brief: The compliance namespace contains information related to compliance - the description of compliance standards, compliance rules in those standards, or the results of compliance scans.
+    attributes:
+      - id: compliance.standard.short_name
+        type: string
+        stability: experimental
+        brief: Short name of a compliance standard.
+        examples: [ 'DISA STIG', 'NIST' ]
+      - id: compliance.standard.url
+        type: string
+        stability: experimental
+        brief: Link to the official documentation source about the compliance standard.
+        examples: [ 'DISA STIG', 'NIST' ]
+      - id: compliance.rule.id
+        type: string
+        stability: experimental
+        brief: >
+          Unique identifier of a compliance rule.
+        examples: [ 'CIS-66577' ]
+      - id: compliance.rule.title
+        type: string
+        stability: experimental
+        brief: >
+          Short description of a compliance rule.
+        examples: [ 'The Kubernetes Controller Manager must use TLS 1.2, at a minimum, to protect the confidentiality of sensitive data during electronic dissemination' ]
+      - id: compliance.rule.severity.level
+        stability: experimental
+        type:
+          allow_custom_values: true
+          members:
+            - id: critical
+              value: 'CRITICAL'
+            - id: high
+              value: 'HIGH'
+            - id: medium
+              value: 'MEDIUM'
+            - id: low
+              value: 'LOW'
+        brief: >
+          Original severity of a compliance rule reported by the vendor.
+        examples: [ 'CRITICAL', 'HIGH', 'MEDIUM', 'LOW' ]
+      - id: compliance.rule.severity.score
+        internal: true
+        stability: experimental
+        type: double
+        brief: >
+          Number assigned to the respective severity. For example, 10 corresponds to 'CRITICAL', 7 to 'HIGH', 4 to 'MEDIUM', and 1 to 'LOW'.
+        examples: [ 10.0, 7.0, 4.0, 1.0 ]
+      - id: compliance.rule.metadata_json
+        type: string
+        internal: true
+        stability: experimental
+        brief: >
+          Any additional metadata associated with the compliance rule.
+        examples: [ '{\"Section\":\"Kubernetes - v1.9.0\",\"Recommendation ID\":\"1.2.16\",\"Recommendation section\":\"1.2 - Control Plane Components - API Server\", \"Level\":\"L1\"}' ]
+      - id: compliance.result.status.level
+        stability: experimental
+        type:
+          allow_custom_values: true
+          members:
+            - id: failed
+              value: 'FAILED'
+            - id: passed
+              value: 'PASSED'
+            - id: manual
+              value: 'MANUAL'
+            - id: not_relevant
+              value: 'NOT_RELEVANT'
+        brief: >
+          Result status of the given resource object as evaluated by a scan.
+        examples: [ 'FAILED', 'PASSED', 'MANUAL', 'NOT_RELEVANT' ]
+      - id: compliance.result.status.score
+        stability: experimental
+        type: double
+        brief: >
+          Number assigned to the respective result status. For example, 10 corresponds to 'FAILED', 7 to 'MANUAL', 4 to 'PASSED', and 1 to 'NOT_RELEVANT'.
+        examples: [ 10.0, 7.0, 4.0, 1.0 ]
+      - id: compliance.result.description
+        type: string
+        stability: experimental
+        brief: >
+          Details about the compliance result status.
+        examples: [ 'Object not matching standard inclusion criteria' ]
+      - id: compliance.result.object.name
+        type: string
+        stability: deprecated
+        brief: >
+          Name of the object evaluated for compliance.
+        examples: [ 'kube-controller-manager-k8s-mst01-t12', 'daemonset-25qlv' ]
+      - id: compliance.result.object.type
+        type: string
+        stability: experimental
+        brief: >
+          Type of the object evaluated for compliance.
+        examples: [ 'k8scluster', 'k8spod', 'k8sservice' ]
+      - id: compliance.result.object.evidence_json
+        type: string
+        stability: experimental
+        brief: >
+          Reasoning or evidence for the compliance status of this object.
+        examples: [ '[{\"type\":\"AUTOMATIC\",\"description\":\"Controller Manager version\",\"value\":\"1.28.0\"},{\"type\":\"AUTOMATIC\",\"description\":\"Property tls-min-version status\",\"value\":\"Not set\"}]' ]

@@ -1,0 +1,37 @@
+groups:
+  - id: detection
+    type: attribute_group
+    brief: >
+      Resource describing what was detected in the environment.
+    attributes:
+      - id: detection.type
+        stability: deprecated
+        brief: >
+          Type of detection.
+        internal_brief: >
+          Deprecated: Was replaced by `finding.type`.
+        type:
+          allow_custom_values: true
+          members:
+            - id: sql_injection
+              value: 'SQL_INJECTION'
+            - id: command_injection
+              value: 'COMMAND_INJECTION'
+            - id: jndi_injection
+              value: 'JNDI_INJECTION'
+            - id: ssrf
+              value: 'SSRF'
+      - id: detection.action
+        stability: deprecated
+        type:
+          allow_custom_values: true
+          members:
+            - id: blocked
+              value: 'BLOCKED'
+            - id: allowlisted
+              value: 'ALLOWLISTED'
+        brief: >
+          Action taken in response to detection.
+        internal_brief: >
+          Deprecated: Was replaced by `finding.action`.
+        examples: [ 'BLOCKED', 'ALLOWLISTED' ]

@@ -1,0 +1,10 @@
+groups:
+  - id: aspnetcore
+    type: resource
+    brief:
+    attributes:
+      - id: aspnetcore.appl.path
+        type: string
+        stability: experimental # traces-in-grail
+        brief:
+        examples: [ ' ' ]

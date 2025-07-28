@@ -1,0 +1,131 @@
+groups:
+  - id: azure_resource
+    type: resource
+    brief:
+    attributes:
+      - id: azure.tenant.id
+        type: string
+        stability: experimental
+        brief: >
+          Unique, immutable identifier assigned to the Azure tenant.
+        examples: [ '37c4add3-612a-483d-8b24-cccbb35d3306' ]
+      - id: azure.tenant.name
+        type: string
+        stability: experimental
+        brief: >
+          Name assigned to the Azure tenant.
+        examples: [ 'MyAzureTenant' ]
+      - id: azure.subscription
+        type: string
+        stability: stable
+        brief: >
+          An Azure subscription is a logical container used to provision resources in Azure.
+        examples: [ '27e9b03f-04d2-2b69-b327-32f433f7ed21' ]
+        tags: [ 'permission', 'primary-field' ]
+      - id: azure.resource.group
+        type: string
+        stability: stable
+        brief: >
+          A resource group is a container that holds related resources for an Azure solution.
+        examples: [ 'demo-backend-rg' ]
+        tags: [ 'permission', 'primary-field' ]
+      - id: azure.resource.type
+        type: string
+        stability: experimental
+        brief: >
+          The name of a resource type in the format: {resource-provider}/{resource-type}.
+        examples: [ 'Microsoft.ContainerService/managedClusters' ]
+      - id: azure.resource.id
+        type: string
+        stability: experimental
+        brief: >
+          A unique, immutable identifier assigned to each Azure cloud resource.
+        examples: [ '/subscriptions/27e9b03f-04d2-2b69-b327-32f433f7ed21/resourceGroups/demo-backend-rg/providers/Microsoft.ContainerService/managedClusters/demo-aks' ]
+      - id: azure.resource.name
+        type: string
+        stability: experimental
+        brief: >
+          User-provided name of the Azure cloud resource.
+        examples: [ 'demo-aks' ]
+      - id: azure.location
+        type: string
+        stability: stable
+        brief: >
+          A specific geographical location of Azure Cloud resource.
+        examples: [ 'westeurope' ]
+        tags: [ 'primary-field' ]
+      - id: azure.availability_zones
+        type: string[]
+        stability: experimental
+        brief: >
+          Availability zones of Azure Cloud resource.
+        examples: [ "1" ]
+      - id: azure.management_group
+        type: string
+        stability: experimental
+        brief: >
+          A group of Azure subscriptions used for governance use cases.
+        examples: [ 'Tenant Root Group', 'My Custom Group' ]
+      - id: azure.event_hub_namespace.name
+        type: string
+        stability: experimental
+        brief: >
+          Azure Event Hub Namespace name.
+        examples: [ 'my-event-hub' ]
+      - id: azure.service_bus_namespace.name
+        type: string
+        stability: experimental
+        brief: >
+          Azure Service Bus name.
+        examples: [ 'my-service-bus' ]
+      - id: azure.sql_server.name
+        type: string
+        stability: experimental
+        brief: >
+          Azure SQL Server name.
+        examples: [ 'contoso-sql-server' ]
+      - id: azure.sql_elastic_pool.name
+        type: string
+        stability: experimental
+        brief: >
+          Azure SQL Server Elastic Pool name.
+        examples: [ 'contoso-elastic-pool' ]
+      - id: azure.vm.name
+        type: string
+        stability: experimental
+        brief: >
+          Azure Virtual Machine name.
+        examples: [ 'my-virtual-machine' ]
+      - id: azure.vm_scale_set.name
+        type: string
+        stability: experimental
+        brief: >
+          Azure Virtual Machine Scale Set name.
+        examples: [ 'my-vmss' ]
+      - id: azure.vmid
+        type: string
+        stability: experimental
+        brief: >
+          Azure Virtual Machine unique 128bits identifier
+        examples: [ '090556DA-D4FA-764F-A9F1-63614EDA019A' ]
+
+      - id: azure.site_name
+        type: string
+        stability: experimental # traces-in-grail
+        brief: >
+          Globally unique deployment information about an Azure function.
+        examples: [ 'dt-function-scripted' ]
+
+      - id: azure.class_name
+        type: string
+        stability: experimental # traces-in-grail
+        brief: >
+          The fully qualified name of the class executing an Azure function.
+        examples: [ 'Host.Functions' ]
+
+      - id: azure.tags.__tag_key__
+        type: string
+        stability: experimental
+        brief: >
+          Contains the value for the tag with the tag key named `__tag_key__` defined in the tag enrichment configuration.
+        examples: [ 'dt_owner_mail' ]

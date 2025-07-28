@@ -1,0 +1,38 @@
+groups:
+  - id: entry_point
+    type: attribute_group
+    brief: >
+      Resource describing an entry point of e.g, an attack.
+    attributes:
+      - id: entry_point.url.path
+        type: string
+        stability: experimental
+        brief: >
+          URI path of the entry point. See also 'url.path'.
+        examples: ['/user/2/bio']
+      - id: entry_point.payload
+        type: string
+        stability: experimental
+        brief: >
+          The payload seen at the vulnerable function, accessed via this entry point.
+        examples: ["UPDATE bio SET bio_text = '' WHERE 1 = 0; TRUNCATE TABLE bio; --' WHERE user_id = 2"]
+      - id: entry_point.function.name
+        type: string
+        stability: experimental
+        brief: >
+          Name of the entry point function.
+        examples: [ "org.example.com.Input.getParameterValues(String)" ]
+      - id: entry_point.user_controlled_inputs
+        type: record[]
+        internal: true
+        stability: experimental
+        brief: >
+          A set of user-controlled inputs, along with details on how they influence the payload at the vulnerable function.
+      - id: entry_point.user_controlled_inputs_json
+        type: string
+        stability: experimental
+        brief: >
+          JSON representation of a set of user-controlled inputs, along with details on how they influence the payload at the vulnerable function.
+        internal_brief: >
+          This field is planned to be deprecated and being replaced by 'entry_point.user_controlled_inputs' when we are able to properly ingest record[].
+        examples: [ "[ { \"user_controlled_input.type\": \"HTTP_PARAMETER_VALUE\", \"user_controlled_input.key\": \"username\", \"user_controlled_input.value\": \"' OR 100=100 -- 0'\", \"user_controlled_input.payload.start\": \"56\", \"user_controlled_input.payload.end\": \"73\", \"user_controlled_input.is_malicious\": true}]"]

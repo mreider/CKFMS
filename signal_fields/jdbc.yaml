@@ -1,0 +1,10 @@
+groups:
+  - id: jdbc
+    type: attribute_group
+    brief:
+    attributes:
+      - id: jdbc.connection.pool.name
+        type: string
+        stability: stable
+        brief: The name of the JDBC connection pool.
+        examples: jdbc/db2

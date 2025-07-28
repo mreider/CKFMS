@@ -1,0 +1,10 @@
+groups:
+  - id: equinox
+    type: resource
+    brief:
+    attributes:
+      - id: equinox.config.path
+        type: string
+        stability: experimental # traces-in-grail
+        brief:
+        examples: [ ' ' ]

@@ -1,0 +1,87 @@
+groups:
+  - id: ctg
+    type: span
+    brief: 'This document defines semantic conventions for CTG client and server.'
+    attributes:
+      - id: ctg.request.gateway_url
+        stability: experimental
+        type: string
+        brief: 'URL of the gateway. Only set on client-side spans.'
+        examples: [ 'tcp://1.2.3.4:5678/' ]
+      - id: ctg.request.type
+        stability: experimental
+        type:
+          allow_custom_values: false
+          members:
+            - id: base
+              value: 'BASE'
+              brief: 'Base. A base GatewayRequest without a further subtype.'
+              note: <https://www.ibm.com/docs/en/cics-tg-multi/8.1?topic=classes-gatewayrequest>
+            - id: eci
+              value: 'ECI'
+              brief: 'External Call Interface. Enables a client application to call a CICS program synchronously or asynchronously.'
+              note: <https://www.ibm.com/docs/en/cics-tg-zos/9.1.0?topic=applications-external-call-interface-eci>
+            - id: epi
+              value: 'EPI'
+              brief: 'External Presentation Interface. Enables a user application to install a virtual IBM 3270 terminal into a CICS server.'
+              note: <https://www.ibm.com/docs/en/cics-tg-multi/8.1?topic=guide-external-presentation-interface-epi>
+            - id: esi
+              value: 'ESI'
+              brief: 'External Security Interface. Enables user applications to perform security-related tasks.'
+              note: <https://www.ibm.com/docs/en/cics-tg-zos/9.3.0?topic=applications-external-security-interface-esi>
+            - id: xa
+              value: 'XA'
+              brief: 'CICS Request Exit. It can be used for request retry, dynamic server selection, and rejecting non-valid requests.'
+              note: <https://www.ibm.com/docs/en/cics-tg-zos/9.3.0?topic=applications-creating-cics-request-exit>
+            - id: admin
+              value: 'ADMIN'
+              brief: 'Admin request.'
+            - id: auth
+              value: 'AUTH'
+              brief: 'Authentication request.'
+        brief: 'Type of the CTG GatewayRequest.'
+        examples: [ 'BASE' ]
+      - id: ctg.request.call_type
+        stability: experimental
+        type: long
+        brief: 'Integer representing the call type of the CTG GatewayRequest. The set of possible values varies per request type.'
+        note: <https://www.ibm.com/docs/api/v1/content/SSZHFX_9.3.0/basejavadoc/constant-values.html>
+        examples: [ 2 ]
+      - id: ctg.request.flow_type
+        stability: experimental
+        type: long
+        brief: 'Integer representing the flow type of the CTG GatewayRequest.'
+        examples: [ 5 ]
+        note: The values are defined in the IBM CTG API source code.
+      - id: ctg.request.server_id
+        stability: experimental
+        type: string
+        brief: 'ID of the server. Not set for all request types.'
+        examples: [ 'IPICTEST' ]
+      - id: ctg.request.commarea_length
+        stability: experimental
+        type: long
+        brief: 'Length of the COMMAREA. Only set when the request type is ECI.'
+        examples: [ 0 ]
+      - id: ctg.request.term_id
+        stability: experimental
+        type: string
+        brief: 'Name of the terminal resource. Only set when the request type is EPI.'
+        examples: [ 'CN02' ]
+      - id: ctg.request.object_name
+        stability: experimental
+        type: string
+        brief: 'Name of the request object. Only set when the request type is ADMIN.'
+        examples: [ '' ]
+      - id: ctg.request.extend_mode
+        stability: experimental
+        type: long
+        brief: 'Integer representing the extended mode of the CTG GatewayRequest. Only set when the request type is ECI.'
+        examples: [ 11 ]
+        note: <https://www.ibm.com/docs/api/v1/content/SSZHFX_9.3.0/basejavadoc/constant-values.html>
+      - id: ctg.response.code
+        stability: experimental
+        type: long
+        brief: 'CTG response code. The set of possible values varies per request type.'
+        examples: [ -23 ]
+        note: <https://www.ibm.com/docs/api/v1/content/SSZHFX_9.3.0/basejavadoc/constant-values.html>

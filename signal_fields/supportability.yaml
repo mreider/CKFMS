@@ -1,0 +1,141 @@
+groups:
+  - id: supportability
+    type: span
+    brief: >
+      Additional information about the attributes of a data point.
+    attributes:
+      - id: supportability.non_persisted_attribute_keys
+        type: string[]
+        stability: experimental # traces-in-grail
+        brief: >
+          A string array of attribute keys that were not stored as they were not allow-listed or were removed during the pipeline steps.
+        examples: [ '"my_span_attribute", "db.name"' ]
+
+      - id: supportability.dropped_attributes_count
+        type: long
+        stability: experimental # traces-in-grail
+        brief: >
+          The number of attributes that were discarded on the source.
+          Attributes can be discarded because their keys are too long or because there are too many attributes.
+        examples: [ 1 ]
+
+      - id: supportability.dropped_events_count
+        type: long
+        stability: experimental # traces-in-grail
+        brief: >
+          The number of span events that were discarded on the source.
+        examples: [ 1 ]
+
+      - id: supportability.dropped_links_count
+        type: long
+        stability: experimental # traces-in-grail
+        brief: >
+          The number of span links that were discarded on the source.
+        examples: [ 1 ]
+
+      - id: supportability.dropped_http_request_headers_count
+        type: long
+        stability: experimental # detection-finding
+        brief: >
+          Number of `http.request.header.__key__` that were discarded.
+        examples: [ 1 ]
+
+      - id: supportability.dropped_http_request_parameters_count
+        type: long
+        stability: experimental # detection-finding
+        brief: >
+          Number of `http.request.parameter.__key__` that were discarded.
+        examples: [ 1 ]
+
+      - id: supportability.endpoint_name_rule
+        type: string
+        deprecated: Replaced by `dt.endpoint_detection.rule_id`
+        internal: true
+        brief: >
+          Name of the pipeline rule that generated the unified service `endpoint.name`.
+        examples: [ 'http.route', 'rpc.method' ]
+
+      - id: supportability.flaws
+        type: string[]
+        stability: experimental # traces-in-grail
+        brief: >
+          A string array of one or multiple error codes indicating issues in the assembly of a trace in Dynatrace.
+          Typically, issues come from erroneous (3rd party) instrumentations (e.g. not sending a required field), data loss due to network connectivity (e.g. missing parent span) or conditions implied by the nature of the trace (e.g. trace exceeding the depth limit).
+          The attribute is only present in case an assembly issue was detected (the list will not be empty).
+          For more information and details about specific error codes, please reach out to Dynatrace support.
+        examples: [ 'C4', 'S3', 'A2' ]
+
+      - id: supportability.custom_service.rule_id
+        type: uid
+        stability: experimental # traces-in-grail
+        brief: >
+          The ID of a custom service configuration rule.
+          This field is only present if a custom service was configured as an automatic instrumentation rule in Dynatrace.
+        examples: [ '4d76194c11a9426197a9062548f9e66e' ]
+
+      - id: supportability.atm_sampling_ratio
+        type: long
+        stability: experimental # traces-in-grail
+        brief: >
+          The denominator of the sampling ratio of an Adaptive Traffic Management (ATM) aware sampler.
+          The attribute is always present if an ATM-aware sampler is active (this applies, for example, to Dynatrace OneAgent).
+          A numerator is not specified, as it is always 1.
+          If, for example,  Dynatrace OneAgent samples with a probability of 1/16 (6,25%), the value of `supportability.atm_sampling_ratio` would be 16 and the numerator is 1.
+        examples: 16
+
+      - id: supportability.alr_sampling_ratio
+        type: long
+        stability: experimental # traces-in-grail
+        brief: >
+          The denominator of the sampling ratio of the Dynatrace cluster, the attribute is only set if Adaptive Load Redution (ALR) is active on the Dynatrace cluster.
+          A numerator is not specified, as it's always 1.
+          If, for example, the Dynatrace cluster samples with a probability of 1/8 (12,5%), the value of `supportability.alr_sampling_ratio` would be 8 and the numerator is 1.
+        examples: 8
+
+      - id: supportability.original_start_time
+        type: timestamp
+        stability: experimental # traces-in-grail
+        brief: >
+          The original start time of the span. Only available if the value of the `start_time` attribute was truncated. Truncating the start time is technically required for long running spans that have a start time older than three days in the past.
+        examples: [ 1649822520123123123 ]
+
+      - id: supportability.serverid.processing
+        type: long
+        stability: experimental # traces-in-grail
+        brief: >
+          The id of the Dynatrace cluster node that received and processed this span.
+        examples: 5
+
+      - id: supportability.serverid.addressee
+        type: long
+        stability: experimental # traces-in-grail
+        brief: >
+          The id of the Dynatrace cluster node this span was addressed to. This is only available if it differs from the value of `supportability.serverid.processing`.
+        examples: 5
+
+  - id: supportability.span_sensor
+    type: span
+    brief: >
+      Information captured by OpenTelemetry/OpenTracing instrumentation at span start to give hints which attributes/values are available for span rules.
+    attributes:
+      - id: supportability.span_start.span.name
+        type: string
+        stability: experimental # traces-in-grail
+        brief: >
+          The span name at span start time in case it changed later. The value at span start is relevant for span rule evaluation done by OpenTelemetry/OpenTracing instrumentation.
+        examples: "GET"
+
+      - id: supportability.span_start.__key__
+        type: record # ToDo: should be any/object/... as type depends - but tooling doesn't support this as of now
+        stability: experimental # traces-in-grail
+        brief: >
+          Span attributes set at span start time in case it changed later. The value at span start is relevant for span rule evaluation done by OpenTelemetry/OpenTracing instrumentation.
+          `__key__` is a placeholder for the actual attribute name.
+          The data type of the value depends on the attribute.
+        examples: 5, "initial", ["a", "b"]
+
+      - id: supportability.span_start.attribute_names
+        type: array
+        stability: experimental # traces-in-grail
+        brief: >
+          List of attribute names set at span start invocation time.

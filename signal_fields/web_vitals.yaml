@@ -1,0 +1,53 @@
+groups:
+  - id: web_vitals
+    type: attribute_group
+    brief: >
+      The web vitals namespace contains the [web vitals](https://web.dev/articles/vitals) attributes captured by Dynatrace RUM.
+    attributes:
+      - id: web_vitals.largest_contentful_paint
+        type: duration
+        stability: experimental
+        brief: The `Largest Contentful Paint` (LCP) value.
+        examples: [ 880000000 ]
+
+      - id: web_vitals.first_contentful_paint
+        type: duration
+        stability: experimental
+        brief: The `First Contentful Paint` (FCP) value.
+        examples: [ 92000000 ]
+
+      - id: web_vitals.first_input_delay
+        type: duration
+        stability: experimental
+        brief: The `First Input Delay` (FID) value.
+        examples: [ 6000000 ]
+
+      - id: web_vitals.cumulative_layout_shift
+        type: double
+        stability: experimental
+        brief: The `Cumulative Layout Shift` (CLS) value.
+        examples: [ 0.1279 ]
+
+      - id: web_vitals.interaction_to_next_paint
+        type: duration
+        stability: experimental
+        brief: The `Interaction to Next Paint` (INP) value.
+        examples: [ 190000000 ]
+
+      - id: web_vitals.first_input
+        type: duration
+        stability: experimental
+        brief: The `First Input` value.
+        examples: [ 6000000 ]
+
+      - id: web_vitals.first_paint
+        type: duration
+        stability: experimental
+        brief: The `First Paint` value.
+        examples: [ 92451200 ]
+
+      - id: web_vitals.time_to_first_byte
+        type: duration
+        stability: experimental
+        brief: The `Time to First Byte` value.
+        examples: [ 92000000 ]

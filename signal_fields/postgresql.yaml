@@ -1,0 +1,11 @@
+groups:
+  - id: postgresql
+    type: attribute_group
+    brief:
+    attributes:
+      - id: postgresql.session.id
+        type: string
+        stability: experimental
+        brief: >
+          A unique ID to identify a PostgreSQL database session.
+        examples: [ '00112233-4455-6677-8899-aabbccddeeff' ]

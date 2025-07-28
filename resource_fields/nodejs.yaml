@@ -1,0 +1,22 @@
+groups:
+  - id: nodejs
+    type: resource
+    brief:
+    attributes:
+      - id: nodejs.app.base.dir
+        type: string
+        stability: experimental # traces-in-grail
+        brief:
+        examples: [ ' ' ]
+
+      - id: nodejs.app.name
+        type: string
+        stability: experimental # traces-in-grail
+        brief:
+        examples: [ ' ' ]
+
+      - id: nodejs.script.name
+        type: string
+        stability: experimental # traces-in-grail
+        brief:
+        examples: [ ' ' ]

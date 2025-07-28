@@ -1,0 +1,259 @@
+groups:
+  - id: aws_resource
+    type: resource
+    brief:
+    attributes:
+      - id: aws.ecr.account.id
+        type: string
+        stability: experimental
+        brief:
+        examples: [" "]
+      - id: aws.ecr.region
+        type: string
+        stability: experimental
+        brief:
+        examples: [" "]
+      - id: aws.ecs.cluster
+        type: string
+        stability: experimental
+        brief:
+        examples: [" "]
+      - id: aws.ecs.container.name
+        type: string
+        stability: experimental
+        brief:
+        examples: [" "]
+      - id: aws.ecs.family
+        type: string
+        stability: experimental
+        brief:
+        examples: [" "]
+      - id: aws.ecs.revision
+        type: string
+        stability: experimental
+        brief:
+        examples: [" "]
+      - id: aws.ecs.task.arn
+        type: string
+        stability: experimental
+        brief: >
+          The full Amazon Resource Name (ARN) of the task to which the container belongs.
+        examples:
+          [
+            "arn:aws:ecs:us-west-2:111122223333:task/default/cd189a933e5849daa93386466019ab50",
+          ]
+      - id: aws.ecs.docker.name
+        type: string
+        stability: experimental
+        brief: >
+          The name of the container supplied to Docker.
+        examples: ["curl-image"]
+      - id: aws.ecs.container.arn
+        type: string
+        stability: experimental
+        brief: >
+          The full Amazon Resource Name (ARN) of the container.
+        examples:
+          [
+            "arn:aws:ecs:us-west-2:111122223333:container/05966557-f16c-49cb-9352-24b3a0dcd0e1",
+          ]
+      - id: aws.ecs.docker.id
+        type: string
+        stability: experimental
+        brief: >
+          The Docker ID for the container.
+        examples: ["cd189a933e5849daa93386466019ab50-2495160603"]
+      - id: aws.lambda.function.name
+        type: string
+        stability: experimental
+        brief:
+        examples: [" "]
+      - id: aws.lambda.initialization_type
+        type:
+          allow_custom_values: true
+          members:
+            - id: "on_demand"
+              value: "on-demand"
+              brief: "On demand"
+            - id: "provisioned_concurrency"
+              value: "provisioned-concurrency"
+              brief: "Provisioned concurrency"
+            - id: "snap_start"
+              value: "snap-start"
+              brief: "SnapStart"
+        stability: experimental
+        brief: >
+          The AWS Lambda initialization type.
+          Same string value as available in [AWS_LAMBDA_INITIALIZATION_TYPE](https://docs.aws.amazon.com/lambda/latest/dg/configuration-envvars.html#configuration-envvars-runtime).
+        examples: ["snap_start"]
+      - id: aws.region
+        type: string
+        stability: stable
+        brief: >
+          A specific geographical AWS Cloud location.
+        examples: ["us-east-1"]
+        tags: [ "primary-field" ]
+      - id: aws.account.id
+        type: string
+        stability: stable
+        brief: >
+          The 12-digit number, such as 123456789012, that uniquely identifies an AWS account.
+        examples: ["123456789012"]
+        tags: [ "permission", "primary-field" ]
+      - id: aws.account.name
+        type: string
+        stability: experimental
+        brief: >
+          Name associated with the AWS account.
+        examples: ["example.com"]
+      - id: aws.availability_zone
+        type: string
+        stability: experimental
+        brief: >
+          A specific availability zone or array of zones in given AWS region.
+        examples: ["us‑east‑1a", "us‑east‑1b"]
+      - id: aws.availability_zone.id
+        type: string
+        stability: experimental
+        brief: >
+          ID for the availability zone.
+        examples: ["use1-az1", "use1-az2", "use1-az3"]
+      - id: aws.log_group
+        type: string
+        stability: experimental
+        brief: >
+          Amazon CloudWatch group of log streams that share the same retention, monitoring, and access control settings.
+        examples: ["/aws/lambda/a-SomeFumction-1AWHD6W1QC5DH"]
+      - id: aws.log_stream
+        type: string
+        stability: experimental
+        brief: >
+          A sequence of log events that share the same source.
+        examples: ["2021/01/04/[$LATEST]b2e34f11da04232cb9f9d3d5799a5c12"]
+      - id: aws.service
+        type: string
+        stability: experimental
+        brief: >
+          The service that identifies the AWS product.
+        examples: ["s3"]
+      - id: aws.resource.type
+        type: string
+        stability: experimental
+        brief: >
+          The name of a resource type.
+        examples: ["group", "cluster", "instance"]
+      - id: aws.resource.id
+        type: string
+        stability: experimental
+        brief: >
+          Unique, immutable, identifier assigned to the Azure cloud resource.
+        examples: ["i-0922cda4579db3a45"]
+      - id: aws.resource.name
+        type: string
+        stability: experimental
+        brief: >
+          Name of the resource (value of the "Name" tag in AWS).
+        examples: ["my-ec2-instance"]
+      - id: aws.arn
+        type: string
+        stability: experimental
+        brief: >
+          Amazon Resource Name (ARN).
+        examples:
+          [
+            "arn:aws:lambda:us-east-1:478983378254:function:acceptanceWeatherBackend",
+          ]
+      - id: aws.alb.name
+        type: string
+        stability: experimental
+        brief: >
+          Application load balancer name that instance is behind.
+        examples: ["my-alb"]
+      - id: aws.execution_environment
+        type: string
+        stability: experimental
+        brief: >
+          The runtime identifier, prefixed by AWS_Lambda_. Lambda supports multiple languages through the use of runtimes.
+          A runtime provides a language-specific environment that relays invocation events, context information,
+          and responses between Lambda and the function.
+        examples: ["AWS_Lambda_java8"]
+
+      - id: aws.tags.__tag_key__
+        type: string
+        stability: experimental
+        brief: >
+          Contains the value for the tag with the tag key named `__tag_key__` defined in the tag enrichment configuration.
+        examples: ["dt_owner_mail"]
+
+      - id: aws.cloudfront.result_type
+        type: string
+        stability: experimental
+        brief: >
+          How the server classified the response after the last byte left the server.
+        examples: [ 'Hit', 'Miss', 'LimitExceeded' ]
+
+      - id: aws.cloudfront.response.result_type
+        type: string
+        stability: experimental
+        brief: >
+          How the server classified the response just before returning the response to the viewer.
+        examples: [ 'Hit', 'Miss', 'LimitExceeded' ]
+
+      - id: aws.cloudfront.detailed_result_type
+        type: string
+        stability: experimental
+        brief: >
+          Extends the aws.cloudfront.result_type with additional states. [See full list under x-edge-detailed-result-type.](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/standard-logs-reference.html)
+        examples: [ 'OriginShieldHit', 'MissGeneratedResponse', 'InvalidRequest' ]
+      - id: aws.fle.status
+        stability: experimental
+        brief: >
+          When field-level encryption is configured for a distribution, this field contains a code that indicates whether the request body was successfully processed.
+        type:
+          allow_custom_values: false
+          members:
+            - id: fle_processed
+              value: Processed
+              brief: The server successfully processed the request body, encrypted values in the specified fields, and forwarded the request to the origin.
+            - id: forwarder_by_content_type
+              value: ForwardedByContentType
+              brief: The server forwarded the request to the origin without parsing or encryption because no content type was configured.
+            - id: forwarded_by_query_args
+              value: ForwardedByQueryArgs
+              brief: The server forwarded the request to the origin without parsing or encryption because the request contains a query argument that wasn't in the configuration for field-level encryption.
+            - id: forwarded_due_to_no_profile
+              value: ForwardedDueToNoProfile
+              brief: The server forwarded the request to the origin without parsing or encryption because no profile was specified in the configuration for field-level encryption.
+            - id: malformed_content_type_client_error
+              value: MalformedContentTypeClientError
+              brief: The server rejected the request and returned an HTTP 400 status code to the viewer because the value of the Content-Type header was in an invalid format.
+            - id: malformed_input_client_error
+              value: MalformedInputClientError
+              brief: The server rejected the request and returned an HTTP 400 status code to the viewer because the request body was in an invalid format.
+            - id: malformed_query_args_client_error
+              value: MalformedQueryArgsClientError
+              brief: The server rejected the request and returned an HTTP 400 status code to the viewer because a query argument was empty or in an invalid format.
+            - id: rejected_by_content_type
+              value: RejectedByContentType
+              brief: The server rejected the request and returned an HTTP 400 status code to the viewer because no content type was specified in the configuration for field-level encryption.
+            - id: rejected_by_query_args
+              value: RejectedByQueryArgs
+              brief: The server rejected the request and returned an HTTP 400 status code to the viewer because no query argument was specified in the configuration for field-level encryption.
+            - id: server_error
+              value: ServerError
+              brief: The origin server returned an error.
+            - id: field_length_limit_client_error
+              value: FieldLengthLimitClientError
+              brief: A field that is configured to be encrypted exceeds the maximum length allowed.
+            - id: field_number_limit_client_error
+              value: FieldNumberLimitClientError
+              brief: A request that the distribution is configured to encrypt contains more than the number of fields allowed.
+            - id: request_length_limit_client_error
+              value: RequestLengthLimitClientError
+              brief: The length of the request body exceeded the maximum length allowed when field-level encryption is configured.
+      - id: aws.fle.fields_number
+        type: long
+        stability: experimental
+        brief: >
+          The number of field-level encryption fields that the server encrypted and forwarded to the origin.
+        examples: [ 12, 27 ]

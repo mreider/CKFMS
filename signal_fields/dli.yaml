@@ -1,0 +1,57 @@
+groups:
+  - id: db.dli
+    type: span
+    brief: 'Semantic convention describing the attributes of a DL/I Database call'
+    attributes:
+      - id: db.dli.pcb
+        type: string
+        stability: experimental # traces-in-grail
+        brief: The name of the program communication block associated with this DL/I method.
+        examples: [ '       3', 'MYPCBNAM' ]
+
+      - id: db.dli.segment_name
+        type: string
+        stability: experimental # traces-in-grail
+        brief: The name of the last segment that was matched or returned.
+        examples: [ 'PARTROOT' ]
+
+      - id: db.dli.segment_level
+        type: string
+        stability: experimental # traces-in-grail
+        brief: The hierarchical level of the segment that was matched or returned.
+        examples: [ ' 3', '24' ]
+
+      - id: db.dli.processing_options
+        type: string
+        stability: experimental # traces-in-grail
+        brief: The PCB processing options.
+        examples: [ '  GR' ]
+
+      - id: db.dli.terminal_name
+        type: string
+        stability: experimental # traces-in-grail
+        brief: The DL/I database or logical terminal name associated with this DL/I method.
+        examples: [ 'HWSAM5ZD', '10505' ]
+
+      - id: db.dli.status_code
+        type: string
+        stability: experimental # traces-in-grail
+        brief: The DL/I status code.
+        examples: [ 'QC' ]
+
+      - id: db.dli.pcb_type
+        type:
+          allow_custom_values: false
+          members:
+            - id: dc
+              value: 'DC'
+              brief: Data communications.
+            - id: dli
+              value: 'DL/I'
+              brief: DL/I db.
+            - id: fp
+              value: 'F/P'
+              brief: Fast Path.
+        stability: experimental # traces-in-grail
+        brief: The PCB type.
+        examples: [ 'DC', 'DL/I', 'F/P' ]

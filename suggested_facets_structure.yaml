@@ -1,0 +1,602 @@
+# Suggested Facets Structure with Standardized Categories
+# This file proposes logical standardized categories for facets across all Dynatrace applications
+
+applications:
+  clouds:
+    categories:
+      core:
+        display_name: "Core"
+        description: "Essential cloud entity filters"
+        facets:
+          alert_status:
+            display_name: "Alert Status"
+            values:
+              - Critical
+              - No alerts
+          environment:
+            display_name: "Environment"
+            values:
+              - "908047316593"
+          region:
+            display_name: "Region"
+            values:
+              - us-east-1
+          global_region:
+            display_name: "Global Region"
+            values:
+              - APAC
+              - EMEA
+              - global
+              - LATAM
+              - NORAM
+      tags_labels:
+        display_name: "Tags & Labels"
+        description: "User-defined tags and labels"
+        facets:
+          aws_tags:
+            display_name: "AWS Tags"
+            values:
+              - "ACE\\\\CREA...ynatrace.com"
+              - "aws:cloudformation:stack-id"
+              - "aws\\\\cloud...e:balcer-test"
+              - "aws\\\\cloud...id:ECSCluster"
+          azure_tags:
+            display_name: "Azure Tags"
+            values: []
+          gcp_tags:
+            display_name: "GCP Tags"
+            values: []
+      cloud:
+        display_name: "Cloud"
+        description: "Cloud provider specific filters"
+        facets:
+          availability_zone:
+            display_name: "Availability Zone"
+            values:
+              - regional
+          aws_account:
+            display_name: "AWS Account"
+            values:
+              - "908047316593"
+      monitoring:
+        display_name: "Monitoring"
+        description: "Alert and monitoring filters"
+        facets: []
+      platform:
+        display_name: "Platform"
+        description: "Platform and service filters"
+        facets:
+          ecs_service:
+            display_name: "ECS Service"
+            values:
+              - "Amazon Elast..."
+
+  database:
+    categories:
+      core:
+        display_name: "Core"
+        description: "Essential database filters"
+        facets:
+          alert_status:
+            display_name: "Alert Status"
+            values:
+              - Critical
+              - No alerts
+          status:
+            display_name: "Database Status"
+            values:
+              - Available
+              - Error
+              - Warning
+          vendor:
+            display_name: "Database Vendor"
+            values:
+              - HanaDB
+              - MSSQL
+              - MySQL
+              - Oracle
+              - PostgreSQL
+      database:
+        display_name: "Database"
+        description: "Database-specific filters"
+        facets: []
+      monitoring:
+        display_name: "Monitoring"
+        description: "Health and alert filters"
+        facets:
+          active_health_alert:
+            display_name: "Active Health Alert"
+            values:
+              - MySQL Instance is unreachable
+              - Oracle - High tablespace usage
+              - Oracle - Instance unavailable
+              - Postgres Instance is unreachable
+              - SQL Server is unreachable
+          closed_custom_alert:
+            display_name: "Closed Custom Alert"
+            values:
+              - no keys found
+          closed_health_alert:
+            display_name: "Closed Health Alert"
+            values:
+              - MySQL Instance is unreachable
+              - Oracle - High tablespace usage
+              - Oracle - Instance unavailable
+              - Postgres Instance is unreachable
+              - SQL Server is unreachable
+
+  infra_and_operations:
+    categories:
+      core:
+        display_name: "Core"
+        description: "Essential infrastructure filters"
+        facets:
+          alert_status:
+            display_name: "Alert Status"
+            values:
+              - Critical
+              - No alerts
+          monitoring_type:
+            display_name: "Monitoring Type"
+            values:
+              - App only
+              - Discovery
+              - Full stack
+              - Infrastructure
+              - Monitoring candidate
+              - Monitoring disabled
+      monitoring:
+        display_name: "Monitoring"
+        description: "Alert and monitoring filters"
+        facets: []
+      cloud:
+        display_name: "Cloud"
+        description: "Cloud provider filters"
+        facets:
+          cloud_provider:
+            display_name: "Cloud Provider"
+            values:
+              - AWS
+              - Azure
+              - Google Cloud Platform
+              - OpenStack
+              - Oracle
+      infrastructure:
+        display_name: "Infrastructure"
+        description: "Infrastructure and virtualization filters"
+        facets:
+          hypervisor:
+            display_name: "Hypervisor"
+            values:
+              - AIX LPAR
+              - AIX WPAR
+              - AWS Nitro
+              - VMware
+              - Xen
+      operating_system:
+        display_name: "Operating System"
+        description: "Operating system filters"
+        facets:
+          os_type:
+            display_name: "OS Type"
+            values:
+              - AIX
+              - Linux
+              - Windows
+              - z/OS
+
+  kubernetes:
+    categories:
+      core:
+        display_name: "Core"
+        description: "Essential Kubernetes filters"
+        facets:
+          cluster_name:
+            display_name: "Cluster Name"
+            values: []
+          namespace_name:
+            display_name: "Namespace Name"
+            values: []
+          workload_name:
+            display_name: "Workload Name"
+            values: []
+          alert_status:
+            display_name: "Alert Status"
+            values: []
+      tags_labels:
+        display_name: "Tags & Labels"
+        description: "User-defined tags, labels and annotations"
+        facets:
+          pod_labels:
+            display_name: "Pod Labels"
+            values: []
+          namespace_labels:
+            display_name: "Namespace Labels"
+            values: []
+          workload_labels:
+            display_name: "Workload Labels"
+            values: []
+          pod_annotations:
+            display_name: "Pod Annotations"
+            values: []
+          namespace_annotations:
+            display_name: "Namespace Annotations"
+            values: []
+          workload_annotations:
+            display_name: "Workload Annotations"
+            values: []
+      monitoring:
+        display_name: "Monitoring"
+        description: "Alert and monitoring filters"
+        facets: []
+      topology:
+        display_name: "Topology"
+        description: "Kubernetes resource identification filters"
+        facets: []
+
+  logs:
+    categories:
+      core:
+        display_name: "Core"
+        description: "Essential log filters"
+        facets:
+          status:
+            display_name: "Log Status"
+            values:
+              - Error
+              - Info
+              - None
+              - Warning
+          loglevel:
+            display_name: "Log Level"
+            values:
+              - k8s
+      logs:
+        display_name: "Logs"
+        description: "Log content and severity filters"
+        facets: []
+      cloud:
+        display_name: "Cloud"
+        description: "Cloud provider context filters"
+        facets:
+          aws_fields:
+            display_name: "AWS"
+            values:
+              - aws.account.id
+              - aws.arn
+              - aws.log_group
+              - aws.region
+              - aws.resource.id
+              - aws.service
+          azure_fields:
+            display_name: "Azure"
+            values:
+              - azure.location
+              - azure.resource.group
+              - azure.resource.name
+              - azure.resource.type
+              - azure.subscription
+          gcp_fields:
+            display_name: "GCP"
+            values:
+              - gcp.instance.name
+              - gcp.project.id
+              - gcp.region
+              - gcp.resource.type
+          cloud_generic:
+            display_name: "Cloud"
+            values:
+              - cloud.account.id
+              - cloud.platform
+              - cloud.provider
+              - cloud.region
+      kubernetes:
+        display_name: "Kubernetes"
+        description: "Kubernetes context filters"
+        facets:
+          k8s_resources:
+            display_name: "Kubernetes Resources"
+            values:
+              - k8s.cluster.name
+              - k8s.container.name
+              - k8s.namespace.name
+              - k8s.node.name
+              - k8s.pod.name
+              - k8s.service.name
+              - k8s.workload.kind
+              - k8s.workload.name
+      infrastructure:
+        display_name: "Infrastructure"
+        description: "Host and infrastructure filters"
+        facets:
+          host_fields:
+            display_name: "Host"
+            values:
+              - dt.host_group.id
+              - host.name
+      process:
+        display_name: "Process"
+        description: "Process context filters"
+        facets:
+          process_fields:
+            display_name: "Process"
+            values:
+              - dt.process_group.detected_name
+      source:
+        display_name: "Source"
+        description: "Log source filters"
+        facets:
+          log_source:
+            display_name: "Log Source"
+            values:
+              - "/var/lib/foo.log"
+              - "/var/log/syslog"
+              - "Container Output"
+
+  services:
+    categories:
+      core:
+        display_name: "Core"
+        description: "Essential service filters"
+        facets:
+          alert_status:
+            display_name: "Alert Status"
+            values:
+              - Critical
+              - No alerts
+          code_profiling:
+            display_name: "Code Profiling"
+            values:
+              - Available
+              - Not available
+          security_context:
+            display_name: "Security Context"
+            values: []
+          tags:
+            display_name: "Tags"
+            values: []
+      monitoring:
+        display_name: "Monitoring"
+        description: "Alert and monitoring filters"
+        facets: []
+      security:
+        display_name: "Security"
+        description: "Security context filters"
+        facets:
+          security_context:
+            display_name: "Security Context"
+            values: []
+      tags_labels:
+        display_name: "Tags & Labels"
+        description: "User-defined tags and labels"
+        facets:
+          tags:
+            display_name: "Tags"
+            values: []
+      cloud:
+        display_name: "Cloud"
+        description: "Cloud provider filters"
+        facets:
+          aws_fields:
+            display_name: "AWS"
+            values:
+              - AWS region
+              - AWS version
+              - CloudWatch integration
+          azure_fields:
+            display_name: "Azure"
+            values:
+              - Azure Monitor integration
+              - Azure region
+              - Azure resource group name
+              - Azure sku
+              - Azure Subscription
+          gcp_fields:
+            display_name: "GCP"
+            values:
+              - GCP region
+              - Google Cloud Project
+              - Operations Suite integration
+      infrastructure:
+        display_name: "Infrastructure"
+        description: "Infrastructure context filters"
+        facets:
+          infrastructure_fields:
+            display_name: "Infrastructure"
+            values:
+              - Cloud provider
+              - Host group name
+              - Host name
+      kubernetes:
+        display_name: "Kubernetes"
+        description: "Kubernetes deployment filters"
+        facets:
+          k8s_fields:
+            display_name: "Kubernetes"
+            values:
+              - Cluster
+              - Namespace
+              - Workload
+      monitoring:
+        display_name: "Monitoring"
+        description: "Monitoring and observability filters"
+        facets:
+          supportability_fields:
+            display_name: "Supportability"
+            values:
+              - Observability signals
+              - Technology
+
+  tracing:
+    categories:
+      core:
+        display_name: "Core"
+        description: "Essential tracing filters"
+        facets:
+          duration:
+            display_name: "Span Duration"
+            values:
+              - Duration max
+              - Duration min
+          endpoint:
+            display_name: "HTTP Endpoint"
+            values:
+              - findJourneys
+              - GetProduct
+              - Images
+              - JavaScript
+              - JourneyService.checkDestination
+          request_status:
+            display_name: "Request Status"
+            values:
+              - Failure
+              - Success
+          service:
+            display_name: "Service Name"
+            values:
+              - CheckDestination
+              - CustomerFrontendREST
+              - EasyTravelBackendWebserver:8091
+              - EasyTravelWebserver:8079
+              - EasyTravelWebserver:9079
+          span_kind:
+            display_name: "Span Kind"
+            values:
+              - Client
+              - Consumer
+              - Internal
+              - Link
+              - Producer
+              - Server
+          span_status:
+            display_name: "Span Status"
+            values:
+              - Error
+              - OK
+      performance:
+        display_name: "Performance"
+        description: "Performance and timing filters"
+        facets: []
+      topology:
+        display_name: "Topology"
+        description: "Service and endpoint identification"
+        facets: []
+      span:
+        display_name: "Span"
+        description: "Span-specific filters"
+        facets:
+          span_kind:
+            display_name: "Span Kind"
+            values:
+              - Client
+              - Consumer
+              - Internal
+              - Link
+              - Producer
+              - Server
+      http:
+        display_name: "HTTP"
+        description: "HTTP request and response filters"
+        facets:
+          http_fields:
+            display_name: "HTTP"
+            values:
+              - HTTP method
+              - HTTP route
+              - HTTP server name
+              - HTTP status
+              - Url path
+          http_headers:
+            display_name: "HTTP Headers"
+            values:
+              - Forwarded
+              - Host
+              - Referer
+              - Soapaction
+              - User-agent
+              - X-dynatrace
+              - X-dynatrace-tenant
+      kubernetes:
+        display_name: "Kubernetes"
+        description: "Kubernetes context filters"
+        facets:
+          k8s_fields:
+            display_name: "Kubernetes"
+            values:
+              - Kubernetes cluster
+              - Kubernetes container
+              - Kubernetes namespace
+              - Kubernetes node name
+              - Kubernetes pod
+              - Kubernetes service name
+              - Kubernetes workload
+              - Kubernetes workload kind
+      process:
+        display_name: "Process"
+        description: "Process context filters"
+        facets:
+          process_fields:
+            display_name: "Process"
+            values:
+              - Process technology
+      request_attributes:
+        display_name: "Request Attributes"
+        description: "Custom request attribute filters"
+        facets:
+          custom_attributes:
+            display_name: "Custom Attributes"
+            values:
+              - App.cart.Items.count
+              - AuthenticationService
+              - Category-hipster
+              - CICS MQ Txns
+              - CICS Task1D
+              - Client's Destination
+              - ClientIP
+              - CreditCard/Payment
+              - CreditCardType
+              - Destination
+              - Dollar
+              - EasyTravel Amount
+              - Easytravel Destination
+              - EasyTravel Destination
+              - EasyTravel JourneyId
+              - EasyTravel User
+              - HTTP POST parameter
+              - Income
+              - JourneyID
+              - Loyalty status
+              - LoyaltyStatus
+              - MileageMobileFlag
+              - MileageMsgContent
+              - MqPathalogContent
+              - Prest-MQ-Test
+              - Revenue_Thangarajan
+              - Revenue_ThangarajanM
+              - Revenues
+              - SessionId
+              - SourceIP
+              - Training
+              - X-dynatrace
+      browser:
+        display_name: "Browser"
+        description: "Browser and user agent filters"
+        facets:
+          url_fields:
+            display_name: "URL"
+            values:
+              - Url domain
+              - Url fragment
+              - Url full
+              - Url port
+              - Url query
+              - Url scheme
+              - Url truncated path
+      business:
+        display_name: "Business"
+        description: "Business metrics and revenue filters"
+        facets:
+          revenue:
+            display_name: "Revenue"
+            values:
+              - Revenue

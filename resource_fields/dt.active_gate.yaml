@@ -1,0 +1,112 @@
+groups:
+  - id: dt.active_gate
+    type: resource
+    brief: >
+      Attributes used for ActiveGate.
+    attributes:
+      - id: dt.active_gate.id
+        type: string
+        stability: experimental
+        brief: >
+          Hexadecimal identifier of the ActiveGate prefixed with `0x`
+        examples: ['0xef3d21c3']
+      - id: dt.active_gate.group.name
+        type: string
+        stability: experimental
+        brief: >
+          The name of a group that the ActiveGate instance belongs to.
+        examples: ['GdanskLab']
+      - id: dt.active_gate.working_mode
+        brief: >
+          Working mode of the ActiveGate
+        type:
+          allow_custom_values: false
+          members:
+            - id: environment
+              value: 'environment'
+              brief: 'Environment ActiveGate'
+            - id: multitenant
+              value: 'multitenant'
+              brief: 'Multitenant ActiveGate'
+            - id: cluster
+              value: 'cluster'
+              brief: 'Cluster ActiveGate'
+            - id: embedded
+              value: 'embedded'
+              brief: 'Embedded ActiveGate'
+        stability: experimental
+      - id: dt.active_gate.module_name
+        type: string
+        stability: experimental
+        brief: >
+          The name of ActiveGate module
+        examples: [ 'autoupdate' ]
+  - id: dt.active_gate.log_ingest
+    type: resource
+    brief: >
+      Attributes used for the ActiveGate log ingest
+    attributes:
+      - id: dt.active_gate.log_ingest.processing_status
+        brief: >
+          Processing status for the ActiveGate log ingest
+        type:
+          allow_custom_values: false
+          members:
+            - id: success
+              value: 'SUCCESS'
+              brief: 'Data successfully ingested'
+            - id: bad_request
+              value: 'BAD_REQUEST'
+              brief: 'Timestamp out of range/Empty message/JSON format error in message'
+            - id: not_found
+              value: 'NOT_FOUND'
+              brief: 'Tenant not found/Log Monitoring Rest API v2 disabled'
+            - id: internal_error
+              value: 'INTERNAL_ERROR'
+              brief: 'Unexpected error occurred'
+            - id: service_unavailable
+              value: 'SERVICE_UNAVAILABLE'
+              brief: 'Generic log ingest service is disabled/not available'
+            - id: unsupported_media_type
+              value: 'UNSUPPORTED_MEDIA_TYPE'
+              brief: 'Unsupported or empty "Content-Type" request header'
+        stability: experimental
+  - id: dt.active_gate.api_connector
+    type: resource
+    brief: >
+      Attributes used for ActiveGate's ApiConnector module.
+    attributes:
+      - id: dt.active_gate.api_connector.config_id
+        type: string
+        stability: experimental
+        brief: >
+          Config long id of the endpoint configuration as a string.
+        examples: ['123', '9276']
+      - id: dt.active_gate.api_connector.pipeline_identifier
+        type: string
+        stability: experimental
+        brief: >
+          String identifier of an api connector pipeline
+        examples: ['Kubernetes/Topology']
+      - id: dt.active_gate.api_connector.pipeline_status
+        brief: >
+          Status of an api connector pipeline run
+        type:
+          allow_custom_values: false
+          members:
+            - id: success
+              value: 'succeeded'
+              brief: 'Pipeline execution succeeded'
+            - id: failure
+              value: 'failed'
+              brief: 'Pipeline execution failed'
+            - id: skipped
+              value: 'skipped'
+              brief: 'Pipeline execution skipped'
+        stability: experimental
+      - id: dt.active_gate.api_connector.technology_id
+        type: string
+        stability: experimental
+        brief: >
+          String identifier of an api connector technology
+        examples: ['Kubernetes', 'CloudFoundry', 'AWS', 'Dynatrace Extension', 'Azure']

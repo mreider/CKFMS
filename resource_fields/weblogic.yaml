@@ -1,0 +1,28 @@
+groups:
+  - id: weblogic
+    type: resource
+    brief:
+    attributes:
+      - id: weblogic.cluster.name
+        type: string
+        stability: experimental # traces-in-grail
+        brief: The name of the cluster this instance belongs to.
+        examples: [ 'OrderManagement2' ]
+
+      - id: weblogic.domain.name
+        type: string
+        stability: experimental # traces-in-grail
+        brief: The name of the domain this instance belongs to.
+        examples: [ 'CustomerManagementFulfillmentSvc' ]
+
+      - id: weblogic.home
+        type: string
+        stability: experimental # traces-in-grail
+        brief: The instance's home directory.
+        examples: [ '/apps/infra/wls/bin/10.3.6_64/wlserver_10.3/server' ]
+
+      - id: weblogic.server.name
+        type: string
+        stability: experimental # traces-in-grail
+        brief: The instance's server name.
+        examples: [ 'OrderManagement2Srv1' ]

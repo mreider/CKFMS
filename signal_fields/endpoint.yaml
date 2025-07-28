@@ -1,0 +1,13 @@
+groups:
+  - id: endpoint
+    type: span
+    brief:
+    attributes:
+      - id: endpoint.name
+        type: string
+        stability: stable # traces-in-grail
+        brief: >
+          The endpoint name is derived from endpoint detection rules and uniquely identifies one endpoint of a particular service.
+          Endpoint names are usually technology-specific and should be defined by attributes with low cardinality, like `http.route` or `rpc.method`.
+          Endpoints are exclusively detected on request root spans.
+        examples: [ 'GET /', 'PUT /users/:userID?', 'GET /productpage', 'Reviews.GetReviews' ]

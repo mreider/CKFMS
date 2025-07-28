@@ -1,0 +1,125 @@
+groups:
+  - id: dt.automation_engine
+    type: attribute_group
+    brief: >
+      Fields defined in this namespace are used by Dynatrace to describe events originating by the AutomationEngine
+    attributes:
+      - id: dt.automation_engine.workflow.id
+        type: string
+        stability: experimental
+        brief: >
+          The unique identifier of a workflow as UUID.
+        examples: ["26c0334e-a3e1-4585-8cd8-2d72742fe141"]
+      - id: dt.automation_engine.workflow.title
+        type: string
+        stability: experimental
+        brief: >
+          The title of the workflow.
+        examples: ["My Workflow"]
+      - id: dt.automation_engine.workflow_execution.id
+        type: string
+        stability: experimental
+        brief: >
+          The unique identifier of a workflow execution as UUID.
+        examples: ["737a248b-d1cb-49a4-bf08-7d4c37dbfb1e"]
+      - id: dt.automation_engine.task_execution.id
+        type: string
+        stability: experimental
+        brief: >
+          The unique identifier of a task execution as UUID.
+        examples: ["6580d4af-6b1f-4e54-92fa-f47e94507acd"]
+      - id: dt.automation_engine.action_execution.id
+        type: string
+        stability: experimental
+        brief: >
+          The unique identifier of a action execution as UUID.
+        examples: ["23e7b55a-884f-4497-8ad6-8d49d52b4348"]
+      - id: dt.automation_engine.state
+        type: string
+        stability: experimental
+        brief: >
+          The state of an execution. Values depend on type of execution (workflow-, task-, or action execution).
+        examples:
+          ["IDLE", "RUNNING", "WAITING", "SUCCESS", "ERROR", "CANCELLED"]
+      - id: dt.automation_engine.state_info
+        type: string
+        stability: experimental
+        brief: >
+          Additional info about current state of execution. Typically holds error details.
+        examples: ["ERROR"]
+      - id: dt.automation_engine.state.is_final
+        type: boolean
+        stability: experimental
+        brief: >
+          Indicates if `dt.automation_engine.state` is a final and immutable state or if further processing will happen.
+        examples: [true, false]
+      - id: dt.automation_engine.workflow.type
+        type: string
+        stability: experimental
+        brief: >
+          Workflow type, either SIMPLE or STANDARD, where SIMPLE comes with restrictions.
+        examples: ["SIMPLE", "STANDARD"]
+      - id: dt.automation_engine.workflow_execution.trigger.type
+        type: string
+        stability: experimental
+        brief: >
+          The identifier that describes the trigger of the workflow.
+        examples: ["Schedule", "Event", "Workflow", "Manual"]
+      - id: dt.automation_engine.workflow_execution.trigger.workflow_execution.id
+        type: string
+        stability: experimental
+        brief: >
+          The unique identifier of the workflow that triggered the workflow execution.
+        examples: [ "737a248b-d1cb-49a4-bf08-7d4c37dbfb1e" ]
+      - id: dt.automation_engine.root_workflow_execution.id
+        type: string
+        stability: experimental
+        brief: >
+          The unique identifier of the execution of the root workflow.
+        examples: [ "a641fb59-4627-44cd-abaf-b68d86455a5b" ]
+      - id: dt.automation_engine.root_workflow.id
+        type: string
+        stability: experimental
+        brief: >
+          The unique identifier of the root workflow.
+        examples: [ "e6388e3a-9db2-4226-9327-2ba86eaf12f7" ]
+      - id: dt.automation_engine.task.name
+        type: string
+        stability: experimental
+        brief: >
+          The identifier of a task within a workflow.
+        examples: ["task_1"]
+      - id: dt.automation_engine.action.function
+        type: string
+        stability: experimental
+        brief: >
+          Name of the function implementing the action.
+        examples: ["task_1"]
+      - id: dt.automation_engine.action_execution.retry.count
+        type: long
+        stability: experimental
+        brief: >
+          Retry count of the action execution.
+      - id: dt.automation_engine.action_execution.loop.index
+        type: long
+        stability: experimental
+        brief: >
+          Loop index of the action execution.
+      - id: dt.automation_engine.workflow_execution.trigger.user.id
+        type: string
+        stability: experimental
+        brief: >
+          The unique identifier of the user who triggered the workflow execution manually/via API.
+        examples: ["dad18fa7-3c11-40a1-b760-1d8281bb5dcc"]
+      - id: dt.automation_engine.action.app
+        type: string
+        stability: experimental
+        brief: >
+          The app id of the app containing the executed action.
+        examples: ["dynatrace.workflows"]
+      - id: dt.automation_engine.throttle.limit
+        type: long
+        stability: experimental
+        brief: >
+          The workflow execution per hour limit that has been reached.
+        examples: [1000]

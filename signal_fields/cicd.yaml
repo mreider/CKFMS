@@ -1,0 +1,135 @@
+groups:
+  - id: cicd
+    type: attribute_group
+    brief: >
+      The `cicd` namespace contains information about Continuous Integration and Continuous Deployment systems.
+    attributes:
+      - id: cicd.pipeline.id
+        type: string
+        stability: experimental
+        brief: >
+          The CI/CD pipeline's identifier, which is unique within one CI/CD system.
+        examples: [ '12345' ]
+      - id: cicd.pipeline.url.full
+        type: string
+        stability: experimental
+        brief: >
+          The CI/CD pipeline's full URL.
+        examples:
+          [ 'https://github.com/ACME/ACME-repo/actions/workflows/ci-build.yml' ]
+      - id: cicd.pipeline.name
+        type: string
+        stability: experimental
+        brief: >
+          The human-readable name of the CI/CD pipeline.
+        examples: [ 'CI pipeline for main branch' ]
+      - id: cicd.pipeline.run.queued.duration
+        type: duration
+        stability: experimental
+        brief: >
+          How long was the pipeline run queued before it was started, in nanoseconds.
+        examples: [ '1234' ]
+      - id: cicd.pipeline.run.url.full
+        type: string
+        stability: experimental
+        brief: >
+          The URL pointing to one specific pipeline run.
+        examples: [ 'https://github.com/ACME/ACME-repo/actions/runs/9876' ]
+      - id: cicd.pipeline.run.id
+        type: string
+        stability: experimental
+        brief: >
+          An identifier for a pipeline run, which is unique within one CI/CD system.
+        examples: [ '9876' ]
+      - id: cicd.pipeline.run.outcome
+        type:
+          allow_custom_values: true
+          members:
+            - id: success
+              value: 'success'
+              brief: 'The pipeline run completed successfully.'
+            - id: warning
+              value: 'warning'
+              brief: 'The pipeline run completed with at least one warning.'
+            - id: failure
+              value: 'failure'
+              brief: 'The pipeline run failed.'
+            - id: error
+              value: 'error'
+              brief: 'The pipeline run failed with an error.'
+            - id: skipped
+              value: 'skipped'
+              brief: 'The pipeline did not run, but was skipped.'
+            - id: canceled
+              value: 'canceled'
+              brief: 'The pipeline run was canceled and did not complete.'
+            - id: timed_out
+              value: 'timed_out'
+              brief: 'The pipeline run timed out, and therefore did not complete.'
+        stability: experimental
+        brief: >
+          The outcome of one pipeline run.
+        examples: [ 'success' ]
+      - id: cicd.upstream_pipeline.id
+        type: string
+        stability: experimental
+        brief: >
+          The identifier of the upstream CI/CD pipeline.
+          If a pipeline run was triggered by another pipeline, this attribute is used to reference the triggering pipeline.
+        examples: [ '12345' ]
+      - id: cicd.upstream_pipeline.run.id
+        type: string
+        stability: experimental
+        brief: >
+          The identifier of the upstream CI/CD pipeline run.
+          If a pipeline run was triggered by another pipeline, this attribute is used to reference the triggering pipeline run.
+        examples: [ '1337' ]
+
+      # Deployment attributes, as defined in OTEL semantic conventions; required for SDLC events
+      - id: cicd.deployment.release_stage
+        type: string
+        stability: experimental
+        brief: The name of the deployment environment, also known as deployment tier.
+        examples: ['development', 'staging', 'production']
+      - id: cicd.deployment.id
+        type: string
+        stability: experimental
+        brief: The identifier of the deployment.
+        examples: ['1337']
+      - id: cicd.deployment.name
+        type: string
+        stability: experimental
+        brief: The name of the deployment.
+        examples: ['deploy frontend app', 'deploy cart service']
+      - id: cicd.deployment.status
+        type:
+          allow_custom_values: true
+          members:
+            - id: failed
+              value: 'failed'
+              brief: 'The deployment failed.'
+            - id: succeeded
+              value: 'succeeded'
+              brief: 'The deployment succeeded.'
+        stability: experimental
+        brief: The status of the deployment.
+        examples: ['failed', 'succeeded']
+
+
+      # Deployment attributes, not part of OTEL semantic conventions; required for SDLC events
+      - id: cicd.deployment.namespace
+        type: string
+        stability: experimental
+        brief: The destination namespace where the deployment resource is created.
+        examples: ['default']
+      - id: cicd.deployment.server.url.full
+        type: string
+        stability: experimental
+        brief: The deployment server URL.
+        examples: ['https://kubernetes.default.svc']
+      - id: cicd.deployment.service.id
+        type: string
+        stability: experimental
+        brief: >
+          The identifier of the service that is deployed.
+        examples: ['92ba59d6-379e-4ffd-a67e-d544a9c24dea']

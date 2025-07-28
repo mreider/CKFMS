@@ -1,0 +1,299 @@
+# Current Metadata Structure Across Dynatrace Applications
+# This file documents the existing metadata categories and keys as they currently exist
+
+applications:
+  clouds:
+    categories:
+      no_category:
+        display_name: "No Category"
+        fields:
+          - accessible_by
+          - arn
+          - customIconPath
+          - dt.security_context
+          - dt.system.environment
+          - entity.name
+          - id
+          - managementZones
+          - tags
+
+  database:
+    categories:
+      none:
+        display_name: "None"
+        fields: []
+
+  infra_and_operations:
+    categories:
+      no_category:
+        display_name: "No Category"
+        fields:
+          - Additional system info
+          - AMI ID
+          - Architecture
+          - ARN
+          - autoInjection
+          - AWS name tag
+          - BOSH availability zone
+          - BOSH deployment ID
+          - BOSH instance ID
+          - BOSH instance name
+          - BOSH stemcell version
+          - boshName
+          - called_by
+          - calls
+          - Cloud
+          - Cloud Foundry foundation
+          - Data center
+          - Detected name
+          - dt.entity.host
+          - dt.security_context
+          - ebrpDiscoveryMonitored
+          - Host group
+          - Host group name
+          - Hypervisor type
+          - Instance ID
+          - Instance type
+          - IP addresses
+          - Logical CPU cores
+          - macAddresses
+          - Management zones
+          - Monitoring type
+          - OneAgent version
+          - OS version
+          - Physical CPU cores
+          - Physical memory
+          - Private hostname
+          - Private IP address
+          - Security groups
+          - Technologies
+          - Up since
+
+  kubernetes:
+    categories:
+      no_category:
+        display_name: "No Category"
+        fields:
+          - ActiveGate ID
+          - ActiveGate version
+          - Annotations
+          - Cluster
+          - Conditions
+          - Containers
+          - CPU Requests
+          - Created
+          - DynaKube modes
+          - External resource UID
+          - Kubernetes cluster ID
+          - Kubernetes distribution
+          - Kubernetes version
+          - Labels
+          - Name
+          - Namespace
+          - Operator version
+          - Security context
+          - Total container restarts
+          - Workload
+          - Workload Type
+
+  logs:
+    categories:
+      fields:
+        display_name: "Fields"
+        fields:
+          - azure.location
+          - content
+          - dt.entity.container_group
+          - dt.entity.process_group
+          - dt.kubernetes.cluster.name
+          - dt.kubernetes.node.system_uuid
+          - host.name
+          - http.flavor
+          - http.method
+          - http.status_code
+          - k8s.cluster.name
+          - k8s.container.name
+          - k8s.deployment.name
+          - k8s.namespace.name
+          - k8s.pod.name
+          - log.source
+          - loglevel
+          - OperatorVersion
+          - process.technology
+          - source.host
+          - status
+          - timestamp
+      topology:
+        display_name: "Topology"
+        fields:
+          - dt.entity.cloud_application
+          - dt.entity.cloud_application_instance
+          - dt.entity.cloud_application_namespace
+          - dt.entity.container_group_instance
+          - dt.entity.host
+          - dt.entity.kubernetes_cluster
+          - dt.entity.kubernetes_node
+          - dt.entity.process_group_instance
+          - dt.source_entity
+
+  services:
+    categories:
+      no_category:
+        display_name: "No Category"
+        fields:
+          - Agent technology type
+          - Application build environment
+          - Application name
+          - Application release version
+          - Context root
+          - Is external service
+          - Kubernetes cluster
+          - Kubernetes namespace
+          - Kubernetes namespace labels
+          - Kubernetes workload
+          - Kubernetes workload labels
+          - Last seen
+          - Management zones
+          - Process group
+          - Security context
+          - Service ID
+          - Service type
+          - Software technology types
+          - Technologies
+          - Web application id
+          - Web server name
+
+  tracing:
+    categories:
+      apache:
+        display_name: "Apache"
+        fields:
+          - Apache tomcat base
+      client:
+        display_name: "Client"
+        fields:
+          - Client ip
+      code_attributes:
+        display_name: "Code attributes"
+        fields:
+          - Code function
+          - Code namespace
+          - CPU self time
+          - CPU time
+          - Span is subroutine
+          - Thread id
+          - Thread name
+      core:
+        display_name: "Core"
+        fields:
+          - Duration
+          - End time
+          - Endpoint
+          - Host
+          - Process
+          - Process group
+          - Request is failed
+          - Request is root span
+          - Service
+          - Span kind
+          - Span name
+          - Start time
+      deployment_information:
+        display_name: "Deployment information"
+        fields:
+          - Deployment release build version
+          - Deployment release product
+          - Deployment release stage
+          - Deployment release version
+      entity_ids:
+        display_name: "Entity IDs"
+        fields:
+          - Gcp zone id
+          - Host group id
+          - Host id
+          - Service id
+      full:
+        display_name: "Full"
+        fields:
+          - OneAgent module version
+      gcp:
+        display_name: "GCP"
+        fields:
+          - Gcp instance id
+          - Gcp project id
+          - Gcp region
+          - Gcp zone
+      host:
+        display_name: "Host"
+        fields:
+          - Host group
+          - Host name internal
+      http:
+        display_name: "HTTP"
+        fields:
+          - HTTP method
+          - HTTP route
+          - HTTP server name
+          - HTTP status
+          - Url path
+      http_headers:
+        display_name: "HTTP headers"
+        fields:
+          - HTTP request header host
+          - HTTP request header referer
+          - HTTP request header user-agent
+          - HTTP response header content-type
+      ids:
+        display_name: "IDs"
+        fields:
+          - Span id
+          - Span parent id
+          - Subtrace id
+          - Trace id
+      java:
+        display_name: "Java"
+        fields:
+          - Java jar file
+          - Java jar path
+      metadata:
+        display_name: "Metadata"
+        fields:
+          - Cost costcenter
+          - Cost product
+          - Ingest size
+          - OneAgent module id
+          - OneAgent module type
+          - OneAgent module version
+          - Openpipeline pipelines
+          - Openpipeline source
+          - Retain size
+          - Supportability atm sampling ratio
+          - System monitoring source
+      networking:
+        display_name: "Networking"
+        fields:
+          - Network protocol name
+          - Server address
+          - Server port
+      process:
+        display_name: "Process"
+        fields:
+          - Process executable name
+          - Process executable path
+          - Process group id
+          - Process id
+          - Process pid
+      request_attributes:
+        display_name: "Request attributes"
+        fields:
+          - Request attribute ClientIP
+          - Request attribute SourceIP
+      servlet:
+        display_name: "Servlet"
+        fields:
+          - Servlet context name
+          - Servlet context path
+      subtrace:
+        display_name: "Subtrace"
+        fields:
+          - Subtrace is root span

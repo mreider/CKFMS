@@ -1,0 +1,24 @@
+groups:
+  - id: redis
+    type: attribute_group
+    brief:
+    attributes:
+      - id: redis.role
+        stability: experimental
+        brief: >
+          The role of the Redis process (for example, 'M' for Master or 'X' for sentinel).
+        type:
+          allow_custom_values: false
+          members:
+            - id: c_child
+              value: C
+              brief: Child process for persistence (RDB/AOF).
+            - id: m_master
+              value: M
+              brief: Master Redis process.
+            - id: x_sentinel
+              value: X
+              brief: Sentinel monitoring process.
+            - id: r_replica
+              value: R
+              brief: Replica Redis process.

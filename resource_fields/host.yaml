@@ -1,0 +1,52 @@
+groups:
+  - id: host
+    type: resource
+    brief:
+    attributes:
+      - id: host.name
+        type: string
+        stability: experimental
+        brief: "The host name as determined on the data source (for instance, OneAgent, extensions or OpenTelemetry).<br/>Important: This is not the name of the host entity, which can be modified based on naming rules."
+        examples: [ 'ip-10-178-54-32.ec2.internal' ]
+        tags: [ 'permission' ]
+      - id: host.logical.cpu.cores
+        type: long
+        stability: experimental
+        brief: Logical CPU cores on the monitored host.
+        examples: [ 8 ]
+      - id: host.physical.memory
+        type: long
+        stability: experimental
+        brief: "Physical memory of the monitored host, expressed in bytes. The value might be different than the total available memory, if features such as Active Memory Expansion are used."
+        examples: [ 8141684736 ]
+      - id: host.ip # despite the array type the attribute has singular name according to OpenTelemetry naming
+        type: ipAddress[]
+        stability: experimental
+        brief: "A list of IP adresses (IPv4 or IPv6) of this host."
+        examples: [ '194.232.104.141', '2a01:468:1000:9::140' ]
+      - id: host.fqdn # array type but keeping the singular name to align with host.ip
+        type: string[]
+        stability: experimental
+        brief: "A list of FQDNs of this host."
+        examples: [ 'ec2-43-213-176-3.compute-1.amazonaws.com', 'localhost.example.com' ]
+      - id: host.mac
+        type: array #How to do macAddress[]?
+        stability: experimental
+        brief: "A list of MAC adresses associated with this host."
+        examples: [ '4C:03:4F:5B:E8:89', '00:15:5D:2F:1C:2A' ]
+      # AIX specific
+      - id: host.simultaneous.multithreading     #Can consider renaming this to more generic threads per core. However, for now we only report this on AIX
+        type: long
+        stability: experimental
+        brief: Number of threads for AIX Simultaneous Multithreading feature.
+        examples: [ 4 ]
+      - id: host.logical.cpus
+        type: long
+        stability: experimental
+        brief: Logical CPUs on the monitored host. Applies to AIX LPARs.
+        examples: [ 8 ]
+      - id: host.virtual.cpus
+        type: long
+        stability: experimental
+        brief: Number of virtual CPUs for AIX LPAR.
+        examples: [ 2 ]

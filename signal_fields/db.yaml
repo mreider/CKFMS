@@ -1,0 +1,350 @@
+groups:
+  - id: db
+    type: span
+    brief: This document defines the semantic conventions for database client calls.
+    attributes:
+      - id: db.system
+        type:
+          allow_custom_values: true
+          members:
+            - id: other_sql
+              value: 'other_sql'
+              brief: 'Some other SQL database. Fallback only. See notes.'
+            - id: mssql
+              value: 'mssql'
+              brief: 'Microsoft SQL Server'
+            - id: mssqlcompact
+              value: 'mssqlcompact'
+              brief: 'Microsoft SQL Server Compact'
+            - id: mysql
+              value: 'mysql'
+              brief: 'MySQL'
+            - id: oracle
+              value: 'oracle'
+              brief: 'Oracle Database'
+            - id: db2
+              value: 'db2'
+              brief: 'IBM Db2'
+            - id: postgresql
+              value: 'postgresql'
+              brief: 'PostgreSQL'
+            - id: redshift
+              value: 'redshift'
+              brief: 'Amazon Redshift'
+            - id: hive
+              value: 'hive'
+              brief: 'Apache Hive'
+            - id: cloudscape
+              value: 'cloudscape'
+              brief: 'Cloudscape'
+            - id: hsqldb
+              value: 'hsqldb'
+              brief: 'HyperSQL DataBase'
+            - id: progress
+              value: 'progress'
+              brief: 'Progress Database'
+            - id: maxdb
+              value: 'maxdb'
+              brief: 'SAP MaxDB'
+            - id: hanadb
+              value: 'hanadb'
+              brief: 'SAP HANA'
+            - id: ingres
+              value: 'ingres'
+              brief: 'Ingres'
+            - id: firstsql
+              value: 'firstsql'
+              brief: 'FirstSQL'
+            - id: edb
+              value: 'edb'
+              brief: 'EnterpriseDB'
+            - id: cache
+              value: 'cache'
+              brief: 'InterSystems Caché'
+            - id: adabas
+              value: 'adabas'
+              brief: 'Adabas (Adaptable Database System)'
+            - id: firebird
+              value: 'firebird'
+              brief: 'Firebird'
+            - id: derby
+              value: 'derby'
+              brief: 'Apache Derby'
+            - id: filemaker
+              value: 'filemaker'
+              brief: 'FileMaker'
+            - id: informix
+              value: 'informix'
+              brief: 'Informix'
+            - id: instantdb
+              value: 'instantdb'
+              brief: 'InstantDB'
+            - id: interbase
+              value: 'interbase'
+              brief: 'InterBase'
+            - id: mariadb
+              value: 'mariadb'
+              brief: 'MariaDB'
+            - id: netezza
+              value: 'netezza'
+              brief: 'Netezza'
+            - id: pervasive
+              value: 'pervasive'
+              brief: 'Pervasive PSQL'
+            - id: pointbase
+              value: 'pointbase'
+              brief: 'PointBase'
+            - id: sqlite
+              value: 'sqlite'
+              brief: 'SQLite'
+            - id: sybase
+              value: 'sybase'
+              brief: 'Sybase'
+            - id: teradata
+              value: 'teradata'
+              brief: 'Teradata'
+            - id: vertica
+              value: 'vertica'
+              brief: 'Vertica'
+            - id: h2
+              value: 'h2'
+              brief: 'H2'
+            - id: coldfusion
+              value: 'coldfusion'
+              brief: 'ColdFusion IMQ'
+            - id: cassandra
+              value: 'cassandra'
+              brief: 'Apache Cassandra'
+            - id: hbase
+              value: 'hbase'
+              brief: 'Apache HBase'
+            - id: mongodb
+              value: 'mongodb'
+              brief: 'MongoDB'
+            - id: redis
+              value: 'redis'
+              brief: 'Redis'
+            - id: couchbase
+              value: 'couchbase'
+              brief: 'Couchbase'
+            - id: couchdb
+              value: 'couchdb'
+              brief: 'CouchDB'
+            - id: cosmosdb
+              value: 'cosmosdb'
+              brief: 'Microsoft Azure Cosmos DB'
+            - id: dynamodb
+              value: 'dynamodb'
+              brief: 'Amazon DynamoDB'
+            - id: neo4j
+              value: 'neo4j'
+              brief: 'Neo4j'
+            - id: geode
+              value: 'geode'
+              brief: 'Apache Geode'
+            - id: elasticsearch
+              value: 'elasticsearch'
+              brief: 'Elasticsearch'
+            - id: memcached
+              value: 'memcached'
+              brief: 'Memcached'
+            - id: cockroachdb
+              value: 'cockroachdb'
+              brief: 'CockroachDB'
+            - id: opensearch
+              value: 'opensearch'
+              brief: 'OpenSearch'
+            - id: clickhouse
+              value: 'clickhouse'
+              brief: 'ClickHouse'
+            - id: spanner
+              value: 'spanner'
+              brief: 'Cloud Spanner'
+            - id: dli
+              value: 'dl/i'
+              brief: 'IBM DL/I'
+        stability: experimental # traces-in-grail
+        brief: An identifier for the database management system (DBMS) product being used. See below for a list of well-known identifiers.
+        examples: ['mongodb', 'mysql']
+
+      - id: db.mssql.instance_name
+        type: string
+        deprecated: Replaced by db.namespace # otel-stabilization
+        internal: true
+        brief: The Microsoft SQL Server [instance name](https://docs.microsoft.com/en-us/sql/connect/jdbc/building-the-connection-url?view=sql-server-2017) connecting to.
+        examples: 'MSSQLSERVER'
+
+      - id: db.name
+        type: string
+        deprecated: Replaced by db.namespace # otel-stabilization
+        internal: true
+        brief: The name of the database being accessed.
+        examples: ['myDB', 'customers']
+
+      - id: db.namespace
+        type: string
+        stability: stable # traces-in-grail
+        brief: The name of the database, fully qualified within the server address and port.
+        examples: [ 'customers', 'test.users' ]
+
+      - id: db.statement
+        type: string
+        deprecated: Replaced by db.query.text # otel-stabilization
+        internal: true
+        brief: The database statement being executed.
+        note: The value may be sanitized to exclude sensitive information.
+        examples: ['SELECT * FROM wuser_table', 'SET mykey "WuValue"']
+
+      - id: db.query.text
+        type: string
+        stability: stable # traces-in-grail
+        brief: The database query being executed.
+        note: The value may be sanitized to exclude sensitive information.
+        examples: ['SELECT * FROM wuser_table', 'SET mykey "WuValue"']
+
+      - id: db.bind.parameters
+        type: record[]
+        deprecated: Replaced by db.query.parameters # otel-stabilization
+        tags: ['sensitive-spans']
+        internal: true
+        brief: >
+          Bind parameters represented as a key and value map.
+          For database systems which do not have named keys the map key is the string representation of the index starting with 0.
+          Several database requests may get aggregated into a single span.
+          Each entry in the array holds the bind parameters for one database request.
+        examples: [[{"name": "paul", "age": "23"}, {"name": "mary", "age": "32"}], [{"0": "paul", "1": "23"}, {"0": "mary", "1": "32"}]]
+
+      - id: db.query.parameters
+        type: record[]
+        tags: [ 'sensitive-spans' ]
+        stability: experimental # traces-in-grail
+        brief: >
+          The query parameters used in db.query.text represented as a key and value map.
+          For database systems without named keys, the map key is the string representation of the index starting with 0.
+          Several database requests may get aggregated into a single span.
+          Each entry in the array holds the bind parameters for one database request.
+        examples: [[{"name": "paul", "age": "23"}, {"name": "mary", "age": "32"}], [{"0": "paul", "1": "23"}, {"0": "mary", "1": "32"}]]
+
+      - id: db.affected_item_count
+        type: long
+        stability: experimental # traces-in-grail
+        brief: The number of items (rows, documents,...) affected.
+        examples: [ 32 ]
+
+      - id: db.collection.name
+        type: string
+        stability: stable # traces-in-grail
+        brief: The name of a collection (table, container) within the database.
+        examples: ['customers', 'public.users']
+
+      - id: db.mongodb.collection
+        type: string
+        deprecated: Replaced by db.collection.name # otel-stabilization
+        internal: true
+        brief: The collection being accessed within the database stated in `db.name`.
+        examples: ['customers', 'products']
+
+      - id: db.operation.name
+        type: string
+        stability: stable # traces-in-grail
+        brief: >
+          The name of the operation or command executed, for example the MongoDB command name, SQL keyword, Redis command name,...
+        note: >
+          Depending on the data provided on ingest, this attribute may be derived by e.g., parsing `db.query.text`.
+          Parsing might fail, or the result might be inaccurate.
+        examples: ['drop', 'findAndModify', 'SELECT', 'PREPARE', 'GetItem', 'set', 'LPUSH', 'mutateIn', 'ReadItems']
+
+      - id: db.operation
+        type: string
+        deprecated: Replaced by db.operation.name # otel-stabilization
+        internal: true
+        brief: >
+          The name of the db operation executed, e.g. the MongoDB command name, SQL keyword, Redis command name,...
+          Not set if there are multiple operations (e.g. batch, concat) done via a single statement.
+        note: >
+          Depending on the data provided on ingest, this attribute may be derived by e.g., parsing `db.query.text`.
+          Parsing might fail, or the result might be inaccurate.
+        examples: ['drop', 'findAndModify', 'SELECT', 'PREPARE', 'GetItem', 'set', 'LPUSH', 'mutateIn', 'ReadItems', 'PURG']
+
+      - id: db.sql.table
+        type: string
+        deprecated: Replaced by db.collection.name # otel-stabilization
+        internal: true
+        brief: The name of the primary table that the operation is acting upon, including the database name (if applicable).
+        examples: ['public.users', 'customers']
+
+      - id: db.result.execution_count
+        type: long
+        stability: experimental # traces-in-grail
+        brief: The number of operations executed on the result (for example, fetches from SQL result set, MongoDB cursor operations).
+        examples: [ 12 ]
+
+      - id: db.result.exception_count
+        type: long
+        stability: experimental # traces-in-grail
+        brief: The number of exceptions encountered while fetching the result.
+        examples: [ 2 ]
+
+      - id: db.result.duration_sum
+        type: duration
+        stability: experimental # traces-in-grail
+        brief: The total duration in nanoseconds used for fetching the result.
+        examples: [ 234 ]
+
+      - id: db.result.duration_min
+        type: duration
+        stability: experimental # traces-in-grail
+        brief: The minimum duration in nanoseconds used for fetching the result.
+        examples: [ 123 ]
+
+      - id: db.result.duration_max
+        type: duration
+        stability: experimental # traces-in-grail
+        brief: The maximum duration in nanoseconds used for fetching the result.
+        examples: [ 345 ]
+
+      - id: db.result.roundtrip_count
+        type: long
+        stability: experimental # traces-in-grail
+        brief: The number of round-trips triggered by fetching the result.
+        examples: [ 2 ]
+
+      - id: db.dynamodb.region
+        type: string
+        deprecated: Replaced by cloud.target.region
+        internal: true
+        brief: The region of the dynamodb (see also `cloud.region`).
+        examples: [ 'us-east-1' ]
+
+      - id: db.dynamodb.table_names
+        type: string[]
+        stability: experimental # traces-in-grail
+        brief: The list of tables the request targets.
+        examples: [ 'Cats', 'Dogs' ]
+
+      - id: db.cassandra.table
+        type: string
+        deprecated: Replaced by db.collection.name # otel-stabilization
+        internal: true
+        brief: The name of the primary table that the operation is acting upon, including the keyspace name (if applicable).
+        examples: [ 'mytable', 'customers' ]
+
+      - id: db.connection_string
+        type: string
+        tags: [ 'sensitive-spans' ]
+        stability: experimental # traces-in-grail
+        brief: The connection string for a database connection.
+        examples: [ 'jdbc:dynamodb:Access Key=XXX;Secret Key=XXX;Domain=amazonaws.com;Region' ]
+
+      - id: db.cosmosdb.container
+        type: string
+        deprecated: Replaced by db.collection.name # otel-stabilization
+        internal: true
+        brief: The container being accessed within the database stated in `db.name`.
+        examples: [ 'users', 'customers' ]
+
+      - id: db.cosmosdb.request_charge
+        type: double
+        stability: experimental # traces-in-grail
+        brief: The cost of the request in [Azure Cosmos DB request units (RU)](https://learn.microsoft.com/en-us/azure/cosmos-db/request-units).
+        examples: [ 4.95, 2.0 ]

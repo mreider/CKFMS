@@ -1,0 +1,20 @@
+groups:
+  - id: custom_service
+    type: span
+    brief:
+    attributes:
+      - id: custom_service.name
+        type: string
+        stability: experimental # traces-in-grail
+        brief: >
+          The name of a custom service.
+          This field only exists if a custom service was created via Dynatrace OneAgent SDK.
+        examples: [ 'MyCustomService', 'AuthenticationComponent' ]
+
+      - id: custom_service.method
+        type: string
+        stability: experimental # traces-in-grail
+        brief: >
+          The service method of a custom service.
+          This field only exists if a custom service was created via Dynatrace OneAgent SDK.
+        examples: [ 'startTask', 'run', 'authenticate' ]

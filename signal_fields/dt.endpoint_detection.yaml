@@ -1,0 +1,13 @@
+groups:
+  - id: dt.endpoint_detection
+    type: span
+    brief:
+    attributes:
+      - id: dt.endpoint_detection.rule_id
+        type: uid
+        stability: experimental # traces-in-grail
+        brief: >
+          The ID of the endpoint detection rule that was applied to that span.
+        internal_brief: >
+          Only applies to Service Detection v2 (Unified services). The UID has 128 bit.
+        examples: [ '4d76194c11a9426197a9062548f9e66e' ]

@@ -1,0 +1,28 @@
+groups:
+  - id: esb
+    type: resource
+    brief: Semantic convention describing attributes for an Enterprise Service Bus, like IBM's App Connect Enterprise or Tibco's Business Works.
+    attributes:
+      - id: esb.workflow.name
+        type: string
+        stability: experimental # traces-in-grail
+        brief: The name of the workflow (the message flow for the IBM ESB).
+        examples: [ 'myMessageFlow', 'YourBusinessWorkflow', 'any_flow' ]
+
+      - id: esb.application.name
+        type: string
+        stability: experimental # traces-in-grail
+        brief: The name of the application that holds the workflows of the business logic.
+        examples: [ 'myBusinessApp', 'YourServiceApp', 'any_work']
+
+      - id: esb.library.name
+        type: string
+        stability: experimental # traces-in-grail
+        brief: The name of the library that hosts commonly used workflows to be reused in applications.
+        examples: [ 'myWebServicesLib', 'YourMessagingLibrary', 'any_tools']
+
+      - id: esb.vendor
+        type: string
+        stability: experimental # traces-in-grail
+        brief: The name of the vendor of the ESB technology of the current workflow.
+        examples: [ 'ibm', 'tibco' ]

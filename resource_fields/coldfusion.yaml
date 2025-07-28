@@ -1,0 +1,16 @@
+groups:
+  - id: coldfusion
+    type: resource
+    brief:
+    attributes:
+      - id: coldfusion.jvm.config.file
+        type: string
+        stability: experimental # traces-in-grail
+        brief:
+        examples: [ ' ' ]
+
+      - id: coldfusion.service.name
+        type: string
+        stability: experimental # traces-in-grail
+        brief:
+        examples: [ ' ' ]

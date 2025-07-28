@@ -1,0 +1,12 @@
+groups:
+  - id: event_properties
+    type: attribute_group
+    brief: Event properties are custom-defined key-value pairs. Dynatrace RUM captures event properties as part of each of your users' journeys to enrich user events.
+    attributes:
+      - id: event_properties.__property_name__
+        type: record
+        stability: experimental
+        brief: >
+          Contains the value for the event property named `__property_name__` defined by the event and session property configuration.
+          The data type of the value depends on the definition; default is data type `string`.
+        examples: [ 42, 'value' ]

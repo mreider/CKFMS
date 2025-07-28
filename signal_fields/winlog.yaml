@@ -1,0 +1,55 @@
+groups:
+  - id: winlog
+    type: attribute_group
+    brief: >
+      Attributes used for Windows Event Logs
+    attributes:
+      - id: winlog.level
+        type: string
+        stability: experimental
+        brief: >
+          Level of an event indicates its severity or importance
+        examples:
+          ['Critical', 'Error', 'Warrning']
+      - id: winlog.eventid
+        type: long
+        stability: experimental
+        brief: >
+          Event ID is a unique identifier assigned to each event logged by the system.  Each event ID corresponds to a specific type of event, such as an error, warning, or informational message. (4624 -> successful logon, 1000 -> application error)
+        examples:
+          [4624, 1000]
+      - id: winlog.provider
+        type: string
+        stability: experimental
+        brief: >
+          Provider is a component or service that generates events. Providers are responsible for writing specific types of events to the event logs, such as application errors, security events, or system warnings.
+        examples:
+          ['Avecto Service', 'Security-SPP']
+      - id: winlog.task
+        type: long
+        stability: experimental
+        brief: >
+          Task refers to the specific operation or activity that an event is associated with.  Each event is categorized under a task, which helps in identifying what the system or application was doing when the event was logged. This can be particularly useful for troubleshooting and understanding the context of the event. (5 -> HTTP Configuration Property Trace Task, 12804 -> Other Object Access Events)
+        examples:
+          [5, 12804]
+      - id: winlog.opcode
+        type: string
+        stability: experimental
+        brief: >
+          Opcode is a value that identifies a specific activity or a point within an activity that the application was performing when it raised the event. This helps in understanding the context of the event more precisely.
+        examples:
+          ['Info', 'Download']
+      - id: winlog.username
+        type: string
+        stability: experimental
+        brief: >
+          Username refers to the account name associated with specific events, such as logon or logoff activities. This is particularly useful for tracking user activity and identifying who was logged into the system at a given time.
+        examples:
+          ['SYSTEM', 'N/A']
+      - id: winlog.keywords
+        type: string
+        stability: experimental
+        brief: >
+          Keywords are used to categorize and group events. This categorization allows to quickly identify and focus on specific types of events that are relevant to your troubleshooting or monitoring needs.
+        examples:
+          ['Classic', 'Started']

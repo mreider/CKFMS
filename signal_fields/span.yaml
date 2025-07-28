@@ -1,0 +1,128 @@
+groups:
+  - id: span
+    type: span
+    brief:
+    attributes:
+      - id: span.id
+        type: uid
+        stability: stable # traces-in-grail
+        brief: >
+          A unique identifier for a span within a trace.
+          The `span.id` is an 8-byte ID and hex-encoded if shown as a string.
+        examples: [ 'f76281848bd8288c' ]
+
+      - id: span.parent_id
+        type: uid
+        stability: stable # traces-in-grail
+        brief: >
+          The `span.id` of this span's parent span.
+          The `span.parent_id` is an 8-byte ID and hex-encoded if shown as a string.
+        examples: [ 'f76281848bd8288c' ]
+
+      - id: span.alternate_parent_id
+        type: uid
+        stability: experimental # traces-in-grail
+        brief: >
+          The alternative `span.id` of this span's parent span.
+          If a trace is monitored by more tracing systems (for example, OneAgent and OpenTelemetry), there might be two parent spans.
+          If the two parent spans differ, `span.parent_id` holds the ID of the parent span originating from same tenant of the span while `span.alternate_parent_id` holds the other parent span ID.
+          The `span.alternate_parent_id` is an 8-byte ID and hex-encoded if shown as a string.
+        examples: [ 'f76281848bd8288c' ]
+
+      - id: span.is_subroutine
+        type: boolean
+        stability: experimental # traces-in-grail
+        brief: >
+          If set to `true`, it indicates that this span is a subroutine of its parent span. The spans represent functions running on the same thread on the same call stack.
+
+      - id: span.kind
+        type:
+          allow_custom_values: false
+          members:
+            - id: internal
+              value: 'internal'
+              brief: 'Default Value. Indicates that the span represents an internal operation.'
+            - id: server
+              value: 'server'
+              brief: 'Indicates that the span covers server-side handling of a synchronous RPC or other remote request.'
+            - id: client
+              value: 'client'
+              brief: 'Indicates that the span describes a request to some remote service.'
+            - id: producer
+              value: 'producer'
+              brief: 'Indicates that the span describes the initiator of an asynchronous request.'
+            - id: consumer
+              value: 'consumer'
+              brief: 'Indicates that a span describes a child of an asynchronous `producer` request.'
+            - id: link
+              value: 'link'
+              brief: 'Indicates that the span describes a Dynatrace link node.'
+        stability: stable # traces-in-grail
+        brief: >
+          Distinguishes between spans generated in a particular context.
+        examples: [ 'server' ]
+
+      - id: span.events
+        type: record[]
+        stability: stable # traces-in-grail
+        brief: >
+          A collection of events. An event is an optional time-stamped annotation of the span and consists of a name and key-value pairs.
+
+      - id: span.links
+        type: record[]
+        stability: stable # traces-in-grail
+        brief: >
+          A collection of links. A link is a reference from this span to a whole trace or a span in the same or different trace.
+
+      - id: span.is_exit_by_exception
+        type: boolean
+        stability: stable # traces-in-grail
+        brief: >
+          Set to `true` if an exception exited the span. If set to `false`, the span has exception events, but none exited the span.
+
+      - id: span.exit_by_exception_id
+        type: uid
+        stability: stable # traces-in-grail
+        brief: >
+          The `exception.id` of the exception the its `span.events` with the current span exited. The referenced exception has set the attribute `exception.escaped` to true.
+
+      - id: span.timing.cpu
+        type: duration
+        stability: stable # traces-in-grail
+        brief: >
+          The overall CPU time spent executing the span, including the CPU times of child spans that are running on the same thread on the same call stack.
+
+      - id: span.timing.cpu_self
+        type: duration
+        stability: stable # traces-in-grail
+        brief: >
+          The CPU time spent exclusively on executing this span, not including the CPU times of any children.
+
+      - id: span.status_code
+        type:
+          allow_custom_values: false
+          members:
+            - id: ok
+              value: ok
+              brief: The span was explicitly validated as having completed successfully, despite maybe even containing information about an error.
+            - id: error
+              value: error
+              brief: An error happened while processing the span.
+        stability: stable # traces-in-grail
+        brief: >
+          Defines the status of a span, predominantly used to indicate a processing error.
+          This field is absent if the reported span status is `unset`.
+
+      - id: span.status_message
+        type: string
+        stability: experimental # traces-in-grail
+        brief: >
+          An optional text that can provide a descriptive error message in case the `span.status_code` is `error`.
+        examples: ['Connection closed before message completed', 'Error sending request for url']
+
+      - id: span.name
+        type: string
+        stability: stable # traces-in-grail
+        brief: >
+          The span name identifies the work represented by the span, for example, the route in an HTTP controller, an RPC method name, a function name, or the name of a subtask or stage within a larger computation.
+        examples: ['prepareOrderItemsAndShippingQuoteFromCart', 'org.example.CheckoutService/PlaceOrder', 'orders process', 'GET /products/{product_id}', 'HTTP POST']

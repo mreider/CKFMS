@@ -1,0 +1,118 @@
+groups:
+  - id: http
+    type: span
+    brief: 'This document defines semantic conventions for HTTP client and server Spans.'
+    note: >
+      These conventions can be used for http and https schemes
+      and various HTTP versions like 1.1, 2 and SPDY.
+    attributes:
+      - id: http.request.method
+        type: string
+        stability: stable # traces-in-grail
+        brief: 'HTTP request method.'
+        examples: ["GET", "POST", "HEAD"]
+
+      - id: http.response.status_code
+        type: long
+        stability: stable # traces-in-grail
+        brief: '[HTTP response status code](https://tools.ietf.org/html/rfc7231#section-6).'
+        examples: [200]
+
+      - id: http.response.reason_phrase
+        type: string
+        stability: experimental # traces-in-grail
+        brief: >
+          The HTTP reason phrase (HTTP1 only).
+        examples: [ "Not found" ]
+
+      - id: http.request.body.size
+        type: long
+        stability: stable # traces-in-grail
+        brief: >
+          The size of the request payload body in bytes. This is the number of bytes transferred excluding headers and
+          is often, but not always, present as the [Content-Length](https://www.rfc-editor.org/rfc/rfc9110.html#field.content-length)
+          header. For requests using transport encoding, this should be the compressed size.
+        examples: 3495
+
+      - id: http.response.body.size
+        type: long
+        stability: stable # traces-in-grail
+        brief: >
+          The size of the response payload body in bytes. This is the number of bytes transferred excluding headers and
+          is often, but not always, present as the [Content-Length](https://www.rfc-editor.org/rfc/rfc9110.html#field.content-length)
+          header. For requests using transport encoding, this should be the compressed size.
+        examples: 3495
+
+      - id: http.request.parameter.__key__
+        type: string
+        stability: stable # detection-finding
+        brief: >
+          HTTP request parameters, `__key__` for example, "http.request.parameter.username".
+          The value is a string. If there are multiple parameters with the same name or multiple parameter values, the values will be a single, comma-separated string.
+        examples: [ "admin", "premium" ]
+
+      - id: http.request.header.__key__
+        type: string
+        tags: [ 'sensitive-spans' ] # only http.request.header.referer is considered sensitive
+        stability: stable # traces-in-grail
+        brief: >
+          HTTP request headers, `__key__` being the lowercase HTTP header name, for example "http.request.header.accept-encoding".
+          The value is a string. If multiple headers have the same name or multiple header values, the values will be comma-separated into a single string.
+        examples: [ "https://www.foo.bar/", "gzip, deflate, br", "1.2.3.4, 1.2.3.5" ]
+
+      - id: http.response.header.__key__
+        type: string
+        stability: stable # traces-in-grail
+        brief: >
+          HTTP response headers, `__key__` being the lowercase HTTP header name, for example, "http.response.header.content-type".
+          The value is a string. If multiple headers have the same name or multiple header values, the values will be comma-separated into a single string.
+        examples: [ "909", "text/html; charset=utf-8", "abc, def" ]
+
+      - id: http.route
+        type: string
+        stability: stable # traces-in-grail
+        brief: >
+          The matched route (path template in the format used by the respective server framework).
+        examples: [ '/users/:userID?', 'Home/Index/{id?}' ]
+
+      - id: http.request.id
+        type: string
+        stability: experimental
+        brief: >
+          String that uniquely identifies a request.
+        examples: [ 'SOX4xwn4XV6Q4rgb7XiVGOHms_BGlTAC4KyHmureZmBNrjGdRLiNIQ==', 'k6WGMNkEzR5BEM_SaF47gjtX9zBDO2m349OY2an0QPEaUum1ZOLrow==' ]
+
+      - id: http.response.range_start_value
+        type: long
+        stability: experimental
+        brief: >
+          When the response contains the HTTP Content-Range header, this field contains the range start value.
+        examples: [ 0, 1000 ]
+
+      - id: http.response.range_end_value
+        type: long
+        stability: experimental
+        brief: >
+          When the response contains the HTTP Content-Range header, this field contains the range end value.
+        examples: [ 499, 1999 ]
+
+      - id: http.response.size
+        type: long
+        stability: experimental
+        brief: >
+          The total size of the response in bytes. This value should be the total number of bytes sent over the wire, including the status line (HTTP/1.1), framing (HTTP/2 and HTTP/3), headers, and response body and trailers if any.
+        examples: [ 251, 608 ]
+
+      - id: http.request.size
+        type: long
+        stability: experimental
+        brief: >
+          The total size of the request in bytes. This value should be the total number of bytes sent over the wire, including the request line (HTTP/1.1), framing (HTTP/2 and HTTP/3), headers, and request body if any.
+        examples: [ 114, 702 ]
+
+      - id: http.response.time_to_first_byte
+        type: double
+        stability: experimental
+        brief: >
+          Time between the browser requesting a page and when it receives the first byte of information from the server.
+        examples: [ 0.022, 0.071 ]

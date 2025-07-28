@@ -1,0 +1,82 @@
+groups:
+  - id: dt.rum_resource
+    type: resource
+    brief: >
+      The dt.rum namespace contains Dynatrace RUM specific fields.
+    attributes:
+      - id: dt.rum.schema_version
+        type: string
+        stability: stable
+        brief: >
+          The Dynatrace RUM enrichment version.
+        examples: [ '0.1' ]
+
+      - id: dt.rum.instance.id
+        type: string
+        stability: stable
+        brief: >
+          The RUM application instance ID. (This was formerly called the "Visitor id", "internal user ID", and "rxVisitor cookie value".)
+        examples: [ '3735928559', '1742973444821E7E6Q3E3SG28ATQPAGTT6T8HU92VFRFQ' ]
+
+      - id: dt.rum.agent.version
+        type: string
+        stability: experimental
+        brief: >
+          The version of the Dynatrace RUM agent. It is provided in the format major.minor.patch.build. The build number is optional.
+        examples: [ '8.263.1', '9.293.2.1', '1.313.0.20250402-172634' ]
+
+      - id: dt.rum.agent.type
+        type:
+          allow_custom_values: false
+          members:
+            - id: android
+              value: 'android'
+              brief: >
+                OneAgent for Android
+            - id: ios
+              value: 'ios'
+              brief: >
+                OneAgent for iOS
+            - id: javascript
+              value: 'javascript'
+              brief: >
+                RUM JavaScript
+        stability: experimental
+        brief: >
+          The Dynatrace RUM agent type.
+
+      - id: dt.rum.event.source.type
+        type:
+          allow_custom_values: false
+          members:
+            - id: flutter
+              value: 'flutter'
+              brief: Flutter
+            - id: react_native
+              value: 'react_native'
+              brief: React Native auto-instrumentation
+        stability: experimental
+        brief: >
+          The Dynatrace RUM source technology that produced this event. Only used by cross-platform implementations, otherwise the field is omitted.
+        examples: [ 'flutter' ]
+
+      - id: dt.rum.user_type
+        type:
+          allow_custom_values: false
+          members:
+            - id: real_user
+              value: 'real_user'
+              brief: >
+                The user event was produced by a real user.
+            - id: synthetic
+              value: 'synthetic'
+              brief: >
+                The user event was produced by a synthetic test.
+            - id: robot
+              value: 'robot'
+              brief: >
+                The user event was produced by a bot user.
+        stability: experimental
+        brief: >
+          The RUM user type.
+        examples: [ 'real_user' ]

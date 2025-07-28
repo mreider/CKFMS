@@ -1,0 +1,40 @@
+groups:
+  - id: telemetry
+    type: resource
+    brief: This document defines the semantic conventions for telemetry resource.
+    attributes:
+      - id: telemetry.exporter.name
+        type: string
+        stability: experimental
+        brief: The exporter name.
+        examples: [ 'odin' ]
+
+      - id: telemetry.exporter.version
+        type: string
+        stability: experimental
+        brief: The full agent/exporter version.
+        examples: [ '1.285.1.20240101-256988' ]
+
+      - id: telemetry.exporter.package_version
+        type: string
+        stability: experimental
+        brief: The version as exposed to the package manager (for example, npm).
+        examples: [ '1.285.1' ]
+
+      - id: telemetry.sdk.name
+        type: string
+        stability: stable
+        brief: The name of the telemetry SDK.
+        examples: [ 'odin', 'opentelemetry' ]
+
+      - id: telemetry.sdk.version
+        type: string
+        stability: stable
+        brief: The version string of the telemetry SDK.
+        examples: [ '1.20.0' ]
+
+      - id: telemetry.sdk.language
+        type: string
+        stability: stable
+        brief: The programming language/tech of the telemetry SDK.
+        examples: [ 'nodejs', 'python', 'java' ]

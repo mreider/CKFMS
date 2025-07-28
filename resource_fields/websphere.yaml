@@ -1,0 +1,28 @@
+groups:
+  - id: websphere
+    type: resource
+    brief:
+    attributes:
+      - id: websphere.cell.name
+        type: string
+        stability: experimental # traces-in-grail
+        brief: The name of the cell this instance belongs to.
+        examples: [ 'srvwasapp1Cell01' ]
+
+      - id: websphere.cluster.name
+        type: string
+        stability: experimental # traces-in-grail
+        brief: The name of the cluster this instance belongs to.
+        examples: [ 'CluApp1' ]
+
+      - id: websphere.node.name
+        type: string
+        stability: experimental # traces-in-grail
+        brief: Name of the node to which this instance belongs.
+        examples: [ 'nodeSrvApp2' ]
+
+      - id: websphere.server.name
+        type: string
+        stability: experimental # traces-in-grail
+        brief: The instance's server name.
+        examples: [ 'SrvApp2' ]

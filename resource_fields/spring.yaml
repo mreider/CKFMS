@@ -1,0 +1,31 @@
+groups:
+  - id: spring
+    type: resource
+    brief:
+    attributes:
+      - id: spring.application.name
+        type: string
+        stability: experimental # traces-in-grail
+        brief: >
+          Also see [Common Application Properties](https://docs.spring.io/spring-boot/appendix/application-properties/index.html#application-properties.core.spring.application.name)
+        examples: [ ' ' ]
+
+      - id: spring.profile.name
+        type: string
+        stability: experimental # traces-in-grail
+        brief: >
+          The active profile (last value of spring.profiles.active)
+        examples: [ ' ' ]
+
+      - id: spring.startup.class
+        type: string
+        stability: experimental # traces-in-grail
+        brief:
+        examples: [ ' ' ]
+
+      - id: spring.application.group
+        type: string
+        stability: experimental # traces-in-grail
+        brief: >
+          Also see [Common Application Properties](https://docs.spring.io/spring-boot/appendix/application-properties/index.html#application-properties.core.spring.application.group)
+        examples: [ ' ' ]

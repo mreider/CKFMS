@@ -1,0 +1,40 @@
+groups:
+  - id: apache.httpd
+    type: resource
+    brief:
+    attributes:
+      - id: apache.httpd.config.path
+        type: string
+        stability: experimental # traces-in-grail
+        brief:
+        examples: [ ' ' ]
+
+      - id: apache.httpd.module.name
+        type: string
+        stability: experimental
+        brief: The name of the Apache HTTP Server module that generated the log entry.
+        examples: [ 'core', 'proxy' ]
+  - id: apache.spark
+    type: resource
+    brief:
+    attributes:
+      - id: apache.spark.master.ip
+        type: string
+        stability: experimental # traces-in-grail
+        brief:
+        examples: [ ' ' ]
+  - id: apache.tomcat
+    type: resource
+    brief:
+    attributes:
+      - id: apache.tomcat.base
+        type: string
+        stability: experimental # traces-in-grail
+        brief: The server's base directory. This is what usually is referred to as CATALINA_BASE.
+        examples: [ '/usr/share/tomcat6' ]
+
+      - id: apache.tomcat.home
+        type: string
+        stability: experimental # traces-in-grail
+        brief: The server's home directory. This is what usually is referred to as CATALINA_HOME.
+        examples: [ '/usr/share/tomcat6' ]

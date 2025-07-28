@@ -1,0 +1,16 @@
+groups:
+  - id: dotnet
+    type: resource
+    brief:
+    attributes:
+      - id: dotnet.dll.file
+        type: string
+        stability: experimental # traces-in-grail
+        brief: Filename of main dotnet assembly.
+        examples: [ ' ' ]
+
+      - id: dotnet.dll.path
+        type: string
+        stability: experimental # traces-in-grail
+        brief: Filepath of main dotnet assembly.
+        examples: [ ' ' ]

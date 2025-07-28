@@ -1,0 +1,129 @@
+groups:
+  - id: aws_span
+    type: span
+    brief:
+    attributes:
+      - id: aws.x_amzn_trace_id
+        type: string
+        deprecated: Replaced by `aws.xray.trace_id`
+        internal: true
+        brief: >
+          Contains the `X-Amzn-Trace-Id` HTTP header for [AWS X-Ray](https://docs.aws.amazon.com/xray/latest/devguide/aws-xray.html) tracing.
+        examples: [ 'Root=1-63441c4a-abcdef012345678912345678', 'Self=1-63441c4a-12456789abcdef012345678;Root=1-67891233-abcdef012345678912345678' ]
+
+      - id: aws.xray.trace_id
+        type: string
+        stability: experimental # traces-in-grail
+        brief: >
+          Contains the [AWS X-Ray](https://docs.aws.amazon.com/xray/latest/devguide/aws-xray.html) trace id (e.g., value of the `x-amzn-trace-id` HTTP header, `_X_AMZN_TRACE_ID` environment variable on AWS lambda)
+        examples: [ 'Root=1-63441c4a-abcdef012345678912345678', 'Self=1-63441c4a-12456789abcdef012345678;Root=1-67891233-abcdef012345678912345678' ]
+
+      - id: aws.x_amzn_request_id
+        type: string
+        deprecated: Replaced by `aws.request_id`
+        internal: true
+        brief: >
+          Contains the value of the AWS 'X-Amzn-RequestId' HTTP header.
+        examples: '0e7bc729-a468-57e8-8143-98f2eec5c925'
+
+      - id: aws.request_id
+        type: string
+        stability: experimental # traces-in-grail
+        brief: >
+          The AWS request ID (e.g., value of `x-amzn-requestid`, `x-amzn-request-id`, or `x-amz-request-id` HTTP header, `awsRequestId` field in AWS lambda context object).
+        examples: '0e7bc729-a468-57e8-8143-98f2eec5c925'
+
+      - id: aws.lambda.invoked_arn
+        type: string
+        stability: experimental # traces-in-grail
+        brief: >
+          The full invoked ARN as provided on the `Context` passed to
+          the function (`Lambda-Runtime-Invoked-Function-Arn` response header
+          from the request to `/runtime/invocation/next`).
+        examples: [ 'arn:aws:lambda:us-east-1:123456789012:function:acceptanceWeatherBackend:production' ]
+
+      - id: aws.s3.bucket
+        type: string
+        stability: experimental
+        brief: >
+          Name of an S3 bucket.
+        examples: [ 'amzn-s3-demo-bucket', 'amzn-s3-demo-bucket1-a1b2c3d4-5678-90ab-cdef-example11111' ]
+
+      - id: aws.s3.key
+        type: string
+        stability: experimental
+        brief: >
+          Key name of the object.
+        examples: [ 'Development/Projects.xls', 'Finance/statement1.pdf', 's3-dg.pdf' ]
+
+      - id: aws.s3.object_version
+        type: string
+        stability: experimental
+        brief: >
+          Version ID for the specific version of the object.
+        examples: [ '3sL4kqtJlcpXroDTDmJ+rmSpXd3dIbrHY+MTRCxf3vjVBH40Nr8X8gdRQBpUMLUo' ]
+
+      - id: aws.s3.source.bucket
+        type: string
+        stability: experimental
+        brief: >
+          Name of the bucket containing the object to copy.
+        examples: [ 'amzn-s3-source-bucket' ]
+
+      - id: aws.s3.source.key
+        type: string
+        stability: experimental
+        brief: >
+          Key of the object to copy.
+        examples: [ 'Finance/statement1.pdf' ]
+
+      - id: aws.s3.source.object_version
+        type: string
+        stability: experimental
+        brief: >
+          Version of the source object to copy. By default, the latest version is copied.
+        examples: [ '3sL4kqtJlcpXroDTDmJ+rmSpXd3dIbrHY+MTRCxf3vjVBH40Nr8X8gdRQBpUMLUo' ]
+
+      - id: aws.s3.upload_id
+        type: string
+        stability: experimental
+        brief: >
+          Upload ID identifying the multipart upload targeted by an operation (abort/complete/upload/…).
+        examples: [ 'dfRtDYWFbkRONycy.Yxwh66Yjlx.cph0gtNBtJ' ]
+
+      - id: aws.s3.part_number
+        type: long
+        stability: experimental
+        brief: >
+          Part number in a multi-part upload.
+        examples: [ 3456 ]
+      - id: aws.kinesis.stream.name
+        type: string
+        stability: experimental
+        brief: >
+          Name of a Kinesis stream.
+        examples: [ 'MyKinesisStream' ]
+      - id: aws.kinesis.stream.arn
+        type: string
+        stability: experimental
+        brief: >
+          Amazon resource name (ARN) of a Kinesis stream.
+        examples: [ 'arn:aws:kinesis:us-east-2:123456789012:stream/MyKinesisStream' ]
+      - id: aws.kinesis.consumer.name
+        type: string
+        stability: experimental
+        brief: >
+          Name of a Kinesis consumer.
+        examples: [ 'MyKinesisConsumer' ]
+      - id: aws.kinesis.consumer.arn
+        type: string
+        stability: experimental
+        brief: >
+          Amazon resource name (ARN) of a Kinesis consumer.
+        examples: [ 'arn:aws:kinesis:us-west-2:123456789012:stream/MyKinesisStream/consumer/MyKinesisConsumer:1616044553' ]
+      - id: aws.kinesis.arn
+        type: string
+        stability: experimental
+        brief: >
+          Amazon resource name (ARN) of a Kinesis stream or consumer.
+        examples: [ 'arn:aws:kinesis:us-east-2:123456789012:stream/MyKinesisStream', 'arn:aws:kinesis:us-west-2:123456789012:stream/MyKinesisStream/consumer/MyKinesisConsumer:1616044553' ]

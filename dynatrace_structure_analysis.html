@@ -1,0 +1,2169 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Metadata and Facets Structure Analysis</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+            vertical-align: top;
+        }
+        th {
+            font-weight: bold;
+        }
+        ul {
+            margin: 0;
+            padding-left: 20px;
+        }
+        li {
+            margin-bottom: 2px;
+        }
+    </style>
+</head>
+<body>
+    <h2>1. Suggested Categories and Semantics</h2>
+    <p>These are the categories for facets and metadata with semantic names and display names</p>
+    
+    <table>
+<thead>
+<tr><th>Category</th><th>Description</th><th>Semantic Keys and Display Names</th></tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Browser</strong></td>
+<td>Browser and user agent filters</td>
+<td><ul><li><strong>url.domain - URL Domain</strong></li><li><strong>url.fragment - URL Fragment</strong></li><li><strong>url.full - URL Full</strong></li><li><strong>url.path - URL Path</strong></li><li><strong>url.port - URL Port</strong></li><li><strong>url.query - URL Query</strong></li><li><strong>url.scheme - URL Scheme</strong></li></ul></td>
+</tr>
+<tr>
+<td><strong>Business</strong></td>
+<td>Business metrics and revenue filters</td>
+<td><ul><li><strong>business.revenue - Revenue</strong></li></ul></td>
+</tr>
+<tr>
+<td><strong>Cloud</strong></td>
+<td>Cloud provider and region information</td>
+<td><ul><li><strong>aws.account.id - AWS Account ID</strong></li><li><strong>aws.arn - AWS ARN</strong></li><li><strong>aws.availability_zone - AWS Availability Zone</strong></li><li><strong>aws.log_group - AWS Log Group</strong></li><li><strong>aws.region - AWS Region</strong></li><li><strong>aws.resource.id - AWS Resource ID</strong></li><li><strong>aws.resource.name - AWS Resource Name</strong></li><li><strong>aws.resource.type - AWS Resource Type</strong></li><li><strong>aws.service - AWS Service</strong></li><li><strong>aws.tags - AWS Tags</strong></li><li><strong>azure.availability_zone - Azure Availability Zone</strong></li><li><strong>azure.location - Azure Location</strong></li><li><strong>azure.management_group - Azure Management Group</strong></li><li><strong>azure.region - Azure Region</strong></li><li><strong>azure.resource.group - Azure Resource Group</strong></li><li><strong>azure.resource.id - Azure Resource ID</strong></li><li><strong>azure.resource.name - Azure Resource Name</strong></li><li><strong>azure.resource.provider - Azure Resource Provider</strong></li><li><strong>azure.resource.type - Azure Resource Type</strong></li><li><strong>azure.subscription - Azure Subscription</strong></li><li><strong>azure.tenant.id - Azure Tenant ID</strong></li><li><strong>azure.tenant.name - Azure Tenant Name</strong></li><li><strong>cloud.provider - Cloud Provider</strong></li><li><strong>gcp.project.id - GCP Project ID</strong></li><li><strong>gcp.region - GCP Region</strong></li><li><strong>gcp.resource.id - GCP Resource ID</strong></li><li><strong>gcp.resource.type - GCP Resource Type</strong></li><li><strong>gcp.service - GCP Service</strong></li><li><strong>gcp.zone - GCP Zone</strong></li><li><strong>host.ip - IP Addresses</strong></li></ul></td>
+</tr>
+<tr>
+<td><strong>Code</strong></td>
+<td>Code execution details</td>
+<td><ul><li><strong>code.function - Code Function</strong></li><li><strong>code.namespace - Code Namespace</strong></li><li><strong>span.is_subroutine - Span Is Subroutine</strong></li><li><strong>span.timing.cpu - CPU Time</strong></li><li><strong>span.timing.cpu_self - CPU Self Time</strong></li><li><strong>thread.id - Thread ID</strong></li><li><strong>thread.name - Thread Name</strong></li></ul></td>
+</tr>
+<tr>
+<td><strong>Database</strong></td>
+<td>Database-specific metadata</td>
+<td><ul><li><strong>db.status - Database Status</strong></li><li><strong>db.system - Database System</strong></li><li><strong>db.vendor - Database Vendor</strong></li></ul></td>
+</tr>
+<tr>
+<td><strong>Deployment</strong></td>
+<td>Application deployment information</td>
+<td><ul><li><strong>deployment.environment - Application Build Environment</strong></li><li><strong>service.version - Application Release Version</strong></li></ul></td>
+</tr>
+<tr>
+<td><strong>HTTP</strong></td>
+<td>HTTP request and response data</td>
+<td><ul><li><strong>http.request.header.forwarded - Forwarded</strong></li><li><strong>http.request.header.host - HTTP Request Header Host</strong></li><li><strong>http.request.header.referer - HTTP Request Header Referer</strong></li><li><strong>http.request.header.user-agent - HTTP Request Header User-Agent</strong></li><li><strong>http.request.header.x-dynatrace - X-Dynatrace</strong></li><li><strong>http.request.method - HTTP Method</strong></li><li><strong>http.response.header.content-type - HTTP Response Header Content-Type</strong></li><li><strong>http.response.status_code - HTTP Status Code</strong></li><li><strong>http.route - Context Root</strong></li><li><strong>server.name - Web Server Name</strong></li><li><strong>url.path - URL Path</strong></li></ul></td>
+</tr>
+<tr>
+<td><strong>Infrastructure</strong></td>
+<td>Hardware and system specifications</td>
+<td><ul><li><strong>dt.entity.host_group - Host Group Name</strong></li><li><strong>host.arch - Architecture</strong></li><li><strong>host.cpu.logical_count - Logical CPU Cores</strong></li><li><strong>host.cpu.physical_count - Physical CPU Cores</strong></li><li><strong>host.memory.total - Physical Memory</strong></li><li><strong>host.name - Host Name</strong></li><li><strong>hypervisor.type - Hypervisor Type</strong></li><li><strong>k8s.container.count - Containers</strong></li><li><strong>k8s.container.cpu_request - CPU Requests</strong></li><li><strong>k8s.container.restart_count - Total Container Restarts</strong></li></ul></td>
+</tr>
+<tr>
+<td><strong>Kubernetes</strong></td>
+<td>Kubernetes-specific metadata</td>
+<td><ul><li><strong>k8s.cluster.distribution - Kubernetes Distribution</strong></li><li><strong>k8s.cluster.name - Cluster Name</strong></li><li><strong>k8s.cluster.version - Kubernetes Version</strong></li><li><strong>k8s.container.name - Kubernetes Container Name</strong></li><li><strong>k8s.deployment.name - Kubernetes Deployment Name</strong></li><li><strong>k8s.namespace.label - Namespace Labels</strong></li><li><strong>k8s.namespace.name - Namespace Name</strong></li><li><strong>k8s.node.name - Kubernetes Node Name</strong></li><li><strong>k8s.pod.name - Pod Name</strong></li><li><strong>k8s.service.name - Kubernetes Service Name</strong></li><li><strong>k8s.workload.kind - Workload Type</strong></li><li><strong>k8s.workload.label - Workload Labels</strong></li><li><strong>k8s.workload.name - Workload Name</strong></li></ul></td>
+</tr>
+<tr>
+<td><strong>Logs</strong></td>
+<td>Log content and formatting</td>
+<td><ul><li><strong>log.body - Log Content</strong></li><li><strong>log.level - Log Level</strong></li><li><strong>log.severity_text - Log Status</strong></li><li><strong>log.timestamp - Log Timestamp</strong></li></ul></td>
+</tr>
+<tr>
+<td><strong>Monitoring</strong></td>
+<td>Dynatrace monitoring configuration</td>
+<td><ul><li><strong>dt.active_gate.id - ActiveGate ID</strong></li><li><strong>dt.active_gate.version - ActiveGate Version</strong></li><li><strong>dt.agent.version - OneAgent Version</strong></li><li><strong>dt.entity.alert_status - Alert Status</strong></li><li><strong>dt.entity.custom_alert - Closed Custom Alert</strong></li><li><strong>dt.entity.health_alert - Active Health Alert</strong></li><li><strong>dt.entity.health_alert_closed - Closed Health Alert</strong></li><li><strong>dt.entity.health_status - Health Status</strong></li><li><strong>dt.entity.technology - Technology</strong></li><li><strong>dt.management_zones - Management Zones</strong></li><li><strong>dt.observability.signals - Observability Signals</strong></li><li><strong>dt.operator.version - Operator Version</strong></li><li><strong>dt.security_context - Security Context</strong></li><li><strong>dt.system.environment - System Environment</strong></li><li><strong>host.uptime - Up Since</strong></li></ul></td>
+</tr>
+<tr>
+<td><strong>Networking</strong></td>
+<td>Network protocol information</td>
+<td><ul><li><strong>http.flavor - HTTP Flavor</strong></li><li><strong>http.request.method - HTTP Method</strong></li><li><strong>http.response.status_code - HTTP Status Code</strong></li><li><strong>network.protocol.name - Network Protocol Name</strong></li><li><strong>server.address - Server Address</strong></li><li><strong>server.port - Server Port</strong></li></ul></td>
+</tr>
+<tr>
+<td><strong>Operating System</strong></td>
+<td>OS version and configuration</td>
+<td><ul><li><strong>os.type - OS Type</strong></li><li><strong>os.version - OS Version</strong></li></ul></td>
+</tr>
+<tr>
+<td><strong>Performance</strong></td>
+<td>Performance and timing metrics</td>
+<td><ul><li><strong>span.duration - Span Duration</strong></li><li><strong>span.end_time - Span End Time</strong></li><li><strong>span.is_root - Request Is Root Span</strong></li><li><strong>span.name - Span Name</strong></li><li><strong>span.start_time - Span Start Time</strong></li><li><strong>span.status_code - Request Is Failed</strong></li></ul></td>
+</tr>
+<tr>
+<td><strong>Platform</strong></td>
+<td>Platform and service filters</td>
+<td><ul><li><strong>aws.service - AWS Service</strong></li></ul></td>
+</tr>
+<tr>
+<td><strong>Process</strong></td>
+<td>Process and technology context</td>
+<td><ul><li><strong>dt.entity.process_group - Process Group</strong></li><li><strong>host.name - Host Name</strong></li><li><strong>process.executable.name - Process Executable Name</strong></li><li><strong>process.executable.path - Process Executable Path</strong></li><li><strong>process.name - Process</strong></li><li><strong>process.pid - Process PID</strong></li><li><strong>process.technology - Process Technology</strong></li></ul></td>
+</tr>
+<tr>
+<td><strong>Request Attributes</strong></td>
+<td>Custom request attribute filters</td>
+<td><ul><li><strong>request_attribute.client_ip - Client IP</strong></li><li><strong>request_attribute.custom - Custom Attributes</strong></li><li><strong>request_attribute.source_ip - Source IP</strong></li></ul></td>
+</tr>
+<tr>
+<td><strong>Security</strong></td>
+<td>Security context and access control</td>
+<td><ul><li><strong>dt.security_context - Security Context</strong></li></ul></td>
+</tr>
+<tr>
+<td><strong>Service</strong></td>
+<td>Service-specific information</td>
+<td><ul><li><strong>service.is_external - Is External Service</strong></li><li><strong>service.last_seen - Service Last Seen</strong></li><li><strong>service.type - Service Type</strong></li></ul></td>
+</tr>
+<tr>
+<td><strong>Source</strong></td>
+<td>Log source filters</td>
+<td><ul><li><strong>log.source - Log Source</strong></li></ul></td>
+</tr>
+<tr>
+<td><strong>Span</strong></td>
+<td>Span-specific information</td>
+<td><ul><li><strong>span.kind - Span Kind</strong></li></ul></td>
+</tr>
+<tr>
+<td><strong>Tags & Labels</strong></td>
+<td>User-defined tags and labels</td>
+<td><ul><li><strong>aws.tags.__tag_key__ - AWS Tags</strong></li><li><strong>azure.tags.__tag_key__ - Azure Tags</strong></li><li><strong>dt.entity.tags - Cloud Tags</strong></li><li><strong>gcp.tags.__tag_key__ - GCP Tags</strong></li><li><strong>k8s.namespace.annotation - Namespace Annotations</strong></li><li><strong>k8s.namespace.label - Namespace Labels</strong></li><li><strong>k8s.pod.annotation - Pod Annotations</strong></li><li><strong>k8s.pod.label - Pod Labels</strong></li><li><strong>k8s.workload.annotation - Workload Annotations</strong></li><li><strong>k8s.workload.label - Workload Labels</strong></li></ul></td>
+</tr>
+<tr>
+<td><strong>Technology</strong></td>
+<td>Technology stack information</td>
+<td><ul><li><strong>dt.agent.technology - Agent Technology Type</strong></li><li><strong>dt.entity.technologies - Technologies</strong></li><li><strong>service.technology - Software Technology Types</strong></li></ul></td>
+</tr>
+<tr>
+<td><strong>Topology</strong></td>
+<td>Entity identification and relationships</td>
+<td><ul><li><strong>aws.resource.id - AWS Resource ID</strong></li><li><strong>db.name - Database Name</strong></li><li><strong>dt.entity.accessible_by - Accessible By</strong></li><li><strong>dt.entity.application - Web Application ID</strong></li><li><strong>dt.entity.cloud_application - Cloud Application</strong></li><li><strong>dt.entity.custom_icon_path - Custom Icon Path</strong></li><li><strong>dt.entity.database - Database Entity ID</strong></li><li><strong>dt.entity.host - Host Entity ID</strong></li><li><strong>dt.entity.host_group - Host Group Name</strong></li><li><strong>dt.entity.id - Cloud Entity ID</strong></li><li><strong>dt.entity.kubernetes_cluster - Kubernetes Cluster ID</strong></li><li><strong>dt.entity.name - Cloud Entity Name</strong></li><li><strong>dt.entity.process_group - Process Group</strong></li><li><strong>dt.entity.service - Service Entity ID</strong></li><li><strong>host.ip - IP Addresses</strong></li><li><strong>host.mac - MAC Addresses</strong></li><li><strong>host.name - Host Name</strong></li><li><strong>http.route - Context Root</strong></li><li><strong>k8s.cluster.name - Cluster Name</strong></li><li><strong>k8s.namespace.name - Namespace Name</strong></li><li><strong>k8s.pod.name - Pod Name</strong></li><li><strong>k8s.pod.uid - External Resource UID</strong></li><li><strong>k8s.workload.kind - Workload Type</strong></li><li><strong>k8s.workload.name - Workload Name</strong></li><li><strong>server.name - Web Server Name</strong></li><li><strong>service.name - Service Application Name</strong></li><li><strong>span.id - Span ID</strong></li><li><strong>span.parent_id - Span Parent ID</strong></li><li><strong>trace.id - Trace ID</strong></li></ul></td>
+</tr>
+</tbody>
+</table>
+
+    <h2>⚠️ 2. Current Existing Structure</h2>
+    <p>Shows the existing inconsistent metadata and facet categories as they currently exist across applications</p>
+    
+    <table>
+        <thead>
+            <tr>
+                <th>Type</th>
+                <th>Clouds</th> <th>Database</th> <th>Infra and Operations</th> <th>Kubernetes</th> <th>Logs</th> <th>Services</th> <th>Tracing</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr><td><strong>Metadata</strong></td><td><ul>
+<li><strong>No Category</strong>
+<ul>
+<li>accessible_by</li>
+<li>arn</li>
+<li>customIconPath</li>
+<li>dt.security_context</li>
+<li>dt.system.environment</li>
+<li>entity.name</li>
+<li>id</li>
+<li>managementZones</li>
+<li>tags</li>
+</ul>
+</li>
+</ul></td><td><ul>
+<li><strong>None</strong>
+</li>
+</ul></td><td><ul>
+<li><strong>No Category</strong>
+<ul>
+<li>Additional system info</li>
+<li>AMI ID</li>
+<li>Architecture</li>
+<li>ARN</li>
+<li>autoInjection</li>
+<li>AWS name tag</li>
+<li>BOSH availability zone</li>
+<li>BOSH deployment ID</li>
+<li>BOSH instance ID</li>
+<li>BOSH instance name</li>
+<li>BOSH stemcell version</li>
+<li>boshName</li>
+<li>called_by</li>
+<li>calls</li>
+<li>Cloud</li>
+<li>Cloud Foundry foundation</li>
+<li>Data center</li>
+<li>Detected name</li>
+<li>dt.entity.host</li>
+<li>dt.security_context</li>
+<li>ebrpDiscoveryMonitored</li>
+<li>Host group</li>
+<li>Host group name</li>
+<li>Hypervisor type</li>
+<li>Instance ID</li>
+<li>Instance type</li>
+<li>IP addresses</li>
+<li>Logical CPU cores</li>
+<li>macAddresses</li>
+<li>Management zones</li>
+<li>Monitoring type</li>
+<li>OneAgent version</li>
+<li>OS version</li>
+<li>Physical CPU cores</li>
+<li>Physical memory</li>
+<li>Private hostname</li>
+<li>Private IP address</li>
+<li>Security groups</li>
+<li>Technologies</li>
+<li>Up since</li>
+</ul>
+</li>
+</ul></td><td><ul>
+<li><strong>No Category</strong>
+<ul>
+<li>ActiveGate ID</li>
+<li>ActiveGate version</li>
+<li>Annotations</li>
+<li>Cluster</li>
+<li>Conditions</li>
+<li>Containers</li>
+<li>CPU Requests</li>
+<li>Created</li>
+<li>DynaKube modes</li>
+<li>External resource UID</li>
+<li>Kubernetes cluster ID</li>
+<li>Kubernetes distribution</li>
+<li>Kubernetes version</li>
+<li>Labels</li>
+<li>Name</li>
+<li>Namespace</li>
+<li>Operator version</li>
+<li>Security context</li>
+<li>Total container restarts</li>
+<li>Workload</li>
+<li>Workload Type</li>
+</ul>
+</li>
+</ul></td><td><ul>
+<li><strong>Fields</strong>
+<ul>
+<li>azure.location</li>
+<li>content</li>
+<li>dt.entity.container_group</li>
+<li>dt.entity.process_group</li>
+<li>dt.kubernetes.cluster.name</li>
+<li>dt.kubernetes.node.system_uuid</li>
+<li>host.name</li>
+<li>http.flavor</li>
+<li>http.method</li>
+<li>http.status_code</li>
+<li>k8s.cluster.name</li>
+<li>k8s.container.name</li>
+<li>k8s.deployment.name</li>
+<li>k8s.namespace.name</li>
+<li>k8s.pod.name</li>
+<li>log.source</li>
+<li>loglevel</li>
+<li>OperatorVersion</li>
+<li>process.technology</li>
+<li>source.host</li>
+<li>status</li>
+<li>timestamp</li>
+</ul>
+</li>
+<li><strong>Topology</strong>
+<ul>
+<li>dt.entity.cloud_application</li>
+<li>dt.entity.cloud_application_instance</li>
+<li>dt.entity.cloud_application_namespace</li>
+<li>dt.entity.container_group_instance</li>
+<li>dt.entity.host</li>
+<li>dt.entity.kubernetes_cluster</li>
+<li>dt.entity.kubernetes_node</li>
+<li>dt.entity.process_group_instance</li>
+<li>dt.source_entity</li>
+</ul>
+</li>
+</ul></td><td><ul>
+<li><strong>No Category</strong>
+<ul>
+<li>Agent technology type</li>
+<li>Application build environment</li>
+<li>Application name</li>
+<li>Application release version</li>
+<li>Context root</li>
+<li>Is external service</li>
+<li>Kubernetes cluster</li>
+<li>Kubernetes namespace</li>
+<li>Kubernetes namespace labels</li>
+<li>Kubernetes workload</li>
+<li>Kubernetes workload labels</li>
+<li>Last seen</li>
+<li>Management zones</li>
+<li>Process group</li>
+<li>Security context</li>
+<li>Service ID</li>
+<li>Service type</li>
+<li>Software technology types</li>
+<li>Technologies</li>
+<li>Web application id</li>
+<li>Web server name</li>
+</ul>
+</li>
+</ul></td><td><ul>
+<li><strong>Apache</strong>
+<ul>
+<li>Apache tomcat base</li>
+</ul>
+</li>
+<li><strong>Client</strong>
+<ul>
+<li>Client ip</li>
+</ul>
+</li>
+<li><strong>Code attributes</strong>
+<ul>
+<li>Code function</li>
+<li>Code namespace</li>
+<li>CPU self time</li>
+<li>CPU time</li>
+<li>Span is subroutine</li>
+<li>Thread id</li>
+<li>Thread name</li>
+</ul>
+</li>
+<li><strong>Core</strong>
+<ul>
+<li>Duration</li>
+<li>End time</li>
+<li>Endpoint</li>
+<li>Host</li>
+<li>Process</li>
+<li>Process group</li>
+<li>Request is failed</li>
+<li>Request is root span</li>
+<li>Service</li>
+<li>Span kind</li>
+<li>Span name</li>
+<li>Start time</li>
+</ul>
+</li>
+<li><strong>Deployment information</strong>
+<ul>
+<li>Deployment release build version</li>
+<li>Deployment release product</li>
+<li>Deployment release stage</li>
+<li>Deployment release version</li>
+</ul>
+</li>
+<li><strong>Entity IDs</strong>
+<ul>
+<li>Gcp zone id</li>
+<li>Host group id</li>
+<li>Host id</li>
+<li>Service id</li>
+</ul>
+</li>
+<li><strong>Full</strong>
+<ul>
+<li>OneAgent module version</li>
+</ul>
+</li>
+<li><strong>GCP</strong>
+<ul>
+<li>Gcp instance id</li>
+<li>Gcp project id</li>
+<li>Gcp region</li>
+<li>Gcp zone</li>
+</ul>
+</li>
+<li><strong>Host</strong>
+<ul>
+<li>Host group</li>
+<li>Host name internal</li>
+</ul>
+</li>
+<li><strong>HTTP</strong>
+<ul>
+<li>HTTP method</li>
+<li>HTTP route</li>
+<li>HTTP server name</li>
+<li>HTTP status</li>
+<li>Url path</li>
+</ul>
+</li>
+<li><strong>HTTP headers</strong>
+<ul>
+<li>HTTP request header host</li>
+<li>HTTP request header referer</li>
+<li>HTTP request header user-agent</li>
+<li>HTTP response header content-type</li>
+</ul>
+</li>
+<li><strong>IDs</strong>
+<ul>
+<li>Span id</li>
+<li>Span parent id</li>
+<li>Subtrace id</li>
+<li>Trace id</li>
+</ul>
+</li>
+<li><strong>Java</strong>
+<ul>
+<li>Java jar file</li>
+<li>Java jar path</li>
+</ul>
+</li>
+<li><strong>Metadata</strong>
+<ul>
+<li>Cost costcenter</li>
+<li>Cost product</li>
+<li>Ingest size</li>
+<li>OneAgent module id</li>
+<li>OneAgent module type</li>
+<li>OneAgent module version</li>
+<li>Openpipeline pipelines</li>
+<li>Openpipeline source</li>
+<li>Retain size</li>
+<li>Supportability atm sampling ratio</li>
+<li>System monitoring source</li>
+</ul>
+</li>
+<li><strong>Networking</strong>
+<ul>
+<li>Network protocol name</li>
+<li>Server address</li>
+<li>Server port</li>
+</ul>
+</li>
+<li><strong>Process</strong>
+<ul>
+<li>Process executable name</li>
+<li>Process executable path</li>
+<li>Process group id</li>
+<li>Process id</li>
+<li>Process pid</li>
+</ul>
+</li>
+<li><strong>Request attributes</strong>
+<ul>
+<li>Request attribute ClientIP</li>
+<li>Request attribute SourceIP</li>
+</ul>
+</li>
+<li><strong>Servlet</strong>
+<ul>
+<li>Servlet context name</li>
+<li>Servlet context path</li>
+</ul>
+</li>
+<li><strong>Subtrace</strong>
+<ul>
+<li>Subtrace is root span</li>
+</ul>
+</li>
+</ul></td></tr>
+            <tr><td><strong>Facets</strong></td><td><ul>
+<li><strong>AWS</strong>
+<ul>
+<li>Availability zone
+<ul>
+<li>regional</li>
+</ul>
+</li>
+<li>AWS Account
+<ul>
+<li>908047316593</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>Core</strong>
+<ul>
+<li>Alert type
+<ul>
+<li>Critical</li>
+<li>No alerts</li>
+</ul>
+</li>
+<li>Environment
+<ul>
+<li>908047316593</li>
+</ul>
+</li>
+<li>Global region
+<ul>
+<li>APAC</li>
+<li>EMEA</li>
+<li>global</li>
+<li>LATAM</li>
+<li>NORAM</li>
+</ul>
+</li>
+<li>Region
+<ul>
+<li>us-east-1</li>
+</ul>
+</li>
+<li>Tag
+<ul>
+<li>ACE\\CREA...ynatrace.com</li>
+<li>aws:cloudformation:stack-id</li>
+<li>aws\\cloud...e:balcer-test</li>
+<li>aws\\cloud...id:ECSCluster</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>ECS</strong>
+<ul>
+<li>Amazon Elast...</li>
+</ul>
+</li>
+</ul></td><td><ul>
+<li><strong>Core</strong>
+<ul>
+<li>Active health alert
+<ul>
+<li>MySQL Instance is unreachable</li>
+<li>Oracle - High tablespace usage</li>
+<li>Oracle - Instance unavailable</li>
+<li>Postgres Instance is unreachable</li>
+<li>SQL Server is unreachable</li>
+</ul>
+</li>
+<li>Alert status
+<ul>
+<li>Critical</li>
+<li>No alerts</li>
+</ul>
+</li>
+<li>Closed custom alert
+<ul>
+<li>no keys found</li>
+</ul>
+</li>
+<li>Closed health alert
+<ul>
+<li>MySQL Instance is unreachable</li>
+<li>Oracle - High tablespace usage</li>
+<li>Oracle - Instance unavailable</li>
+<li>Postgres Instance is unreachable</li>
+<li>SQL Server is unreachable</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>Other</strong>
+<ul>
+<li>Status
+<ul>
+<li>Available</li>
+<li>Error</li>
+<li>Warning</li>
+</ul>
+</li>
+<li>Vendor
+<ul>
+<li>HanaDB</li>
+<li>MSSQL</li>
+<li>MySQL</li>
+<li>Oracle</li>
+<li>PostgreSQL</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul></td><td><ul>
+<li><strong>Alert status</strong>
+<ul>
+<li>Critical</li>
+<li>No alerts</li>
+</ul>
+</li>
+<li><strong>Cloud</strong>
+<ul>
+<li>AWS</li>
+<li>Azure</li>
+<li>Google Cloud Platform</li>
+<li>OpenStack</li>
+<li>Oracle</li>
+</ul>
+</li>
+<li><strong>Hypervisor</strong>
+<ul>
+<li>AIX LPAR</li>
+<li>AIX WPAR</li>
+<li>AWS Nitro</li>
+<li>VMware</li>
+<li>Xen</li>
+</ul>
+</li>
+<li><strong>Monitoring type</strong>
+<ul>
+<li>App only</li>
+<li>Discovery</li>
+<li>Full stack</li>
+<li>Infrastructure</li>
+<li>Monitoring candidate</li>
+<li>Monitoring disabled</li>
+</ul>
+</li>
+<li><strong>OS type</strong>
+<ul>
+<li>AIX</li>
+<li>Linux</li>
+<li>Windows</li>
+<li>z/OS</li>
+</ul>
+</li>
+</ul></td><td><ul>
+<li><strong>None</strong>
+</li>
+</ul></td><td><ul>
+<li><strong>AWS</strong>
+<ul>
+<li>aws.account.id</li>
+<li>aws.arn</li>
+<li>aws.log_group</li>
+<li>aws.region</li>
+<li>aws.resource.id</li>
+<li>aws.service</li>
+</ul>
+</li>
+<li><strong>Azure</strong>
+<ul>
+<li>azure.location</li>
+<li>azure.resource.group</li>
+<li>azure.resource.name</li>
+<li>azure.resource.type</li>
+<li>azure.subscription</li>
+</ul>
+</li>
+<li><strong>Cloud</strong>
+<ul>
+<li>cloud.account.id</li>
+<li>cloud.platform</li>
+<li>cloud.provider</li>
+<li>cloud.region</li>
+</ul>
+</li>
+<li><strong>Core</strong>
+<ul>
+<li>Status
+<ul>
+<li>Error</li>
+<li>Info</li>
+<li>None</li>
+<li>Warning</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>GCP</strong>
+<ul>
+<li>gcp.instance.name</li>
+<li>gcp.project.id</li>
+<li>gcp.region</li>
+<li>gcp.resource.type</li>
+</ul>
+</li>
+<li><strong>Host</strong>
+<ul>
+<li>dt.host_group.id</li>
+<li>host.name</li>
+</ul>
+</li>
+<li><strong>k8s</strong>
+<ul>
+<li>k8s.cluster.name</li>
+<li>k8s.container.name</li>
+<li>k8s.namespace.name</li>
+<li>k8s.node.name</li>
+<li>k8s.pod.name</li>
+<li>k8s.service.name</li>
+<li>k8s.workload.kind</li>
+<li>k8s.workload.name</li>
+</ul>
+</li>
+<li><strong>log source</strong>
+<ul>
+<li>/var/lib/foo.log</li>
+<li>/var/log/syslog</li>
+<li>Container Output</li>
+</ul>
+</li>
+<li><strong>loglevel</strong>
+<ul>
+<li>k8s</li>
+</ul>
+</li>
+<li><strong>Process</strong>
+<ul>
+<li>dt.process_group.detected_name</li>
+</ul>
+</li>
+</ul></td><td><ul>
+<li><strong>AWS</strong>
+<ul>
+<li>AWS region</li>
+<li>AWS tags</li>
+<li>AWS version</li>
+<li>CloudWatch integration</li>
+</ul>
+</li>
+<li><strong>Azure</strong>
+<ul>
+<li>Azure Monitor integration</li>
+<li>Azure region</li>
+<li>Azure resource group name</li>
+<li>Azure sku</li>
+<li>Azure Subscription</li>
+<li>Azure tags</li>
+</ul>
+</li>
+<li><strong>Cloud / Infrastructure</strong>
+<ul>
+<li>Cloud provider</li>
+<li>Host group name</li>
+<li>Host name</li>
+</ul>
+</li>
+<li><strong>Core</strong>
+<ul>
+<li>Security context
+</li>
+<li>Tags
+</li>
+<li>Alert status
+<ul>
+<li>Critical</li>
+<li>No alerts</li>
+</ul>
+</li>
+<li>Code profiling
+<ul>
+<li>Available</li>
+<li>Not available</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>GCP</strong>
+<ul>
+<li>GCP region</li>
+<li>GCP tags</li>
+<li>Google Cloud Project</li>
+<li>Operations Suite integration</li>
+</ul>
+</li>
+<li><strong>Kubernetes</strong>
+<ul>
+<li>Cluster</li>
+<li>Namespace</li>
+<li>Namespace label</li>
+<li>Workload</li>
+<li>Workload label</li>
+</ul>
+</li>
+<li><strong>Supportability</strong>
+<ul>
+<li>Observability signals</li>
+<li>Technology</li>
+</ul>
+</li>
+</ul></td><td><ul>
+<li><strong>$</strong>
+<ul>
+<li>Revenue</li>
+</ul>
+</li>
+<li><strong>Browser user agent</strong>
+<ul>
+<li>Url domain</li>
+<li>Url fragment</li>
+<li>Url full</li>
+<li>Url port</li>
+<li>Url query</li>
+<li>Url scheme</li>
+<li>Url truncated path</li>
+</ul>
+</li>
+<li><strong>Core</strong>
+<ul>
+<li>Duration
+<ul>
+<li>Duration max</li>
+<li>Duration min</li>
+</ul>
+</li>
+<li>Endpoint
+<ul>
+<li>findJourneys</li>
+<li>GetProduct</li>
+<li>Images</li>
+<li>JavaScript</li>
+<li>JourneyService.checkDestination</li>
+</ul>
+</li>
+<li>Request status
+<ul>
+<li>Failure</li>
+<li>Success</li>
+</ul>
+</li>
+<li>Service
+<ul>
+<li>CheckDestination</li>
+<li>CustomerFrontendREST</li>
+<li>EasyTravelBackendWebserver:8091</li>
+<li>EasyTravelWebserver:8079</li>
+<li>EasyTravelWebserver:9079</li>
+</ul>
+</li>
+<li>Span kind
+<ul>
+<li>Client</li>
+<li>Consumer</li>
+<li>Internal</li>
+<li>Link</li>
+<li>Producer</li>
+<li>Server</li>
+</ul>
+</li>
+<li>Span status
+<ul>
+<li>Error</li>
+<li>OK</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>HTTP</strong>
+<ul>
+<li>HTTP method</li>
+<li>HTTP route</li>
+<li>HTTP server name</li>
+<li>HTTP status</li>
+<li>Url path</li>
+</ul>
+</li>
+<li><strong>HTTP headers</strong>
+<ul>
+<li>Forwarded</li>
+<li>Host</li>
+<li>Referer</li>
+<li>Soapaction</li>
+<li>User-agent</li>
+<li>X-dynatrace</li>
+<li>X-dynatrace-tenant</li>
+</ul>
+</li>
+<li><strong>Kubernetes</strong>
+<ul>
+<li>Kubernetes cluster</li>
+<li>Kubernetes container</li>
+<li>Kubernetes namespace</li>
+<li>Kubernetes node name</li>
+<li>Kubernetes pod</li>
+<li>Kubernetes service name</li>
+<li>Kubernetes workload</li>
+<li>Kubernetes workload kind</li>
+</ul>
+</li>
+<li><strong>Process</strong>
+<ul>
+<li>Process technology</li>
+</ul>
+</li>
+<li><strong>Request attributes</strong>
+<ul>
+<li>App.cart.Items.count</li>
+<li>AuthenticationService</li>
+<li>Category-hipster</li>
+<li>CICS MQ Txns</li>
+<li>CICS Task1D</li>
+<li>Client's Destination</li>
+<li>ClientIP</li>
+<li>CreditCard/Payment</li>
+<li>CreditCardType</li>
+<li>Destination</li>
+<li>Dollar</li>
+<li>EasyTravel Amount</li>
+<li>Easytravel Destination</li>
+<li>EasyTravel Destination</li>
+<li>EasyTravel JourneyId</li>
+<li>EasyTravel User</li>
+<li>HTTP POST parameter</li>
+<li>Income</li>
+<li>JourneyID</li>
+<li>Loyalty status</li>
+<li>LoyaltyStatus</li>
+<li>MileageMobileFlag</li>
+<li>MileageMsgContent</li>
+<li>MqPathalogContent</li>
+<li>Prest-MQ-Test</li>
+<li>Revenue_Thangarajan</li>
+<li>Revenue_ThangarajanM</li>
+<li>Revenues</li>
+<li>SessionId</li>
+<li>SourceIP</li>
+<li>Training</li>
+<li>X-dynatrace</li>
+</ul>
+</li>
+</ul></td></tr>
+        </tbody>
+    </table>
+
+    <h2>✨ 3. New Structure with Semantic Dictionary</h2>
+    <p>Improved structure with semantic dictionary keys, English display names, and migration mapping from current field names</p>
+    
+    <table>
+        <thead>
+            <tr>
+                <th>Type</th>
+                <th>Clouds</th> <th>Database</th> <th>Infra and Operations</th> <th>Kubernetes</th> <th>Logs</th> <th>Services</th> <th>Tracing</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr><td><strong>Metadata</strong></td><td><ul>
+<li><strong>Topology</strong>
+<ul>
+<li><code>dt.entity.name</code> - Cloud Entity Name
+</li>
+<li><code>dt.entity.id</code> - Cloud Entity ID
+</li>
+<li><code>dt.entity.accessible_by</code> - Accessible By
+</li>
+<li><code>dt.entity.custom_icon_path</code> - Custom Icon Path
+</li>
+</ul>
+</li>
+<li><strong>Cloud</strong>
+<ul>
+<li><code>cloud.provider</code> - Cloud Provider
+ <em>(was: cloud.provider)</em>
+</li>
+<li><code>aws.arn</code> - AWS ARN
+ <em>(was: Cloud Resource ARN)</em>
+</li>
+<li><code>aws.account.id</code> - AWS Account ID
+ <em>(was: aws.account.id)</em>
+</li>
+<li><code>aws.region</code> - AWS Region
+ <em>(was: aws.region)</em>
+</li>
+<li><code>aws.availability_zone</code> - AWS Availability Zone
+ <em>(was: aws.availability_zone)</em>
+</li>
+<li><code>aws.service</code> - AWS Service
+ <em>(was: aws.service)</em>
+</li>
+<li><code>aws.resource.type</code> - AWS Resource Type
+ <em>(was: aws.resource.type)</em>
+</li>
+<li><code>aws.resource.id</code> - AWS Resource ID
+ <em>(was: aws.resource.id)</em>
+</li>
+<li><code>aws.resource.name</code> - AWS Resource Name
+ <em>(was: aws.resource.name)</em>
+</li>
+<li><code>azure.subscription</code> - Azure Subscription
+ <em>(was: azure.subscription)</em>
+</li>
+<li><code>azure.tenant.id</code> - Azure Tenant ID
+ <em>(was: azure.tenant.id)</em>
+</li>
+<li><code>azure.tenant.name</code> - Azure Tenant Name
+ <em>(was: azure.tenant.name)</em>
+</li>
+<li><code>azure.resource.group</code> - Azure Resource Group
+ <em>(was: azure.resource.group)</em>
+</li>
+<li><code>azure.management_group</code> - Azure Management Group
+ <em>(was: azure.management_group)</em>
+</li>
+<li><code>azure.location</code> - Azure Location
+ <em>(was: azure.location)</em>
+</li>
+<li><code>azure.availability_zone</code> - Azure Availability Zone
+ <em>(was: azure.availability_zone)</em>
+</li>
+<li><code>azure.resource.provider</code> - Azure Resource Provider
+ <em>(was: azure.resource.provider)</em>
+</li>
+<li><code>azure.resource.type</code> - Azure Resource Type
+ <em>(was: azure.resource.type)</em>
+</li>
+<li><code>azure.resource.id</code> - Azure Resource ID
+ <em>(was: azure.resource.id)</em>
+</li>
+<li><code>azure.resource.name</code> - Azure Resource Name
+ <em>(was: azure.resource.name)</em>
+</li>
+<li><code>gcp.project.id</code> - GCP Project ID
+ <em>(was: gcp.project.id)</em>
+</li>
+<li><code>gcp.region</code> - GCP Region
+ <em>(was: gcp.region)</em>
+</li>
+<li><code>gcp.zone</code> - GCP Zone
+ <em>(was: gcp.zone)</em>
+</li>
+<li><code>gcp.service</code> - GCP Service
+ <em>(was: gcp.service)</em>
+</li>
+<li><code>gcp.resource.type</code> - GCP Resource Type
+ <em>(was: gcp.resource.type)</em>
+</li>
+<li><code>gcp.resource.id</code> - GCP Resource ID
+ <em>(was: gcp.resource.id)</em>
+</li>
+</ul>
+</li>
+<li><strong>Security</strong>
+<ul>
+<li><code>dt.security_context</code> - Security Context
+ <em>(was: dt.security_context)</em>
+</li>
+</ul>
+</li>
+<li><strong>Monitoring</strong>
+<ul>
+<li><code>dt.system.environment</code> - System Environment
+ <em>(was: dt.system.environment)</em>
+</li>
+<li><code>dt.management_zones</code> - Management Zones
+ <em>(was: managementZones)</em>
+</li>
+</ul>
+</li>
+<li><strong>Tags & Labels</strong>
+<ul>
+<li><code>aws.tags.__tag_key__</code> - AWS Tags
+ <em>(was: aws.tags)</em>
+</li>
+<li><code>azure.tags.__tag_key__</code> - Azure Tags
+ <em>(was: azure.tags)</em>
+</li>
+<li><code>gcp.tags.__tag_key__</code> - GCP Tags
+ <em>(was: gcp.tags)</em>
+</li>
+<li><code>dt.entity.tags</code> - Cloud Tags
+ <em>(was: tags)</em>
+</li>
+</ul>
+</li>
+</ul></td><td><ul>
+<li><strong>Topology</strong>
+<ul>
+<li><code>db.name</code> - Database Name
+</li>
+<li><code>dt.entity.database</code> - Database Entity ID
+</li>
+</ul>
+</li>
+<li><strong>Database</strong>
+<ul>
+<li><code>db.system</code> - Database System
+</li>
+<li><code>db.status</code> - Database Status
+</li>
+<li><code>db.vendor</code> - Database Vendor
+</li>
+</ul>
+</li>
+<li><strong>Monitoring</strong>
+<ul>
+<li><code>dt.entity.health_status</code> - Health Status
+</li>
+<li><code>dt.entity.alert_status</code> - Alert Status
+</li>
+</ul>
+</li>
+</ul></td><td><ul>
+<li><strong>Topology</strong>
+<ul>
+<li><code>host.name</code> - Host Name
+</li>
+<li><code>dt.entity.host_group</code> - Host Group Name
+</li>
+<li><code>dt.entity.host</code> - Host Entity ID
+</li>
+<li><code>aws.resource.id</code> - Instance ID
+</li>
+<li><code>aws.resource.id</code> - AMI ID
+</li>
+<li><code>host.name</code> - Private Hostname
+</li>
+<li><code>host.ip</code> - IP Addresses
+</li>
+<li><code>host.mac</code> - MAC Addresses
+</li>
+</ul>
+</li>
+<li><strong>Infrastructure</strong>
+<ul>
+<li><code>host.arch</code> - Architecture
+</li>
+<li><code>host.cpu.logical_count</code> - Logical CPU Cores
+ <em>(was: Logical CPU cores)</em>
+</li>
+<li><code>host.cpu.physical_count</code> - Physical CPU Cores
+ <em>(was: Physical CPU cores)</em>
+</li>
+<li><code>host.memory.total</code> - Physical Memory
+ <em>(was: Physical memory)</em>
+</li>
+<li><code>hypervisor.type</code> - Hypervisor Type
+ <em>(was: Hypervisor type)</em>
+</li>
+</ul>
+</li>
+<li><strong>Cloud</strong>
+<ul>
+<li><code>cloud.provider</code> - Cloud Provider
+ <em>(was: Cloud)</em>
+</li>
+<li><code>aws.arn</code> - AWS ARN
+ <em>(was: ARN)</em>
+</li>
+<li><code>aws.region</code> - AWS Region
+ <em>(was: Data center)</em>
+</li>
+<li><code>host.ip</code> - Private IP Address
+ <em>(was: Private IP address)</em>
+</li>
+</ul>
+</li>
+<li><strong>Operating System</strong>
+<ul>
+<li><code>os.version</code> - OS Version
+ <em>(was: OS version)</em>
+</li>
+</ul>
+</li>
+<li><strong>Monitoring</strong>
+<ul>
+<li><code>dt.agent.version</code> - OneAgent Version
+ <em>(was: OneAgent version)</em>
+</li>
+<li><code>dt.management_zones</code> - Management Zones
+ <em>(was: Management zones)</em>
+</li>
+<li><code>dt.security_context</code> - Security Context
+ <em>(was: dt.security_context)</em>
+</li>
+<li><code>host.uptime</code> - Up Since
+ <em>(was: Up since)</em>
+</li>
+</ul>
+</li>
+<li><strong>Technology</strong>
+<ul>
+<li><code>dt.entity.technologies</code> - Technologies
+</li>
+</ul>
+</li>
+</ul></td><td><ul>
+<li><strong>Topology</strong>
+<ul>
+<li><code>k8s.pod.name</code> - Pod Name
+</li>
+<li><code>k8s.cluster.name</code> - Cluster Name
+</li>
+<li><code>k8s.namespace.name</code> - Namespace Name
+</li>
+<li><code>k8s.workload.name</code> - Workload Name
+</li>
+<li><code>k8s.workload.kind</code> - Workload Type
+</li>
+<li><code>k8s.pod.uid</code> - External Resource UID
+</li>
+<li><code>dt.entity.kubernetes_cluster</code> - Kubernetes Cluster ID
+</li>
+</ul>
+</li>
+<li><strong>Kubernetes</strong>
+<ul>
+<li><code>k8s.cluster.distribution</code> - Kubernetes Distribution
+ <em>(was: Kubernetes distribution)</em>
+</li>
+<li><code>k8s.cluster.version</code> - Kubernetes Version
+ <em>(was: Kubernetes version)</em>
+</li>
+</ul>
+</li>
+<li><strong>Tags & Labels</strong>
+<ul>
+<li><code>k8s.pod.label</code> - Pod Labels
+ <em>(was: Labels)</em>
+</li>
+<li><code>k8s.namespace.label</code> - Namespace Labels
+</li>
+<li><code>k8s.workload.label</code> - Workload Labels
+</li>
+<li><code>k8s.pod.annotation</code> - Pod Annotations
+ <em>(was: Annotations)</em>
+</li>
+<li><code>k8s.namespace.annotation</code> - Namespace Annotations
+</li>
+<li><code>k8s.workload.annotation</code> - Workload Annotations
+</li>
+</ul>
+</li>
+<li><strong>Infrastructure</strong>
+<ul>
+<li><code>k8s.container.count</code> - Containers
+</li>
+<li><code>k8s.container.cpu_request</code> - CPU Requests
+</li>
+<li><code>k8s.container.restart_count</code> - Total Container Restarts
+ <em>(was: Total container restarts)</em>
+</li>
+</ul>
+</li>
+<li><strong>Monitoring</strong>
+<ul>
+<li><code>dt.active_gate.id</code> - ActiveGate ID
+</li>
+<li><code>dt.active_gate.version</code> - ActiveGate Version
+ <em>(was: ActiveGate version)</em>
+</li>
+<li><code>dt.operator.version</code> - Operator Version
+ <em>(was: Operator version)</em>
+</li>
+</ul>
+</li>
+<li><strong>Security</strong>
+<ul>
+<li><code>dt.security_context</code> - Security Context
+ <em>(was: Security context)</em>
+</li>
+</ul>
+</li>
+</ul></td><td><ul>
+<li><strong>Logs</strong>
+<ul>
+<li><code>log.body</code> - Log Content
+</li>
+<li><code>log.timestamp</code> - Log Timestamp
+</li>
+<li><code>log.severity_text</code> - Log Status
+</li>
+<li><code>log.level</code> - Log Level
+</li>
+</ul>
+</li>
+<li><strong>Topology</strong>
+<ul>
+<li><code>dt.entity.cloud_application</code> - Cloud Application
+ <em>(was: dt.entity.cloud_application)</em>
+</li>
+<li><code>dt.entity.host</code> - Host
+ <em>(was: dt.entity.host)</em>
+</li>
+<li><code>dt.entity.kubernetes_cluster</code> - Kubernetes Cluster
+ <em>(was: dt.entity.kubernetes_cluster)</em>
+</li>
+<li><code>dt.entity.process_group</code> - Process Group
+ <em>(was: dt.entity.process_group)</em>
+</li>
+</ul>
+</li>
+<li><strong>Cloud</strong>
+<ul>
+<li><code>azure.location</code> - Azure Location
+ <em>(was: azure.location)</em>
+</li>
+</ul>
+</li>
+<li><strong>Kubernetes</strong>
+<ul>
+<li><code>k8s.cluster.name</code> - Kubernetes Cluster Name
+ <em>(was: k8s.cluster.name)</em>
+</li>
+<li><code>k8s.container.name</code> - Kubernetes Container Name
+ <em>(was: k8s.container.name)</em>
+</li>
+<li><code>k8s.deployment.name</code> - Kubernetes Deployment Name
+ <em>(was: k8s.deployment.name)</em>
+</li>
+<li><code>k8s.namespace.name</code> - Kubernetes Namespace Name
+ <em>(was: k8s.namespace.name)</em>
+</li>
+<li><code>k8s.pod.name</code> - Kubernetes Pod Name
+ <em>(was: k8s.pod.name)</em>
+</li>
+</ul>
+</li>
+<li><strong>Infrastructure</strong>
+<ul>
+<li><code>host.name</code> - Host Name
+ <em>(was: host.name)</em>
+</li>
+</ul>
+</li>
+<li><strong>Process</strong>
+<ul>
+<li><code>process.technology</code> - Process Technology
+ <em>(was: process.technology)</em>
+</li>
+</ul>
+</li>
+<li><strong>Networking</strong>
+<ul>
+<li><code>http.flavor</code> - HTTP Flavor
+ <em>(was: http.flavor)</em>
+</li>
+<li><code>http.request.method</code> - HTTP Method
+ <em>(was: http.method)</em>
+</li>
+<li><code>http.response.status_code</code> - HTTP Status Code
+ <em>(was: http.status_code)</em>
+</li>
+</ul>
+</li>
+</ul></td><td><ul>
+<li><strong>Topology</strong>
+<ul>
+<li><code>service.name</code> - Service Application Name
+</li>
+<li><code>dt.entity.service</code> - Service Entity ID
+</li>
+<li><code>http.route</code> - Context Root
+</li>
+<li><code>dt.entity.application</code> - Web Application ID
+</li>
+<li><code>server.name</code> - Web Server Name
+</li>
+</ul>
+</li>
+<li><strong>Service</strong>
+<ul>
+<li><code>service.type</code> - Service Type
+</li>
+<li><code>service.is_external</code> - Is External Service
+</li>
+<li><code>service.last_seen</code> - Service Last Seen
+</li>
+</ul>
+</li>
+<li><strong>Technology</strong>
+<ul>
+<li><code>dt.agent.technology</code> - Agent Technology Type
+ <em>(was: Agent technology type)</em>
+</li>
+<li><code>service.technology</code> - Software Technology Types
+ <em>(was: Software technology types)</em>
+</li>
+<li><code>dt.entity.technologies</code> - Technologies
+</li>
+</ul>
+</li>
+<li><strong>Deployment</strong>
+<ul>
+<li><code>deployment.environment</code> - Application Build Environment
+ <em>(was: Application build environment)</em>
+</li>
+<li><code>service.version</code> - Application Release Version
+ <em>(was: Application release version)</em>
+</li>
+</ul>
+</li>
+<li><strong>Kubernetes</strong>
+<ul>
+<li><code>k8s.cluster.name</code> - Kubernetes Cluster
+ <em>(was: Kubernetes cluster)</em>
+</li>
+<li><code>k8s.namespace.name</code> - Kubernetes Namespace
+ <em>(was: Kubernetes namespace)</em>
+</li>
+<li><code>k8s.workload.name</code> - Kubernetes Workload
+ <em>(was: Kubernetes workload)</em>
+</li>
+</ul>
+</li>
+<li><strong>Process</strong>
+<ul>
+<li><code>dt.entity.process_group</code> - Process Group
+ <em>(was: Process group)</em>
+</li>
+</ul>
+</li>
+<li><strong>Monitoring</strong>
+<ul>
+<li><code>dt.management_zones</code> - Management Zones
+ <em>(was: Management zones)</em>
+</li>
+</ul>
+</li>
+<li><strong>Security</strong>
+<ul>
+<li><code>dt.security_context</code> - Security Context
+ <em>(was: Security context)</em>
+</li>
+</ul>
+</li>
+</ul></td><td><ul>
+<li><strong>Topology</strong>
+<ul>
+<li><code>span.id</code> - Span ID
+</li>
+<li><code>span.parent_id</code> - Span Parent ID
+</li>
+<li><code>trace.id</code> - Trace ID
+</li>
+<li><code>service.name</code> - Service Name
+</li>
+</ul>
+</li>
+<li><strong>Performance</strong>
+<ul>
+<li><code>span.name</code> - Span Name
+</li>
+<li><code>span.duration</code> - Span Duration
+</li>
+<li><code>span.start_time</code> - Span Start Time
+</li>
+<li><code>span.end_time</code> - Span End Time
+</li>
+<li><code>span.status_code</code> - Request Is Failed
+</li>
+<li><code>span.is_root</code> - Request Is Root Span
+</li>
+</ul>
+</li>
+<li><strong>Span</strong>
+<ul>
+<li><code>span.kind</code> - Span Kind
+</li>
+</ul>
+</li>
+<li><strong>HTTP</strong>
+<ul>
+<li><code>http.request.method</code> - HTTP Method
+ <em>(was: HTTP method)</em>
+</li>
+<li><code>http.route</code> - HTTP Route
+ <em>(was: HTTP route)</em>
+</li>
+<li><code>server.name</code> - HTTP Server Name
+ <em>(was: HTTP server name)</em>
+</li>
+<li><code>http.response.status_code</code> - HTTP Status
+ <em>(was: HTTP status)</em>
+</li>
+<li><code>url.path</code> - URL Path
+ <em>(was: Url path)</em>
+</li>
+<li><code>http.request.header.host</code> - HTTP Request Header Host
+ <em>(was: HTTP request header host)</em>
+</li>
+<li><code>http.request.header.referer</code> - HTTP Request Header Referer
+ <em>(was: HTTP request header referer)</em>
+</li>
+<li><code>http.request.header.user-agent</code> - HTTP Request Header User-Agent
+ <em>(was: HTTP request header user-agent)</em>
+</li>
+<li><code>http.response.header.content-type</code> - HTTP Response Header Content-Type
+ <em>(was: HTTP response header content-type)</em>
+</li>
+</ul>
+</li>
+<li><strong>Process</strong>
+<ul>
+<li><code>host.name</code> - Host
+</li>
+<li><code>process.name</code> - Process
+</li>
+<li><code>dt.entity.process_group</code> - Process Group
+ <em>(was: Process group)</em>
+</li>
+<li><code>process.executable.name</code> - Process Executable Name
+ <em>(was: Process executable name)</em>
+</li>
+<li><code>process.executable.path</code> - Process Executable Path
+ <em>(was: Process executable path)</em>
+</li>
+<li><code>process.pid</code> - Process PID
+ <em>(was: Process pid)</em>
+</li>
+</ul>
+</li>
+<li><strong>Code</strong>
+<ul>
+<li><code>code.function</code> - Code Function
+ <em>(was: Code function)</em>
+</li>
+<li><code>code.namespace</code> - Code Namespace
+ <em>(was: Code namespace)</em>
+</li>
+<li><code>span.timing.cpu_self</code> - CPU Self Time
+ <em>(was: CPU self time)</em>
+</li>
+<li><code>span.timing.cpu</code> - CPU Time
+ <em>(was: CPU time)</em>
+</li>
+<li><code>span.is_subroutine</code> - Span Is Subroutine
+ <em>(was: Span is subroutine)</em>
+</li>
+<li><code>thread.id</code> - Thread ID
+ <em>(was: Thread id)</em>
+</li>
+<li><code>thread.name</code> - Thread Name
+ <em>(was: Thread name)</em>
+</li>
+</ul>
+</li>
+<li><strong>Networking</strong>
+<ul>
+<li><code>network.protocol.name</code> - Network Protocol Name
+ <em>(was: Network protocol name)</em>
+</li>
+<li><code>server.address</code> - Server Address
+ <em>(was: Server address)</em>
+</li>
+<li><code>server.port</code> - Server Port
+ <em>(was: Server port)</em>
+</li>
+</ul>
+</li>
+</ul></td></tr>
+            <tr><td><strong>Facets</strong></td><td><ul>
+<li><strong>Core</strong>
+<ul>
+<li><code>dt.entity.alert_status</code> - Alert Status
+ <em>(was: alert_type)</em>
+<ul>
+<li>Critical</li>
+<li>No alerts</li>
+</ul>
+</li>
+<li><code>dt.system.environment</code> - Environment
+ <em>(was: environment)</em>
+<ul>
+<li>908047316593</li>
+</ul>
+</li>
+<li><code>aws.region</code> - AWS Region
+ <em>(was: region)</em>
+<ul>
+<li>us-east-1</li>
+</ul>
+</li>
+<li><code>dt.entity.global_region</code> - Global Region
+ <em>(was: global_region)</em>
+<ul>
+<li>APAC</li>
+<li>EMEA</li>
+<li>global</li>
+<li>LATAM</li>
+<li>NORAM</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>Cloud</strong>
+<ul>
+<li><code>aws.availability_zone</code> - AWS Availability Zone
+ <em>(was: availability_zone)</em>
+<ul>
+<li>regional</li>
+</ul>
+</li>
+<li><code>aws.account.id</code> - AWS Account ID
+ <em>(was: aws_account)</em>
+<ul>
+<li>908047316593</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>Platform</strong>
+<ul>
+<li><code>aws.service</code> - AWS ECS Service
+ <em>(was: ecs_service)</em>
+<ul>
+<li>Amazon Elast...</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>Tags & Labels</strong>
+<ul>
+<li><code>dt.entity.tags</code> - Tag
+ <em>(was: tag)</em>
+<ul>
+<li>ACE\\CREA...ynatrace.com</li>
+<li>aws:cloudformation:stack-id</li>
+<li>aws\\cloud...e:balcer-test</li>
+<li>aws\\cloud...id:ECSCluster</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul></td><td><ul>
+<li><strong>Core</strong>
+<ul>
+<li><code>dt.entity.alert_status</code> - Alert Status
+ <em>(was: alert_status)</em>
+<ul>
+<li>Critical</li>
+<li>No alerts</li>
+</ul>
+</li>
+<li><code>db.status</code> - Status
+ <em>(was: status)</em>
+<ul>
+<li>Available</li>
+<li>Error</li>
+<li>Warning</li>
+</ul>
+</li>
+<li><code>db.system</code> - Vendor
+ <em>(was: vendor)</em>
+<ul>
+<li>HanaDB</li>
+<li>MSSQL</li>
+<li>MySQL</li>
+<li>Oracle</li>
+<li>PostgreSQL</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>Monitoring</strong>
+<ul>
+<li><code>dt.entity.health_alert</code> - Active Health Alert
+ <em>(was: active_health_alert)</em>
+<ul>
+<li>MySQL Instance is unreachable</li>
+<li>Oracle - High tablespace usage</li>
+<li>Oracle - Instance unavailable</li>
+<li>Postgres Instance is unreachable</li>
+<li>SQL Server is unreachable</li>
+</ul>
+</li>
+<li><code>dt.entity.custom_alert</code> - Closed Custom Alert
+ <em>(was: closed_custom_alert)</em>
+<ul>
+<li>no keys found</li>
+</ul>
+</li>
+<li><code>dt.entity.health_alert_closed</code> - Closed Health Alert
+ <em>(was: closed_health_alert)</em>
+<ul>
+<li>MySQL Instance is unreachable</li>
+<li>Oracle - High tablespace usage</li>
+<li>Oracle - Instance unavailable</li>
+<li>Postgres Instance is unreachable</li>
+<li>SQL Server is unreachable</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul></td><td><ul>
+<li><strong>Core</strong>
+<ul>
+<li><code>dt.entity.alert_status</code> - Alert Status
+ <em>(was: alert_status)</em>
+<ul>
+<li>Critical</li>
+<li>No alerts</li>
+</ul>
+</li>
+<li><code>dt.monitoring.mode</code> - Monitoring Type
+ <em>(was: monitoring_type)</em>
+<ul>
+<li>App only</li>
+<li>Discovery</li>
+<li>Full stack</li>
+<li>Infrastructure</li>
+<li>Monitoring candidate</li>
+<li>Monitoring disabled</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>Cloud</strong>
+<ul>
+<li><code>cloud.provider</code> - Cloud Provider
+ <em>(was: cloud_provider)</em>
+<ul>
+<li>AWS</li>
+<li>Azure</li>
+<li>Google Cloud Platform</li>
+<li>OpenStack</li>
+<li>Oracle</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>Infrastructure</strong>
+<ul>
+<li><code>hypervisor.type</code> - Hypervisor
+ <em>(was: hypervisor)</em>
+<ul>
+<li>AIX LPAR</li>
+<li>AIX WPAR</li>
+<li>AWS Nitro</li>
+<li>VMware</li>
+<li>Xen</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>Operating System</strong>
+<ul>
+<li><code>os.type</code> - OS Type
+ <em>(was: os_type)</em>
+<ul>
+<li>AIX</li>
+<li>Linux</li>
+<li>Windows</li>
+<li>z/OS</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul></td><td><ul>
+<li><strong>Core</strong>
+<ul>
+<li><code>k8s.cluster.name</code> - Cluster Name
+ <em>(was: cluster_name)</em>
+</li>
+<li><code>k8s.namespace.name</code> - Namespace Name
+ <em>(was: namespace_name)</em>
+</li>
+<li><code>k8s.workload.name</code> - Workload Name
+ <em>(was: workload_name)</em>
+</li>
+<li><code>dt.entity.alert_status</code> - Alert Status
+ <em>(was: alert_status)</em>
+</li>
+</ul>
+</li>
+</ul></td><td><ul>
+<li><strong>Core</strong>
+<ul>
+<li><code>log.severity_text</code> - Status
+ <em>(was: status)</em>
+<ul>
+<li>Error</li>
+<li>Info</li>
+<li>None</li>
+<li>Warning</li>
+</ul>
+</li>
+<li><code>log.level</code> - Log Level
+ <em>(was: loglevel)</em>
+<ul>
+<li>k8s</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>Cloud</strong>
+<ul>
+<li><code>aws.account.id</code> - AWS Account ID
+ <em>(was: aws.account.id)</em>
+</li>
+<li><code>aws.arn</code> - AWS ARN
+ <em>(was: aws.arn)</em>
+</li>
+<li><code>aws.log_group</code> - AWS Log Group
+ <em>(was: aws.log_group)</em>
+</li>
+<li><code>aws.region</code> - AWS Region
+ <em>(was: aws.region)</em>
+</li>
+<li><code>azure.location</code> - Azure Location
+ <em>(was: azure.location)</em>
+</li>
+<li><code>azure.resource.group</code> - Azure Resource Group
+ <em>(was: azure.resource.group)</em>
+</li>
+<li><code>gcp.project.id</code> - GCP Project ID
+ <em>(was: gcp.project.id)</em>
+</li>
+<li><code>gcp.region</code> - GCP Region
+ <em>(was: gcp.region)</em>
+</li>
+<li><code>cloud.provider</code> - Cloud Provider
+ <em>(was: cloud.provider)</em>
+</li>
+</ul>
+</li>
+<li><strong>Kubernetes</strong>
+<ul>
+<li><code>k8s.cluster.name</code> - Kubernetes Cluster Name
+ <em>(was: k8s.cluster.name)</em>
+</li>
+<li><code>k8s.container.name</code> - Kubernetes Container Name
+ <em>(was: k8s.container.name)</em>
+</li>
+<li><code>k8s.namespace.name</code> - Kubernetes Namespace Name
+ <em>(was: k8s.namespace.name)</em>
+</li>
+<li><code>k8s.node.name</code> - Kubernetes Node Name
+ <em>(was: k8s.node.name)</em>
+</li>
+<li><code>k8s.pod.name</code> - Kubernetes Pod Name
+ <em>(was: k8s.pod.name)</em>
+</li>
+<li><code>k8s.service.name</code> - Kubernetes Service Name
+ <em>(was: k8s.service.name)</em>
+</li>
+<li><code>k8s.workload.kind</code> - Kubernetes Workload Kind
+ <em>(was: k8s.workload.kind)</em>
+</li>
+<li><code>k8s.workload.name</code> - Kubernetes Workload Name
+ <em>(was: k8s.workload.name)</em>
+</li>
+</ul>
+</li>
+<li><strong>Infrastructure</strong>
+<ul>
+<li><code>dt.entity.host_group</code> - Host Group ID
+ <em>(was: dt.host_group.id)</em>
+</li>
+<li><code>host.name</code> - Host Name
+ <em>(was: host.name)</em>
+</li>
+</ul>
+</li>
+<li><strong>Process</strong>
+<ul>
+<li><code>dt.entity.process_group</code> - Process Group Detected Name
+ <em>(was: dt.process_group.detected_name)</em>
+</li>
+</ul>
+</li>
+<li><strong>Source</strong>
+<ul>
+<li><code>log.source</code> - Log Source
+ <em>(was: log_source)</em>
+<ul>
+<li>/var/lib/foo.log</li>
+<li>/var/log/syslog</li>
+<li>Container Output</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul></td><td><ul>
+<li><strong>Core</strong>
+<ul>
+<li><code>dt.entity.alert_status</code> - Alert Status
+ <em>(was: alert_status)</em>
+<ul>
+<li>Critical</li>
+<li>No alerts</li>
+</ul>
+</li>
+<li><code>dt.code_profiling.available</code> - Code Profiling
+ <em>(was: code_profiling)</em>
+<ul>
+<li>Available</li>
+<li>Not available</li>
+</ul>
+</li>
+<li><code>dt.security_context</code> - Security Context
+ <em>(was: security_context)</em>
+</li>
+<li><code>dt.entity.tags</code> - Tags
+ <em>(was: tags)</em>
+</li>
+</ul>
+</li>
+<li><strong>Cloud</strong>
+<ul>
+<li><code>aws.region</code> - AWS Region
+ <em>(was: AWS region)</em>
+</li>
+<li><code>aws.tags</code> - AWS Tags
+ <em>(was: AWS tags)</em>
+</li>
+<li><code>azure.region</code> - Azure Region
+ <em>(was: Azure region)</em>
+</li>
+<li><code>azure.resource.group</code> - Azure Resource Group
+ <em>(was: Azure resource group name)</em>
+</li>
+<li><code>azure.subscription</code> - Azure Subscription
+</li>
+<li><code>gcp.region</code> - GCP Region
+ <em>(was: GCP region)</em>
+</li>
+<li><code>gcp.project.id</code> - GCP Project ID
+ <em>(was: Google Cloud Project)</em>
+</li>
+<li><code>cloud.provider</code> - Cloud Provider
+ <em>(was: Cloud provider)</em>
+</li>
+</ul>
+</li>
+<li><strong>Infrastructure</strong>
+<ul>
+<li><code>dt.entity.host_group</code> - Host Group Name
+ <em>(was: Host group name)</em>
+</li>
+<li><code>host.name</code> - Host Name
+ <em>(was: Host name)</em>
+</li>
+</ul>
+</li>
+<li><strong>Kubernetes</strong>
+<ul>
+<li><code>k8s.cluster.name</code> - Cluster
+</li>
+<li><code>k8s.namespace.name</code> - Namespace
+</li>
+<li><code>k8s.namespace.label</code> - Namespace Label
+ <em>(was: Namespace label)</em>
+</li>
+<li><code>k8s.workload.name</code> - Workload
+</li>
+<li><code>k8s.workload.label</code> - Workload Label
+ <em>(was: Workload label)</em>
+</li>
+</ul>
+</li>
+<li><strong>Monitoring</strong>
+<ul>
+<li><code>dt.observability.signals</code> - Observability Signals
+ <em>(was: Observability signals)</em>
+</li>
+<li><code>dt.entity.technology</code> - Technology
+</li>
+</ul>
+</li>
+</ul></td><td><ul>
+<li><strong>Core</strong>
+<ul>
+<li><code>span.duration</code> - Duration
+ <em>(was: duration)</em>
+<ul>
+<li>Duration max</li>
+<li>Duration min</li>
+</ul>
+</li>
+<li><code>http.route</code> - Endpoint
+ <em>(was: endpoint)</em>
+<ul>
+<li>findJourneys</li>
+<li>GetProduct</li>
+<li>Images</li>
+<li>JavaScript</li>
+<li>JourneyService.checkDestination</li>
+</ul>
+</li>
+<li><code>span.status_code</code> - Request Status
+ <em>(was: request_status)</em>
+<ul>
+<li>Failure</li>
+<li>Success</li>
+</ul>
+</li>
+<li><code>service.name</code> - Service
+ <em>(was: service)</em>
+<ul>
+<li>CheckDestination</li>
+<li>CustomerFrontendREST</li>
+<li>EasyTravelBackendWebserver:8091</li>
+<li>EasyTravelWebserver:8079</li>
+<li>EasyTravelWebserver:9079</li>
+</ul>
+</li>
+<li><code>span.kind</code> - Span Kind
+ <em>(was: span_kind)</em>
+<ul>
+<li>Client</li>
+<li>Consumer</li>
+<li>Internal</li>
+<li>Link</li>
+<li>Producer</li>
+<li>Server</li>
+</ul>
+</li>
+<li><code>span.status_code</code> - Span Status
+ <em>(was: span_status)</em>
+<ul>
+<li>Error</li>
+<li>OK</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>HTTP</strong>
+<ul>
+<li><code>http.request.method</code> - HTTP Method
+ <em>(was: HTTP method)</em>
+</li>
+<li><code>http.route</code> - HTTP Route
+ <em>(was: HTTP route)</em>
+</li>
+<li><code>server.name</code> - HTTP Server Name
+ <em>(was: HTTP server name)</em>
+</li>
+<li><code>http.response.status_code</code> - HTTP Status
+ <em>(was: HTTP status)</em>
+</li>
+<li><code>url.path</code> - URL Path
+ <em>(was: Url path)</em>
+</li>
+<li><code>http.request.header.forwarded</code> - Forwarded
+</li>
+<li><code>http.request.header.host</code> - Host
+</li>
+<li><code>http.request.header.referer</code> - Referer
+</li>
+<li><code>http.request.header.user-agent</code> - User-Agent
+ <em>(was: User-agent)</em>
+</li>
+<li><code>http.request.header.x-dynatrace</code> - X-Dynatrace
+ <em>(was: X-dynatrace)</em>
+</li>
+</ul>
+</li>
+<li><strong>Kubernetes</strong>
+<ul>
+<li><code>k8s.cluster.name</code> - Kubernetes Cluster
+ <em>(was: Kubernetes cluster)</em>
+</li>
+<li><code>k8s.container.name</code> - Kubernetes Container
+ <em>(was: Kubernetes container)</em>
+</li>
+<li><code>k8s.namespace.name</code> - Kubernetes Namespace
+ <em>(was: Kubernetes namespace)</em>
+</li>
+<li><code>k8s.node.name</code> - Kubernetes Node Name
+ <em>(was: Kubernetes node name)</em>
+</li>
+<li><code>k8s.pod.name</code> - Kubernetes Pod
+ <em>(was: Kubernetes pod)</em>
+</li>
+<li><code>k8s.service.name</code> - Kubernetes Service Name
+ <em>(was: Kubernetes service name)</em>
+</li>
+<li><code>k8s.workload.name</code> - Kubernetes Workload
+ <em>(was: Kubernetes workload)</em>
+</li>
+<li><code>k8s.workload.kind</code> - Kubernetes Workload Kind
+ <em>(was: Kubernetes workload kind)</em>
+</li>
+</ul>
+</li>
+<li><strong>Process</strong>
+<ul>
+<li><code>process.technology</code> - Process Technology
+ <em>(was: Process technology)</em>
+</li>
+</ul>
+</li>
+<li><strong>Request Attributes</strong>
+<ul>
+<li><code>request_attribute.client_ip</code> - Client IP
+ <em>(was: ClientIP)</em>
+</li>
+<li><code>request_attribute.source_ip</code> - Source IP
+ <em>(was: SourceIP)</em>
+</li>
+<li><code>request_attribute.custom</code> - Custom Attributes
+ <em>(was: custom_attributes)</em>
+<ul>
+<li>App.cart.Items.count</li>
+<li>AuthenticationService</li>
+<li>Category-hipster</li>
+<li>CICS MQ Txns</li>
+<li>CICS Task1D</li>
+<li>Client's Destination</li>
+<li>CreditCard/Payment</li>
+<li>CreditCardType</li>
+<li>Destination</li>
+<li>Dollar</li>
+<li>EasyTravel Amount</li>
+<li>Easytravel Destination</li>
+<li>EasyTravel JourneyId</li>
+<li>EasyTravel User</li>
+<li>HTTP POST parameter</li>
+<li>Income</li>
+<li>JourneyID</li>
+<li>Loyalty status</li>
+<li>LoyaltyStatus</li>
+<li>MileageMobileFlag</li>
+<li>MileageMsgContent</li>
+<li>MqPathalogContent</li>
+<li>Prest-MQ-Test</li>
+<li>Revenue_Thangarajan</li>
+<li>Revenue_ThangarajanM</li>
+<li>Revenues</li>
+<li>SessionId</li>
+<li>Training</li>
+<li>X-dynatrace</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>Browser</strong>
+<ul>
+<li><code>url.domain</code> - URL Domain
+ <em>(was: Url domain)</em>
+</li>
+<li><code>url.fragment</code> - URL Fragment
+ <em>(was: Url fragment)</em>
+</li>
+<li><code>url.full</code> - URL Full
+ <em>(was: Url full)</em>
+</li>
+<li><code>url.port</code> - URL Port
+ <em>(was: Url port)</em>
+</li>
+<li><code>url.query</code> - URL Query
+ <em>(was: Url query)</em>
+</li>
+<li><code>url.scheme</code> - URL Scheme
+ <em>(was: Url scheme)</em>
+</li>
+<li><code>url.path</code> - URL Truncated Path
+ <em>(was: Url truncated path)</em>
+</li>
+</ul>
+</li>
+<li><strong>Business</strong>
+<ul>
+<li><code>business.revenue</code> - Revenue
+<ul>
+<li>Revenue</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul></td></tr>
+        </tbody>
+    </table>
+
+    <p><strong>Legend:</strong></p>
+    <ul>
+        <li><strong>semantic.key</strong> - Official semantic dictionary field name</li>
+        <li><strong>Display Name</strong> - Human-readable English name for UI</li>
+        <li><em>(was: current_name)</em> - Original field name for migration mapping</li>
+    </ul>
+</body>
+</html>

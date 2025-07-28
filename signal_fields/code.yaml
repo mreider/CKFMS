@@ -1,0 +1,61 @@
+groups:
+  - id: code
+    type: span
+    brief:
+    attributes:
+      - id: code.function
+        type: string
+        stability: experimental # traces-in-grail
+        brief: >
+          The method or function name, or equivalent (usually the rightmost part of the code unit's name). Represents the name of the function that is represented by this span.
+        examples: serveRequest
+
+      - id: code.namespace
+        type: string
+        stability: experimental # traces-in-grail
+        brief: >
+          The namespace within which `code.function` is defined.
+          Usually, the qualified class or module name, such that `code.namespace` + some separator + `code.function` forms a unique identifier for the code unit.
+        examples: com.example.MyHttpService
+
+      - id: code.filepath
+        type: string
+        stability: experimental # traces-in-grail
+        brief: >
+          The source code file name that identifies the code unit as uniquely as possible.
+        examples: /usr/local/MyApplication/content_root/app/index.php
+
+      - id: code.line.number
+        type: long
+        stability: experimental # application-snapshots
+        brief: >
+          The line number within the source code file.
+        examples: 1337
+
+      - id: code.invoked.function
+        type: string
+        stability: experimental # traces-in-grail
+        brief: >
+          Like `code.function`, only it represents the function that was active when a span has been started. Typically, it's the function that has been instrumented. The spans duration does not reflect the duration of this function execution. It should only be set if it differs from `code.function`.
+        examples: invoke
+
+      - id: code.invoked.namespace
+        type: string
+        stability: experimental # traces-in-grail
+        brief: >
+          Like `code.namespace`, only it represents the namespace of the function that was active when a span has been started. Typically, it's the function that has been instrumented. It should only be set if it differs from `code.namespace`.
+        examples: com.sun.xml.ws.server.InvokerTube$2
+
+      - id: code.invoked.filepath
+        type: string
+        stability: experimental # traces-in-grail
+        brief: >
+          Like `code.filepath`, only it represents the file path of the function that was active when a span has been started. Typically, it is the function that has been instrumented. It should only be set if it differs from `code.filepath`.
+        examples: /usr/local/MyApplication/content_root/app/index.php
+
+      - id: code.call_stack
+        type: string
+        stability: experimental # traces-in-grail
+        brief: >
+          The call stack of the `code.function`. The call stack starts with the `code.function`, and the stack frames are separated by a line feed.
+        examples: 'com.example.SampleClass.doProcessing(SampleClass.java) com.example.SampleClass.doSomeWork(SampleClass.java) com.example.SampleClass.main(SampleClass.java)'

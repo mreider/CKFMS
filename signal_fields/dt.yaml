@@ -1,0 +1,24 @@
+groups:
+  - id: dt
+    type: attribute_group
+    brief:
+    attributes:
+      - id: dt.query
+        type: string
+        stability: experimental
+        brief: >
+          A query in the DQL format, see [Dynatrace Query Langauge](https://docs.dynatrace.com/docs/shortlink/dql-dynatrace-query-language-hub).
+        examples: [ 'timeseries avg(dt.host.cpu.idle)', 'fetch logs' ]
+
+      - id: dt.maintenance_window_ids
+        type: array
+        stability: experimental
+        brief: UUIDs of maintenance windows.
+        examples: [ "c715d677-eb1b-3e1b-8dbc-db06cad5b8eb" ]
+
+      - id: dt.raw_data
+        type: string
+        stability: experimental
+        brief: >
+          The complete content of the record as it was originally accepted by Dynatrace, stored as a string in JSON format. This field captures the unaltered data for reference, debugging, or auditing purposes
+        examples: [ '{"content": "example record content"}' ]

@@ -1,0 +1,412 @@
+# Current Facets Structure Across Dynatrace Applications
+# This file documents the existing facet categories and keys as they currently exist
+
+applications:
+  clouds:
+    categories:
+      aws:
+        display_name: "AWS"
+        facets:
+          availability_zone:
+            display_name: "Availability zone"
+            values:
+              - regional
+          aws_account:
+            display_name: "AWS Account"
+            values:
+              - "908047316593"
+      core:
+        display_name: "Core"
+        facets:
+          alert_type:
+            display_name: "Alert type"
+            values:
+              - Critical
+              - No alerts
+          environment:
+            display_name: "Environment"
+            values:
+              - "908047316593"
+          global_region:
+            display_name: "Global region"
+            values:
+              - APAC
+              - EMEA
+              - global
+              - LATAM
+              - NORAM
+          region:
+            display_name: "Region"
+            values:
+              - us-east-1
+          tag:
+            display_name: "Tag"
+            values:
+              - "ACE\\\\CREA...ynatrace.com"
+              - "aws:cloudformation:stack-id"
+              - "aws\\\\cloud...e:balcer-test"
+              - "aws\\\\cloud...id:ECSCluster"
+      ecs:
+        display_name: "ECS"
+        facets:
+          - "Amazon Elast..."
+
+  database:
+    categories:
+      core:
+        display_name: "Core"
+        facets:
+          active_health_alert:
+            display_name: "Active health alert"
+            values:
+              - MySQL Instance is unreachable
+              - Oracle - High tablespace usage
+              - Oracle - Instance unavailable
+              - Postgres Instance is unreachable
+              - SQL Server is unreachable
+          alert_status:
+            display_name: "Alert status"
+            values:
+              - Critical
+              - No alerts
+          closed_custom_alert:
+            display_name: "Closed custom alert"
+            values:
+              - no keys found
+          closed_health_alert:
+            display_name: "Closed health alert"
+            values:
+              - MySQL Instance is unreachable
+              - Oracle - High tablespace usage
+              - Oracle - Instance unavailable
+              - Postgres Instance is unreachable
+              - SQL Server is unreachable
+      other:
+        display_name: "Other"
+        facets:
+          status:
+            display_name: "Status"
+            values:
+              - Available
+              - Error
+              - Warning
+          vendor:
+            display_name: "Vendor"
+            values:
+              - HanaDB
+              - MSSQL
+              - MySQL
+              - Oracle
+              - PostgreSQL
+
+  infra_and_operations:
+    categories:
+      alert_status:
+        display_name: "Alert status"
+        facets:
+          - Critical
+          - No alerts
+      cloud:
+        display_name: "Cloud"
+        facets:
+          - AWS
+          - Azure
+          - Google Cloud Platform
+          - OpenStack
+          - Oracle
+      hypervisor:
+        display_name: "Hypervisor"
+        facets:
+          - AIX LPAR
+          - AIX WPAR
+          - AWS Nitro
+          - VMware
+          - Xen
+      monitoring_type:
+        display_name: "Monitoring type"
+        facets:
+          - App only
+          - Discovery
+          - Full stack
+          - Infrastructure
+          - Monitoring candidate
+          - Monitoring disabled
+      os_type:
+        display_name: "OS type"
+        facets:
+          - AIX
+          - Linux
+          - Windows
+          - z/OS
+
+  kubernetes:
+    categories:
+      none:
+        display_name: "None"
+        facets: []
+
+  logs:
+    categories:
+      aws:
+        display_name: "AWS"
+        facets:
+          - aws.account.id
+          - aws.arn
+          - aws.log_group
+          - aws.region
+          - aws.resource.id
+          - aws.service
+      azure:
+        display_name: "Azure"
+        facets:
+          - azure.location
+          - azure.resource.group
+          - azure.resource.name
+          - azure.resource.type
+          - azure.subscription
+      cloud:
+        display_name: "Cloud"
+        facets:
+          - cloud.account.id
+          - cloud.platform
+          - cloud.provider
+          - cloud.region
+      core:
+        display_name: "Core"
+        facets:
+          status:
+            display_name: "Status"
+            values:
+              - Error
+              - Info
+              - None
+              - Warning
+      gcp:
+        display_name: "GCP"
+        facets:
+          - gcp.instance.name
+          - gcp.project.id
+          - gcp.region
+          - gcp.resource.type
+      host:
+        display_name: "Host"
+        facets:
+          - dt.host_group.id
+          - host.name
+      k8s:
+        display_name: "k8s"
+        facets:
+          - k8s.cluster.name
+          - k8s.container.name
+          - k8s.namespace.name
+          - k8s.node.name
+          - k8s.pod.name
+          - k8s.service.name
+          - k8s.workload.kind
+          - k8s.workload.name
+      log_source:
+        display_name: "log source"
+        facets:
+          - "/var/lib/foo.log"
+          - "/var/log/syslog"
+          - "Container Output"
+      loglevel:
+        display_name: "loglevel"
+        facets:
+          - k8s
+      process:
+        display_name: "Process"
+        facets:
+          - dt.process_group.detected_name
+
+  services:
+    categories:
+      aws:
+        display_name: "AWS"
+        facets:
+          - AWS region
+          - AWS tags
+          - AWS version
+          - CloudWatch integration
+      azure:
+        display_name: "Azure"
+        facets:
+          - Azure Monitor integration
+          - Azure region
+          - Azure resource group name
+          - Azure sku
+          - Azure Subscription
+          - Azure tags
+      cloud_infrastructure:
+        display_name: "Cloud / Infrastructure"
+        facets:
+          - Cloud provider
+          - Host group name
+          - Host name
+      core:
+        display_name: "Core"
+        facets:
+          security_context:
+            display_name: "Security context"
+            values: []
+          tags:
+            display_name: "Tags"
+            values: []
+          alert_status:
+            display_name: "Alert status"
+            values:
+              - Critical
+              - No alerts
+          code_profiling:
+            display_name: "Code profiling"
+            values:
+              - Available
+              - Not available
+      gcp:
+        display_name: "GCP"
+        facets:
+          - GCP region
+          - GCP tags
+          - Google Cloud Project
+          - Operations Suite integration
+      kubernetes:
+        display_name: "Kubernetes"
+        facets:
+          - Cluster
+          - Namespace
+          - Namespace label
+          - Workload
+          - Workload label
+      supportability:
+        display_name: "Supportability"
+        facets:
+          - Observability signals
+          - Technology
+
+  tracing:
+    categories:
+      revenue:
+        display_name: "$"
+        facets:
+          - Revenue
+      browser_user_agent:
+        display_name: "Browser user agent"
+        facets:
+          - Url domain
+          - Url fragment
+          - Url full
+          - Url port
+          - Url query
+          - Url scheme
+          - Url truncated path
+      core:
+        display_name: "Core"
+        facets:
+          duration:
+            display_name: "Duration"
+            values:
+              - Duration max
+              - Duration min
+          endpoint:
+            display_name: "Endpoint"
+            values:
+              - findJourneys
+              - GetProduct
+              - Images
+              - JavaScript
+              - JourneyService.checkDestination
+          request_status:
+            display_name: "Request status"
+            values:
+              - Failure
+              - Success
+          service:
+            display_name: "Service"
+            values:
+              - CheckDestination
+              - CustomerFrontendREST
+              - EasyTravelBackendWebserver:8091
+              - EasyTravelWebserver:8079
+              - EasyTravelWebserver:9079
+          span_kind:
+            display_name: "Span kind"
+            values:
+              - Client
+              - Consumer
+              - Internal
+              - Link
+              - Producer
+              - Server
+          span_status:
+            display_name: "Span status"
+            values:
+              - Error
+              - OK
+      http:
+        display_name: "HTTP"
+        facets:
+          - HTTP method
+          - HTTP route
+          - HTTP server name
+          - HTTP status
+          - Url path
+      http_headers:
+        display_name: "HTTP headers"
+        facets:
+          - Forwarded
+          - Host
+          - Referer
+          - Soapaction
+          - User-agent
+          - X-dynatrace
+          - X-dynatrace-tenant
+      kubernetes:
+        display_name: "Kubernetes"
+        facets:
+          - Kubernetes cluster
+          - Kubernetes container
+          - Kubernetes namespace
+          - Kubernetes node name
+          - Kubernetes pod
+          - Kubernetes service name
+          - Kubernetes workload
+          - Kubernetes workload kind
+      process:
+        display_name: "Process"
+        facets:
+          - Process technology
+      request_attributes:
+        display_name: "Request attributes"
+        facets:
+          - App.cart.Items.count
+          - AuthenticationService
+          - Category-hipster
+          - CICS MQ Txns
+          - CICS Task1D
+          - Client's Destination
+          - ClientIP
+          - CreditCard/Payment
+          - CreditCardType
+          - Destination
+          - Dollar
+          - EasyTravel Amount
+          - Easytravel Destination
+          - EasyTravel Destination
+          - EasyTravel JourneyId
+          - EasyTravel User
+          - HTTP POST parameter
+          - Income
+          - JourneyID
+          - Loyalty status
+          - LoyaltyStatus
+          - MileageMobileFlag
+          - MileageMsgContent
+          - MqPathalogContent
+          - Prest-MQ-Test
+          - Revenue_Thangarajan
+          - Revenue_ThangarajanM
+          - Revenues
+          - SessionId
+          - SourceIP
+          - Training
+          - X-dynatrace

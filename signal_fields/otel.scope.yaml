@@ -1,0 +1,19 @@
+groups:
+  - id: otel.scope
+    type: span
+    brief: >
+      OpenTelemetry scope attributes.
+    attributes:
+      - id: otel.scope.name
+        type: string
+        stability: experimental
+        brief: >
+          The name of the instrumentation scope - (`InstrumentationScope.Name` in OTLP).
+        examples: ['io.opentelemetry.contrib.mongodb']
+
+      - id: otel.scope.version
+        type: string
+        stability: experimental
+        brief: >
+          The version of the instrumentation scope - (`InstrumentationScope.Version` in OTLP).
+        examples: ['1.0.0']

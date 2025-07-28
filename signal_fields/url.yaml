@@ -1,0 +1,84 @@
+# url.* as per https://github.com/open-telemetry/semantic-conventions/blob/main/docs/url/url.md
+# and https://www.rfc-editor.org/rfc/rfc3986
+groups:
+  - id: url
+    type: span
+    brief: >
+      The url namespace contains semantic conventions for URL and its components.
+    attributes:
+      - id: url.scheme
+        type: string
+        stability: stable # traces-in-grail
+        brief: >
+          The URI scheme component identifying the used protocol.
+        examples: ['https', 'ftp', 'telnet']
+
+      - id: url.full
+        type: string
+        tags: [ 'sensitive-spans' ]
+        stability: stable # traces-in-grail
+        brief: >
+          Absolute URL describing a network resource according to RFC3986.
+        examples: ['https://www.foo.bar/docs/search?q=OpenTelemetry#SemConv']
+
+      - id: url.path
+        type: string
+        stability: stable # traces-in-grail
+        brief: >
+          The URI path component.
+        examples: ['/docs/search']
+
+      - id: url.truncated_path
+        type: string
+        stability: experimental # adobe-experience-manager
+        brief: >
+          Truncated URI path component for endpoint detection of certain technologies that do not provide a `http.route`.
+          The truncation logic depends on the technology and is a best effort to provide a stable value.
+          Example Adobe Experience Manager (AEM): First two parts of `url.path`. Truncated value of `/content/wknd/us/en/` is `/content/wknd`.
+        examples: ['/docs']
+
+      - id: url.query
+        type: string
+        tags: [ 'sensitive-spans' ]
+        stability: stable # traces-in-grail
+        brief: >
+          The URI query component.
+        examples: ['q=OpenTelemetry']
+
+      - id: url.fragment
+        type: string
+        stability: stable # traces-in-grail
+        brief: >
+          The URI fragment component.
+        examples: ['SemConv']
+
+      - id: url.domain
+        type: string
+        stability: experimental # traces-in-grail
+        brief: >
+          The URI domain component.
+        examples: ['www.foo.bar', 'google.com', 'wikipedia.org']
+
+      - id: url.port
+        type: long
+        stability: experimental # traces-in-grail
+        brief: >
+          The URI port component.
+        examples: [ 443, 80 ]
+
+      - id: url.provider
+        type:
+          allow_custom_values: false
+          members:
+            - id: first_party
+              value: 'first_party'
+              brief: First-party provider.
+            - id: third_party
+              value: 'third_party'
+              brief: Third-party provider.
+            - id: cdn
+              value: 'cdn'
+              brief: CDN (content delivery network).
+        stability: experimental
+        brief: The provider type for the host name of `url.full`. This information is determined by Dynatrace RUM resource detection.
+        examples: ['third_party']

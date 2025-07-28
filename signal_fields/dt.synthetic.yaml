@@ -1,0 +1,34 @@
+groups:
+  - id: dt.synthetic
+    type: attribute_group
+    brief: The dt.synthetic namespace contains Dynatrace synthetic specific fields.
+    attributes:
+      - id: dt.synthetic.batch.id
+        type: long
+        stability: experimental
+        brief: The identifier of the batch (defined for on-demand executions only).
+      - id: dt.synthetic.monitor.id
+        type: string
+        stability: experimental
+        brief: The identifier of the monitor.
+        examples: [ 'HTTP_CHECK-6349B98E1CD87352' ]
+      - id: dt.synthetic.violated_entity_ids
+        type: array
+        stability: experimental
+        brief: IDs of synthetic monitor or steps.
+        examples: [ "HTTP_CHECK-9349B98E1CD87352", "HTTP_CHECK_STEP-6349B98E1CD87352" ]
+      - id: dt.synthetic.request.targets
+        type: array
+        stability: experimental
+        brief: Request target addresses with DNS record type or TCP port number.
+        examples: [ "127.0.0.1:22" ]
+      - id: dt.synthetic.monitored_entity_ids
+        type: array
+        stability: experimental
+        brief: IDs of monitored entities.
+        examples: [ "APPLICATION-EA7C4B59F27D43EB"]
+      - id: dt.synthetic.location.missing_capabilities
+        type: array
+        stability: experimental
+        brief: Names of missing Synthetic location capabilities.
+        examples: [ "BROWSER", "ICMP" ]

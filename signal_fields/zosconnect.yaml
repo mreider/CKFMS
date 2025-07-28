@@ -1,0 +1,120 @@
+groups:
+  - id: zosconnect
+    type: span
+    brief: 'This document defines semantic conventions for spans on the z/OS Connect EE server.'
+    attributes:
+      - id: zosconnect.request.id
+        type: long
+        stability: experimental # traces-in-grail
+        brief: 'The z/OS Connect request ID.'
+        examples: [ 2215 ]
+
+      - id: zosconnect.service.provider.name
+        type: string
+        stability: experimental # traces-in-grail
+        brief: 'The service provider name.'
+        examples: [ 'CICS-1.0' ]
+
+      - id: zosconnect.sor.reference
+        type: string
+        stability: experimental # traces-in-grail
+        brief: 'The system of record reference.'
+        examples: [ 'cicsConn' ]
+
+      - id: zosconnect.sor.identifier
+        type: string
+        stability: experimental # traces-in-grail
+        brief: >
+          The system of record identifier. The format differs depending on the SOR type.
+        note: See <https://www.ibm.com/docs/en/zos-connect/zosconnect/3.0?topic=spi-data#SOR_IDENTIFIER>
+        examples: [ 'localhost:8080' ]
+
+      - id: zosconnect.sor.resource
+        type: string
+        stability: experimental # traces-in-grail
+        brief: >
+          Identifier for the resource invoked on the system of record. The format differs depending on the SOR type.
+        note: See <https://www.ibm.com/docs/en/zos-connect/zosconnect/3.0?topic=spi-data#SOR_RESOURCE>
+        examples: [ '01,DFH0XCMN' ]
+
+      - id: zosconnect.sor.type
+        brief: 'The system of record type.'
+        type:
+          allow_custom_values: false
+          members:
+            - id: cics
+              value: 'CICS'
+            - id: ims
+              value: 'IMS'
+            - id: rest
+              value: 'REST'
+            - id: wola
+              value: 'WOLA'
+            - id: mq
+              value: 'MQ'
+        stability: experimental # traces-in-grail
+
+      - id: zosconnect.request.body.size
+        type: long
+        stability: experimental # traces-in-grail
+        brief: 'The size of the request payload in bytes.'
+        examples: [ 234 ]
+
+      - id: zosconnect.response.body.size
+        type: long
+        stability: experimental # traces-in-grail
+        brief: 'The size of the response payload in bytes.'
+        examples: [ 125 ]
+
+      - id: zosconnect.api.name
+        type: string
+        stability: experimental # traces-in-grail
+        brief: 'The z/OS Connect API name.'
+        examples: [ 'catalog' ]
+
+      - id: zosconnect.service.name
+        type: string
+        stability: experimental # traces-in-grail
+        brief: 'The z/OS Connect service name.'
+        examples: [ 'placeOrder' ]
+
+      - id: zosconnect.api.description
+        type: string
+        stability: experimental # traces-in-grail
+        brief: 'The z/OS Connect API description.'
+        examples: [ 'The API for the CICS catalog manager sample application.' ]
+
+      - id: zosconnect.service.description
+        type: string
+        stability: experimental # traces-in-grail
+        brief: 'The z/OS Connect service description.'
+        examples: [ 'EDUCHAN service using the CICS Service Provider' ]
+
+      - id: zosconnect.api.version
+        type: string
+        stability: experimental # traces-in-grail
+        brief: 'The z/OS Connect API version.'
+        examples: [ '1.0.0' ]
+
+      - id: zosconnect.service.version
+        type: string
+        stability: experimental # traces-in-grail
+        brief: 'The z/OS Connect service version.'
+        examples: [ '2.0' ]
+
+      - id: zosconnect.request.type
+        brief: >
+          The type of the REST request.
+        note: See <https://www.ibm.com/docs/en/zos-connect/zosconnect/3.0?topic=spi-datarequesttype>
+        type:
+          allow_custom_values: false
+          members:
+            - id: api
+              value: 'API'
+            - id: service
+              value: 'SERVICE'
+            - id: admin
+              value: 'ADMIN'
+            - id: unknown
+              value: 'UNKNOWN'
+        stability: experimental # traces-in-grail

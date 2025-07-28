@@ -1,0 +1,110 @@
+groups:
+  - id: cloud_span_target
+    type: span
+    brief:
+    attributes:
+      - id: cloud.target.region
+        type: string
+        stability: experimental # traces-in-grail
+        brief: >
+          Identifier of the cloud vendor's data center geographic region.
+        examples: [ 'us-east-1' ]
+
+      - id: cloud.target.provider
+        type:
+          allow_custom_values: true
+          members:
+            - id: 'alibaba_cloud'
+              value: 'alibaba_cloud'
+              brief: 'Alibaba Cloud'
+            - id: 'aws'
+              value: 'aws'
+              brief: 'Amazon Web Services'
+            - id: 'azure'
+              value: 'azure'
+              brief: 'Microsoft Azure'
+            - id: 'gcp'
+              value: 'gcp'
+              brief: 'Google Cloud Platform'
+            - id: 'heroku'
+              value: 'heroku'
+              brief: 'Heroku Platform as a Service'
+            - id: 'ibm_cloud'
+              value: 'ibm_cloud'
+              brief: 'IBM Cloud'
+            - id: 'tencent_cloud'
+              value: 'tencent_cloud'
+              brief: 'Tencent Cloud'
+        stability: experimental # traces-in-grail
+        brief: >
+          Name of the cloud provider.
+
+      - id: cloud.target.resource_id
+        type: string
+        stability: experimental # traces-in-grail
+        brief: >
+          Cloud provider-specific native identifier of the accessed cloud resource (for example, an ARN on AWS, a fully qualified resource ID on Azure, or a complete resource name on GCP).
+          If the value is not directly extractable for instrumentation, it can be constructed from its components.
+        examples: [ 'arn:aws:lambda:REGION:ACCOUNT_ID:function:my-function', '//run.googleapis.com/projects/PROJECT_ID/locations/LOCATION_ID/services/SERVICE_ID', '/subscriptions/<SUBSCIPTION_GUID>/resourceGroups/<RG>/providers/Microsoft.Web/sites/<FUNCAPP>/functions/<FUNC>' ]
+
+      - id: cloud.target.account.id
+        type: string
+        stability: experimental # traces-in-grail
+        brief: >
+          The cloud account ID used to access a cloud resource.
+        examples: ['111111111111', '984398786124']
+
+  - id: cloud_span_origin
+    type: span
+    brief:
+    attributes:
+      - id: cloud.origin.region
+        type: string
+        stability: experimental # traces-in-grail
+        brief: >
+          Identifier of the cloud vendor's data center geographic region.
+        examples: [ 'us-east-1' ]
+
+      - id: cloud.origin.provider
+        type:
+          allow_custom_values: true
+          members:
+            - id: 'alibaba_cloud'
+              value: 'alibaba_cloud'
+              brief: 'Alibaba Cloud'
+            - id: 'aws'
+              value: 'aws'
+              brief: 'Amazon Web Services'
+            - id: 'azure'
+              value: 'azure'
+              brief: 'Microsoft Azure'
+            - id: 'gcp'
+              value: 'gcp'
+              brief: 'Google Cloud Platform'
+            - id: 'heroku'
+              value: 'heroku'
+              brief: 'Heroku Platform as a Service'
+            - id: 'ibm_cloud'
+              value: 'ibm_cloud'
+              brief: 'IBM Cloud'
+            - id: 'tencent_cloud'
+              value: 'tencent_cloud'
+              brief: 'Tencent Cloud'
+        stability: experimental # traces-in-grail
+        brief: >
+          Name of the cloud provider.
+
+      - id: cloud.origin.resource_id
+        type: string
+        stability: experimental # traces-in-grail
+        brief: >
+          Cloud provider-specific native identifier of the accessed cloud resource (for example, an ARN on AWS, a fully qualified resource ID on Azure, or a complete resource name on GCP).
+          If the value is not directly extractable for instrumentation, it can be constructed from its components.
+        examples: [ 'arn:aws:lambda:REGION:ACCOUNT_ID:function:my-function', '//run.googleapis.com/projects/PROJECT_ID/locations/LOCATION_ID/services/SERVICE_ID', '/subscriptions/<SUBSCIPTION_GUID>/resourceGroups/<RG>/providers/Microsoft.Web/sites/<FUNCAPP>/functions/<FUNC>' ]
+
+      - id: cloud.origin.account.id
+        type: string
+        stability: experimental # traces-in-grail
+        brief: >
+          The cloud account ID used to access a cloud resource.
+        examples: ['111111111111', '984398786124']

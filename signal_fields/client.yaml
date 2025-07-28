@@ -1,0 +1,44 @@
+groups:
+  - id: client
+    type: span
+    brief: >
+      The client namespace contains information on the initiator of a network connection.
+      When observered from the server side, and when communicating through an intermediary,
+      `client.ip` and `client.port` typically represent the client information behind any intermediaries (e.g. proxies) if it's available.
+    attributes:
+      - id: client.ip
+        type: ipAddress
+        tags: [ 'sensitive-spans' ]
+        stability: experimental # traces-in-grail
+        brief: The IP address of the client that makes the request. This may be IPv4 or IPv6.
+        examples: [ '194.232.104.141', '2a01:468:1000:9::140' ]
+
+      - id: client.port
+        type: long
+        stability: stable # traces-in-grail
+        brief: Client port number.
+        examples: [ 65123, 80 ]
+
+      - id: client.isp
+        type: string
+        stability: experimental # traces-in-grail
+        brief: The name of the Internet Service Provider (ISP) associated with the client's IP address.
+        examples: [ 'Internet Service Provider Name' ]
+
+      - id: client.ip.is_public
+        type: boolean
+        stability: experimental # traces-in-grail
+        brief: Indicates whether IP is a public IP.
+        examples: [ true ]
+
+      - id: client.app.name
+        type: string
+        stability: experimental
+        brief: The name of the client application used to perform the request.
+        examples: [ 'MS Outlook' ]
+
+      - id: client.address
+        type: string
+        stability: experimental
+        brief: Client address - domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name.
+        examples: [ 'client.example.com', '10.1.2.80', '[local]' ]

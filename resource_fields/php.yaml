@@ -1,0 +1,41 @@
+groups:
+  - id: php
+    type: resource
+    brief:
+    attributes:
+      - id: php.cli.script.path
+        type: string
+        stability: experimental # traces-in-grail
+        brief:
+        examples: [ ' ' ]
+
+      - id: php.cli.working.dir
+        type: string
+        stability: experimental # traces-in-grail
+        brief:
+        examples: [ ' ' ]
+
+      - id: php.drupal.application.name
+        type: string
+        stability: experimental # traces-in-grail
+        brief:
+        examples: [ ' ' ]
+
+      - id: php.fpm.pool.name
+        type: string
+        stability: experimental # traces-in-grail
+        brief:
+        examples: [ ' ' ]
+
+      - id: php.symfony.application.name
+        type: string
+        stability: experimental # traces-in-grail
+        brief:
+        examples: [ ' ' ]
+
+      - id: php.wordpress.blog.name
+        type: string
+        stability: experimental # traces-in-grail
+        brief: >
+          also see <https://developer.wordpress.org/reference/functions/get_bloginfo/>
+        examples: [ ' ' ]

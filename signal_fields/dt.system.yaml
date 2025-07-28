@@ -1,0 +1,72 @@
+groups:
+  - id: dt.system
+    type: attribute_group
+    brief: The namespace `dt.system` is reserved for Grail. These fields cannot be ingested but instead will be set by Grail directly. Every record that is fetched from Grail provides these fields, but by default they are hidden. You can display them by using the `fieldsAdd` command.
+    attributes:
+      - id: dt.system.bucket
+        type: string
+        stability: stable
+        brief: The Grail bucket that the record is stored in.
+        examples: [ 'default_logs', 'default_spans', 'default_bizevents' ]
+
+      - id: dt.system.monitoring_source
+        type:
+          allow_custom_values: false
+          members:
+            - id: discovery
+              value: discovery
+              brief: The source is running under the discovery license.
+            - id: fullstack_container
+              value: fullstack_container
+              brief: The source is running under the full-stack container license.
+            - id: fullstack_host
+              value: fullstack_host
+              brief: The source is running under the full-stack host license.
+            - id: infrastructure
+              value: infrastructure
+              brief: The source is running under the infrastructure license.
+            - id: mainframe
+              value: mainframe
+              brief: The source is running under the mainframe license.
+        stability: stable
+        brief: Identifies the license under which the source is running.
+        examples: [ 'fullstack_host', 'infrastructure' ]
+
+      - id: dt.system.storage_interval
+        brief: >
+          Identifies the timeframe represented by individual data structures
+          stored under a metric key.
+        stability: stable
+        type:
+          allow_custom_values: false
+          members:
+            - id: one-minute
+              value: "1 min"
+              brief: >
+                The timeframe represented by individual measurements of a
+                metrics record in storage.
+        examples: [ "1 min" ]
+
+      - id: dt.system.table
+        type: string
+        stability: stable
+        brief: The table that the record belongs to.
+        examples: [ 'logs', 'bizevents' ]
+
+      - id: dt.system.environment
+        type: string
+        stability: stable
+        brief: The Dynatrace environment that the record belongs to.
+        examples: [ 'wkf10640' ]
+
+      - id: dt.system.segment_id
+        type: string
+        stability: stable
+        brief: The segment that the record belongs to.
+        examples: [ '5d97c09e-7337-443e-bab5-2f0474804687' ]
+
+      - id: dt.system.sampling_ratio
+        type: long
+        stability: stable
+        brief: The selected sampling ratio.
+        examples: [ 1 ]

@@ -1,0 +1,51 @@
+groups:
+  - id: availability
+    type: attribute_group
+    brief: >
+      Information about entity availability. Sample usage is reporting hosts and PGI-s availability by OS Agent.
+      Value of that field can be used for calculating aggregate availability (dividing count of "successful" requests by count of all requests).
+      With constant frequency of requests it can be treated as a time-base availability, showing percentage of time that the monitored entity was available.
+    attributes:
+      - id: availability.state
+        stability: stable
+        type:
+          allow_custom_values: true
+          members:
+            - id: up
+              value: 'up'
+              brief: '[HOST] Host is working, agent active and sending data.'
+            - id: no_data
+              value: 'no_data'
+              brief: '[HOST] Host is working, agent active but no data are sent.'
+            - id: no_data_agent_inactive
+              value: 'no_data_agent_inactive'
+              brief: '[HOST] Host is working, agent inactive (disabled manually in configuration). No data are sent.'
+            - id: shutdown_host
+              value: 'shutdown_host'
+              brief: '[HOST] Host has been shut down.'
+            - id: reboot_graceful
+              value: 'reboot_graceful'
+              brief: '[HOST] Host has started after graceful shutdown.'
+            - id: reboot_ungraceful
+              value: 'reboot_ungraceful'
+              brief: '[HOST] Host has started after ungraceful shutdown.'
+            - id: unmonitored_agent_stopped
+              value: 'unmonitored_agent_stopped'
+              brief: '[HOST] Host is unmonitored because agent stopped.'
+            - id: unmonitored_agent_upgrade
+              value: 'unmonitored_agent_upgrade'
+              brief: '[HOST] Host is unmonitored because agent is upgrading.'
+            - id: unmonitored_agent_uninstalled
+              value: 'unmonitored_agent_uninstalled'
+              brief: '[HOST] Host is unmonitored because agent has been uninstalled.'
+            - id: available
+              value: 'available'
+              brief: '[PGI] PGI is available and reported.'
+            - id: unavailable
+              value: 'unavailable'
+              brief: '[PGI] PGI is unavailable and not reported.'
+            - id: unimportant
+              value: 'unimportant'
+              brief: '[PGI] PGI is available but not reported because it became unimportant.'
+        brief: State of entity (host or PGI) availability.
+        examples: ['up']

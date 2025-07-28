@@ -1,0 +1,14 @@
+groups:
+  - id: dt.smartscape
+    type: resource
+    brief: >
+      Fields enriched with signal data containing entity IDs that refer to Smartscape 2.0 entities.
+    attributes:
+      - id: dt.smartscape.__type__
+        type: string
+        stability: stable
+        tags: [ 'smartscape-id' ]
+        brief: >
+          A Smartscape ID that can be used to query entities from the Smartscape storage.
+          `__type__` is a placeholder for any Smartscape type.
+        examples: ['K8S_CLUSTER-E0D8F94D9065F24F']

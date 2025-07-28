@@ -1,0 +1,30 @@
+groups:
+  - id: trace
+    type: span
+    brief:
+    attributes:
+      - id: trace.id
+        type: uid
+        stability: stable # traces-in-grail
+        brief: >
+          A unique identifier for a trace.
+          The `trace.id` is a 16-byte ID and hex-encoded if shown as a string.
+        examples: [ '357bf70f3c617cb34584b31bd4616af8' ]
+      - id: trace.state
+        type: string
+        stability: experimental # traces-in-grail
+        brief: >
+          The trace state in the w3c-trace-context format.
+        examples: [ 'f4fe05b2-bd92206c@dt=fw4;3;abf102d9;c4592;0;0;0;2ee;5607;2h01;3habf102d9;4h0c4592;5h01;6h5f9a543f1184a52b1b744e383038911c;7h6564df6f55bd6eae,apmvendor=boo,foo=bar' ]
+      - id: trace.alternate_id
+        type: uid
+        stability: experimental # traces-in-grail
+        brief: >
+          The preserved trace ID when OneAgent and other tracing systems monitor the same process and the trace ID from the other tracing system was replaced by the OneAgent trace ID.
+          The `trace.alternate_id` is a 16-byte ID and hex-encoded if shown as a string.
+        examples: [ '357bf70f3c617cb34584b31bd4616af8' ]
+      - id: trace.is_sampled
+        type: boolean
+        stability: experimental
+        brief: >
+          Flag indicating whether the trace was sampled out.

@@ -1,0 +1,16 @@
+groups:
+  - id: glassfish
+    type: resource
+    brief:
+    attributes:
+      - id: glassfish.domain.name
+        type: string
+        stability: experimental # traces-in-grail
+        brief: The name of the domain this instance belongs to.
+        examples: [ ' ' ]
+
+      - id: glassfish.instance.name
+        type: string
+        stability: experimental # traces-in-grail
+        brief: The instance's name.
+        examples: [ ' ' ]

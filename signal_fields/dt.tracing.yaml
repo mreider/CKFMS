@@ -1,0 +1,92 @@
+groups:
+  - id: dt.tracing
+    type: span
+    brief:
+    attributes:
+      - id: dt.tracing.custom_link.id
+        type: uid
+        stability: experimental # traces-in-grail
+        brief: >
+          The custom link ID to identify spans calling each other. The ID is derived from the custom link bytes.
+        examples: [ '736bd2684696c4a8' ]
+
+      - id: dt.tracing.custom_link.type
+        type:
+          allow_custom_values: false
+          members:
+            - id: generic
+              value: 'generic'
+              brief: 'The `dt.tracing.custom_link.original_bytes` have no special meaning.'
+            - id: ibm_mq
+              value: 'ibm_mq'
+              brief: 'The `dt.tracing.custom_link.original_bytes` are an IBM MQ custom link.'
+            - id: ibm_mq_ignore_qname
+              value: 'ibm_mq_ignore_qname'
+              brief: 'The `dt.tracing.custom_link.original_bytes` are an IBM MQ custom link, but the qname part should be ignored in mapping.'
+        stability: experimental # traces-in-grail
+        brief: >
+          The type of the custom link defines if a mapping of the `dt.tracing.custom_link.original_bytes` to the `dt.tracing.custom_link.transformed_bytes` was applied.
+        examples: [ 'generic' ]
+
+      - id: dt.tracing.custom_link.original_bytes
+        type: binary
+        stability: experimental # traces-in-grail
+        brief: >
+          The original binary data of the custom link.
+        examples: [ 'ycXlxUBAQEDee9lm8pBcA8nF5cVAQEBA3nvZZvKQXAPee9lm8s4SAQ==' ]
+
+      - id: dt.tracing.custom_link.transformed_bytes
+        type: binary
+        stability: experimental # traces-in-grail
+        brief: >
+          The transformed binary data of the custom link. Only available if a mapping was applied.
+        examples: [ 'ycXlxUBAQEDee9lm8pBcA8nF5cVAQEBA3nvZZvKQXAPee9lm8s4SAQ==' ]
+
+      - id: dt.tracing.link.id
+        type: uid
+        stability: experimental # traces-in-grail
+        brief: >
+          Unique identifier for a Dynatrace link.
+
+      - id: dt.tracing.link.is_sync
+        type: boolean
+        stability: experimental # traces-in-grail
+        brief: >
+          `true` indicates that the caller waits on the response. Only available on span links with `dt.tracing.link.direction` set to `outgoing`.
+
+      - id: dt.tracing.foreign_link.text
+        type: string
+        stability: experimental # traces-in-grail
+        brief: >
+          An incoming foreign link (cross-environment or cross-product).
+        examples: [ 'FW4;129;12;-2023406815;4539717;0;17;66;c511;2h02;3h12345678;4h676767', 'FW1;129;4711;59959450;-1859959450;3;17;0' ]
+
+      - id: dt.tracing.foreign_link.bytes
+        type: binary
+        stability: experimental # traces-in-grail
+        brief: >
+          An incoming foreign link (cross-environment or cross-product).
+        examples: [ '00000004000000010000000200000003000000040000002300000001' ]
+
+      - id: dt.tracing.response.headers
+        type: record
+        stability: experimental # traces-in-grail
+        brief: >
+          A collection of key-value pairs containing received response headers related to tracing from an outgoing call. There may be multiple values for each header.
+          Used for cross-environment linking.
+        examples: [ { traceresponse: ["00-7b9e3e4068167838398f50017bfad358-d4ffc7e33530967a-01"], x-dt-tracestate: ["9651e1a8-19506b7c@dt"] } ]
+
+      - id: dt.tracing.link.direction
+        type:
+          allow_custom_values: false
+          members:
+            - id: outgoing
+              value: 'outgoing'
+              brief: 'Indicates that the link represents an outgoing call (the parent in a parent-child relationship).'
+            - id: incoming
+              value: 'incoming'
+              brief: 'Indicates that the link represents an incoming call (the child in a parent-child relationship).'
+        stability: experimental # traces-in-grail
+        brief: >
+          The direction of the span link to define the correct order between spans.
+        examples: [ 'outgoing' ]

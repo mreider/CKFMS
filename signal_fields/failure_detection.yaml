@@ -1,0 +1,48 @@
+groups:
+  - id: failure_detection
+    type: span
+    brief:
+    attributes:
+      - id: dt.failure_detection.ruleset_id
+        type: uid
+        stability: experimental # traces-in-grail
+        brief: >
+          The `id` of the failure detection rule set (failure detection v2) that was applied to that span (uid128).
+        examples: [ '4d76194c11a9426197a9062548f9e66e' ]
+
+      - id: dt.failure_detection.general_parameters_id
+        type: uid
+        stability: experimental # traces-in-grail
+        brief: >
+          The `id` of the failure detection general parameters (failure detection v1) that were applied to that span (uid128).
+        examples: [ '4d76194c11a9426197a9062548f9e66f' ]
+
+      - id: dt.failure_detection.http_parameters_id
+        type: uid
+        stability: experimental # traces-in-grail
+        brief: >
+          The `id` of the failure detection HTTP parameters (failure detection v1) that were applied to that span (uid128).
+        examples: [ '4d76194c11a9426197a9062548f9e66a' ]
+
+      - id: dt.failure_detection.global_rule_id
+        type: uid
+        stability: experimental # traces-in-grail
+        brief: >
+          The `id` of the global failure detection rule (failure detection v1) that was applied to that span (uid128).<br />
+          This is always used in conjunction with the `dt.failure_detection.global_parameters_id`.
+        examples: [ '4d76194c11a9426197a9062548f9e66b' ]
+
+      - id: dt.failure_detection.global_parameters_id
+        type: uid
+        stability: experimental # traces-in-grail
+        brief: >
+          The `id` of the global failure detection parameters (failure detection v1) that were applied to that span (uid128).<br />
+          This is always used in conjunction with the `dt.failure_detection.global_rule_id`.
+        examples: [ '4d76194c11a9426197a9062548f9e66c' ]
+
+      - id: dt.failure_detection.results
+        type: record[]
+        stability: experimental # traces-in-grail
+        brief: >
+          A collection of individual failure detection reasons and verdicts for each applied matching rule.
+          If no entries exist, no rules matched, and the attribute does not exist.

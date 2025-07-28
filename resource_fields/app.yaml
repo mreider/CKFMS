@@ -1,0 +1,33 @@
+groups:
+  - id: app
+    type: resource
+    brief: >
+      The app namespace contains information on the application sending the event.
+    attributes:
+      - id: app.bundle
+        type: string
+        stability: stable
+        brief: >
+          The name of the bundle, for example the bundle identifier on iOS or the `applicationId` on Android.
+        examples: [ 'com.example.easytravel' ]
+
+      - id: app.version
+        type: string
+        stability: stable
+        brief: >
+          The application's internal build number, which can include information such as patch number and build number.
+        examples: [ '5.23.15789', '143542' ]
+
+      - id: app.short_version
+        type: string
+        stability: stable
+        brief: >
+          The application's publicly visible version number, as, for example, displayed in App Store or Google Play. Usually this is just the major and minor version with no patch number.
+        examples: [ '5.23' ]
+
+      - id: app.id
+        type: string
+        stability: stable
+        brief: >
+          An optional unique application identifier. Chosen by the customer
+        examples: [ 'easytravel' ]

@@ -1,0 +1,13 @@
+groups:
+  - id: request_attribute
+    type: span
+    brief:
+    attributes:
+      - id: request_attribute.__attribute_name__
+        type: array
+        tags: [ 'sensitive-spans' ] # all request attributes that are marked as sensitive in settings, will be considered sensitive
+        stability: stable # traces-in-grail
+        brief: >
+          Contains the request scoped reconciled values of the attribute named `__attribute_name__` defined by the request attribute configuration.
+          The data type of the value depends on the request attribute definition.
+        examples: [42, 'Platinum', ['Product A', 'Product B'], ['Special Offer', '1702']]

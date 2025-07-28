@@ -1,0 +1,16 @@
+groups:
+  - id: elasticsearch
+    type: resource
+    brief:
+    attributes:
+      - id: elasticsearch.cluster.name
+        type: string
+        stability: experimental # traces-in-grail
+        brief:
+        examples: [ ' ' ]
+
+      - id: elasticsearch.node.name
+        type: string
+        stability: experimental # traces-in-grail
+        brief:
+        examples: [ ' ' ]

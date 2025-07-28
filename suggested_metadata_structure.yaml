@@ -1,0 +1,490 @@
+# Suggested Metadata Structure with Standardized Categories
+# This file proposes logical standardized categories for metadata across all Dynatrace applications
+
+applications:
+  clouds:
+    categories:
+      core:
+        display_name: "Core"
+        description: "Essential cloud entity information"
+        fields:
+          - Cloud Entity Name
+          - Alert Status
+          - Cloud Resource ARN
+          - Environment
+      tags_labels:
+        display_name: "Tags & Labels"
+        description: "User-defined tags and labels"
+        fields:
+          - AWS Tags
+          - Azure Tags
+          - GCP Tags
+          - Cloud Tags
+      cloud:
+        display_name: "Cloud"
+        description: "Cloud provider and region information"
+        fields:
+          - AWS Account ID
+          - AWS Region
+          - Global Region
+      monitoring:
+        display_name: "Monitoring"
+        description: "Dynatrace monitoring configuration"
+        fields:
+          - dt.system.environment
+          - managementZones
+      security:
+        display_name: "Security"
+        description: "Security context and access control"
+        fields:
+          - dt.security_context
+      topology:
+        display_name: "Topology"
+        description: "Entity identification and relationships"
+        fields:
+          - Cloud Entity ID
+          - Accessible By
+          - Custom Icon Path
+
+  database:
+    categories:
+      core:
+        display_name: "Core"
+        description: "Essential database information"
+        fields:
+          - Database Name
+          - Alert Status
+          - Database Status
+          - Database Vendor
+      database:
+        display_name: "Database"
+        description: "Database-specific metadata"
+        fields:
+          - Database System
+      monitoring:
+        display_name: "Monitoring"
+        description: "Health and monitoring status"
+        fields:
+          - Health Status
+      topology:
+        display_name: "Topology"
+        description: "Database entity identification"
+        fields:
+          - Database Entity ID
+
+  infra_and_operations:
+    categories:
+      core:
+        display_name: "Core"
+        description: "Essential infrastructure information"
+        fields:
+          - Host Name
+          - Alert Status
+          - Monitoring Type
+          - Instance Type
+      cloud:
+        display_name: "Cloud"
+        description: "Cloud provider information"
+        fields:
+          - Cloud
+          - ARN
+          - AWS name tag
+          - Data center
+          - Private IP address
+          - Security groups
+      infrastructure:
+        display_name: "Infrastructure"
+        description: "Hardware and system specifications"
+        fields:
+          - Architecture
+          - Logical CPU cores
+          - Physical CPU cores
+          - Physical memory
+          - Hypervisor type
+          - Additional system info
+      monitoring:
+        display_name: "Monitoring"
+        description: "Dynatrace monitoring information"
+        fields:
+          - OneAgent version
+          - Management zones
+          - dt.security_context
+          - ebrpDiscoveryMonitored
+          - Up since
+      networking:
+        display_name: "Networking"
+        description: "Network configuration and connectivity"
+        fields:
+          - called_by
+          - calls
+      operating_system:
+        display_name: "Operating System"
+        description: "OS version and configuration"
+        fields:
+          - OS version
+      platform:
+        display_name: "Platform"
+        description: "Platform and deployment information"
+        fields:
+          - Cloud Foundry foundation
+          - BOSH availability zone
+          - BOSH deployment ID
+          - BOSH stemcell version
+          - boshName
+      technology:
+        display_name: "Technology"
+        description: "Technology stack information"
+        fields:
+          - Technologies
+          - autoInjection
+      topology:
+        display_name: "Topology"
+        description: "Host and system identification"
+        fields:
+          - Host Group Name
+          - Host Entity ID
+          - Instance ID
+          - AMI ID
+          - BOSH Instance ID
+          - BOSH Instance Name
+          - Private Hostname
+          - IP Addresses
+          - MAC Addresses
+
+  kubernetes:
+    categories:
+      core:
+        display_name: "Core"
+        description: "Essential Kubernetes resource information"
+        fields:
+          - Pod Name
+          - Cluster Name
+          - Namespace Name
+          - Workload Name
+          - Alert Status
+      tags_labels:
+        display_name: "Tags & Labels"
+        description: "User-defined tags, labels and annotations"
+        fields:
+          - Pod Labels
+          - Namespace Labels
+          - Workload Labels
+          - Pod Annotations
+          - Namespace Annotations
+          - Workload Annotations
+      infrastructure:
+        display_name: "Infrastructure"
+        description: "Resource allocation and capacity"
+        fields:
+          - Containers
+          - CPU Requests
+          - Total container restarts
+      kubernetes:
+        display_name: "Kubernetes"
+        description: "Kubernetes-specific metadata"
+        fields:
+          - Kubernetes distribution
+          - Kubernetes version
+          - Conditions
+          - Created
+      monitoring:
+        display_name: "Monitoring"
+        description: "Dynatrace monitoring configuration"
+        fields:
+          - ActiveGate ID
+          - ActiveGate version
+          - Operator version
+          - DynaKube modes
+      security:
+        display_name: "Security"
+        description: "Security context and policies"
+        fields:
+          - Security context
+      topology:
+        display_name: "Topology"
+        description: "Kubernetes resource identification"
+        fields:
+          - Workload Type
+          - External Resource UID
+          - Kubernetes Cluster ID
+
+  logs:
+    categories:
+      core:
+        display_name: "Core"
+        description: "Essential log information"
+        fields:
+          - Log Content
+          - Log Status
+          - Log Level
+          - Log Source
+      cloud:
+        display_name: "Cloud"
+        description: "Cloud provider context"
+        fields:
+          - azure.location
+      entity_topology:
+        display_name: "Entity Topology"
+        description: "Entity relationships and topology"
+        fields:
+          - dt.entity.cloud_application
+          - dt.entity.cloud_application_instance
+          - dt.entity.cloud_application_namespace
+          - dt.entity.container_group
+          - dt.entity.container_group_instance
+          - dt.entity.host
+          - dt.entity.kubernetes_cluster
+          - dt.entity.kubernetes_node
+          - dt.entity.process_group
+          - dt.entity.process_group_instance
+          - dt.source_entity
+      infrastructure:
+        display_name: "Infrastructure"
+        description: "Host and infrastructure context"
+        fields:
+          - host.name
+      kubernetes:
+        display_name: "Kubernetes"
+        description: "Kubernetes context"
+        fields:
+          - dt.kubernetes.cluster.name
+          - dt.kubernetes.node.system_uuid
+          - k8s.cluster.name
+          - k8s.container.name
+          - k8s.deployment.name
+          - k8s.namespace.name
+          - k8s.pod.name
+      logs:
+        display_name: "Logs"
+        description: "Log content and formatting"
+        fields:
+          - Log Timestamp
+      monitoring:
+        display_name: "Monitoring"
+        description: "Monitoring and operator information"
+        fields:
+          - OperatorVersion
+      networking:
+        display_name: "Networking"
+        description: "Network protocol information"
+        fields:
+          - http.flavor
+          - http.method
+          - http.status_code
+      process:
+        display_name: "Process"
+        description: "Process and technology context"
+        fields:
+          - process.technology
+      topology:
+        display_name: "Topology"
+        description: "Log source identification"
+        fields:
+          - Source Host
+
+  services:
+    categories:
+      core:
+        display_name: "Core"
+        description: "Essential service information"
+        fields:
+          - Service Application Name
+          - Alert Status
+          - Service Type
+          - Is External Service
+      tags_labels:
+        display_name: "Tags & Labels"
+        description: "User-defined tags and labels"
+        fields:
+          - Service Tags
+          - Kubernetes Namespace Labels
+          - Kubernetes Workload Labels
+      deployment:
+        display_name: "Deployment"
+        description: "Application deployment information"
+        fields:
+          - Application build environment
+          - Application release version
+      kubernetes:
+        display_name: "Kubernetes"
+        description: "Kubernetes deployment context"
+        fields:
+          - Kubernetes cluster
+          - Kubernetes namespace
+          - Kubernetes workload
+      monitoring:
+        display_name: "Monitoring"
+        description: "Dynatrace monitoring configuration"
+        fields:
+          - Management zones
+      process:
+        display_name: "Process"
+        description: "Process group information"
+        fields:
+          - Process group
+      security:
+        display_name: "Security"
+        description: "Security context"
+        fields:
+          - Security context
+      service:
+        display_name: "Service"
+        description: "Service-specific information"
+        fields:
+          - Service Last Seen
+      technology:
+        display_name: "Technology"
+        description: "Technology stack and runtime"
+        fields:
+          - Agent technology type
+          - Software technology types
+          - Technologies
+      topology:
+        display_name: "Topology"
+        description: "Service identification and naming"
+        fields:
+          - Service Entity ID
+          - Context Root
+          - Web Application ID
+          - Web Server Name
+
+  tracing:
+    categories:
+      core:
+        display_name: "Core"
+        description: "Essential span information"
+        fields:
+          - Span Name
+          - Span Duration
+          - Service Name
+          - Request Status
+          - Span Kind
+      client:
+        display_name: "Client"
+        description: "Client information"
+        fields:
+          - Client ip
+      cloud:
+        display_name: "Cloud"
+        description: "Cloud provider context"
+        fields:
+          - Gcp instance id
+          - Gcp project id
+          - Gcp region
+          - Gcp zone
+          - Gcp zone id
+      code:
+        display_name: "Code"
+        description: "Code execution details"
+        fields:
+          - Code function
+          - Code namespace
+          - CPU self time
+          - CPU time
+          - Span is subroutine
+          - Thread id
+          - Thread name
+      deployment:
+        display_name: "Deployment"
+        description: "Deployment and release information"
+        fields:
+          - Deployment release build version
+          - Deployment release product
+          - Deployment release stage
+          - Deployment release version
+      http:
+        display_name: "HTTP"
+        description: "HTTP request and response data"
+        fields:
+          - HTTP method
+          - HTTP route
+          - HTTP server name
+          - HTTP status
+          - Url path
+          - HTTP request header host
+          - HTTP request header referer
+          - HTTP request header user-agent
+          - HTTP response header content-type
+      infrastructure:
+        display_name: "Infrastructure"
+        description: "Host and infrastructure context"
+        fields:
+          - Host group
+          - Host name internal
+          - Host group id
+          - Host id
+      monitoring:
+        display_name: "Monitoring"
+        description: "Dynatrace monitoring metadata"
+        fields:
+          - Cost costcenter
+          - Cost product
+          - Ingest size
+          - OneAgent module id
+          - OneAgent module type
+          - OneAgent module version
+          - Openpipeline pipelines
+          - Openpipeline source
+          - Retain size
+          - Supportability atm sampling ratio
+          - System monitoring source
+      networking:
+        display_name: "Networking"
+        description: "Network protocol and connectivity"
+        fields:
+          - Network protocol name
+          - Server address
+          - Server port
+      performance:
+        display_name: "Performance"
+        description: "Performance and timing metrics"
+        fields:
+          - Span Start Time
+          - Span End Time
+          - Request Is Failed
+          - Request Is Root Span
+      process:
+        display_name: "Process"
+        description: "Process and execution context"
+        fields:
+          - Host
+          - Process
+          - Process group
+          - Process executable name
+          - Process executable path
+          - Process group id
+          - Process id
+          - Process pid
+      request_attributes:
+        display_name: "Request Attributes"
+        description: "Custom request attributes"
+        fields:
+          - Request attribute ClientIP
+          - Request attribute SourceIP
+      span:
+        display_name: "Span"
+        description: "Span-specific information"
+        fields:
+          - Span Kind
+      subtrace:
+        display_name: "Subtrace"
+        description: "Subtrace-specific information"
+        fields:
+          - Subtrace is root span
+      technology:
+        display_name: "Technology"
+        description: "Technology-specific attributes"
+        fields:
+          - Apache tomcat base
+          - Java jar file
+          - Java jar path
+          - Servlet context name
+          - Servlet context path
+      topology:
+        display_name: "Topology"
+        description: "Span and trace identification"
+        fields:
+          - Span ID
+          - Span Parent ID
+          - Subtrace ID
+          - Trace ID

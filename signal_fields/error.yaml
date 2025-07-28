@@ -1,0 +1,137 @@
+groups:
+  - id: error
+    type: attribute_group
+    brief: >
+      The error namespace contains general information on errors.
+    attributes:
+      - id: error.id
+        type: uid
+        stability: experimental
+        brief: A unique identifier for error grouping. The `error.id` is a 16-byte ID and hex-encoded if shown as a string.
+        examples: [ '357bf70f3c617cb34584b31bd4616af8' ]
+
+      - id: error.display_name
+        type: string
+        stability: experimental
+        brief: A human-readable version of `error.id`.
+        examples: [ '500: foo.bar/path/file', 'path/file:1:5' ]
+
+      - id: error.type
+        type:
+          allow_custom_values: false
+          members:
+            - id: request
+              value: 'request'
+              brief: >
+                Failed request
+            - id: csp
+              value: 'csp'
+              brief: >
+                Content Security Policy (CSP) violation
+            - id: anr
+              value: 'anr'
+              brief: >
+                Application Not Responding (ANR)
+            - id: crash
+              value: 'crash'
+              brief: >
+                Crash
+            - id: exception
+              value: 'exception'
+              brief: >
+                Exception
+            - id: reported
+              value: 'reported'
+              brief: >
+                Custom reported error
+        stability: experimental
+        brief: The main error type. This information is determined by Dynatrace RUM error grouping.
+        examples: [ 'request' ]
+
+      - id: error.is_fatal
+        type: boolean
+        stability: experimental
+        brief: If set to `true`, the error resulted in a fatal exit (for example, an unhandled exception). Otherwise this attribute should be omitted.
+        examples: [ true ]
+
+      - id: error.source
+        type:
+          allow_custom_values: true
+          members:
+            - id: xhr
+              value: 'xhr'
+            - id: fetch
+              value: 'fetch'
+            - id: document_request
+              value: 'document_request'
+            - id: console
+              value: 'console'
+            - id: promise_rejection
+              value: 'promise_rejection'
+            - id: exception
+              value: 'exception'
+        stability: experimental
+        brief: The error source.
+        examples: [ 'fetch', 'console' ]
+
+      - id: error.reason
+        type:
+          allow_custom_values: true
+          members:
+            - id: no_network
+              value: 'no_network'
+              brief: The request failed because of no connectivity.
+            - id: abort
+              value: 'abort'
+              brief: The request was aborted by the user.
+            - id: timeout
+              value: 'timeout'
+              brief: The request timed out.
+            - id: csp
+              value: 'csp'
+              brief: The request failed due to a Content Security Policy (CSP) violation.
+        stability: experimental
+        brief: The error reason. RUM JavaScript reports a pre-defined set of values.
+        examples: [ 'no network' ]
+
+      - id: error.code
+        type: long
+        stability: experimental
+        brief: The code of the error. Set for iOS (NSError and Swift Error) and custom errors for C-based languages.
+        examples: [ -1, 3072 ]
+
+      - id: error.http_4xx_count
+        type: long
+        stability: experimental
+        brief: The number of HTTP request errors with a `http.response.status_code` of 400 - 499.
+        examples: [ 1 ]
+
+      - id: error.http_5xx_count
+        type: long
+        stability: experimental
+        brief: The number of HTTP request errors with a `http.response.status_code` of 500 - 599.
+        examples: [ 1 ]
+
+      - id: error.http_other_count
+        type: long
+        stability: experimental
+        brief: The number of HTTP request errors with a `http.response.status_code` of 0-99 or 600+ (undefined errors).
+        examples: [ 1 ]
+
+      - id: error.exception_count
+        type: long
+        stability: experimental
+        brief: The total number of exceptions that are observed, including exceptions that are not captured.
+        examples: [ 1 ]
+
+      - id: error.dropped_exception_count
+        type: long
+        stability: experimental
+        brief: The number of exceptions that are observed, but which are not captured due to error capture limits.
+        examples: [ 1 ]
+
+      - id: error.csp_violation_count
+        type: long
+        stability: experimental
+        brief: The number of CSP rule violations.
+        examples: [ 1 ]

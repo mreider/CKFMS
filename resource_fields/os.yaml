@@ -1,0 +1,32 @@
+groups:
+  - id: os
+    type: resource
+    brief: >
+      The os namespace contains information on the operating system running an application.
+    attributes:
+      - id: os.name
+        type: string
+        stability: stable
+        brief: >
+          The OS name in a short, human-readable format.
+        examples: [ 'iOS' ]
+
+      - id: os.version  # Seems in some components we report just number, while in others - full string.
+        type: string
+        stability: stable
+        brief: >
+          The complete OS version, including patch, build, and other information.
+        examples: [ "15.3.1", "Ubuntu 16.04.7 LTS (Xenial Xerus) (kernel 4.15.0-206-generic)", "Windows Server 2022 Datacenter 21H2 2009, ver. 10.0.20348" ]
+      - id: os.architecture
+        type: string
+        stability: experimental
+        brief: Architecture of the CPU, discovered from the operating system.
+        examples: [ 'X86' ]
+
+      - id: os.type   # Maybe rename to os.family
+        type: string
+        # TODO [smartscape]: define members + allow custom values?
+        stability: experimental
+        brief: >
+          Type of discovered operating system.
+        examples: [ "LINUX", "WINDOWS" ]

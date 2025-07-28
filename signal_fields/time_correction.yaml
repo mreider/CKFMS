@@ -1,0 +1,21 @@
+groups:
+  - id: time_correction
+    type: attribute_group
+    brief: >
+      The time_correction namespace contains information on time corrections
+      applied to the timestamps of an event, for example `start_time`, `timestamp`
+      or `event.end`. Time corrections may be necessary if events are reported
+      with timestamps that are completely off compared to cluster time, for
+      example Dynatrace RUM reported data can be off depending on client time.
+    attributes:
+      - id: time_correction.offset
+        type: long
+        stability: experimental
+        brief: The offset (in nanoseconds) that is applied to all timestamp fields. The value may be negative.
+        examples: [ 127927969312 ]
+
+      - id: time_correction.is_applied
+        type: boolean
+        stability: experimental
+        brief: If set to `true`, time correction has been applied to the event's timestamps.
+        examples: [ false ]

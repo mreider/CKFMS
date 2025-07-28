@@ -1,0 +1,33 @@
+groups:
+  - id: container
+    type: resource
+    brief:
+    attributes:
+      - id: container.id
+        type: string
+        stability: experimental # traces-in-grail
+        brief: >
+          Container ID. Usually a UUID, as for example used to
+          [identify Docker containers](https://docs.docker.com/engine/containers/run/#container-identification).
+          The UUID might be abbreviated.
+        examples: [ 'a3bf90e006b2' ]
+
+      - id: container.image.name
+        type: string
+        stability: experimental # traces-in-grail
+        brief: >
+          Name of the image the container was built on.
+        examples: [ 'gcr.io/opentelemetry/operator' ]
+
+      - id: container.image.version
+        type: string
+        stability: experimental # traces-in-grail
+        brief:
+        examples: [ '0.1' ]
+
+      - id: container.name
+        type: string
+        stability: experimental # traces-in-grail
+        brief: >
+          Container name used by container runtime.
+        examples: [ 'opentelemetry-autoconf' ]

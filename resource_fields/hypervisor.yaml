@@ -1,0 +1,11 @@
+groups:
+  - id: hypervisor
+    type: resource
+    brief:
+    attributes:
+      - id: hypervisor.type
+        type: string
+        # TODO [smartscape]: define members
+        stability: experimental
+        brief: Virtualization hypervisor identified. For physical machines, this value is empty.
+        examples: [ "KVM", "VMWARE" ]

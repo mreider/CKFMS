@@ -1,0 +1,34 @@
+groups:
+  - id: argocd
+    type: attribute_group
+    brief: >
+      The `argocd` namespace contains Argo CD specific deployment attributes.
+    attributes:
+      - id: argocd.app.health.status
+        type: string
+        stability: experimental
+        brief: The health state of the tracked resource.
+        examples: [ 'Healthy', 'Progressing', 'Degraded', 'Missing', 'Suspended', 'Unknown' ]
+        note: |-
+          The value is equal to the `app.status.health.status` value in Argo CD.
+      - id: argocd.sync.status
+        type: string
+        stability: experimental
+        brief: The sync status represents the current state of reconciliation.
+        examples: [ 'SYNCED', 'OUT OF SYNC', 'UNKNOWN' ]
+        note: |-
+          The value is equal to the `app.status.sync.status` value in Argo CD.
+      - id: argocd.sync.operation_state.phase
+        type: string
+        stability: experimental
+        brief: Status of the synchronization operation between source and target.
+        examples: [ 'Running', 'Succeeded', 'Error', 'Failed' ]
+        note: |-
+          The value is equal to the `app.status.operationState.phase` value in Argo CD.
+      - id: argocd.sync.operation_state.outcome
+        type: string
+        stability: experimental
+        brief: Message associated with synchronization operation.
+        examples: [ 'successfully synced (no more tasks)', 'Operation terminated (retried 4 times)' ]
+        note: |-
+          The value is equal to the `app.status.operationState.message` value in Argo CD.

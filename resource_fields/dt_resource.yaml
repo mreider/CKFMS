@@ -1,0 +1,163 @@
+groups:
+  - id: dt_resource
+    type: resource
+    brief:
+    attributes:
+      - id: dt.host_group.id
+        type: string
+        stability: stable
+        tags: [ 'permission', 'primary-field' ]
+        brief: >
+          see [Organize your environment using host groups](https://docs.dynatrace.com/docs/shortlink/host-groups).
+          Note that host groups are identified by their name. This is not the entity ID of Host Group Entity,
+          for which see dt.entity.host_group
+        examples: [ 'myHostGroup' ]
+
+      - id: dt.pg_detection.cluster.id
+        stability: experimental # traces-in-grail
+        type: string
+        brief: >
+          `DT_CLUSTER_ID` environment variable; also see [Process group detection](https://docs.dynatrace.com/docs/shortlink/process-groups)
+        examples: [ ' ' ]
+
+      - id: dt.pg_detection.custom_entry
+        type: string
+        stability: experimental # traces-in-grail
+        brief: >
+          also see [Define metadata via environment variables](https://docs.dynatrace.com/docs/shortlink/process-group-properties#variables)
+        examples: [ ' ' ]
+
+      - id: dt.pg_detection.declarative.id
+        type: string
+        stability: experimental # traces-in-grail
+        brief:
+        examples: [ ' ' ]
+
+      - id: dt.pg_detection.environment.id
+        type: string
+        stability: experimental # traces-in-grail
+        brief: >
+          `DT_ENVIRONMENT_ID` environment variable
+        examples: [ ' ' ]
+
+      - id: dt.pg_detection.node.id
+        type: string
+        stability: experimental # traces-in-grail
+        brief: >
+          `DT_NODE_ID` environment variable; also see [Process group detection](https://docs.dynatrace.com/docs/shortlink/process-groups)
+        examples: [ ' ' ]
+
+      - id: dt.pg_detection.workload.result
+        type: string
+        stability: deprecated
+        internal: true
+        brief:
+        examples: [ ' ' ]
+
+      - id: dt.process_group.detected_name
+        type: string
+        stability: stable
+        brief: The name of the process group as it was detect by the agent.
+        examples: ['Apache Web Server httpd', 'Redis unguard-redis-* redis']
+
+      - id: dt.security_context
+        type: string
+        stability: stable
+        brief: >
+          The security context is used in access permissions to limit the visibility. Learn more about the [Dynatrace permission model](https://docs.dynatrace.com/docs/shortlink/dynatrace-grail)
+        examples: [ ' ' ]
+        tags: ['permission']
+
+      - id: dt.smartscape_source.id
+        stability: experimental
+        type: string
+        tags: [ 'smartscape-id' ]
+        brief: >
+          The ID of the entity considered the source of the signal. The string represents an entity ID
+          of an entity that is stored in the Smartscape storage.
+        note: >
+          The value of this field will be based on one of `dt.smartscape.<type>` fields value.
+          That means that both fields `dt.smartscape_source.id` and `dt.smartscape.<type>` will be set to the same ID.
+        examples: ['K8S_CLUSTER-E0D8F94D9065F24F', 'AWS_LAMBDA_FUNCTION-E0D8F94D9065F24F']
+
+      - id: dt.smartscape_source.type
+        type: string
+        stability: stable
+        brief: >
+          The entity type of the entity whose identifier is held in dt.smartscape_source.id.
+        examples: ['K8S_CLUSTER', 'AWS_LAMBDA_FUNCTION']
+
+      - id: dt.source_entity
+        stability: stable
+        type: string
+        tags: [ 'entity-id' ]
+        brief: >
+          The ID of the entity considered the source of the signal. The string represents an entity ID
+          of an entity that is stored in the classic entity storage.
+        note: >
+          The value of this field will be based on one of the `dt.entity.<type>` fields value.
+          This means that both `dt.source_entity` and `dt.entity.<type>` fields will be set to the same ID.
+        examples: ['HOST-E0D8F94D9065F24F', 'PROCESS_GROUP_INSTANCE-E0D8F94D9065F24F']
+
+      - id: dt.source_entity.type
+        type: string
+        stability: stable
+        brief: >
+          The entity type of the entity whose identifier is held in dt.source_entity. The value must be a valid entity type and consistent with `dt.source_entity`. Note, however, that the type identifiers are expected to be lowercased in alignment with suffixes of dt.entity.* keys.
+        examples: ['host', 'process_group_instance', 'cloud:azure:resource_group']
+
+      - id: dt.cost.costcenter
+        type: string
+        stability: stable
+        brief: >
+          Can be used to assign usage to a Cost Center.
+        examples: ['Team A']
+
+      - id: dt.cost.product
+        type: string
+        stability: stable
+        brief: >
+          Can be used to assign usage to a Product or Application ID.
+        examples: ['Product A']
+
+      - id: dt.metrics.source
+        brief: >
+          The source from which metrics are ingested.
+        note: >
+          This is the framework used for capturing, processing and forwarding metrics, *not* the emitting monitored entity.
+          Exemplary custom value: name of an extension sending metrics.
+        type:
+          allow_custom_values: true
+          members:
+            - id: telegraf
+              value: 'telegraf'
+              brief: 'Telegraf'
+            - id: micrometer
+              value: 'micrometer'
+              brief: 'Micrometer'
+            - id: opentelemetry
+              value: 'opentelemetry'
+              brief: 'OpenTelemetry'
+            - id: oneagent_metric_api
+              value: 'oneagent_metric_api'
+              brief: 'OneAgentMetricAPI'
+            - id: dynatrace_ingest
+              value: 'dynatrace_ingest'
+              brief: 'dynatrace_ingest'
+            - id: statsd
+              value: 'statsd'
+              brief: 'StatsD'
+            - id: dynatrace_osagent
+              value: 'dynatrace_osagent'
+              brief: 'OsAgent'
+            - id: dynatrace_codemodule
+              value: 'dynatrace_codemodule'
+              brief: 'dynatrace_codemodule'
+        stability: experimental
+        examples: ['telegraf', 'com.dynatrace.extension.sql-oracle']
+
+      - id: dt.network_zone.id
+        type: string
+        stability: experimental
+        brief: The ID of the network zone. See [Dynatrace Documentation ](https://docs.dynatrace.com/docs/shortlink/api-network-zones-get-network-zone)
+        examples: [ 'vpc-123' ]

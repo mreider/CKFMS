@@ -1,0 +1,22 @@
+groups:
+  - id: jboss
+    type: resource
+    brief:
+    attributes:
+      - id: jboss.home
+        type: string
+        stability: experimental # traces-in-grail
+        brief: The instance's home directory.
+        examples: [ ' ' ]
+
+      - id: jboss.mode
+        type: string
+        stability: experimental # traces-in-grail
+        brief: The instance's operating mode.
+        examples: [ 'org.jboss.as.standalone', 'org.jboss.as.server' ]
+
+      - id: jboss.server.name
+        type: string
+        stability: experimental # traces-in-grail
+        brief: The instance's server name.
+        examples: [ ' ' ]

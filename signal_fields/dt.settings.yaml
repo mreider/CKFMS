@@ -1,0 +1,62 @@
+groups:
+  - id: dt.settings
+    type: attribute_group
+    brief: >
+      The settings namespace contains fields to reference Dynatrace settings objects, settings schemas and settings scopes.
+      'dt.settings.object_id' is enough to reference a single settings object within an environment; the other fields can be used both to reference schemas or scopes as a whole, without referencing a specific object, and to enable cross-referencing with other data objects.
+      'dt.settings.references' can be used if multiple settings objects need to be referenced.
+
+    attributes:
+      - id: dt.settings.object_id
+        type: string
+        stability: experimental
+        brief: "The object ID of a settings value. This corresponds to the 'objectId' field/parameter in the Settings API."
+        examples: [ 'vu9U3hXa3q0AAAABACFidWlsdGluOnJ1bS51c2VyLWV4cGVyaWVuY2Utc2NvcmUABnRlbmFudAAGdGVuYW50ACRhMzZmYmYwMy00NDY1LTNlNTYtOTZiOS1kOWMzOGQ3MzU1NmO-71TeFdrerQ' ]
+
+      - id: dt.settings.object_summary
+        type: string
+        stability: experimental
+        brief: "The human-readable summary or name of a single value of a multi-value settings schema. This corresponds to the 'summary' field in the Settings API."
+        examples: [ 'Journey Service all errors', 'Really, this can be anything', 'My alerting rule' ]
+
+      - id: dt.settings.schema_id
+        type: string
+        stability: experimental
+        brief: "The schema ID of a settings schema, as used in the Settings APIs."
+        examples: [ 'builtin:problem.notifications', 'app:dynatrace.jenkins:connection' ]
+
+      - id: dt.settings.schema_version
+        type: string
+        stability: experimental
+        brief: "The version of the schema referenced by dt.settings.schema_id, as declared by the schema itself. Typically a semantic version number."
+        examples: [ '1.0.0', '1.2.3']
+
+      - id: dt.settings.scope_type
+        type: string
+        stability: experimental
+        brief: "The type of the scope that a settings object is persisted on."
+        examples: [ 'environment', 'host_group', 'host' ]
+
+      - id: dt.settings.scope_id
+        type: string
+        stability: experimental
+        brief: "The ID of the scope that a settings object is persisted on. This corresponds to the 'scope' field/parameter in the Settings API."
+        examples: [ 'environment', 'HOST-EFAB6D2FE7274823' ]
+
+      - id: dt.settings.scope_name
+        type: string
+        stability: experimental
+        brief: "The human-readable name of the scope that a settings object is persisted on."
+        examples: [ 'deb-10-k3s-oi-01.lab.dynatrace.org' ]
+
+      - id: dt.settings.relationship
+        type: string
+        stability: experimental
+        brief: "The type of relationship to the referenced settings object. You can use arbitrary values (in `snake_case`) here that describe the relationship for your use-case."
+        examples: [ 'matched_rule', 'triggered_alert' ]
+
+      - id: dt.settings.references
+        stability: experimental
+        type: record[]
+        brief: "A collection of references to settings objects. Each entry in the array holds a reference to a single settings object."
+        examples: [ [{"dt.settings.object_id": "vu9U3hXa3q0AAAABACFidWlsdGluOnJ1bS51c2VyLWV4cGVyaWVuY2Utc2NvcmUABnRlbmFudAAGdGVuYW50ACRhMzZmYmYwMy00NDY1LTNlNTYtOTZiOS1kOWMzOGQ3MzU1NmO-71TeFdrerQ", "dt.settings.relationship": "matched_rule"}, {"dt.settings.object_id": "vu9U3hXa3q0AAAABAB9idWlsdGluOmRhdmlzLmFub21hbHktZGV0ZWN0b3JzAAZ0ZW5hbnQABnRlbmFudAAkMzM2NTc3MTgtYWNjYi0zOGY1LTlmOGUtMTg5NTBiYmNjNmRhvu9U3hXa3q0", "dt.settings.relationship": "triggered_alert"}] ]

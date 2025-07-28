@@ -1,0 +1,49 @@
+groups:
+  - id: process
+    type: resource
+    brief:
+    attributes:
+      - id: process.executable.name
+        type: string
+        stability: experimental # traces-in-grail
+        brief: >
+          The name of the process executable. On Linux based systems, can be set
+          to the `Name` in `proc/[pid]/status`. On Windows, can be set to the
+          base name of `GetProcessImageFileNameW`.
+        examples: [ 'otelcol' ]
+
+      - id: process.executable.path
+        type: string
+        stability: experimental # traces-in-grail
+        brief: >
+          The full path to the process executable. On Linux-based systems, can
+          be set to the target of `proc/[pid]/exe`. On Windows, can be set to the
+          result of `GetProcessImageFileNameW`.
+        examples: [ '/usr/bin/cmd/otelcol' ]
+      - id: process.pid
+        type: long
+        stability: experimental
+        brief: >
+          Process Identifier (PID) as observed by the monitored process.
+        examples: [ 1234 ]
+      - id: process.containerized
+        type: boolean
+        stability: experimental
+        brief: >
+          True if given process is running inside container.
+      - id: process.listen_ports
+        type: array
+        brief: An array of open listen ports.
+        stability: experimental
+        examples: [ 50000, 50001, 50002, 50003 ]
+      - id: process.bitness
+        type: string
+        brief: The architecture of the monitored entity in terms of how many bits compose a basic value.
+        stability: experimental
+        examples: [ '64' ]
+      - id: process.metadata
+        type: record
+        brief: It contains a diagnostic collection of input parameters that were used or could have been used in assigning processes to the process entity.
+        internal_brief: Those are ID calculation inputs for Process/PGI. Currently, they include also ignored parameters.
+        stability: experimental
+        examples: [ "NODE_JS_APP_BASE_DIRECTORY:C:/home/site/wwwroot" ]

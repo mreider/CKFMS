@@ -1,0 +1,33 @@
+groups:
+  - id: browser_resource
+    type: resource
+    brief: >
+      The browser namespace contains information on the browser running an application.
+    attributes:
+      - id: browser.user_agent
+        type: string
+        stability: stable
+        brief: >
+          The full user agent string as provided by the browser in the HTTP `User-Agent` request header.
+        examples: [ 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)' ]
+
+      - id: browser.name
+        type: string
+        stability: stable
+        brief: >
+          The browser name.
+        examples: [ 'Mozilla' ]
+
+      - id: browser.version
+        type: string
+        stability: stable
+        brief: >
+          The browser version.
+        examples: [ '5.0' ]
+
+      - id: browser.type
+        type: string
+        stability: stable
+        brief: >
+          The browser type.
+        examples: ['desktop', 'mobile', 'tablet', 'robot', 'other']

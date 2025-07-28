@@ -1,0 +1,28 @@
+groups:
+  - id: java
+    type: resource
+    brief:
+    attributes:
+      - id: java.jar.file
+        type: string
+        stability: experimental # traces-in-grail
+        brief:
+        examples: [ ' ' ]
+
+      - id: java.jar.path
+        type: string
+        stability: experimental # traces-in-grail
+        brief:
+        examples: [ ' ' ]
+
+      - id: java.main.class
+        type: string
+        stability: experimental # traces-in-grail
+        brief:
+        examples: [ ' ' ]
+
+      - id: java.main.module
+        type: string
+        stability: experimental # traces-in-grail
+        brief:
+        examples: [ ' ' ]

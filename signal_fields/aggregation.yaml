@@ -1,0 +1,46 @@
+groups:
+  - id: aggregation
+    type: span
+    brief:
+    attributes:
+      - id: aggregation.count
+        type: long
+        stability: stable # traces-in-grail
+        brief: The number of spans aggregated into this span. Because this span represents multiple spans, the value is >1.
+        examples: 3
+
+      - id: aggregation.exception_count
+        type: long
+        stability: stable # traces-in-grail
+        brief: The number of aggregated spans that included an exception.
+        examples: [ 0, 6 ]
+
+      - id: aggregation.duration_sum
+        type: duration
+        stability: stable # traces-in-grail
+        brief: The duration sum in nanoseconds for all aggregated spans.
+        examples: [ 123 ]
+
+      - id: aggregation.duration_min
+        type: duration
+        stability: stable # traces-in-grail
+        brief: The duration in nanoseconds for the shortest aggregated span.
+        examples: [ 42 ]
+
+      - id: aggregation.duration_max
+        type: duration
+        stability: stable # traces-in-grail
+        brief: The duration in nanoseconds for the longest aggregated span.
+        examples: [ 482 ]
+
+      - id: aggregation.parallel_execution
+        type: boolean
+        stability: stable # traces-in-grail
+        brief: >
+          `true` indicates that aggregated spans may have been executed in parallel. Therefore, `start_time + duration_sum` may exceed `end_time`.
+
+      - id: aggregation.duration_samples
+        type: duration[]
+        stability: stable # traces-in-grail
+        brief: Array of reservoir sampled span durations of the aggregated spans. The duration samples can be used to estimate a more accurate duration distribution of aggregated spans rather than the average value.
+        examples: [ 42, 482, 301 ]

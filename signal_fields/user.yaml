@@ -1,0 +1,46 @@
+groups:
+  - id: user
+    type: attribute_group
+    brief:
+    attributes:
+      - id: user.id
+        type: string
+        stability: stable
+        brief: >
+          Unique UUID of a human user. If the system itself has to be represented, the constant 'system' is used.
+        examples: [ '35ba9499-f87c-4047-962c-14dc32e255e5', 'system' ]
+
+      - id: user.organization
+        type:
+          allow_custom_values: false
+          members:
+            - id: dynatrace
+              value: "DYNATRACE"
+              brief: >
+                Dynatrace organization
+            - id: customer
+              value: "CUSTOMER"
+              brief: >
+                Customer organization
+            - id: partner
+              value: "PARTNER"
+              brief: >
+                Dynatrace partner organization
+        stability: experimental
+        brief: >
+          Organization the user belongs to.
+        examples: [ 'DYNATRACE', 'CUSTOMER', 'PARTNER' ]
+
+      - id: user.name
+        type: string
+        stability: experimental
+        brief: >
+          Full name of the user. If the system itself has to be represented, the constant 'System' is used.
+        examples: [ 'Wolfgang Amadeus Mozart', 'System' ]
+
+      - id: user.email
+        type: string
+        stability: stable
+        brief: >
+          Email of the user.
+        examples: [ 'user@mail.com' ]

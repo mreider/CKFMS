@@ -1,0 +1,80 @@
+groups:
+  - id: dt.security
+    type: attribute_group
+    brief:
+    attributes:
+      - id: dt.security.risk.score
+        type: double
+        stability: stable
+        brief: >
+          Risk score, mapped and normalized by Dynatrace.
+        internal_brief: >
+          As we integrate multiple third-party vulnerability sources, we will encounter varying risk scores for the same CVEs.
+          To streamline prioritization across different products, we have developed a unified risk scale. This scale allows users to effectively cross-prioritize vulnerabilities.
+          To ensure this consistency in our data, we will normalize the `finding.severity` field as follows:
+          "Critical" is mapped to 10.0
+          "High" is mapped to 8.9
+          "Medium" is mapped to 6.9
+          "Low" is mapped to 3.9
+          Everything else is mapped to 0.0
+        examples: [ 8.1 ]
+      - id: dt.security.risk.level
+        type:
+          allow_custom_values: true
+          members:
+            - id: low
+              value: "LOW"
+            - id: medium
+              value: "MEDIUM"
+            - id: high
+              value: "HIGH"
+            - id: critical
+              value: "CRITICAL"
+            - id: none
+              value: "NONE"
+              brief: >
+                Used with a score of 0.
+            - id: not_available
+              value: "NOT_AVAILABLE"
+              brief: >
+                Implies that no information is available, equivalent to omitting this field.
+        stability: stable
+        brief: >
+          Risk score level, mapped and normalized by Dynatrace.
+        examples: [ "LOW", "MEDIUM", "HIGH", "CRITICAL", "NONE", "NOT_AVAILABLE" ]
+      - id: dt.security.rap.action
+        stability: deprecated
+        type:
+          allow_custom_values: true
+          members:
+            - id: blocked
+              value: 'BLOCKED'
+            - id: allowlisted
+              value: 'ALLOWLISTED'
+            - id: audited
+              value: 'AUDITED'
+        brief: >
+          Action taken based on your Runtime Application Protection setup.
+        internal_brief: >
+          This fields purpose is to differentiate between the RAP specific actions and the actions from the more general `detection.action`. Deprecated: Replaced by `finding.action`.
+        examples: [ 'BLOCKED', 'ALLOWLISTED', 'AUDITED' ]
+      - id: dt.security.rap.target.id
+        type: string
+        stability: experimental
+        brief: >
+          Identifier of the target detected by Runtime Application Protection.
+        internal_brief: >
+          The *.target.* subnamespace shows the underlying target that RAP found. The object.id we show is the entity where the exploit happened, and this field shows the actual target of the detection. For example, in SQL injection findings this would be the database
+        examples: [ 'HOST-E0D8F94D9065F24F' ]
+      - id: dt.security.rap.target.type
+        type: string
+        stability: experimental
+        brief: >
+          Type of target detected by Runtime Application Protection.
+        examples: [ 'HOST', 'SERVICE' ]
+      - id: dt.security.rap.target.name
+        type: string
+        stability: experimental
+        brief: >
+          Name of the target detected by Runtime Application Protection.
+        examples: [ 'prod_host', 'finance_database' ]
