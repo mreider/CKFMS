@@ -27,3 +27,34 @@ groups:
         brief: >
           The method of authentication.
         examples: [ 'OAUTH2' ]
+
+      - id: authentication.grant.type
+        type:
+          allow_custom_values: false
+          members:
+            - id: authorization_code
+              value: "AUTHORIZATION_CODE"
+              brief: >
+                The [OAuth 2.0 "Authorization Code" grant type](https://oauth.net/2/grant-types/authorization-code/)
+            - id: client_credentials
+              value: "CLIENT_CREDENTIALS"
+              brief: >
+                The [OAuth 2.0 "Client Credentials" grant type](https://oauth.net/2/grant-types/client-credentials/)
+        stability: experimental
+        brief: >
+          The grant type used during OAuth2 authentication.
+        examples: [ 'AUTHORIZATION_CODE', 'CLIENT_CREDENTIALS' ]
+
+      - id: authentication.client.id
+        type: string
+        stability: experimental
+        brief: >
+          The OAuth2 client id if of type 'CLIENT_CREDENTIALS'.
+        examples: [ 'dt0s02.UZCK6ENL.2YQ2A3DZUEISRJSUUL7B2DNH' ]
+
+      - id: authentication.token
+        type: string
+        stability: experimental
+        brief: >
+          The public token identifier of authentication.type 'TOKEN'.
+        examples: [ 'dt0c01.AM4SEYKIB' ]
